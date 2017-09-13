@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="objectives">目标函数objectives</h1>
+<p>目标函数，或称损失函数，是编译一个模型必须的两个参数之一：</p>
+<pre><code class="python">model.compile(loss='mean_squared_error', optimizer='sgd')
+</code></pre>
+<p>可以通过传递预定义目标函数名字指定目标函数，也可以传递一个Theano/TensroFlow的符号函数作为目标函数，该函数对每个数据点应该只返回一个标量值，并以下列两个参数为参数：</p>
+<ul>
+<li>
+<p>y_true：真实的数据标签，Theano/TensorFlow张量</p>
+</li>
+<li>
+<p>y_pred：预测值，与y_true相同shape的Theano/TensorFlow张量</p>
+</li>
+</ul>
+<pre><code class="python">from keras import losses
+
+model.compile(loss=losses.mean_squared_error, optimizer='sgd')
+</code></pre>
+<p>真实的优化目标函数是在各个数据点得到的损失函数值之和的均值</p>
+<p>请参考<a href="https://github.com/fchollet/keras/blob/master/keras/objectives.py">目标实现代码</a>获取更多信息</p>
+<h2 id="_1">可用的目标函数</h2>
+<ul>
+<li>
+<p>mean_squared_error或mse</p>
+</li>
+<li>
+<p>mean_absolute_error或mae</p>
+</li>
+<li>
+<p>mean_absolute_percentage_error或mape</p>
+</li>
+<li>
+<p>mean_squared_logarithmic_error或msle</p>
+</li>
+<li>
+<p>squared_hinge</p>
+</li>
+<li>
+<p>hinge</p>
+</li>
+<li>
+<p>categorical_hinge</p>
+</li>
+<li>
+<p>binary_crossentropy（亦称作对数损失，logloss）</p>
+</li>
+<li>
+<p>logcosh</p>
+</li>
+<li>
+<p>categorical_crossentropy：亦称作多类的对数损失，注意使用该目标函数时，需要将标签转化为形如<code>(nb_samples, nb_classes)</code>的二值序列</p>
+</li>
+<li>
+<p>sparse_categorical_crossentrop：如上，但接受稀疏标签。注意，使用该函数时仍然需要你的标签与输出值的维度相同，你可能需要在标签数据上增加一个维度：<code>np.expand_dims(y,-1)</code></p>
+</li>
+<li>
+<p>kullback_leibler_divergence:从预测值概率分布Q到真值概率分布P的信息增益,用以度量两个分布的差异.</p>
+</li>
+<li>
+<p>poisson：即<code>(predictions - targets * log(predictions))</code>的均值</p>
+</li>
+<li>
+<p>cosine_proximity：即预测值与真实标签的余弦距离平均值的相反数</p>
+</li>
+</ul>
+<p><strong>注意</strong>: 当使用"categorical_crossentropy"作为目标函数时,标签应该为多类模式,即one-hot编码的向量,而不是单个数值. 可以使用工具中的<code>to_categorical</code>函数完成该转换.示例如下:</p>
+<pre><code class="python">from keras.utils.np_utils import to_categorical
+
+categorical_labels = to_categorical(int_labels, num_classes=None)
+</code></pre>
+</div>
+    </body></html>

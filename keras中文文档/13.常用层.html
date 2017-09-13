@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="_1">常用层</h1>
+<p>常用层对应于core模块，core内部定义了一系列常用的网络层，包括全连接、激活层等</p>
+<h2 id="dense">Dense层</h2>
+<pre><code class="python">keras.layers.core.Dense(units, activation=None, use_bias=True, kernel_initializer='glorot_uniform', bias_initializer='zeros', kernel_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, bias_constraint=None)
+</code></pre>
+<p>Dense就是常用的全连接层，所实现的运算是<code>output = activation(dot(input, kernel)+bias)</code>。其中<code>activation</code>是逐元素计算的激活函数，<code>kernel</code>是本层的权值矩阵，<code>bias</code>为偏置向量，只有当<code>use_bias=True</code>才会添加。</p>
+<p>如果本层的输入数据的维度大于2，则会先被压为与<code>kernel</code>相匹配的大小。</p>
+<p>这里是一个使用示例：</p>
+<pre><code class="python"># as first layer in a sequential model:
+# as first layer in a sequential model:
+model = Sequential()
+model.add(Dense(32, input_shape=(16,)))
+# now the model will take as input arrays of shape (*, 16)
+# and output arrays of shape (*, 32)
+
+# after the first layer, you don't need to specify
+# the size of the input anymore:
+model.add(Dense(32))
+</code></pre>
+<h3 id="_2">参数：</h3>
+<ul>
+<li>
+<p>units：大于0的整数，代表该层的输出维度。</p>
+</li>
+<li>
+<p>activation：激活函数，为预定义的激活函数名（参考<a href="../../other/activations">激活函数</a>），或逐元素（element-wise）的Theano函数。如果不指定该参数，将不会使用任何激活函数（即使用线性激活函数：a(x)=x）</p>
+</li>
+<li>
+<p>use_bias: 布尔值，是否使用偏置项</p>
+</li>
+<li>
+<p>kernel_initializer：权值初始化方法，为预定义初始化方法名的字符串，或用于初始化权重的初始化器。参考<a href="../../other/initializations">initializers</a></p>
+</li>
+<li>
+<p>bias_initializer：权值初始化方法，为预定义初始化方法名的字符串，或用于初始化权重的初始化器。参考<a href="../../other/initializations">initializers</a></p>
+</li>
+<li>
+<p>kernel_regularizer：施加在权重上的正则项，为<a href="../../other/regularizers">Regularizer</a>对象</p>
+</li>
+<li>
+<p>bias_regularizer：施加在偏置向量上的正则项，为<a href="../../other/regularizers">Regularizer</a>对象</p>
+</li>
+<li>
+<p>activity_regularizer：施加在输出上的正则项，为<a href="../../other/regularizers">Regularizer</a>对象</p>
+</li>
+<li>
+<p>kernel_constraints：施加在权重上的约束项，为<a href="../../other/constraints">Constraints</a>对象</p>
+</li>
+<li>
+<p>bias_constraints：施加在偏置上的约束项，为<a href="../../other/constraints">Constraints</a>对象</p>
+</li>
+</ul>
+<h3 id="_3">输入</h3>
+<p>形如(batch_size, ..., input_dim)的nD张量，最常见的情况为(batch_size, input_dim)的2D张量</p>
+<h3 id="_4">输出</h3>
+<p>形如(batch_size, ..., units)的nD张量，最常见的情况为(batch_size, units)的2D张量</p>
+<hr/>
+<p><a name="activation">
+<font color="#404040"></font></a></p>
+<h2 id="activation">Activation层</h2>
+<p></p></div>
+    </body></html>

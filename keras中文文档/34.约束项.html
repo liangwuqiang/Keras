@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="_1">约束项</h1>
+<p>来自<code>constraints</code>模块的函数在优化过程中为网络的参数施加约束</p>
+<p>惩罚项基于层进行惩罚，目前惩罚项的接口与层有关，但<code>Dense, Conv1D, Conv2D, Conv3D</code>具有共同的接口。</p>
+<p>这些层通过一下关键字施加约束项</p>
+<ul>
+<li>
+<p><code>kernel_constraint</code>：对主权重矩阵进行约束</p>
+</li>
+<li>
+<p><code>bias_constraint</code>：对偏置向量进行约束</p>
+</li>
+</ul>
+<pre><code class="python">from keras.constraints import maxnorm
+model.add(Dense(64, kernel_constraint=max_norm(2.)))
+</code></pre>
+<h2 id="_2">预定义约束项</h2>
+<ul>
+<li>
+<p>max_norm(m=2)：最大模约束</p>
+</li>
+<li>
+<p>non_neg()：非负性约束</p>
+</li>
+<li>
+<p>unit_norm()：单位范数约束, 强制矩阵沿最后一个轴拥有单位范数</p>
+</li>
+<li>
+<p>min_max_norm(min_value=0.0, max_value=1.0, rate=1.0, axis=0): 最小/最大范数约束</p>
+</li>
+</ul>
+</div>
+    </body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="_1">序列预处理</h1>
+<h2 id="pad_sequences">填充序列pad_sequences</h2>
+<pre><code class="python">keras.preprocessing.sequence.pad_sequences(sequences, maxlen=None, dtype='int32',
+    padding='pre', truncating='pre', value=0.)
+</code></pre>
+<p>将长为<code>nb_samples</code>的序列（标量序列）转化为形如<code>(nb_samples,nb_timesteps)</code>2D numpy array。如果提供了参数<code>maxlen</code>，<code>nb_timesteps=maxlen</code>，否则其值为最长序列的长度。其他短于该长度的序列都会在后部填充0以达到该长度。长于<code>nb_timesteps</code>的序列将会被截断，以使其匹配目标长度。padding和截断发生的位置分别取决于<code>padding</code>和<code>truncating</code>.</p>
+<h3 id="_2">参数</h3>
+<ul>
+<li>
+<p>sequences：浮点数或整数构成的两层嵌套列表</p>
+</li>
+<li>
+<p>maxlen：None或整数，为序列的最大长度。大于此长度的序列将被截短，小于此长度的序列将在后部填0.</p>
+</li>
+<li>
+<p>dtype：返回的numpy array的数据类型</p>
+</li>
+<li>
+<p>padding：‘pre’或‘post’，确定当需要补0时，在序列的起始还是结尾补</p>
+</li>
+<li>
+<p>truncating：‘pre’或‘post’，确定当需要截断序列时，从起始还是结尾截断</p>
+</li>
+<li>
+<p>value：浮点数，此值将在填充时代替默认的填充值0</p>
+</li>
+</ul>
+<h3 id="_3">返回值</h3>
+<p>返回形如<code>(nb_samples,nb_timesteps)</code>的2D张量</p>
+<hr/>
+<h2 id="skipgrams">跳字skipgrams</h2>
+<pre><code class="python">keras.preprocessing.sequence.skipgrams(sequence, vocabulary_size,
+    window_size=4, negative_samples=1., shuffle=True,
+    categorical=False, sampling_table=None)
+</code></pre>
+<p>skipgrams将一个词向量下标的序列转化为下面的一对tuple：</p>
+<ul>
+<li>
+<p>对于正样本，转化为（word，word in the same window）</p>
+</li>
+<li>
+<p>对于负样本，转化为（word，random word from the vocabulary）</p>
+</li>
+</ul>
+<p>【Tips】根据维基百科，n-gram代表在给定序列中产生连续的n项，当序列句子时，每项就是单词，此时n-gram也称为shingles。而skip-gram的推广，skip-gram产生的n项子序列中，各个项在原序列中不连续，而是跳了k个字。例如，对于句子：</p>
+<p>“the rain in Spain falls mainly on the plain”</p>
+<p>其 2-grams为子序列集合：</p>
+<p>the rain，rain in，in Spain，Spain falls，falls mainly，mainly on，on the，the plain</p>
+<p>其 1-skip-2-grams为子序列集合：</p>
+<p>the in, rain Spain, in falls, Spain mainly, falls on, mainly the, on plain.</p>
+<p>更多详情请参考<a href="http://arxiv.org/pdf/1301.3781v3.pdf">Efficient Estimation of Word Representations in Vector Space</a></p>
+<h3 id="_4">参数</h3>
+<ul>
+<li>
+<p>sequence：下标的列表，如果使用sampling_tabel，则某个词的下标应该为它在数据库中的顺序。（从1开始）</p>
+</li>
+<li>
+<p>vocabulary_size：整数，字典大小</p>
+</li>
+<li>
+<p>window_size：整数，正样本对之间的最大距离</p>
+</li>
+<li>
+<p>negative_samples：大于0的浮点数，等于0代表没有负样本，等于1代表负样本与正样本数目相同，以此类推（即负样本的数目是正样本的<code>negative_samples</code>倍）</p>
+</li>
+<li>
+<p>shuffle：布尔值，确定是否随机打乱样本</p>
+</li>
+<li>
+<p>categorical：布尔值，确定是否要使得返回的标签具有确定类别</p>
+</li>
+<li>
+<p>sampling_table：形如<code>(vocabulary_size,)</code>的numpy array，其中<code>sampling_table[i]</code>代表没有负样本或随机负样本。等于1为与正样本的数目相同
+采样到该下标为i的单词的概率（假定该单词是数据库中第i常见的单词）</p>
+</li>
+</ul>
+<h3 id="_5">输出</h3>
+<p>函数的输出是一个<code>(couples,labels)</code>的元组，其中：</p>
+<ul>
+<li>
+<p><code>couples</code>是一个长为2的整数列表：<code>[word_index,other_word_index]</code></p>
+</li>
+<li>
+<p><code>labels</code>是一个仅由0和1构成的列表，1代表<code>other_word_index</code>在<code>word_index</code>的窗口，0代表<code>other_word_index</code>是词典里的随机单词。</p>
+</li>
+<li>
+<p>如果设置<code>categorical</code>为<code>True</code>，则标签将以one-hot的方式给出，即1变为[0,1]，0变为[1,0]</p>
+</li>
+</ul>
+<hr/>
+<h2 id="make_sampling_table">获取采样表make_sampling_table</h2>
+<pre><code class="python">keras.preprocessing.sequence.make_sampling_table(size, sampling_factor=1e-5)
+</code></pre>
+<p>该函数用以产生<code>skipgrams</code>中所需要的参数<code>sampling_table</code>。这是一个长为<code>size</code>的向量，<code>sampling_table[i]</code>代表采样到数据集中第i常见的词的概率（为平衡期起见，对于越经常出现的词，要以越低的概率采到它）</p>
+<h3 id="_6">参数</h3>
+<ul>
+<li>
+<p>size：词典的大小</p>
+</li>
+<li>
+<p>sampling_factor：此值越低，则代表采样时更缓慢的概率衰减（即常用的词会被以更低的概率被采到），如果设置为1，则代表不进行下采样，即所有样本被采样到的概率都是1。</p>
+</li>
+</ul>
+</div>
+    </body></html>

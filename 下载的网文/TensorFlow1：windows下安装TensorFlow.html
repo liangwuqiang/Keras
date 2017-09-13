@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+</head><body>
+<p><a href="http://blog.csdn.net/weixin_37669436/article/details/71392905">原文链接</a></p>
+<p><center><h1>TensorFlow1：windows下安装TensorFlow</h1></center></p>
+    <div class="article_content tracking-ad" data-dsm="post" data-mod="popu_307" id="article_content">
+<h1 style="text-align:center"><span style="font-family:SimHei; font-size:24px; color:#cc0000">TensorFlow在windows 下的安装</span></h1>
+<div><span style="font-family:SimHei; font-size:24px; color:#cc0000"><br/>
+</span></div>
+<p><span style="font-family:SimHei; font-size:18px"><span style="white-space:pre"></span><span style="white-space:pre"></span>前言：从2015年谷歌将tensorflow开源后，这位用于深度学习的强大神器便把Caffe，Keras，Torch7等这一票人全部干掉，github上的star和fork是一路飙升，几乎是它们的总和，当然，我这里不是对谷歌的日常互舔，从发布博主就一直关注它的最新消息，并啃了原生英文版的官方API，感谢极客学院各位大佬将它翻译成了中文版，博主也及时的对照中文，将它又滋润了两遍，两遍下来，我捉摸着先把系统打好，再进行炼丹。这家伙好了，几乎用了我一天的世界，踩过无数的坑，无数次谷歌，百度，知乎，论坛，才终于搭建好了我的tensorflow环境，也终于写出了我的“Hello
+ TensorFlow！”。虽然博主涉猎过linux，但愧于博主那简陋的电脑无法在虚拟机上提供足够大的内存，所有我决定铤而走险，搭建基于windows版的野生的tensorflow。</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><span style="white-space:pre"></span><span style="white-space:pre"></span>再说一句：本文为那些想要搭建tensorflow的童鞋提出可行方案，只想以博主惨痛的经历为你们填好不必要的坑，让你们轻装上阵，将重点放在后面的学习中。</span></p>
+<p><span style="font-family:SimHei; font-size:24px"><br/>
+</span></p>
+<h2><span style="font-family:SimHei; font-size:24px; color:#ff6666">1.安装Anaconda</span></h2>
+<p><span style="font-family:SimHei; font-size:18px">tensorflow是基于python脚本语言的，是一种高级应用，它必须依赖于底层的应用发挥作用。因此需要安装python,当然还需要安装numpy、scipy、six、matplotlib等几十个扩展包。如果一个个安装，十分耗费时间，不过现在有了集成环境anaconda，安装就方便了。python的大部分扩展包,都集成在anaconda里面了，因此只需要装这一个东西就行了。如果你想更多的去了解Anaconda，可以参考<a href="https://conda.io/docs/test-drive.html" target="_blank">Anaconda官方API</a>，友情提示：它是洋文哦！</span></p>
+<p><span style="font-family:SimHei; font-size:18px">1）先到官网下载，<a href="https://www.continuum.io/downloads/" target="_blank">Anaconda官方下载地址</a></span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/a83a73170fcfe94344bea1007f55c461"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">如果你嫌弃官网下载太slow，<a href="http://mirrors.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank">清华大学镜像网</a>，这里有你想要的Anaconda镜像。</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/ee94701a2d20cca57696e2c2546ea8c9"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">注意版本，现在实在最稳定的应该是4.3.0的Anaconda，它自带Python3.6</span></p>
+<p><span style="font-family:SimHei; font-size:18px">然后安装也就灰常简单啦!</span></p>
+<p><span style="font-family:SimHei; font-size:18px">现在我们打开终端，输入<span style="font-family:SimHei; font-size:18px"><span style="color:#ff0000">conda --version</span></span></span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/8fc11700da9d800a16161b4909d151cf"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">我们看到版本是4.3.8</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">2）由于tensorflow最适合的版本是python3.5，所以我们不能使用Anaconda自带的3.6的，这里我们要下载3.5版的Python</span></p>
+<p><span style="font-family:SimHei; font-size:18px">在终端输入 <span style="color:#ff0000">
+conda create --name tensorflow python=3.5.2</span>，我这里使用的是3.5.2，你可以随意选择</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/ee96089621feea4cb6e400c4cda25d7e"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">然后，一马平川的安装好了。</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/6f8f358374fbda079aa2828b30fa880d"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">3）看到这里，心里有点小鸡冻，按照提示，激活tensorflow环境：<span style="color:#ff0000">activate tensorflow</span></span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/d65c91913180748f92c6c30900ec22ce"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">它前面的括号代表当前环境为tensorflow，看到这里，你已经将准备工作做好了。</span></p>
+<p><span style="font-family:SimHei; font-size:18px">4）你可以退出当前环境：<span style="color:#ff0000">deactivate tensorflow</span></span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/3db68b3310dceee817b136d8eb450917"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">5）当然，你可以对tensorflow环境进行切换：<span style="color:#ff0000">activate tensorflow</span>，你还可以查看当前Python版本</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/6e9554e2aa11091615a6c94a658be0ec"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">想肿么玩就肿么玩，看到这，你的Anaconda安装以及tensorflow准备工作已经圆满完成（此处应该有掌声！！！）<br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">PS：可以看出此时的Python版本是我们之前安装的3.5.2，而不是Anaconda自带的3.6，这点是至关重要的，请确保你的Python版本。</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><br/>
+</span></p>
+<h2><span style="font-family:SimHei; font-size:24px; color:#ff6666">2.安装TensorFlow</span></h2>
+<p><span style="font-family:SimHei; font-size:18px">强调：这里是Windows下的基于Anaconda的TensorFlow安装（博主用的是W7）</span></p>
+<p><span style="font-family:SimHei; font-size:18px">由于博主简陋的笔记本，我选择cpu版的TensorFlow进行安装。</span></p>
+<p><span style="font-family:SimHei; font-size:18px">1）方式一：选择官方文档的安装</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><span style="color:#ff0000">pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/windows/cpu/tensorflow-1.0.0-cp35-cp35m-win_x86_64.whl</span><br/>
+如果这里会报错的话，就选择一下一种方式</span></p>
+<p><span style="font-family:SimHei; font-size:18px">2）方式二：<span style="color:#ff0000">pip install tensorflow</span></span></p>
+<p><span style="font-family:SimHei; font-size:18px">然后博主就是在这里卡了无数次壳，下载到一半，突然来个</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/2a785e96b64ac79e61540fd2473d39cc"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">然后好不容易下载了tensorflow，在下载它的几个支持包的时候，又来了个异常</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/9ee98febb3f52a3356dd73522e0f5393"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">上面的意思大概是请求超时的原因，不过，各位小伙伴如果遇到这个问题不要紧张，每次遇到这种问题时，重新输入上面的指令：<span style="color:#ff0000">pip install tensorflow</span></span></p>
+<p><span style="font-family:SimHei; font-size:18px">3）等待大概三分钟，你会看到这些信息：<img alt="" src="images/568b67ad14f7b366edfb9d6c15904e66"/></span></p>
+<p><span style="font-family:SimHei; font-size:18px">紧接着：</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/b7e756b4755edc06887e23ba72efe309"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">4）看到Successfully installed，博主真是泪流满面，你可以输入python，检查一下版本是否是3.5.2</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><br/>
+</span></p>
+<h2><span style="font-family:SimHei; font-size:24px; color:#ff6666">3.重点来了</span></h2>
+<p><span style="font-family:SimHei; font-size:18px">1）很多童鞋安装到这，以为自己以及成功的安装了TensorFlow，事实上，你确实以及成功安装了TensorFlow，打开你的Anaconda文件夹，在envs文件夹下你可以看到tensorflow的环境已经加入</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/82ebfc7db540f8e802f515f5b9166eac"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">2）然后你兴致勃勃的打开Spyder准备写你的Hello TensorFlow,忽然蹦出的错误让你措手不及。<img alt="" src="images/7ffb1635c400505674de5c65a563be96"/></span></p>
+<p><span style="font-family:SimHei; font-size:18px">明显你的环境中没有tensorflow这个module（模块），但请注意这时你的Python环境，这是你的Python为3.6，明显是Anaconda自带的，现在你终于记起上面让你下载的Python3.5.2的吧！</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/f9c26cd49e553587258ea9f327538774"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">所以你需要运行TensorFlow环境下的基于Python3.5.2的Spyder，这也是博主最为头痛的一个地方，因为为了这一点，博主没少花时间去查阅资料。</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">3）安装TensorFlow环境下的Spyder插件</span></p>
+<p><span style="font-family:SimHei; font-size:18px">首先，你需要进入Anaconda Prompt-python里面，然后激活TensorFlow，导入TensorFlow，最后还可以确认你的Python版本。</span></p>
+<p><span style="font-family:SimHei; font-size:18px">点击Anaconda Prompt-python，在这：</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/eb7e32382c08e0470b027d55462f22b4"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">输入activate tensorflow，导入import tensorflow as tf，检查Python版本</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/729eb83158006774d0489837d18173c1"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">接着，你进入Anaconda Navigator（开始菜单-&gt;Anaconda 3-&gt;Anaconda Navigator），注意，现在的Application栏是root，也就是Anaconda的根，此时的环境是Python3.6.</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/a73e55eaaa8f7b719899d42ac118494d"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">所以，你需要切换到TensorFlow下面，然后再安装Spyder，你还可以选择安装qtconsole，notebook，或者orange。</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/647b565fa61901d3ace321f644eaf8e7"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">注意，我这里是已经安装过的（博文是安装后在写的），你首次安装时应该是install</span></p>
+<p><br/>
+</p>
+<p><span style="font-family:SimHei; font-size:18px">4）激动人心的Hello TensorFlow</span></p>
+<p><span style="font-family:SimHei; font-size:18px">打开Spyder，</span><span style="font-family:SimHei; font-size:18px">写下我们第一个Hello 。</span></p>
+<p><img alt="" src="images/89cfe98b0a1b55a3effb0bf7e9c0dce9"/><br/>
+</p>
+<p><span style="font-family:SimHei; font-size:18px">控制台中那久违的字符串让博主热泪盈眶。</span></p>
+<p><img alt="" src="images/08e83087af88462832ff1c2a5c32f817"/><br/>
+</p>
+<p><br/>
+</p>
+<p><span style="font-family:SimHei; font-size:18px">5）配置不同Python环境以及插件</span></p>
+<p><span style="font-family:SimHei; font-size:18px">很多童鞋在写机器学习算法时，习惯于用很稳定的Python2.7，或者其他版本的Python，Anaconda允许你创建不同环境的Python以及插件。</span></p>
+<p><span style="font-family:SimHei; font-size:18px">点击Environment，下面有create按钮，点击进入，可以配置新的Python环境，你可以明显看见我这里早已配置了Python2.7</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><img alt="" src="images/40da41b5a86a069dfb69126b2f00b8fa"/><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><br/>
+</span></p>
+<p><span style="font-family:SimHei; font-size:18px">接下来，你也可以仿照前面的步骤，为新Python配置一些IDE，这会大大方便我们的编写。</span></p>
+<p><span style="font-family:SimHei; font-size:18px"><br/>
+</span></p>
+<h2><span style="font-family:SimHei; font-size:24px; color:#ff6666">4.总结</span></h2>
+<p><span style="font-family:SimHei; font-size:18px">花了将近满满的一天时间，中午点了份外卖，就这样和着我的冰镇可乐一直干到了深夜，windows下的安装让我叫苦连天（亚麻跌，亚麻跌），不过，最后感谢各大网友和csdn论坛的朋友给我提供的信息，让我成功的完成了野生版的TensorFlow安装，写这篇博客，希望你们能够较为顺利的安装，并把时间精力省出来，重点关注后面的TensorFlow内容。</span></p>
+<p><span style="font-family:SimHei; font-size:18px">一些资料：</span></p>
+<p><a href="https://www.tensorflow.org/install/install_windows" target="_blank"><span style="font-family:SimHei; font-size:18px">TensorFlow官方安装API（洋文版）</span></a></p>
+<p><a href="http://wiki.jikexueyuan.com/project/tensorflow-zh/" target="_blank"><span style="font-family:SimHei; font-size:18px">极客学院的TensorFlow译版（中文版）</span></a></p>
+<p><a href="https://pan.baidu.com/s/1pL0jWRD#list/path=%2F" target="_blank"><span style="font-family:SimHei; font-size:18px">一些关于深度学习和机器学习的书籍（博主收编）</span></a></p>
+</div>
+</body></html>

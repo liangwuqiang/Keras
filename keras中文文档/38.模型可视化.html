@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="_1">模型可视化</h1>
+<p><code>keras.utils.vis_utils</code>模块提供了画出Keras模型的函数（利用graphviz）</p>
+<p>该函数将画出模型结构图，并保存成图片：</p>
+<pre><code class="python">from keras.utils import plot_model
+plot_model(model, to_file='model.png')
+</code></pre>
+<p><code>plot_model</code>接收两个可选参数：</p>
+<ul>
+<li><code>show_shapes</code>：指定是否显示输出数据的形状，默认为<code>False</code></li>
+<li><code>show_layer_names</code>:指定是否显示层名称,默认为<code>True</code></li>
+</ul>
+<p>我们也可以直接获取一个<code>pydot.Graph</code>对象，然后按照自己的需要配置它，例如，如果要在ipython中展示图片</p>
+<pre><code class="python">from IPython.display import SVG
+from keras.utils.vis_utils import model_to_dot
+
+SVG(model_to_dot(model).create(prog='dot', format='svg'))
+</code></pre>
+<p>【Tips】依赖 pydot-ng 和 graphviz，若出现错误，用命令行输入<code>pip install pydot-ng &amp; brew install graphviz</code></p>
+</div>
+    </body></html>

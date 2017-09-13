@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="activations">激活函数Activations</h1>
+<p>激活函数可以通过设置单独的<a href="../../layers/core_layer/#activation">激活层</a>实现，也可以在构造层对象时通过传递<code>activation</code>参数实现。</p>
+<pre><code class="python">from keras.layers import Activation, Dense
+
+model.add(Dense(64))
+model.add(Activation('tanh'))
+</code></pre>
+<p>等价于</p>
+<pre><code class="python">model.add(Dense(64, activation='tanh'))
+</code></pre>
+<p>也可以通过传递一个逐元素运算的Theano/TensorFlow/CNTK函数来作为激活函数：</p>
+<pre><code class="python">from keras import backend as K
+
+def tanh(x):
+    return K.tanh(x)
+
+model.add(Dense(64, activation=tanh))
+model.add(Activation(tanh)
+</code></pre>
+<hr/>
+<h2 id="_1">预定义激活函数</h2>
+<ul>
+<li>
+<p>softmax：对输入数据的最后一维进行softmax，输入数据应形如<code>(nb_samples, nb_timesteps, nb_dims)</code>或<code>(nb_samples,nb_dims)</code></p>
+</li>
+<li>
+<p>elu</p>
+</li>
+<li>
+<p>selu: 可伸缩的指数线性单元（Scaled Exponential Linear Unit），参考<a href="https://arxiv.org/abs/1706.02515">Self-Normalizing Neural Networks</a></p>
+</li>
+<li>
+<p>softplus</p>
+</li>
+<li>
+<p>softsign</p>
+</li>
+<li>
+<p>relu</p>
+</li>
+<li>
+<p>tanh</p>
+</li>
+<li>
+<p>sigmoid</p>
+</li>
+<li>
+<p>hard_sigmoid</p>
+</li>
+<li>
+<p>linear</p>
+</li>
+</ul>
+<h2 id="_2">高级激活函数</h2>
+<p>对于简单的Theano/TensorFlow/CNTK不能表达的复杂激活函数，如含有可学习参数的激活函数，可通过<a href="../../layers/advanced_activation_layer">高级激活函数</a>实现，如PReLU，LeakyReLU等</p>
+</div>
+    </body></html>

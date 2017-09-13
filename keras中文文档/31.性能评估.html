@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="_1">性能评估</h1>
+<h2 id="_2">使用方法</h2>
+<p>性能评估模块提供了一系列用于模型性能评估的函数,这些函数在模型编译时由<code>metrics</code>关键字设置</p>
+<p>性能评估函数类似与<a href="../objectives/">目标函数</a>, 只不过该性能的评估结果讲不会用于训练.</p>
+<p>可以通过字符串来使用域定义的性能评估函数</p>
+<pre><code class="python">model.compile(loss='mean_squared_error',
+              optimizer='sgd',
+              metrics=['mae', 'acc'])
+</code></pre>
+<p>也可以自定义一个Theano/TensorFlow函数并使用之</p>
+<pre><code class="python">from keras import metrics
+
+model.compile(loss='mean_squared_error',
+              optimizer='sgd',
+              metrics=[metrics.mae, metrics.categorical_accuracy])
+</code></pre>
+<h3 id="_3">参数</h3>
+<ul>
+<li>y_true:真实标签,theano/tensorflow张量</li>
+<li>y_pred:预测值, 与y_true形式相同的theano/tensorflow张量</li>
+</ul>
+<h3 id="_4">返回值</h3>
+<p>单个用以代表输出各个数据点上均值的值</p>
+<h2 id="_5">可用预定义张量</h2>
+<p>除fbeta_score额外拥有默认参数beta=1外,其他各个性能指标的参数均为y_true和y_pred</p>
+<ul>
+<li>binary_accuracy: 对二分类问题,计算在所有预测值上的平均正确率</li>
+<li>categorical_accuracy:对多分类问题,计算再所有预测值上的平均正确率</li>
+<li>sparse_categorical_accuracy:与<code>categorical_accuracy</code>相同,在对稀疏的目标值预测时有用</li>
+<li>top_k_categorical_accracy: 计算top-k正确率,当预测值的前k个值中存在目标类别即认为预测正确</li>
+<li>sparse_top_k_categorical_accuracy：与top_k_categorical_accracy作用相同，但适用于稀疏情况</li>
+</ul>
+<h2 id="_6">定制评估函数</h2>
+<p>定制的评估函数可以在模型编译时传入,该函数应该以<code>(y_true, y_pred)</code>为参数,并返回单个张量,或从<code>metric_name</code>映射到<code>metric_value</code>的字典,下面是一个示例:</p>
+<pre><code class="python">(y_true, y_pred) as arguments and return a single tensor value.
+
+import keras.backend as K
+
+def mean_pred(y_true, y_pred):
+    return K.mean(y_pred)
+
+model.compile(optimizer='rmsprop',
+              loss='binary_crossentropy',
+              metrics=['accuracy', mean_pred])
+
+</code></pre>
+</div>
+    </body></html>

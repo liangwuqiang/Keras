@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="noise">噪声层Noise</h1>
+<h2 id="gaussiannoise">GaussianNoise层</h2>
+<pre><code class="python">keras.layers.noise.GaussianNoise(stddev)
+</code></pre>
+<p>为数据施加0均值，标准差为<code>stddev</code>的加性高斯噪声。该层在克服过拟合时比较有用，你可以将它看作是随机的数据提升。高斯噪声是需要对输入数据进行破坏时的自然选择。</p>
+<p>因为这是一个起正则化作用的层，该层只在训练时才有效。</p>
+<h3 id="_1">参数</h3>
+<ul>
+<li>stddev：浮点数，代表要产生的高斯噪声标准差</li>
+</ul>
+<h3 id="shape">输入shape</h3>
+<p>任意，当使用该层为模型首层时需指定<code>input_shape</code>参数</p>
+<h3 id="shape_1">输出shape</h3>
+<p>与输入相同</p>
+<hr/>
+<h2 id="gaussiandropout">GaussianDropout层</h2>
+<pre><code class="python">keras.layers.noise.GaussianDropout(rate)
+</code></pre>
+<p>为层的输入施加以1为均值，标准差为<code>sqrt(rate/(1-rate)</code>的乘性高斯噪声</p>
+<p>因为这是一个起正则化作用的层，该层只在训练时才有效。</p>
+<h3 id="_2">参数</h3>
+<ul>
+<li>rate：浮点数，断连概率，与<a href="../core_layer/#dropout">Dropout层</a>相同</li>
+</ul>
+<h3 id="shape_2">输入shape</h3>
+<p>任意，当使用该层为模型首层时需指定<code>input_shape</code>参数</p>
+<h3 id="shape_3">输出shape</h3>
+<p>与输入相同</p>
+<h3 id="_3">参考文献</h3>
+<ul>
+<li><a href="http://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf">Dropout: A Simple Way to Prevent Neural Networks from Overfitting</a></li>
+</ul>
+<h2 id="alphadropout">AlphaDropout</h2>
+<pre><code class="python">keras.layers.noise.AlphaDropout(rate, noise_shape=None, seed=None)
+</code></pre>
+<p>对输入施加Alpha Dropout</p>
+<p>Alpha Dropout是一种保持输入均值和方差不变的Dropout，该层的作用是即使在dropout时也保持数据的自规范性。 通过随机对负的饱和值进行激活，Alphe Drpout与selu激活函数配合较好。</p>
+<h3 id="_4">参数</h3>
+<ul>
+<li>rate: 浮点数，类似Dropout的Drop比例。乘性mask的标准差将保证为<code>sqrt(rate / (1 - rate))</code>.</li>
+<li>seed: 随机数种子</li>
+</ul>
+<h3 id="shape_4">输入shape</h3>
+<p>任意，当使用该层为模型首层时需指定<code>input_shape</code>参数</p>
+<h3 id="shape_5">输出shape</h3>
+<p>与输入相同</p>
+<h3 id="_5">参考文献</h3>
+<p><a href="https://arxiv.org/abs/1706.02515">Self-Normalizing Neural Networks</a></p>
+</div>
+    </body></html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="utils">utils 工具</h1>
+<p>本模块提供了一系列有用工具</p>
+<h2 id="customobjectscope">CustomObjectScope</h2>
+<pre><code class="python">keras.utils.generic_utils.CustomObjectScope()
+</code></pre>
+<p>提供定制类的作用域，在该作用域内全局定制类能够被更改，但在作用域结束后将回到初始状态。
+以<code>with</code>声明开头的代码将能够通过名字访问定制类的实例，在with的作用范围，这些定制类的变动将一直持续，在with作用域结束后，全局定制类的实例将回归其在with作用域前的状态。</p>
+<pre><code class="python">with CustomObjectScope({"MyObject":MyObject}):
+    layer = Dense(..., W_regularizer="MyObject")
+    # save, load, etc. will recognize custom object by name
+</code></pre>
+<hr/>
+<h2 id="hdf5matrix">HDF5Matrix</h2>
+<pre><code class="python">keras.utils.io_utils.HDF5Matrix(datapath, dataset, start=0, end=None, normalizer=None)
+</code></pre>
+<p>这是一个使用HDF5数据集代替Numpy数组的方法</p>
+<p>提供<code>start</code>和<code>end</code>参数可以进行切片，另外，还可以提供一个正规化函数或匿名函数，该函数将会在每片数据检索时自动调用。</p>
+<pre><code class="python">x_data = HDF5Matrix('input/file.hdf5', 'data')
+model.predict(x_data)
+</code></pre>
+<ul>
+<li>datapath: 字符串，HDF5文件的路径</li>
+<li>dataset: 字符串，在datapath路径下HDF5数据库名字</li>
+<li>start: 整数，想要的数据切片起点</li>
+<li>end: 整数，想要的数据切片终点</li>
+<li>normalizer: 在每个切片数据检索时自动调用的函数对象</li>
+</ul>
+<hr/>
+<h2 id="sequence">Sequence</h2>
+<pre><code>keras.utils.data_utils.Sequence()
+</code></pre>
+<p>序列数据的基类，例如一个数据集。
+每个Sequence必须实现<code>__getitem__</code>和<code>__len__</code>方法</p>
+<p>下面是一个例子：</p>
+<pre><code class="python">from skimage.io import imread
+from skimage.transform import resize
+import numpy as np
+
+__Here, `x_set` is list of path to the images__
+
+# and `y_set` are the associated classes.
+
+class CIFAR10Sequence(Sequence):
+def __init__(self, x_set, y_set, batch_size):
+    self.X,self.y = x_set,y_set
+    self.batch_size = batch_size
+
+def __len__(self):
+    return len(self.X) // self.batch_size
+
+def __getitem__(self,idx):
+    batch_x = self.X[idx*self.batch_size:(idx+1)*self.batch_size]
+    batch_y = self.y[idx*self.batch_size:(idx+1)*self.batch_size]
+
+    return np.array([
+    resize(imread(file_name), (200,200))
+       for file_name in batch_x]), np.array(batch_y)
+
+</code></pre>
+<hr/>
+<h2 id="to_categorical">to_categorical</h2>
+<pre><code class="python">to_categorical(y, num_classes=None)
+</code></pre>
+<p>将类别向量(从0到nb_classes的整数向量)映射为二值类别矩阵, 用于应用到以<code>categorical_crossentropy</code>为目标函数的模型中.</p>
+<h3 id="_1">参数</h3>
+<ul>
+<li>y: 类别向量</li>
+<li>num_classes:总共类别数</li>
+</ul>
+<hr/>
+<h2 id="normalize">normalize</h2>
+<pre><code class="python">normalize(x, axis=-1, order=2)
+</code></pre>
+<p>对numpy数组规范化，返回规范化后的数组</p>
+<h3 id="_2">参数</h3>
+<ul>
+<li>x：待规范化的数据</li>
+<li>axis: 规范化的轴</li>
+<li>order：规范化方法，如2为L2范数</li>
+</ul>
+<hr/>
+<h3 id="custom_object_scope">custom_object_scope</h3>
+<pre><code class="python">custom_object_scope()
+</code></pre>
+<p>提供定制类的作用域，在该作用域内全局定制类能够被更改，但在作用域结束后将回到初始状态。
+以<code>with</code>声明开头的代码将能够通过名字访问定制类的实例，在with的作用范围，这些定制类的变动将一直持续，在with作用域结束后，全局定制类的实例将回归其在with作用域前的状态。</p>
+<p>本函数返回<code>CustomObjectScope</code>对象</p>
+<pre><code class="python">with custom_object_scope({"MyObject":MyObject}):
+    layer = Dense(..., W_regularizer="MyObject")
+    # save, load, etc. will recognize custom object by name
+</code></pre>
+<hr/>
+<h3 id="get_custom_objects">get_custom_objects</h3>
+<pre><code class="python">get_custom_objects()
+</code></pre>
+<p>检索全局定制类，推荐利用custom_object_scope更新和清理定制对象，但<code>get_custom_objects</code>可被直接用于访问<code>_GLOBAL_CUSTOM_OBJECTS</code>。本函数返回从名称到类别映射的全局字典。</p>
+<pre><code class="python">get_custom_objects().clear()
+get_custom_objects()["MyObject"] = MyObject
+</code></pre>
+<hr/>
+<h2 id="convert_all_kernels_in_model">convert_all_kernels_in_model</h2>
+<pre><code class="python">convert_all_kernels_in_model(model)
+</code></pre>
+<p>将模型中全部卷积核在Theano和TensorFlow模式中切换</p>
+<hr/>
+<h3 id="plot_model">plot_model</h3>
+<pre><code class="python">plot_model(model, to_file='model.png', show_shapes=False, show_layer_names=True)
+</code></pre>
+<p>绘制模型的结构图</p>
+<hr/>
+<h3 id="serialize_keras_object">serialize_keras_object</h3>
+<pre><code class="python">serialize_keras_object(instance)
+</code></pre>
+<p>将keras对象序列化</p>
+<hr/>
+<h3 id="deserialize_keras_object">deserialize_keras_object</h3>
+<pre><code class="python">eserialize_keras_object(identifier, module_objects=None, custom_objects=None, printable_module_name='object')
+</code></pre>
+<p>从序列中恢复keras对象</p>
+<hr/>
+<h3 id="get_file">get_file</h3>
+<pre><code class="python">get_file(fname, origin, untar=False, md5_hash=None, file_hash=None, cache_subdir='datasets', hash_algorithm='auto', extract=False, archive_format='auto', cache_dir=None)
+</code></pre>
+<p>从给定的URL中下载文件, 可以传递MD5值用于数据校验(下载后或已经缓存的数据均可)</p>
+<p>默认情况下文件会被下载到<code>~/.keras</code>中的<code>cache_subdir</code>文件夹，并将其文件名设为<code>fname</code>，因此例如一个文件<code>example.txt</code>最终将会被存放在`~/.keras/datasets/example.txt~</p>
+<p>tar,tar.gz.tar.bz和zip格式的文件可以被提取，提供哈希码可以在下载后校验文件。命令喊程序<code>shasum</code>和<code>sha256sum</code>可以计算哈希值。</p>
+<h3 id="_3">参数</h3>
+<ul>
+<li>
+<p>fname: 文件名，如果指定了绝对路径<code>/path/to/file.txt</code>,则文件将会保存到该位置。</p>
+</li>
+<li>
+<p>origin: 文件的URL地址</p>
+</li>
+<li>
+<p>untar: 布尔值,是否要进行解压</p>
+</li>
+<li>
+<p>md5_hash: MD5哈希值,用于数据校验，支持<code>sha256</code>和<code>md5</code>哈希</p>
+</li>
+<li>
+<p>cache_subdir: 用于缓存数据的文件夹，若指定绝对路径<code>/path/to/folder</code>则将存放在该路径下。</p>
+</li>
+<li>
+<p>hash_algorithm: 选择文件校验的哈希算法，可选项有'md5', 'sha256', 和'auto'. 默认'auto'自动检测使用的哈希算法</p>
+</li>
+<li>extract: 若为True则试图提取文件，例如tar或zip tries extracting the file as an Archive, like tar or zip.</li>
+<li>archive_format: 试图提取的文件格式，可选为'auto', 'tar', 'zip', 和None. 'tar' 包括tar, tar.gz, tar.bz文件. 默认'auto'是['tar', 'zip']. None或空列表将返回没有匹配。 </li>
+<li>cache_dir: 缓存文件存放地在，参考<a href="../for_beginners/FAQ/#where_config">FAQ</a></li>
+</ul>
+<h3 id="_4">返回值</h3>
+<p>下载后的文件地址</p>
+</div>
+    </body></html>

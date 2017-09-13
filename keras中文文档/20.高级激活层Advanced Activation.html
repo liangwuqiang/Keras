@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="advanced-activation">高级激活层Advanced Activation</h1>
+<h2 id="leakyrelu">LeakyReLU层</h2>
+<pre><code class="python">keras.layers.advanced_activations.LeakyReLU(alpha=0.3)
+</code></pre>
+<p>LeakyRelU是修正线性单元（Rectified Linear Unit，ReLU）的特殊版本，当不激活时，LeakyReLU仍然会有非零输出值，从而获得一个小梯度，避免ReLU可能出现的神经元“死亡”现象。即，<code>f(x)=alpha * x for x &lt; 0</code>, <code>f(x) = x for x&gt;=0</code></p>
+<h3 id="_1">参数</h3>
+<ul>
+<li>alpha：大于0的浮点数，代表激活函数图像中第三象限线段的斜率</li>
+</ul>
+<h3 id="shape">输入shape</h3>
+<p>任意，当使用该层为模型首层时需指定<code>input_shape</code>参数</p>
+<h3 id="shape_1">输出shape</h3>
+<p>与输入相同</p>
+<h3 id="_2">参考文献</h3>
+<p><a href="https://web.stanford.edu/~awni/papers/relu_hybrid_icml2013_final.pdf">Rectifier Nonlinearities Improve Neural Network Acoustic Models</a></p>
+<hr/>
+<h2 id="prelu">PReLU层</h2>
+<pre><code class="python">keras.layers.advanced_activations.PReLU(alpha_initializer='zeros', alpha_regularizer=None, alpha_constraint=None, shared_axes=None)
+</code></pre>
+<p>该层为参数化的ReLU（Parametric ReLU），表达式是：<code>f(x) = alpha * x for x &lt; 0</code>, <code>f(x) = x for x&gt;=0</code>，此处的<code>alpha</code>为一个与xshape相同的可学习的参数向量。</p>
+<h3 id="_3">参数</h3>
+<ul>
+<li>alpha_initializer：alpha的初始化函数</li>
+<li>alpha_regularizer：alpha的正则项</li>
+<li>alpha_constraint：alpha的约束项</li>
+<li>shared_axes：该参数指定的轴将共享同一组科学系参数，例如假如输入特征图是从2D卷积过来的，具有形如<code>(batch, height, width, channels)</code>这样的shape，则或许你会希望在空域共享参数，这样每个filter就只有一组参数，设定<code>shared_axes=[1,2]</code>可完成该目标</li>
+</ul>
+<h3 id="shape_2">输入shape</h3>
+<p>任意，当使用该层为模型首层时需指定<code>input_shape</code>参数</p>
+<h3 id="shape_3">输出shape</h3>
+<p>与输入相同</p>
+<h3 id="_4">参考文献</h3>
+<ul>
+<li><a href="http://arxiv.org/pdf/1502.01852v1.pdf">Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification</a></li>
+</ul>
+<hr/>
+<h2 id="elu">ELU层</h2>
+<pre><code class="python">keras.layers.advanced_activations.ELU(alpha=1.0)
+</code></pre>
+<p>ELU层是指数线性单元（Exponential Linera Unit），表达式为：
+该层为参数化的ReLU（Parametric ReLU），表达式是：<code>f(x) = alpha * (exp(x) - 1.) for x &lt; 0</code>, <code>f(x) = x for x&gt;=0</code></p>
+<h3 id="_5">参数</h3>
+<ul>
+<li>alpha：控制负因子的参数</li>
+</ul>
+<h3 id="shape_4">输入shape</h3>
+<p>任意，当使用该层为模型首层时需指定<code>input_shape</code>参数</p>
+<h3 id="shape_5">输出shape</h3>
+<p>与输入相同</p>
+<h3 id="_6">参考文献</h3>
+<ul>
+<li><a href="http://arxiv.org/pdf/1511.07289v1.pdf">&gt;Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)</a></li>
+</ul>
+<hr/>
+<h2 id="thresholdedrelu">ThresholdedReLU层</h2>
+<pre><code class="python">keras.layers.advanced_activations.ThresholdedReLU(theta=1.0)
+</code></pre>
+<p>该层是带有门限的ReLU，表达式是：<code>f(x) = x for x &gt; theta</code>,<code>f(x) = 0 otherwise</code></p>
+<h3 id="_7">参数</h3>
+<ul>
+<li>theata：大或等于0的浮点数，激活门限位置</li>
+</ul>
+<h3 id="shape_6">输入shape</h3>
+<p>任意，当使用该层为模型首层时需指定<code>input_shape</code>参数</p>
+<h3 id="shape_7">输出shape</h3>
+<p>与输入相同</p>
+<h3 id="_8">参考文献</h3>
+<ul>
+<li><a href="http://arxiv.org/pdf/1402.3337.pdf">Zero-Bias Autoencoders and the Benefits of Co-Adapting Features</a></li>
+</ul>
+<hr/>
+</div>
+    </body></html>

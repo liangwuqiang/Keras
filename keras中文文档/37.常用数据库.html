@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="_1">常用数据库</h1>
+<h2 id="cifar10">CIFAR10 小图片分类数据集</h2>
+<p>该数据库具有50,000个32*32的彩色图片作为训练集，10,000个图片作为测试集。图片一共有10个类别。</p>
+<h3 id="_2">使用方法</h3>
+<pre><code class="python">from keras.datasets import cifar10
+
+(X_train, y_train), (X_test, y_test) = cifar10.load_data()
+</code></pre>
+<h3 id="_3">返回值：</h3>
+<p>两个Tuple</p>
+<p><code>X_train</code>和<code>X_test</code>是形如（nb_samples, 3, 32, 32）的RGB三通道图像数据，数据类型是无符号8位整形（uint8）</p>
+<p><code>Y_train</code>和 <code>Y_test</code>是形如（nb_samples,）标签数据，标签的范围是0~9</p>
+<hr/>
+<h2 id="cifar100">CIFAR100 小图片分类数据库</h2>
+<p>该数据库具有50,000个32*32的彩色图片作为训练集，10,000个图片作为测试集。图片一共有100个类别，每个类别有600张图片。这100个类别又分为20个大类。</p>
+<h3 id="_4">使用方法</h3>
+<pre><code class="python">from keras.datasets import cifar100
+
+(X_train, y_train), (X_test, y_test) = cifar100.load_data(label_mode='fine')
+</code></pre>
+<h3 id="_5">参数</h3>
+<ul>
+<li>label_mode：为‘fine’或‘coarse’之一，控制标签的精细度，‘fine’获得的标签是100个小类的标签，‘coarse’获得的标签是大类的标签</li>
+</ul>
+<h3 id="_6">返回值</h3>
+<p>两个Tuple,<code>(X_train, y_train), (X_test, y_test)</code>，其中</p>
+<ul>
+<li>
+<p>X_train和X_test：是形如（nb_samples, 3, 32, 32）的RGB三通道图像数据，数据类型是无符号8位整形（uint8）</p>
+</li>
+<li>
+<p>y_train和y_test：是形如（nb_samples,）标签数据，标签的范围是0~9</p>
+</li>
+</ul>
+<hr/>
+<h2 id="imdb">IMDB影评倾向分类</h2>
+<p>本数据库含有来自IMDB的25,000条影评，被标记为正面/负面两种评价。影评已被预处理为词下标构成的<a href="../../preprocessing/sequence"><font color="#FF0000">序列</font></a>。方便起见，单词的下标基于它在数据集中出现的频率标定，例如整数3所编码的词为数据集中第3常出现的词。这样的组织方法使得用户可以快速完成诸如“只考虑最常出现的10,000个词，但不考虑最常出现的20个词”这样的操作</p>
+<p>按照惯例，0不代表任何特定的词，而用来编码任何未知单词</p>
+<h3 id="_7">使用方法</h3>
+<pre><code class="python">from keras.datasets import imdb
+
+(X_train, y_train), (X_test, y_test) = imdb.load_data(path="imdb.npz",
+                                                      nb_words=None,
+                                                      skip_top=0,
+                                                      maxlen=None,
+                                                      test_split=0.1)
+                                                      seed=113,
+                                                      start_char=1,
+                                                      oov_char=2,
+                                                      index_from=3)
+</code></pre>
+<h3 id="_8">参数</h3>
+<ul>
+<li>
+<p>path：如果你在本机上已有此数据集（位于<code>'~/.keras/datasets/'+path</code>），则载入。否则数据将下载到该目录下</p>
+</li>
+<li>
+<p>nb_words：整数或None，要考虑的最常见的单词数，序列中任何出现频率更低的单词将会被编码为<code>oov_char</code>的值。</p>
+</li>
+<li>
+<p>skip_top：整数，忽略最常出现的若干单词，这些单词将会被编码为<code>oov_char</code>的值</p>
+</li>
+<li>
+<p>maxlen：整数，最大序列长度，任何长度大于此值的序列将被截断</p>
+</li>
+<li>
+<p>seed：整数，用于数据重排的随机数种子</p>
+</li>
+<li>
+<p>start_char：字符，序列的起始将以该字符标记，默认为1因为0通常用作padding</p>
+</li>
+<li>
+<p>oov_char：整数，因<code>nb_words</code>或<code>skip_top</code>限制而cut掉的单词将被该字符代替</p>
+</li>
+<li>
+<p>index_from：整数，真实的单词（而不是类似于<code>start_char</code>的特殊占位符）将从这个下标开始</p>
+</li>
+</ul>
+<h3 id="_9">返回值</h3>
+<p>两个Tuple,<code>(X_train, y_train), (X_test, y_test)</code>，其中</p>
+<ul>
+<li>
+<p>X_train和X_test：序列的列表，每个序列都是词下标的列表。如果指定了<code>nb_words</code>，则序列中可能的最大下标为<code>nb_words-1</code>。如果指定了<code>maxlen</code>，则序列的最大可能长度为<code>maxlen</code></p>
+</li>
+<li>
+<p>y_train和y_test：为序列的标签，是一个二值list</p>
+</li>
+</ul>
+<hr/>
+<h2 id="_10">路透社新闻主题分类</h2>
+<p>本数据库包含来自路透社的11,228条新闻，分为了46个主题。与IMDB库一样，每条新闻被编码为一个词下标的序列。</p>
+<h3 id="_11">使用方法</h3>
+<pre><code class="python">from keras.datasets import reuters
+
+
+(X_train, y_train), (X_test, y_test) = reuters.load_data(path="reuters.npz",
+                                                         nb_words=None,
+                                                         skip_top=0,
+                                                         maxlen=None,
+                                                         test_split=0.2,
+                                                         seed=113,
+                                                         start_char=1,
+                                                         oov_char=2,
+                                                         index_from=3)
+</code></pre>
+<p>参数的含义与IMDB同名参数相同，唯一多的参数是：
+<code>test_split</code>，用于指定从原数据中分割出作为测试集的比例。该数据库支持获取用于编码序列的词下标：</p>
+<pre><code class="python">word_index = reuters.get_word_index(path="reuters_word_index.json")
+</code></pre>
+<p>上面代码的返回值是一个以单词为关键字，以其下标为值的字典。例如，<code>word_index['giraffe']</code>的值可能为<code>1234</code></p>
+<h3 id="_12">参数</h3>
+<ul>
+<li>path：如果你在本机上已有此数据集（位于<code>'~/.keras/datasets/'+path</code>），则载入。否则数据将下载到该目录下</li>
+</ul>
+<hr/>
+<h2 id="mnist">MNIST手写数字识别</h2>
+<p>本数据库有60,000个用于训练的28*28的灰度手写数字图片，10,000个测试图片</p>
+<h3 id="_13">使用方法</h3>
+<pre><code class="python">from keras.datasets import mnist
+
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
+</code></pre>
+<h3 id="_14">参数</h3>
+<ul>
+<li>path：如果你在本机上已有此数据集（位于<code>'~/.keras/datasets/'+path</code>），则载入。否则数据将下载到该目录下</li>
+</ul>
+<h3 id="_15">返回值</h3>
+<p>两个Tuple,<code>(X_train, y_train), (X_test, y_test)</code>，其中</p>
+<ul>
+<li>
+<p>X_train和X_test：是形如（nb_samples, 28, 28）的灰度图片数据，数据类型是无符号8位整形（uint8）</p>
+</li>
+<li>
+<p>y_train和y_test：是形如（nb_samples,）标签数据，标签的范围是0~9</p>
+</li>
+</ul>
+<p>数据库将会被下载到<code>'~/.keras/datasets/'+path</code></p>
+<hr/>
+<h2 id="boston">Boston房屋价格回归数据集</h2>
+<p>本数据集由StatLib库取得，由CMU维护。每个样本都是1970s晚期波士顿郊区的不同位置，每条数据含有13个属性，目标值是该位置房子的房价中位数（千dollar）。</p>
+<h3 id="_16">使用方法</h3>
+<pre><code class="python">from keras.datasets import boston_housing
+
+(x_train, y_train), (x_test, y_test) = boston_housing.load_data()
+</code></pre>
+<h3 id="_17">参数</h3>
+<ul>
+<li>
+<p>path：数据存放位置，默认<code>'~/.keras/datasets/'+path</code></p>
+</li>
+<li>
+<p>seed：随机数种子</p>
+</li>
+<li>
+<p>test_split：分割测试集的比例</p>
+</li>
+</ul>
+<h3 id="_18">返回值</h3>
+<p>两个Tuple,<code>(X_train, y_train), (X_test, y_test)</code></p>
+</div>
+    </body></html>
