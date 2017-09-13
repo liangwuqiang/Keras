@@ -1,0 +1,20 @@
+﻿'==========以下是按键精灵录制的内容==========
+SetSimMode 2
+SaveMousePos 
+KeyPress "End", 1
+KeyDown 16, 1
+KeyPress 36, 1
+KeyUp 16, 1
+Delay 50
+MoveTo 381, 73
+Delay 50
+LeftClick 1
+MoveTo 369, 117
+Delay 50
+LeftClick 1
+Delay 50
+KeyPress "Left", 1
+KeyPress "Down", 1
+KeyPress "Home", 1
+RestoreMousePos
+'==========以上是按键精灵录制的内容==========
