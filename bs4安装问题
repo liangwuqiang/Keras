@@ -1,0 +1,9 @@
+ubuntu@ubuntu-SSD64G:~$ sudo pip3 install bs4
+[sudo] ubuntu 的密码： 
+The directory '/home/ubuntu/.cache/pip/http' or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+The directory '/home/ubuntu/.cache/pip' or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+Requirement already satisfied (use --upgrade to upgrade): bs4 in /usr/local/lib/python3.5/dist-packages
+Requirement already satisfied (use --upgrade to upgrade): beautifulsoup4 in /usr/lib/python3/dist-packages (from bs4)
+You are using pip version 8.1.1, however version 9.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+
