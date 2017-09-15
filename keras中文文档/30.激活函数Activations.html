@@ -1,19 +1,19 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="activations">¼¤»îº¯ÊıActivations</h1>
-<p>¼¤»îº¯Êı¿ÉÒÔÍ¨¹ıÉèÖÃµ¥¶ÀµÄ<a href="../../layers/core_layer/#activation">¼¤»î²ã</a>ÊµÏÖ£¬Ò²¿ÉÒÔÔÚ¹¹Ôì²ã¶ÔÏóÊ±Í¨¹ı´«µİ<code>activation</code>²ÎÊıÊµÏÖ¡£</p>
+<h1 id="activations">æ¿€æ´»å‡½æ•°Activations</h1>
+<p>æ¿€æ´»å‡½æ•°å¯ä»¥é€šè¿‡è®¾ç½®å•ç‹¬çš„<a href="../../layers/core_layer/#activation">æ¿€æ´»å±‚</a>å®ç°ï¼Œä¹Ÿå¯ä»¥åœ¨æ„é€ å±‚å¯¹è±¡æ—¶é€šè¿‡ä¼ é€’<code>activation</code>å‚æ•°å®ç°ã€‚</p>
 <pre><code class="python">from keras.layers import Activation, Dense
 
 model.add(Dense(64))
 model.add(Activation('tanh'))
 </code></pre>
-<p>µÈ¼ÛÓÚ</p>
+<p>ç­‰ä»·äº</p>
 <pre><code class="python">model.add(Dense(64, activation='tanh'))
 </code></pre>
-<p>Ò²¿ÉÒÔÍ¨¹ı´«µİÒ»¸öÖğÔªËØÔËËãµÄTheano/TensorFlow/CNTKº¯ÊıÀ´×÷Îª¼¤»îº¯Êı£º</p>
+<p>ä¹Ÿå¯ä»¥é€šè¿‡ä¼ é€’ä¸€ä¸ªé€å…ƒç´ è¿ç®—çš„Theano/TensorFlow/CNTKå‡½æ•°æ¥ä½œä¸ºæ¿€æ´»å‡½æ•°ï¼š</p>
 <pre><code class="python">from keras import backend as K
 
 def tanh(x):
@@ -23,16 +23,16 @@ model.add(Dense(64, activation=tanh))
 model.add(Activation(tanh)
 </code></pre>
 <hr/>
-<h2 id="_1">Ô¤¶¨Òå¼¤»îº¯Êı</h2>
+<h2 id="_1">é¢„å®šä¹‰æ¿€æ´»å‡½æ•°</h2>
 <ul>
 <li>
-<p>softmax£º¶ÔÊäÈëÊı¾İµÄ×îºóÒ»Î¬½øĞĞsoftmax£¬ÊäÈëÊı¾İÓ¦ĞÎÈç<code>(nb_samples, nb_timesteps, nb_dims)</code>»ò<code>(nb_samples,nb_dims)</code></p>
+<p>softmaxï¼šå¯¹è¾“å…¥æ•°æ®çš„æœ€åä¸€ç»´è¿›è¡Œsoftmaxï¼Œè¾“å…¥æ•°æ®åº”å½¢å¦‚<code>(nb_samples, nb_timesteps, nb_dims)</code>æˆ–<code>(nb_samples,nb_dims)</code></p>
 </li>
 <li>
 <p>elu</p>
 </li>
 <li>
-<p>selu: ¿ÉÉìËõµÄÖ¸ÊıÏßĞÔµ¥Ôª£¨Scaled Exponential Linear Unit£©£¬²Î¿¼<a href="https://arxiv.org/abs/1706.02515">Self-Normalizing Neural Networks</a></p>
+<p>selu: å¯ä¼¸ç¼©çš„æŒ‡æ•°çº¿æ€§å•å…ƒï¼ˆScaled Exponential Linear Unitï¼‰ï¼Œå‚è€ƒ<a href="https://arxiv.org/abs/1706.02515">Self-Normalizing Neural Networks</a></p>
 </li>
 <li>
 <p>softplus</p>
@@ -56,7 +56,7 @@ model.add(Activation(tanh)
 <p>linear</p>
 </li>
 </ul>
-<h2 id="_2">¸ß¼¶¼¤»îº¯Êı</h2>
-<p>¶ÔÓÚ¼òµ¥µÄTheano/TensorFlow/CNTK²»ÄÜ±í´ïµÄ¸´ÔÓ¼¤»îº¯Êı£¬Èçº¬ÓĞ¿ÉÑ§Ï°²ÎÊıµÄ¼¤»îº¯Êı£¬¿ÉÍ¨¹ı<a href="../../layers/advanced_activation_layer">¸ß¼¶¼¤»îº¯Êı</a>ÊµÏÖ£¬ÈçPReLU£¬LeakyReLUµÈ</p>
+<h2 id="_2">é«˜çº§æ¿€æ´»å‡½æ•°</h2>
+<p>å¯¹äºç®€å•çš„Theano/TensorFlow/CNTKä¸èƒ½è¡¨è¾¾çš„å¤æ‚æ¿€æ´»å‡½æ•°ï¼Œå¦‚å«æœ‰å¯å­¦ä¹ å‚æ•°çš„æ¿€æ´»å‡½æ•°ï¼Œå¯é€šè¿‡<a href="../../layers/advanced_activation_layer">é«˜çº§æ¿€æ´»å‡½æ•°</a>å®ç°ï¼Œå¦‚PReLUï¼ŒLeakyReLUç­‰</p>
 </div>
     </body></html>

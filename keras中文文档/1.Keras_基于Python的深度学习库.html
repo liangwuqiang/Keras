@@ -1,86 +1,86 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">ԭ������</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
         <div class="section">
-<h1 id="keraspython">Keras:����Python�����ѧϰ��</h1>
-<h2 id="keras">�����Keras</h2>
-<p>Keras��һ���߲�������API��Keras�ɴ�Python��д���ɲ���<a href="https://github.com/tensorflow/tensorflow">Tensorflow</a>��<a href="https://github.com/Theano/Theano">Theano</a>�Լ�<a href="https://github.com/Microsoft/cntk">CNTK</a>��ˡ�Keras
-Ϊ֧�ֿ���ʵ��������ܹ������ideaѸ��ת��Ϊ����������������������ѡ��Keras��</p>
+<h1 id="keraspython">Keras:基于Python的深度学习库</h1>
+<h2 id="keras">这就是Keras</h2>
+<p>Keras是一个高层神经网络API，Keras由纯Python编写而成并基<a href="https://github.com/tensorflow/tensorflow">Tensorflow</a>、<a href="https://github.com/Theano/Theano">Theano</a>以及<a href="https://github.com/Microsoft/cntk">CNTK</a>后端。Keras
+为支持快速实验而生，能够把你的idea迅速转换为结果，如果你有如下需求，请选择Keras：</p>
 <ul>
-<li>���׺Ϳ��ٵ�ԭ����ƣ�keras���и߶�ģ�黯�����򣬺Ϳ��������ԣ�</li>
-<li>֧��CNN��RNN������ߵĽ��</li>
-<li>�޷�CPU��GPU�л�</li>
+<li>简易和快速的原型设计（keras具有高度模块化，极简，和可扩充特性）</li>
+<li>支持CNN和RNN，或二者的结合</li>
+<li>无缝CPU和GPU切换</li>
 </ul>
-<p>Keras���õ�Python�汾�ǣ�Python 2.7-3.5</p>
-<p>Keras�����ԭ����</p>
+<p>Keras适用的Python版本是：Python 2.7-3.5</p>
+<p>Keras的设计原则是</p>
 <ul>
 <li>
-<p>�û��Ѻã�Keras��Ϊ����������춥������Ƶ�API���û���ʹ������ʼ�������ǿ��ǵ���Ҫ���������ݡ�Keras��ѭ������֪���ѵ����ʵ����Keras�ṩһ�¶�����API�� �ܹ��������һ��Ӧ�����û��Ĺ�������ͬʱ��Keras�ṩ�����;���ʵ�������bug������</p>
+<p>用户友好：Keras是为人类而不是天顶星人设计的API。用户的使用体验始终是我们考虑的首要和中心内容。Keras遵循减少认知困难的最佳实践：Keras提供一致而简洁的API， 能够极大减少一般应用下用户的工作量，同时，Keras提供清晰和具有实践意义的bug反馈。</p>
 </li>
 <li>
-<p>ģ���ԣ�ģ�Ϳ�����Ϊһ��������л����ݵ�����ͼ����ȫ�����õ�ģ����������ٵĴ������������һ�𡣾�����ԣ�����㡢��ʧ�������Ż�������ʼ�����ԡ�����������򻯷������Ƕ�����ģ�飬�����ʹ�������������Լ���ģ�͡�</p>
+<p>模块性：模型可理解为一个层的序列或数据的运算图，完全可配置的模块可以用最少的代价自由组合在一起。具体而言，网络层、损失函数、优化器、初始化策略、激活函数、正则化方法都是独立的模块，你可以使用它们来构建自己的模型。</p>
 </li>
 <li>
-<p>����չ�ԣ�������ģ�鳬�����ף�ֻ��Ҫ�������е�ģ���д�µ���������ɡ�������ģ��ı�����ʹ��Keras���ʺ����Ƚ����о�������</p>
+<p>易扩展性：添加新模块超级容易，只需要仿照现有的模块编写新的类或函数即可。创建新模块的便利性使得Keras更适合于先进的研究工作。</p>
 </li>
 <li>
-<p>��PythonЭ����Kerasû�е�����ģ�������ļ����ͣ���Ϊ�Աȣ�caffe�У���ģ����python����������ʹ������պ͸���debug�����ṩ����չ�ı����ԡ�</p>
-</li>
-</ul>
-<hr/>
-<h2 id="keras-cn">����Keras-cn</h2>
-<p>���ĵ���Keras�ĵ������İ棬����<a href="http://keras.io/">keras.io</a>��ȫ�����ݣ��Լ���������ӡ����ͺͽ���</p>
-<p>���ڣ�keras-cn�İ汾�Ž��򵥵ĸ������µ�keras release�汾</p>
-<p>��������ˮƽ���о��������ޣ��޷�������ģ�鶼�ǳ���ͨ������ĵ��в��ɱ���Ļ���ָ��ִ�����©�Ͳ���֮�����������ʹ�ù��������κ��������������ʣ���ӭ�����ʼ���moyan_work@foxmail.com����ȡ����ϵ��</p>
-<p>�����ĵ����κι��ף������ĵ��ķ��롢��ȱ��©��������͡����ֺ��޸����⡢����ʾ������ȣ����ᱻ��¼��<a href="./acknowledgement">��л</a>��ʮ�ָ�л����Keras�����ĵ��Ĺ��ף�</p>
-<p>����㷢�ֱ��ĵ�ȱʧ�˹ٷ��ĵ��Ĳ������ݣ��������ϵ�Ҳ��䡣</p>
-<p>���ĵ������ԭ�ĵ��и����ʹ��ָ���͸�����壬����ʹ��ʱ��ע�ĵ��е�Tips���ر�ģ����ĵ��Ķ���ģ�黹�У�</p>
-<ul>
-<li>
-<p>Keras����ָ�ϣ��������ṩ�ˡ�Keras����ָ�ϡ���ҳ�棬���������Ƕ�Keras�����˸��Խ��ܣ����򵥽�����Keras���÷�����һЩС֪ʶ��ʹ�����壬������ʹ��ǰӦ�����Ķ������ֵ��ĵ���</p>
-</li>
-<li>
-<p>Keras��Դ�������ҳ�棬��������һЩKeras���õ���Դ����ҳ��᲻���ڸ��£���ע���ע</p>
-</li>
-<li>
-<p>���ѧϰ��Keras��λ�ڵ��������·��ĸ�ģ�鷭��������Keras���߲���<a href="http://blog.keras.io/">keras.io</a>
-������Keras��ز��͵����£�����Ŀ�������ṩ�˶����ѧϰ������ʹ���ʹ��Keras�����ӣ���Ҳ�����������ĿͶ�塣
-���е����¾�����Ŀλ�ñ�־������Դ�����ߣ����ĵ��Ը���Ŀ���µ�ԭ�Ĳ������κδ���Ȩ�������Ծ����ף�����ϵ���ˣ�moyan_work@foxmail.com��ɾ����</p>
+<p>与Python协作：Keras没有单独的模型配置文件类型（作为对比，caffe有），模型由python代码描述，使其更紧凑和更易debug，并提供了扩展的便利性。</p>
 </li>
 </ul>
 <hr/>
-<h2 id="_1">��ǰ�汾�����</h2>
-<p>����㷢�ֱ��ĵ��ṩ����Ϣ���������ֿ��ܣ�</p>
+<h2 id="keras-cn">关于Keras-cn</h2>
+<p>本文档是Keras文档的中文版，包括<a href="http://keras.io/">keras.io</a>的全部内容，以及更多的例子、解释和建议</p>
+<p>现在，keras-cn的版本号将简单的跟随最新的keras release版本</p>
+<p>由于作者水平和研究方向所限，无法对所有模块都非常精通，因此文档中不可避免的会出现各种错误、疏漏和不足之处。如果您在使用过程中有任何意见、建议和疑问，欢迎发送邮件到moyan_work@foxmail.com与我取得联系。</p>
+<p>您对文档的任何贡献，包括文档的翻译、查缺补漏、概念解释、发现和修改问题、贡献示例程序等，均会被记录在<a href="./acknowledgement">致谢</a>，十分感谢您对Keras中文文档的贡献！</p>
+<p>如果你发现本文档缺失了官方文档的部分内容，请积极联系我补充。</p>
+<p>本文档相对于原文档有更多的使用指导和概念澄清，请在使用时关注文档中的Tips，特别的，本文档的额外模块还有：</p>
 <ul>
 <li>
-<p>���Keras�汾���ͣ���סKeras��һ����չѸ�ٵ����ѧϰ��ܣ��뱣�����Keras��ٷ����µ�release�汾���</p>
+<p>Keras新手指南：我们新提供了“Keras新手指南”的页面，在这里我们对Keras进行了感性介绍，并简单介绍了Keras配置方法、一些小知识与使用陷阱，新手在使用前应该先阅读本部分的文档。</p>
 </li>
 <li>
-<p>���ǵ������ĵ�û�м�ʱ���£����������������뷢�ʼ����ң��һᾡ�����</p>
+<p>Keras资源：在这个页面，我们罗列一些Keras可用的资源，本页面会不定期更新，请注意关注</p>
+</li>
+<li>
+<p>深度学习与Keras：位于导航栏最下方的该模块翻译了来自Keras作者博客<a href="http://blog.keras.io/">keras.io</a>
+和其他Keras相关博客的文章，该栏目的文章提供了对深度学习的理解和大量使用Keras的例子，您也可以向这个栏目投稿。
+所有的文章均在醒目位置标志标明来源与作者，本文档对该栏目文章的原文不具有任何处置权。如您仍觉不妥，请联系本人（moyan_work@foxmail.com）删除。</p>
 </li>
 </ul>
-<p>Ŀǰ�ĵ��İ汾����2.0.8����Ӧ�ڹٷ���2.0.8 release �汾, ���θ��µ���Ҫ�����ǡ����ȵȣ�Ӧ������ô��ʱ�䶼û���º��2.0.4-2.0.8������ ��</p>
-<ul>
-<li>FAQ�����˹��ڿɸ���ģ�͵�֧��</li>
-<li>application��������ģ��MobileNet</li>
-<li>constraints����min_max_norm</li>
-<li>�����˼����selu����֮��ϵĲ�AlphaDropout</li>
-<li>������ʧ����categorical_hinge</li>
-<li>�������ʧ�ޣ�<strong>���ѧϰ��Keras</strong>��Ŀ�еĺܶ����ݵĴ����Ѿ����ٿ��ã����Ǿ������µ��ĵ����Ƴ��ⲿ�֡���Ȼ�������Щ���ݣ��Լ��Ѿ����Ƴ���һЩ�㣬��Maxout�����ĵ���ͬѧ��������<a href="https://github.com/MoyanZitto/keras-cn">�����ĵ�</a>��legacy�ļ��У���ʹ���ı��༭������sublime���򿪶�Ӧ.md�ļ���</li>
-<li>������һЩ���󣬸�л@zhangxiaoyu��@Yang Song��@��������@Jackie��@���ӣ��ı������</li>
-<li>���⣬��л@zh777k������Keras2.0.4�����ĵ������߰汾�����������û����ԣ�����汾��keras�Ѿ��㹻ʹ���ˡ����ص�ַ��<a href="http://pan.baidu.com/s/1geHmOpH">�ٶ�����</a></li>
-</ul>
-<p>ע�⣬keras��github�ϵ�master����Ҫ���ڵ�ǰ��release�汾��������Դ�����keras������ĳЩģ�����ĵ�˵������������Թٷ�Github����Ϊ׼</p>
 <hr/>
-<h2 id="30skeras">���ٿ�ʼ��30s����Keras</h2>
-<p>Keras�ĺ������ݽṹ�ǡ�ģ�͡���ģ����һ����֯�����ķ�ʽ��Keras����Ҫ��ģ����Sequentialģ�ͣ�Sequential��һϵ������㰴˳�򹹳ɵ�ջ����Ҳ���Բ鿴<a href="getting_started/functional_API/">����ʽģ��</a>��ѧϰ���������ӵ�ģ��</p>
-<p>Sequentialģ������</p>
+<h2 id="_1">当前版本与更新</h2>
+<p>如果你发现本文档提供的信息有误，有两种可能：</p>
+<ul>
+<li>
+<p>你的Keras版本过低：记住Keras是一个发展迅速的深度学习框架，请保持你的Keras与官方最新的release版本相符</p>
+</li>
+<li>
+<p>我们的中文文档没有及时更新：如果是这种情况，请发邮件给我，我会尽快更新</p>
+</li>
+</ul>
+<p>目前文档的版本号是2.0.8，对应于官方的2.0.8 release 版本, 本次更新的主要内容是……等等，应该是这么长时间都没更新后从2.0.4-2.0.8的内容 ：</p>
+<ul>
+<li>FAQ新增了关于可复现模型的支持</li>
+<li>application中新增了模型MobileNet</li>
+<li>constraints新增min_max_norm</li>
+<li>新增了激活函数selu和与之配合的层AlphaDropout</li>
+<li>新增损失函数categorical_hinge</li>
+<li>由于年久失修，<strong>深度学习与Keras</strong>栏目中的很多内容的代码已经不再可用，我们决定在新的文档中移除这部分。仍然想访问这些内容（以及已经被移除的一些层，如Maxout）的文档的同学，请下载<a href="https://github.com/MoyanZitto/keras-cn">中文文档</a>的legacy文件夹，并使用文本编辑器（如sublime）打开对应.md文件。</li>
+<li>修正了一些错误，感谢@zhangxiaoyu，@Yang Song，@唐文威，@Jackie，@锈子，的宝贵意见</li>
+<li>此外，感谢@zh777k制作了Keras2.0.4中文文档的离线版本，对于许多用户而言，这个版本的keras已经足够使用了。下载地址在<a href="http://pan.baidu.com/s/1geHmOpH">百度云盘</a></li>
+</ul>
+<p>注意，keras在github上的master往往要高于当前的release版本，如果你从源码编译keras，可能某些模块与文档说明不相符，请以官方Github代码为准</p>
+<hr/>
+<h2 id="30skeras">快速开始：30s上手Keras</h2>
+<p>Keras的核心数据结构是“模型”，模型是一种组织网络层的方式。Keras中主要的模型是Sequential模型，Sequential是一系列网络层按顺序构成的栈。你也可以查看<a href="getting_started/functional_API/">函数式模型</a>来学习建立更复杂的模型</p>
+<p>Sequential模型如下</p>
 <pre><code class="python">from keras.models import Sequential
 
 model = Sequential()
 </code></pre>
-<p>��һЩ�����ͨ��<code>.add()</code>�ѵ��������͹�����һ��ģ�ͣ�</p>
+<p>将一些网络层通过<code>.add()</code>堆叠起来，就构成了一个模型：</p>
 <pre><code class="python">from keras.layers import Dense, Activation
 
 model.add(Dense(units=64, input_dim=100))
@@ -88,93 +88,93 @@ model.add(Activation("relu"))
 model.add(Dense(units=10))
 model.add(Activation("softmax"))
 </code></pre>
-<p>���ģ�͵Ĵ��������Ҫʹ��<code>.compile()</code>����������ģ�ͣ�</p>
+<p>完成模型的搭建后，我们需要使用<code>.compile()</code>方法来编译模型：</p>
 <pre><code class="python">model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
 </code></pre>
-<p>����ģ��ʱ����ָ����ʧ�������Ż������������Ҫ�Ļ���Ҳ�����Լ�������ʧ������Keras��һ������������Ǽ�������ͬʱ����֤�û���Keras�ľ��Կ������ȣ��û����Ը����Լ�����Ҫ�����Լ���ģ�͡�����㣬�����޸�Դ���롣</p>
+<p>编译模型时必须指明损失函数和优化器，如果你需要的话，也可以自己定制损失函数。Keras的一个核心理念就是简明易用同时，保证用户对Keras的绝对控制力度，用户可以根据自己的需要定制自己的模型、网络层，甚至修改源代码。</p>
 <pre><code class="python">from keras.optimizers import SGD
 model.compile(loss='categorical_crossentropy', optimizer=SGD(lr=0.01, momentum=0.9, nesterov=True))
 </code></pre>
-<p>���ģ�ͱ����������ѵ�������ϰ�batch����һ�������ĵ�����ѵ������</p>
+<p>完成模型编译后，我们在训练数据上按batch进行一定次数的迭代来训练网络</p>
 <pre><code class="python">model.fit(x_train, y_train, epochs=5, batch_size=32)
 </code></pre>
-<p>��Ȼ������Ҳ�����ֶ���һ����batch����������������ѵ������ʱ����Ҫʹ�ã�</p>
+<p>当然，我们也可以手动将一个个batch的数据送入网络中训练，这时候需要使用：</p>
 <pre><code class="python">model.train_on_batch(x_batch, y_batch)
 </code></pre>
-<p>������ǿ���ʹ��һ�д�������ǵ�ģ�ͽ�������������ģ�͵�ָ���Ƿ��������ǵ�Ҫ��</p>
+<p>随后，我们可以使用一行代码对我们的模型进行评估，看看模型的指标是否满足我们的要求：</p>
 <pre><code class="python">loss_and_metrics = model.evaluate(x_test, y_test, batch_size=128)
 </code></pre>
-<p>���ߣ����ǿ���ʹ�����ǵ�ģ�ͣ����µ����ݽ���Ԥ�⣺</p>
+<p>或者，我们可以使用我们的模型，对新的数据进行预测：</p>
 <pre><code class="python">classes = model.predict(x_test, batch_size=128)
 </code></pre>
-<p>�һ���ʴ�ϵͳ��ͼ�����ģ�ͣ�����ͼ�����word2vec��Ƕ����������ô�졣֧�����ѧϰ�Ļ����뷨�����Ǽ򵥵ģ����������ǰ�����ʵ��Ҳ��ļ�������</p>
-<p>Ϊ�˸�������˽�Keras�����ǽ�����鿴һ�����������tutorial</p>
+<p>搭建一个问答系统、图像分类模型，或神经图灵机、word2vec词嵌入器就是这么快。支撑深度学习的基本想法本就是简单的，现在让我们把它的实现也变的简单起来！</p>
+<p>为了更深入的了解Keras，我们建议你查看一下下面的两个tutorial</p>
 <ul>
-<li><a href="./getting_started/sequential_model">���ٿ�ʼSequntialģ��</a></li>
-<li><a href="./getting_started/functional_API">���ٿ�ʼ����ʽģ��</a></li>
+<li><a href="./getting_started/sequential_model">快速开始Sequntial模型</a></li>
+<li><a href="./getting_started/functional_API">快速开始函数式模型</a></li>
 </ul>
-<p>�������ǵ����ֽ̳̣���Ȼ���������ֵģ��������Ķ�������������ģ�</p>
+<p>还有我们的新手教程，虽然是面向新手的，但我们阅读它们总是有益的：</p>
 <ul>
-<li><a href="./for_beginners/concepts">Keras����ָ��</a></li>
+<li><a href="./for_beginners/concepts">Keras新手指南</a></li>
 </ul>
-<p>��Keras�������examples�ļ���������ṩ��һЩ���߼���ģ�ͣ����ڼ���������ʴ�ϵͳ������LSTM���ı����ı����ɵȡ�</p>
+<p>在Keras代码包的examples文件夹里，我们提供了一些更高级的模型：基于记忆网络的问答系统、基于LSTM的文本的文本生成等。</p>
 <hr/>
-<h2 id="_2">��װ</h2>
-<p>Kerasʹ��������������������ֺ�˱�������ѡ��һ�֣����ǽ���ѡ��tensorflow��</p>
+<h2 id="_2">安装</h2>
+<p>Keras使用了下面的依赖包，三种后端必须至少选择一种，我们建议选择tensorflow。</p>
 <ul>
 <li>
-<p>numpy��scipy</p>
+<p>numpy，scipy</p>
 </li>
 <li>
 <p>pyyaml</p>
 </li>
 <li>
-<p>HDF5, h5py����ѡ������ģ�͵�save/load������ʹ�ã�</p>
+<p>HDF5, h5py（可选，仅在模型的save/load函数中使用）</p>
 </li>
 <li>
-<p>���ʹ��CNN���Ƽ���װcuDNN</p>
+<p>如果使用CNN的推荐安装cuDNN</p>
 </li>
 </ul>
-<p>��ʹ��TensorFlowΪ���ʱ��</p>
+<p>当使用TensorFlow为后端时：</p>
 <ul>
 <li><a href="https://www.tensorflow.org/install/">TensorFlow</a></li>
 </ul>
-<p>��ʹ��Theano��Ϊ���ʱ��</p>
+<p>当使用Theano作为后端时：</p>
 <ul>
 <li><a href="http://deeplearning.net/software/theano/install.html#install">Theano</a></li>
 </ul>
-<p>��ʹ��CNTK��Ϊ���ʱ��</p>
+<p>当使用CNTK作为后端时：</p>
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/cognitive-toolkit/setup-cntk-on-your-machine">CNTK</a></li>
 </ul>
-<p>����ˡ�������backend��ָ����Keras��������ɵײ�������������������</p>
-<p>��Դ�밲װKerasʱ������git clone keras�Ĵ��룺</p>
+<p>“后端”翻译自backend，指的是Keras依赖于完成底层的张量运算的软件包。</p>
+<p>从源码安装Keras时，首先git clone keras的代码：</p>
 <pre><code class="sh">git clone https://github.com/fchollet/keras.git
 </code></pre>
-<p>����<code>cd</code>��Keras���ļ����У�����������İ�װ���</p>
+<p>接着<code>cd</code>到Keras的文件夹中，并运行下面的安装命令：</p>
 <pre><code class="python">sudo python setup.py install
 </code></pre>
-<p>��Ҳ����ʹ��PyPI����װKeras</p>
+<p>你也可以使用PyPI来安装Keras</p>
 <pre><code class="python">sudo pip install keras
 </code></pre>
-<p>������õ���virtualenv���⻷������Ҫ��sudo�ͺá�</p>
-<p><strong>��ϸ��Windows��Linux��װ�̳���ο���Keras����ָ�ϡ��и����İ�װ�̳̣��ر���лSCP-173��д����Щ�̳�</strong></p>
+<p>如果你用的是virtualenv虚拟环境，不要用sudo就好。</p>
+<p><strong>详细的Windows和Linux安装教程请参考“Keras新手指南”中给出的安装教程，特别鸣谢SCP-173编写了这些教程</strong></p>
 <hr/>
-<h2 id="theanocntktensorflow">��Theano��CNTK��TensorFlow���л�</h2>
-<p>KerasĬ��ʹ��TensorFlow��Ϊ������������������������л���Theano����鿴<a href="./backend">����</a></p>
+<h2 id="theanocntktensorflow">在Theano、CNTK、TensorFlow间切换</h2>
+<p>Keras默认使用TensorFlow作为后端来进行张量操作，如需切换到Theano，请查看<a href="./backend">这里</a></p>
 <hr/>
-<h2 id="_3">����֧��</h2>
-<p>�������������ַ���ʻ����Keras��������:</p>
+<h2 id="_3">技术支持</h2>
+<p>你可以在下列网址提问或加入Keras开发讨论:</p>
 <ul>
 <li><a href="https://groups.google.com/forum/#!forum/keras-users">Keras Google group</a></li>
-<li><a href="https://kerasteam.slack.com/">Keras Slack channel</a>,<a href="https://keras-slack-autojoin.herokuapp.com/">�������</a>�������.</li>
+<li><a href="https://kerasteam.slack.com/">Keras Slack channel</a>,<a href="https://keras-slack-autojoin.herokuapp.com/">点击这里</a>获得邀请.</li>
 </ul>
-<p>��Ҳ������<a href="https://github.com/fchollet/keras/issues">Github issues</a>�����ʻ����������ԡ�������֮ǰ��ȷ�����Ķ������ǵ�<a href="https://github.com/fchollet/keras/blob/master/CONTRIBUTING.md">ָ��</a></p>
-<p>���⣬����ϰ�����ĵ��û��������Ƽ���<a href="https://jizhi.im/index">�����ǡ�ƽ̨</a>���ʣ���ƽ̨��Kaiser�ȴ��֧�����ߴ������л������ұ��˻ᾭ�����ʸ���վ�������</p>
-<p>�������Ҳ��ӭͬѧ�Ǽ����ǵ�QQȺ119427073�������ۣ�Ǳˮ�͹�ˮ�ᱻT����Ⱥ˵����˾/ѧУ-ְλ/�꼶��</p>
+<p>你也可以在<a href="https://github.com/fchollet/keras/issues">Github issues</a>里提问或请求新特性。在提问之前请确保你阅读过我们的<a href="https://github.com/fchollet/keras/blob/master/CONTRIBUTING.md">指导</a></p>
+<p>另外，对于习惯中文的用户，我们推荐在<a href="https://jizhi.im/index">“集智”平台</a>提问，该平台由Kaiser等搭建，支持在线代码运行环境，我本人会经常访问该网站解答问题</p>
+<p>最后，我们也欢迎同学们加我们的QQ群119427073进行讨论（潜水和灌水会被T，入群说明公司/学校-职位/年级）</p>
 <hr/>
-<h2 id="_4">С������</h2>
-<p>�������ñ��ĵ�������о���ʹ��������������ӭɨ����Ķ�ά������߽���С���������Թ������߽�һ�������ĵ����ݣ�����ĵ�������ͬʱ������Ϊ<a href="https://github.com/MoyanZitto/keras-cn">���ĵ���github</a>�ӿ���Ŷ</p>
-<p><img alt="�����ά��" src="images/bca2483858c85e920135e75e228f3deb.png"/></p>
+<h2 id="_4">小额赞助</h2>
+<p>如果你觉得本文档对你的研究和使用有所帮助，欢迎扫下面的二维码对作者进行小额赞助，以鼓励作者进一步完善文档内容，提高文档质量。同时，不妨为<a href="https://github.com/MoyanZitto/keras-cn">本文档的github</a>加颗星哦</p>
+<p><img alt="付款二维码" src="images/bca2483858c85e920135e75e228f3deb.png"/></p>
 </div>
     </body></html>

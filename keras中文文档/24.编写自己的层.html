@@ -1,20 +1,20 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="_1">±àĞ´×Ô¼ºµÄ²ã</h1>
-<p>¶ÔÓÚ¼òµ¥µÄ¶¨ÖÆ²Ù×÷£¬ÎÒÃÇ»òĞí¿ÉÒÔÍ¨¹ıÊ¹ÓÃ<code>layers.core.Lambda</code>²ãÀ´Íê³É¡£µ«¶ÔÓÚÈÎºÎ¾ßÓĞ¿ÉÑµÁ·È¨ÖØµÄ¶¨ÖÆ²ã£¬ÄãÓ¦¸Ã×Ô¼ºÀ´ÊµÏÖ¡£</p>
-<p>ÕâÀïÊÇÒ»¸öKeras2µÄ²ãÓ¦¸Ã¾ßÓĞµÄ¿ò¼Ü½á¹¹(Èç¹ûÄãµÄ°æ±¾¸ü¾ÉÇëÉı¼¶)£¬Òª¶¨ÖÆ×Ô¼ºµÄ²ã£¬ÄãĞèÒªÊµÏÖÏÂÃæÈı¸ö·½·¨</p>
+<h1 id="_1">ç¼–å†™è‡ªå·±çš„å±‚</h1>
+<p>å¯¹äºç®€å•çš„å®šåˆ¶æ“ä½œï¼Œæˆ‘ä»¬æˆ–è®¸å¯ä»¥é€šè¿‡ä½¿ç”¨<code>layers.core.Lambda</code>å±‚æ¥å®Œæˆã€‚ä½†å¯¹äºä»»ä½•å…·æœ‰å¯è®­ç»ƒæƒé‡çš„å®šåˆ¶å±‚ï¼Œä½ åº”è¯¥è‡ªå·±æ¥å®ç°ã€‚</p>
+<p>è¿™é‡Œæ˜¯ä¸€ä¸ªKeras2çš„å±‚åº”è¯¥å…·æœ‰çš„æ¡†æ¶ç»“æ„(å¦‚æœä½ çš„ç‰ˆæœ¬æ›´æ—§è¯·å‡çº§)ï¼Œè¦å®šåˆ¶è‡ªå·±çš„å±‚ï¼Œä½ éœ€è¦å®ç°ä¸‹é¢ä¸‰ä¸ªæ–¹æ³•</p>
 <ul>
 <li>
-<p><code>build(input_shape)</code>£ºÕâÊÇ¶¨ÒåÈ¨ÖØµÄ·½·¨£¬¿ÉÑµÁ·µÄÈ¨Ó¦¸ÃÔÚÕâÀï±»¼ÓÈëÁĞ±í<code>`self.trainable_weights</code>ÖĞ¡£ÆäËûµÄÊôĞÔ»¹°üÀ¨<code>self.non_trainabe_weights</code>£¨ÁĞ±í£©ºÍ<code>self.updates</code>£¨ĞèÒª¸üĞÂµÄĞÎÈç£¨tensor, new_tensor£©µÄtupleµÄÁĞ±í£©¡£Äã¿ÉÒÔ²Î¿¼<code>BatchNormalization</code>²ãµÄÊµÏÖÀ´Ñ§Ï°ÈçºÎÊ¹ÓÃÉÏÃæÁ½¸öÊôĞÔ¡£Õâ¸ö·½·¨±ØĞëÉèÖÃ<code>self.built = True</code>£¬¿ÉÍ¨¹ıµ÷ÓÃ<code>super([layer],self).build()</code>ÊµÏÖ</p>
+<p><code>build(input_shape)</code>ï¼šè¿™æ˜¯å®šä¹‰æƒé‡çš„æ–¹æ³•ï¼Œå¯è®­ç»ƒçš„æƒåº”è¯¥åœ¨è¿™é‡Œè¢«åŠ å…¥åˆ—è¡¨<code>`self.trainable_weights</code>ä¸­ã€‚å…¶ä»–çš„å±æ€§è¿˜åŒ…æ‹¬<code>self.non_trainabe_weights</code>ï¼ˆåˆ—è¡¨ï¼‰å’Œ<code>self.updates</code>ï¼ˆéœ€è¦æ›´æ–°çš„å½¢å¦‚ï¼ˆtensor, new_tensorï¼‰çš„tupleçš„åˆ—è¡¨ï¼‰ã€‚ä½ å¯ä»¥å‚è€ƒ<code>BatchNormalization</code>å±‚çš„å®ç°æ¥å­¦ä¹ å¦‚ä½•ä½¿ç”¨ä¸Šé¢ä¸¤ä¸ªå±æ€§ã€‚è¿™ä¸ªæ–¹æ³•å¿…é¡»è®¾ç½®<code>self.built = True</code>ï¼Œå¯é€šè¿‡è°ƒç”¨<code>super([layer],self).build()</code>å®ç°</p>
 </li>
 <li>
-<p><code>call(x)</code>£ºÕâÊÇ¶¨Òå²ã¹¦ÄÜµÄ·½·¨£¬³ı·ÇÄãÏ£ÍûÄãĞ´µÄ²ãÖ§³Ömasking£¬·ñÔòÄãÖ»ĞèÒª¹ØĞÄ<code>call</code>µÄµÚÒ»¸ö²ÎÊı£ºÊäÈëÕÅÁ¿</p>
+<p><code>call(x)</code>ï¼šè¿™æ˜¯å®šä¹‰å±‚åŠŸèƒ½çš„æ–¹æ³•ï¼Œé™¤éä½ å¸Œæœ›ä½ å†™çš„å±‚æ”¯æŒmaskingï¼Œå¦åˆ™ä½ åªéœ€è¦å…³å¿ƒ<code>call</code>çš„ç¬¬ä¸€ä¸ªå‚æ•°ï¼šè¾“å…¥å¼ é‡</p>
 </li>
 <li>
-<p><code>compute_output_shape(input_shape)</code>£ºÈç¹ûÄãµÄ²ãĞŞ¸ÄÁËÊäÈëÊı¾İµÄshape£¬ÄãÓ¦¸ÃÔÚÕâÀïÖ¸¶¨shape±ä»¯µÄ·½·¨£¬Õâ¸öº¯ÊıÊ¹µÃKeras¿ÉÒÔ×ö×Ô¶¯shapeÍÆ¶Ï</p>
+<p><code>compute_output_shape(input_shape)</code>ï¼šå¦‚æœä½ çš„å±‚ä¿®æ”¹äº†è¾“å…¥æ•°æ®çš„shapeï¼Œä½ åº”è¯¥åœ¨è¿™é‡ŒæŒ‡å®šshapeå˜åŒ–çš„æ–¹æ³•ï¼Œè¿™ä¸ªå‡½æ•°ä½¿å¾—Keraså¯ä»¥åšè‡ªåŠ¨shapeæ¨æ–­</p>
 </li>
 </ul>
 <pre><code class="python">from keras import backend as K
@@ -41,6 +41,6 @@ class MyLayer(Layer):
     def compute_output_shape(self, input_shape):
         return (input_shape[0], self.output_dim)
 </code></pre>
-<p>ÏÖ´æµÄKeras²ã´úÂë¿ÉÒÔÎªÄãµÄÊµÏÖÌá¹©Á¼ºÃ²Î¿¼£¬ÔÄ¶ÁÔ´´úÂë°É£¡</p>
+<p>ç°å­˜çš„Keraså±‚ä»£ç å¯ä»¥ä¸ºä½ çš„å®ç°æä¾›è‰¯å¥½å‚è€ƒï¼Œé˜…è¯»æºä»£ç å§ï¼</p>
 </div>
     </body></html>

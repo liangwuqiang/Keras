@@ -1,85 +1,85 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">ԭ������</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
         <div class="section">
-<p><em>������Ҫ˵��һ�£�����<strong>��������Windows�����½������ѧϰ���о�</strong>��һ��������ΪWindows����Ӧ�Ŀ�ܴ���������࣬�����趨����ȫ����һ���棬Linuxϵͳ�¶��Կ�֧�֡��ڴ��ͷ��Լ��洢�ռ������Ӳ������֧�ֽϺá��������Linux�����е�İ�������Ҵ��������������Windows�¸���������Ļ���ϣ����ƪ���¶������а�����</em></p>
-<p>**����KerasĬ����TensorflowΪ��ˣ���Theano��˸��»���������Ĭ�ϲ���Tensorflow1.0��ΪKeras��ˣ�Theano�氲װ��ʽ�����<a href="http://www.scp-173.top">www.scp-173.top**</a></p>
+<p><em>这里需要说明一下，笔者<strong>不建议在Windows环境下进行深度学习的研究</strong>，一方面是因为Windows所对应的框架搭建的依赖过多，社区设定不完全；另一方面，Linux系统下对显卡支持、内存释放以及存储空间调整等硬件功能支持较好。如果您对Linux环境感到陌生，并且大多数开发环境在Windows下更方便操作的话，希望这篇文章对您会有帮助。</em></p>
+<p>**由于Keras默认以Tensorflow为后端，且Theano后端更新缓慢，本文默认采用Tensorflow1.0作为Keras后端，Theano版安装方式请访问<a href="http://www.scp-173.top">www.scp-173.top**</a></p>
 <hr/>
-<h1 id="_1">���ڼ������Ӳ������˵��</h1>
-<h2 id="_2"><strong>�Ƽ�����</strong></h2>
-<p>������Ǹ�Уѧ�����߸߼��о���Ա������ʵ���һ��߸����ʽ���棬�����������������ã�</p>
+<h1 id="_1">关于计算机的硬件配置说明</h1>
+<h2 id="_2"><strong>推荐配置</strong></h2>
+<p>如果您是高校学生或者高级研究人员，并且实验室或者个人资金充沛，建议您采用如下配置：</p>
 <ul>
-<li>���壺X299�ͺŻ�Z270�ͺ�</li>
-<li>CPU:  i7-6950X��i7-7700K �������ϸ߼��ͺ�</li>
-<li>�ڴ棺Ʒ���ڴ棬������32G���ϣ������������4ͨ����8ͨ��</li>
-<li>SSD�� Ʒ�ƹ�̬Ӳ�̣�����256G����</li>
-<li><font color="#FF0000">�Կ���NVIDIA GTX TITAN(XP) NVIDIA GTX 1080ti��NVIDIA GTX TITAN��NVIDIA GTX 1080��NVIDIA GTX 1070��NVIDIA GTX 1060 (˳��Ϊ���Ƚ��飬���ҽ���ͬһ�Կ������Ը������������������飬����X299�ͺ����������Բ��á�4���Կ�)</font></li>
-<li>��Դ����������������ȷ����һ�����Կ����������ټ�200W����</li>
+<li>主板：X299型号或Z270型号</li>
+<li>CPU:  i7-6950X或i7-7700K 及其以上高级型号</li>
+<li>内存：品牌内存，总容量32G以上，根据主板组成4通道或8通道</li>
+<li>SSD： 品牌固态硬盘，容量256G以上</li>
+<li><font color="#FF0000">显卡：NVIDIA GTX TITAN(XP) NVIDIA GTX 1080ti、NVIDIA GTX TITAN、NVIDIA GTX 1080、NVIDIA GTX 1070、NVIDIA GTX 1060 (顺序为优先建议，并且建议同一显卡，可以根据主板插槽数量购买多块，例如X299型号主板最多可以采用×4的显卡)</font></li>
+<li>电源：由主机机容量的确定，一般有显卡总容量后再加200W即可</li>
 </ul>
-<h2 id="_3"><strong>�������</strong></h2>
-<p>������ǽ���������ѧ�������ԣ�������������޽������Լ����е��豸���п�������ô���ĵ��������������¼��㣺</p>
+<h2 id="_3"><strong>最低配置</strong></h2>
+<p>如果您是仅仅用于自学或代码调试，亦或是条件所限仅采用自己现有的设备进行开发，那么您的电脑至少满足以下几点：</p>
 <ul>
-<li>CPU��Intel������i5��i7����ϵ�в�Ʒ��ͬ����AMD��˾��Ʒ</li>
-<li>�ڴ棺������4G����</li>
+<li>CPU：Intel第三代i5和i7以上系列产品或同性能AMD公司产品</li>
+<li>内存：总容量4G以上</li>
 </ul>
-<h2 id="cpu"><font color="#FF0000">CPU˵��</font></h2>
+<h2 id="cpu"><font color="#FF0000">CPU说明</font></h2>
 <ul>
-<li>�����CPUĿǰ֧�ֶ�˶��̣߳���ô���������CPU���٣��Ϳ���ʹ�ö��߳����㡣�ⷽ������ƶ��ڷ�����CPU־ǿϵ����Ϊ�ؼ�</li>
+<li>大多数CPU目前支持多核多线程，那么如果您采用CPU加速，就可以使用多线程运算。这方面的优势对于服务器CPU志强系列尤为关键</li>
 </ul>
-<h2 id="_4"><font color="#FF0000">�Կ�˵��</font></h2>
+<h2 id="_4"><font color="#FF0000">显卡说明</font></h2>
 <ul>
-<li>��������Կ��Ƿ�NVIDIA��˾�Ĳ�Ʒ����NVIDIA GTXϵ�����ͺŵĵ�һ�����ֵ���6��NVIDIA��GTϵ�У��������������ô����Կ����м��ټ��㣬����<code>NVIDIA GT 910</code>��<code>NVIDIA GTX 460</code> �ȵȡ�</li>
-<li>��������Կ�Ϊ�ʼǱ��ϵ�GTX�ƶ��Կ����ͺź�����б�ʶM������ô��������ʹ���Կ����٣���Ϊ�ƶ���GPU���׷��������ջ�����</li>
-<li>��������Կ�����ʾ�������� <code>HD5000</code>,<code>ATI 5650</code> �����͵��Կ�����ô��ֻ��ʹ��CPU����</li>
-<li>��������Կ�оƬΪPascal�ܹ���<code>NVIDIA GTX 1080</code>,<code>NVIDIA GTX 1070</code>�ȣ�����ֻ����֮���������ѡ��<code>CUDA 8.0</code></li>
+<li>如果您的显卡是非NVIDIA公司的产品或是NVIDIA GTX系列中型号的第一个数字低于6或NVIDIA的GT系列，都不建议您采用此类显卡进行加速计算，例如<code>NVIDIA GT 910</code>、<code>NVIDIA GTX 460</code> 等等。</li>
+<li>如果您的显卡为笔记本上的GTX移动显卡（型号后面带有标识M），那么请您慎重使用显卡加速，因为移动版GPU容易发生过热烧毁现象。</li>
+<li>如果您的显卡，显示的是诸如 <code>HD5000</code>,<code>ATI 5650</code> 等类型的显卡，那么您只能使用CPU加速</li>
+<li>如果您的显卡芯片为Pascal架构（<code>NVIDIA GTX 1080</code>,<code>NVIDIA GTX 1070</code>等），您只能在之后的配置中选择<code>CUDA 8.0</code></li>
 </ul>
 <hr/>
-<h1 id="_5">�������������</h1>
-<h2 id="1-microsoft-windows">1. Microsoft Windows �汾</h2>
-<p>����Windows�İ汾ѡ�񣬱���ǿ�ҽ�����ڲ��ָ����ܵ��»�������<code>Windows 10</code>��Ϊ���������������ϾɱʼǱ�������ܻ�������<code>Windows 7</code>���ɣ����Ļ�������<code>Windows 10</code>��Ϊ����������������������Windows 10�ķ��а汾ѡ�񣬱��߽������<code>Windows_10_enterprise_2016_ltsb_x64</code>��Ϊ����������</p>
-<p>�����Ƽ���<a href="http://msdn.itellyou.cn/"><font color="#FF0000">MSDN�Ҹ�����</font></a>���أ�Ҳ��л���߹�����������<a href="http://weibo.com/207156000?is_hot=1">ѩ����ǰ��</a>�������Ĺ�����������</p>
+<h1 id="_5">基本开发环境搭建</h1>
+<h2 id="1-microsoft-windows">1. Microsoft Windows 版本</h2>
+<p>关于Windows的版本选择，本人强烈建议对于部分高性能的新机器采用<code>Windows 10</code>作为基础环境，部分老旧笔记本或低性能机器采用<code>Windows 7</code>即可，本文环境将以<code>Windows 10</code>作为开发环境进行描述。对于Windows 10的发行版本选择，笔者建议采用<code>Windows_10_enterprise_2016_ltsb_x64</code>作为基础环境。</p>
+<p>这里推荐到<a href="http://msdn.itellyou.cn/"><font color="#FF0000">MSDN我告诉你</font></a>下载，也感谢作者国内优秀作者<a href="http://weibo.com/207156000?is_hot=1">雪龙狼前辈</a>所做出的贡献与牺牲。</p>
 <p><img alt="" src="images/d4f681eb1164d63b3374b525509f42ec.png"/></p>
-<p>ֱ����������������ճ��Ѹ�����أ�</p>
+<p>直接贴出热链，复制粘贴迅雷下载：</p>
 <pre><code>ed2k://|file|cn_windows_10_enterprise_2016_ltsb_x64_dvd_9060409.iso|3821895680|FF17FF2D5919E3A560151BBC11C399D1|/
 </code></pre>
-<h2 id="2-microsoft-visual-studio-2015-update-3">2. ���뻷��Microsoft Visual Studio 2015 Update 3</h2>
-<p><em><font color="#FF0000">(��װCPU�汾�Ǳ��밲װ)</font></em></p>
-<p>CUDA������ΪMicrosoft Visual Studio���汾��2010-2015��<code>cuda8.0</code>��֧��2015�汾���ݲ�֧��VS2017�����Ĳ���<code>Visual Studio 2015 Update 3</code>��
-ͬ��ֱ������Ѹ��������</p>
+<h2 id="2-microsoft-visual-studio-2015-update-3">2. 编译环境Microsoft Visual Studio 2015 Update 3</h2>
+<p><em><font color="#FF0000">(安装CPU版本非必须安装)</font></em></p>
+<p>CUDA编译器为Microsoft Visual Studio，版本从2010-2015，<code>cuda8.0</code>仅支持2015版本，暂不支持VS2017，本文采用<code>Visual Studio 2015 Update 3</code>。
+同样直接贴出迅雷热链：</p>
 <pre><code>ed2k://|file|cn_visual_studio_professional_2015_with_update_3_x86_x64_dvd_8923256.iso|7745202176|DD35D3D169D553224BE5FB44E074ED5E|/
 </code></pre>
 <p><img alt="MSDN" src="images/f4158a6ed9b051ebca107f793786e2f6.png"/></p>
-<h2 id="3-python">3. Python����</h2>
-<p>python���������Ƽ�ʹ�ÿ�ѧ���㼯��python���а�<strong>Anaconda</strong>��Anaconda��Python�ڶ෢�а��зǳ������ڿ�ѧ����İ汾�������Ѿ������˺ܶ�����Ŀ�ѧ����Python�⡣
-���鰲װ<code>Anconda3 4.2.0</code>�汾��Ŀǰ�³���python3.6���ڲ��ֲ��������⣬���Խ��鰲װ��ʷ�汾4.2.0
-<strong>ע�⣺windows�汾�µ�tensorflow��ʱ��֧��python2.7</strong></p>
-<p>���ص�ַ�� <a href="https://repo.continuum.io/archive/index.html"><font color="#FF0000">Anaconda</font></a></p>
+<h2 id="3-python">3. Python环境</h2>
+<p>python环境建设推荐使用科学计算集成python发行版<strong>Anaconda</strong>，Anaconda是Python众多发行版中非常适用于科学计算的版本，里面已经集成了很多优秀的科学计算Python库。
+建议安装<code>Anconda3 4.2.0</code>版本，目前新出的python3.6存在部分不兼容问题，所以建议安装历史版本4.2.0
+<strong>注意：windows版本下的tensorflow暂时不支持python2.7</strong></p>
+<p>下载地址： <a href="https://repo.continuum.io/archive/index.html"><font color="#FF0000">Anaconda</font></a></p>
 <h2 id="4-cuda">4. CUDA</h2>
-<p><em><font color="#FF0000">(��װCPU�汾�Ǳ��밲װ)</font></em>
-CUDA Toolkit��NVIDIA��˾����GPU����ṩ�Ļ������߰���Ҳ�������Կ�����ĺ��ļ������ߡ�
-ֱ�Ӱ�װCUDA8.0����
-���ص�ַ��<a href="https://developer.nvidia.com/cuda-downloads">https://developer.nvidia.com/cuda-downloads</a>
+<p><em><font color="#FF0000">(安装CPU版本非必须安装)</font></em>
+CUDA Toolkit是NVIDIA公司面向GPU编程提供的基础工具包，也是驱动显卡计算的核心技术工具。
+直接安装CUDA8.0即可
+下载地址：<a href="https://developer.nvidia.com/cuda-downloads">https://developer.nvidia.com/cuda-downloads</a>
 <img alt="" src="images/70af7fa08fcdab73b73cad009a1135db.png"/>
-������֮�󣬰��ղ��谲װ��<strong>�����������޸İ�װĿ¼</strong>��ͬ�ϣ���������Ҫ���ã���װ������Զ����úá�</p>
-<h2 id="6-cudnn">6. ���ٿ�CuDNN</h2>
-<p>�ӹ���������Ҫע�� Nvidia �������˺ţ���������һ��Ҳ���ҵ���
-WindowsĿǰ���°�v6.0������keras��δ֧�ִ˰汾��������v5.1�汾���� cudnn-8.0-win-x64-v5.1.zip��
-���ؽ�ѹ��������Ϊcuda���ļ��У�������bin��include��lib���������ļ��и��Ƶ���װCUDA�ĵط����Ƕ�Ӧ�ļ��У�Ĭ���ļ����ڣ�<code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\8.0</code></p>
+在下载之后，按照步骤安装，<strong>不建议新手修改安装目录</strong>，同上，环境不需要配置，安装程序会自动配置好。</p>
+<h2 id="6-cudnn">6. 加速库CuDNN</h2>
+<p>从官网下载需要注册 Nvidia 开发者账号，网盘搜索一般也能找到。
+Windows目前最新版v6.0，但是keras尚未支持此版本，请下载v5.1版本，即 cudnn-8.0-win-x64-v5.1.zip。
+下载解压出来是名为cuda的文件夹，里面有bin、include、lib，将三个文件夹复制到安装CUDA的地方覆盖对应文件夹，默认文件夹在：<code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\8.0</code></p>
 <hr/>
-<h1 id="keras">Keras ��ܴ</h1>
-<h2 id="_6">��װ</h2>
-<p>��CMD�����л���Powershell�����룺</p>
-<pre><code class="powershell"># GPU �汾
+<h1 id="keras">Keras 框架搭建</h1>
+<h2 id="_6">安装</h2>
+<p>在CMD命令行或者Powershell中输入：</p>
+<pre><code class="powershell"># GPU 版本
 &gt;&gt;&gt; pip install --upgrade tensorflow-gpu
 
-# CPU �汾
+# CPU 版本
 &gt;&gt;&gt; pip install --upgrade tensorflow
 
-# Keras ��װ
+# Keras 安装
 &gt;&gt;&gt; pip install keras -U --pre
 </code></pre>
-<p>֮�������֤keras�Ƿ�װ�ɹ�,��������������Python�������Python��������л�����</p>
+<p>之后可以验证keras是否安装成功,在命令行中输入Python命令进入Python变成命令行环境：</p>
 <pre><code class="python">&gt;&gt;&gt; import keras
 
 Using Tensorflow backend.
@@ -91,24 +91,24 @@ I c:\tf_jenkins\home\workspace\release-win\device\gpu\os\windows\tensorflow\stre
 
 &gt;&gt;&gt;
 </code></pre>
-<p>û�б�������ôKeras���Ѿ�<strong>�ɹ���װ</strong>��</p>
+<p>没有报错，那么Keras就已经<strong>成功安装</strong>了</p>
 <ul>
-<li>Keras��mnist���ݼ�����
- ����Keras������</li>
+<li>Keras中mnist数据集测试
+ 下载Keras开发包</li>
 </ul>
 <pre><code>&gt;&gt;&gt; conda install git
 &gt;&gt;&gt; git clone https://github.com/fchollet/keras.git
 &gt;&gt;&gt; cd keras/examples/
 &gt;&gt;&gt; python mnist_mlp.py
 </code></pre>
-<p>�����޴����У����ˣ�keras��װ��ɡ�</p>
-<p><a href="http://keras-cn.readthedocs.io/"><font color="#FF0000">Keras�����ĵ���ַ</font></a></p>
-<h2 id="_7">��������ϵ��ʽ</h2>
-<p>��������ˮƽ���о��������ޣ��޷�������ģ�鶼�ǳ���ͨ������ĵ��в��ɱ���Ļ���ָ��ִ�����©�Ͳ���֮�����������ʹ�ù��������κ��������������ʣ���ӭ�����ʼ���scp173.cool@gmail.com�������ĵ�����ȡ����ϵ.</p>
-<p><strong>���̳̲��������κ���ʽ����ҵ��;�������Ҫת���������߻������ĵ�������ϵ���������δ����������ת�أ�������׷���䷨�����ε�Ȩ����</strong></p>
-<p>���ߣ�<a href="https://github.com/KaiwenXiao">SCP-173</a>
-E-mail ��scp173.cool@gmail.com
-<strong>�������Ҫ��ʱ�õ�ָ�����������Լ�΢�ţ�SCP173-cool��������ͼ���</strong>
-<img alt="΢��" src="images/397b3d40a97ef515197eee63ce228e7c.png"/></p>
+<p>程序无错进行，至此，keras安装完成。</p>
+<p><a href="http://keras-cn.readthedocs.io/"><font color="#FF0000">Keras中文文档地址</font></a></p>
+<h2 id="_7">声明与联系方式</h2>
+<p>由于作者水平和研究方向所限，无法对所有模块都非常精通，因此文档中不可避免的会出现各种错误、疏漏和不足之处。如果您在使用过程中有任何意见、建议和疑问，欢迎发送邮件到scp173.cool@gmail.com与中文文档作者取得联系.</p>
+<p><strong>本教程不得用于任何形式的商业用途，如果需要转载请与作者或中文文档作者联系，如果发现未经允许复制转载，将保留追求其法律责任的权利。</strong></p>
+<p>作者：<a href="https://github.com/KaiwenXiao">SCP-173</a>
+E-mail ：scp173.cool@gmail.com
+<strong>如果您需要及时得到指导帮助，可以加微信：SCP173-cool，酌情打赏即可</strong>
+<img alt="微信" src="images/397b3d40a97ef515197eee63ce228e7c.png"/></p>
 </div>
     </body></html>

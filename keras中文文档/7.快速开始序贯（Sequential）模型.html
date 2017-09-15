@@ -1,11 +1,11 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="sequential">¿ìËÙ¿ªÊ¼Ğò¹á£¨Sequential£©Ä£ĞÍ</h1>
-<p>Ğò¹áÄ£ĞÍÊÇ¶à¸öÍøÂç²ãµÄÏßĞÔ¶Ñµş£¬Ò²¾ÍÊÇ¡°Ò»ÌõÂ·×ßµ½ºÚ¡±¡£</p>
-<p>¿ÉÒÔÍ¨¹ıÏò<code>Sequential</code>Ä£ĞÍ´«µİÒ»¸ölayerµÄlistÀ´¹¹Ôì¸ÃÄ£ĞÍ£º</p>
+<h1 id="sequential">å¿«é€Ÿå¼€å§‹åºè´¯ï¼ˆSequentialï¼‰æ¨¡å‹</h1>
+<p>åºè´¯æ¨¡å‹æ˜¯å¤šä¸ªç½‘ç»œå±‚çš„çº¿æ€§å †å ï¼Œä¹Ÿå°±æ˜¯â€œä¸€æ¡è·¯èµ°åˆ°é»‘â€ã€‚</p>
+<p>å¯ä»¥é€šè¿‡å‘<code>Sequential</code>æ¨¡å‹ä¼ é€’ä¸€ä¸ªlayerçš„listæ¥æ„é€ è¯¥æ¨¡å‹ï¼š</p>
 <pre><code class="python">from keras.models import Sequential
 from keras.layers import Dense, Activation
 
@@ -16,23 +16,23 @@ Dense(10),
 Activation('softmax'),
 ])
 </code></pre>
-<p>Ò²¿ÉÒÔÍ¨¹ı<code>.add()</code>·½·¨Ò»¸ö¸öµÄ½«layer¼ÓÈëÄ£ĞÍÖĞ£º</p>
+<p>ä¹Ÿå¯ä»¥é€šè¿‡<code>.add()</code>æ–¹æ³•ä¸€ä¸ªä¸ªçš„å°†layeråŠ å…¥æ¨¡å‹ä¸­ï¼š</p>
 <pre><code class="python">model = Sequential()
 model.add(Dense(32, input_shape=(784,)))
 model.add(Activation('relu'))
 </code></pre>
 <hr/>
-<h2 id="shape">Ö¸¶¨ÊäÈëÊı¾İµÄshape</h2>
-<p>Ä£ĞÍĞèÒªÖªµÀÊäÈëÊı¾İµÄshape£¬Òò´Ë£¬<code>Sequential</code>µÄµÚÒ»²ãĞèÒª½ÓÊÜÒ»¸ö¹ØÓÚÊäÈëÊı¾İshapeµÄ²ÎÊı£¬ºóÃæµÄ¸÷¸ö²ãÔò¿ÉÒÔ×Ô¶¯µÄÍÆµ¼³öÖĞ¼äÊı¾İµÄshape£¬Òò´Ë²»ĞèÒªÎªÃ¿¸ö²ã¶¼Ö¸¶¨Õâ¸ö²ÎÊı¡£ÓĞ¼¸ÖÖ·½·¨À´ÎªµÚÒ»²ãÖ¸¶¨ÊäÈëÊı¾İµÄshape</p>
+<h2 id="shape">æŒ‡å®šè¾“å…¥æ•°æ®çš„shape</h2>
+<p>æ¨¡å‹éœ€è¦çŸ¥é“è¾“å…¥æ•°æ®çš„shapeï¼Œå› æ­¤ï¼Œ<code>Sequential</code>çš„ç¬¬ä¸€å±‚éœ€è¦æ¥å—ä¸€ä¸ªå…³äºè¾“å…¥æ•°æ®shapeçš„å‚æ•°ï¼Œåé¢çš„å„ä¸ªå±‚åˆ™å¯ä»¥è‡ªåŠ¨çš„æ¨å¯¼å‡ºä¸­é—´æ•°æ®çš„shapeï¼Œå› æ­¤ä¸éœ€è¦ä¸ºæ¯ä¸ªå±‚éƒ½æŒ‡å®šè¿™ä¸ªå‚æ•°ã€‚æœ‰å‡ ç§æ–¹æ³•æ¥ä¸ºç¬¬ä¸€å±‚æŒ‡å®šè¾“å…¥æ•°æ®çš„shape</p>
 <ul>
 <li>
-<p>´«µİÒ»¸ö<code>input_shape</code>µÄ¹Ø¼ü×Ö²ÎÊı¸øµÚÒ»²ã£¬<code>input_shape</code>ÊÇÒ»¸ötupleÀàĞÍµÄÊı¾İ£¬ÆäÖĞÒ²¿ÉÒÔÌîÈë<code>None</code>£¬Èç¹ûÌîÈë<code>None</code>Ôò±íÊ¾´ËÎ»ÖÃ¿ÉÄÜÊÇÈÎºÎÕıÕûÊı¡£Êı¾İµÄbatch´óĞ¡²»Ó¦°üº¬ÔÚÆäÖĞ¡£</p>
+<p>ä¼ é€’ä¸€ä¸ª<code>input_shape</code>çš„å…³é”®å­—å‚æ•°ç»™ç¬¬ä¸€å±‚ï¼Œ<code>input_shape</code>æ˜¯ä¸€ä¸ªtupleç±»å‹çš„æ•°æ®ï¼Œå…¶ä¸­ä¹Ÿå¯ä»¥å¡«å…¥<code>None</code>ï¼Œå¦‚æœå¡«å…¥<code>None</code>åˆ™è¡¨ç¤ºæ­¤ä½ç½®å¯èƒ½æ˜¯ä»»ä½•æ­£æ•´æ•°ã€‚æ•°æ®çš„batchå¤§å°ä¸åº”åŒ…å«åœ¨å…¶ä¸­ã€‚</p>
 </li>
 <li>
-<p>ÓĞĞ©2D²ã£¬Èç<code>Dense</code>£¬Ö§³ÖÍ¨¹ıÖ¸¶¨ÆäÊäÈëÎ¬¶È<code>input_dim</code>À´Òşº¬µÄÖ¸¶¨ÊäÈëÊı¾İshape¡£Ò»Ğ©3DµÄÊ±Óò²ãÖ§³ÖÍ¨¹ı²ÎÊı<code>input_dim</code>ºÍ<code>input_length</code>À´Ö¸¶¨ÊäÈëshape¡£</p>
+<p>æœ‰äº›2Då±‚ï¼Œå¦‚<code>Dense</code>ï¼Œæ”¯æŒé€šè¿‡æŒ‡å®šå…¶è¾“å…¥ç»´åº¦<code>input_dim</code>æ¥éšå«çš„æŒ‡å®šè¾“å…¥æ•°æ®shapeã€‚ä¸€äº›3Dçš„æ—¶åŸŸå±‚æ”¯æŒé€šè¿‡å‚æ•°<code>input_dim</code>å’Œ<code>input_length</code>æ¥æŒ‡å®šè¾“å…¥shapeã€‚</p>
 </li>
 <li>
-<p>Èç¹ûÄãĞèÒªÎªÊäÈëÖ¸¶¨Ò»¸ö¹Ì¶¨´óĞ¡µÄbatch_size£¨³£ÓÃÓÚstateful RNNÍøÂç£©£¬¿ÉÒÔ´«µİ<code>batch_size</code>²ÎÊıµ½Ò»¸ö²ãÖĞ£¬ÀıÈçÄãÏëÖ¸¶¨ÊäÈëÕÅÁ¿µÄbatch´óĞ¡ÊÇ32£¬Êı¾İshapeÊÇ£¨6£¬8£©£¬ÔòÄãĞèÒª´«µİ<code>batch_size=32</code>ºÍ<code>input_shape=(6,8)</code>¡£</p>
+<p>å¦‚æœä½ éœ€è¦ä¸ºè¾“å…¥æŒ‡å®šä¸€ä¸ªå›ºå®šå¤§å°çš„batch_sizeï¼ˆå¸¸ç”¨äºstateful RNNç½‘ç»œï¼‰ï¼Œå¯ä»¥ä¼ é€’<code>batch_size</code>å‚æ•°åˆ°ä¸€ä¸ªå±‚ä¸­ï¼Œä¾‹å¦‚ä½ æƒ³æŒ‡å®šè¾“å…¥å¼ é‡çš„batchå¤§å°æ˜¯32ï¼Œæ•°æ®shapeæ˜¯ï¼ˆ6ï¼Œ8ï¼‰ï¼Œåˆ™ä½ éœ€è¦ä¼ é€’<code>batch_size=32</code>å’Œ<code>input_shape=(6,8)</code>ã€‚</p>
 </li>
 </ul>
 <pre><code class="python">model = Sequential()
@@ -42,17 +42,17 @@ model.add(Dense(32, input_dim=784))
 model.add(Dense(32, input_shape=784))
 </code></pre>
 <hr/>
-<h2 id="_1">±àÒë</h2>
-<p>ÔÚÑµÁ·Ä£ĞÍÖ®Ç°£¬ÎÒÃÇĞèÒªÍ¨¹ı<code>compile</code>À´¶ÔÑ§Ï°¹ı³Ì½øĞĞÅäÖÃ¡£<code>compile</code>½ÓÊÕÈı¸ö²ÎÊı£º</p>
+<h2 id="_1">ç¼–è¯‘</h2>
+<p>åœ¨è®­ç»ƒæ¨¡å‹ä¹‹å‰ï¼Œæˆ‘ä»¬éœ€è¦é€šè¿‡<code>compile</code>æ¥å¯¹å­¦ä¹ è¿‡ç¨‹è¿›è¡Œé…ç½®ã€‚<code>compile</code>æ¥æ”¶ä¸‰ä¸ªå‚æ•°ï¼š</p>
 <ul>
 <li>
-<p>ÓÅ»¯Æ÷optimizer£º¸Ã²ÎÊı¿ÉÖ¸¶¨ÎªÒÑÔ¤¶¨ÒåµÄÓÅ»¯Æ÷Ãû£¬Èç<code>rmsprop</code>¡¢<code>adagrad</code>£¬»òÒ»¸ö<code>Optimizer</code>ÀàµÄ¶ÔÏó£¬ÏêÇé¼û<a href="../../other/optimizers/">optimizers</a></p>
+<p>ä¼˜åŒ–å™¨optimizerï¼šè¯¥å‚æ•°å¯æŒ‡å®šä¸ºå·²é¢„å®šä¹‰çš„ä¼˜åŒ–å™¨åï¼Œå¦‚<code>rmsprop</code>ã€<code>adagrad</code>ï¼Œæˆ–ä¸€ä¸ª<code>Optimizer</code>ç±»çš„å¯¹è±¡ï¼Œè¯¦æƒ…è§<a href="../../other/optimizers/">optimizers</a></p>
 </li>
 <li>
-<p>ËğÊ§º¯Êıloss£º¸Ã²ÎÊıÎªÄ£ĞÍÊÔÍ¼×îĞ¡»¯µÄÄ¿±êº¯Êı£¬Ëü¿ÉÎªÔ¤¶¨ÒåµÄËğÊ§º¯ÊıÃû£¬Èç<code>categorical_crossentropy</code>¡¢<code>mse</code>£¬Ò²¿ÉÒÔÎªÒ»¸öËğÊ§º¯Êı¡£ÏêÇé¼û<a href="../../other/objectives/">losses</a></p>
+<p>æŸå¤±å‡½æ•°lossï¼šè¯¥å‚æ•°ä¸ºæ¨¡å‹è¯•å›¾æœ€å°åŒ–çš„ç›®æ ‡å‡½æ•°ï¼Œå®ƒå¯ä¸ºé¢„å®šä¹‰çš„æŸå¤±å‡½æ•°åï¼Œå¦‚<code>categorical_crossentropy</code>ã€<code>mse</code>ï¼Œä¹Ÿå¯ä»¥ä¸ºä¸€ä¸ªæŸå¤±å‡½æ•°ã€‚è¯¦æƒ…è§<a href="../../other/objectives/">losses</a></p>
 </li>
 <li>
-<p>Ö¸±êÁĞ±ímetrics£º¶Ô·ÖÀàÎÊÌâ£¬ÎÒÃÇÒ»°ã½«¸ÃÁĞ±íÉèÖÃÎª<code>metrics=['accuracy']</code>¡£Ö¸±ê¿ÉÒÔÊÇÒ»¸öÔ¤¶¨ÒåÖ¸±êµÄÃû×Ö,Ò²¿ÉÒÔÊÇÒ»¸öÓÃ»§¶¨ÖÆµÄº¯Êı.Ö¸±êº¯ÊıÓ¦¸Ã·µ»Øµ¥¸öÕÅÁ¿,»òÒ»¸öÍê³É<code>metric_name - &gt; metric_value</code>Ó³ÉäµÄ×Öµä.Çë²Î¿¼<a href="../other/metrices.md">ĞÔÄÜÆÀ¹À</a></p>
+<p>æŒ‡æ ‡åˆ—è¡¨metricsï¼šå¯¹åˆ†ç±»é—®é¢˜ï¼Œæˆ‘ä»¬ä¸€èˆ¬å°†è¯¥åˆ—è¡¨è®¾ç½®ä¸º<code>metrics=['accuracy']</code>ã€‚æŒ‡æ ‡å¯ä»¥æ˜¯ä¸€ä¸ªé¢„å®šä¹‰æŒ‡æ ‡çš„åå­—,ä¹Ÿå¯ä»¥æ˜¯ä¸€ä¸ªç”¨æˆ·å®šåˆ¶çš„å‡½æ•°.æŒ‡æ ‡å‡½æ•°åº”è¯¥è¿”å›å•ä¸ªå¼ é‡,æˆ–ä¸€ä¸ªå®Œæˆ<code>metric_name - &gt; metric_value</code>æ˜ å°„çš„å­—å…¸.è¯·å‚è€ƒ<a href="../other/metrices.md">æ€§èƒ½è¯„ä¼°</a></p>
 </li>
 </ul>
 <pre><code class="python"># For a multi-class classification problem
@@ -80,8 +80,8 @@ model.compile(optimizer='rmsprop',
               metrics=['accuracy', mean_pred])
 </code></pre>
 <hr/>
-<h2 id="_2">ÑµÁ·</h2>
-<p>KerasÒÔNumpyÊı×é×÷ÎªÊäÈëÊı¾İºÍ±êÇ©µÄÊı¾İÀàĞÍ¡£ÑµÁ·Ä£ĞÍÒ»°ãÊ¹ÓÃ<code>fit</code>º¯Êı£¬¸Ãº¯ÊıµÄÏêÇé¼û<a href="../../models/sequential/">ÕâÀï</a>¡£ÏÂÃæÊÇÒ»Ğ©Àı×Ó¡£</p>
+<h2 id="_2">è®­ç»ƒ</h2>
+<p>Kerasä»¥Numpyæ•°ç»„ä½œä¸ºè¾“å…¥æ•°æ®å’Œæ ‡ç­¾çš„æ•°æ®ç±»å‹ã€‚è®­ç»ƒæ¨¡å‹ä¸€èˆ¬ä½¿ç”¨<code>fit</code>å‡½æ•°ï¼Œè¯¥å‡½æ•°çš„è¯¦æƒ…è§<a href="../../models/sequential/">è¿™é‡Œ</a>ã€‚ä¸‹é¢æ˜¯ä¸€äº›ä¾‹å­ã€‚</p>
 <pre><code class="python"># For a single-input model with 2 classes (binary classification):
 
 model = Sequential()
@@ -120,18 +120,18 @@ one_hot_labels = keras.utils.to_categorical(labels, num_classes=10)
 model.fit(data, one_hot_labels, epochs=10, batch_size=32)
 </code></pre>
 <hr/>
-<h2 id="_3">Àı×Ó</h2>
-<p>ÕâÀïÊÇÒ»Ğ©°ïÖúÄã¿ªÊ¼µÄÀı×Ó</p>
-<p>ÔÚKeras´úÂë°üµÄexamplesÎÄ¼ş¼ĞÖĞ£¬Äã½«ÕÒµ½Ê¹ÓÃÕæÊµÊı¾İµÄÊ¾ÀıÄ£ĞÍ£º</p>
+<h2 id="_3">ä¾‹å­</h2>
+<p>è¿™é‡Œæ˜¯ä¸€äº›å¸®åŠ©ä½ å¼€å§‹çš„ä¾‹å­</p>
+<p>åœ¨Kerasä»£ç åŒ…çš„examplesæ–‡ä»¶å¤¹ä¸­ï¼Œä½ å°†æ‰¾åˆ°ä½¿ç”¨çœŸå®æ•°æ®çš„ç¤ºä¾‹æ¨¡å‹ï¼š</p>
 <ul>
-<li>CIFAR10 Ğ¡Í¼Æ¬·ÖÀà£ºÊ¹ÓÃCNNºÍÊµÊ±Êı¾İÌáÉı</li>
-<li>IMDB µçÓ°ÆÀÂÛ¹Ûµã·ÖÀà£ºÊ¹ÓÃLSTM´¦Àí³ÉĞòÁĞµÄ´ÊÓï</li>
-<li>Reuters£¨Â·Í¸Éç£©ĞÂÎÅÖ÷Ìâ·ÖÀà£ºÊ¹ÓÃ¶à²ã¸ĞÖªÆ÷£¨MLP£©</li>
-<li>MNISTÊÖĞ´Êı×ÖÊ¶±ğ£ºÊ¹ÓÃ¶à²ã¸ĞÖªÆ÷ºÍCNN</li>
-<li>×Ö·û¼¶ÎÄ±¾Éú³É£ºÊ¹ÓÃLSTM
+<li>CIFAR10 å°å›¾ç‰‡åˆ†ç±»ï¼šä½¿ç”¨CNNå’Œå®æ—¶æ•°æ®æå‡</li>
+<li>IMDB ç”µå½±è¯„è®ºè§‚ç‚¹åˆ†ç±»ï¼šä½¿ç”¨LSTMå¤„ç†æˆåºåˆ—çš„è¯è¯­</li>
+<li>Reutersï¼ˆè·¯é€ç¤¾ï¼‰æ–°é—»ä¸»é¢˜åˆ†ç±»ï¼šä½¿ç”¨å¤šå±‚æ„ŸçŸ¥å™¨ï¼ˆMLPï¼‰</li>
+<li>MNISTæ‰‹å†™æ•°å­—è¯†åˆ«ï¼šä½¿ç”¨å¤šå±‚æ„ŸçŸ¥å™¨å’ŒCNN</li>
+<li>å­—ç¬¦çº§æ–‡æœ¬ç”Ÿæˆï¼šä½¿ç”¨LSTM
 ...</li>
 </ul>
-<h3 id="softmax">»ùÓÚ¶à²ã¸ĞÖªÆ÷µÄsoftmax¶à·ÖÀà£º</h3>
+<h3 id="softmax">åŸºäºå¤šå±‚æ„ŸçŸ¥å™¨çš„softmaxå¤šåˆ†ç±»ï¼š</h3>
 <pre><code class="python">from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation
 from keras.optimizers import SGD
@@ -163,7 +163,7 @@ model.fit(x_train, y_train,
           batch_size=128)
 score = model.evaluate(x_test, y_test, batch_size=128)
 </code></pre>
-<h3 id="mlp">MLPµÄ¶ş·ÖÀà£º</h3>
+<h3 id="mlp">MLPçš„äºŒåˆ†ç±»ï¼š</h3>
 <pre><code class="python">import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
@@ -189,7 +189,7 @@ model.fit(x_train, y_train,
           batch_size=128)
 score = model.evaluate(x_test, y_test, batch_size=128)
 </code></pre>
-<h3 id="vgg">ÀàËÆVGGµÄ¾í»ıÉñ¾­ÍøÂç£º</h3>
+<h3 id="vgg">ç±»ä¼¼VGGçš„å·ç§¯ç¥ç»ç½‘ç»œï¼š</h3>
 <pre><code class="python">import numpy as np
 import keras
 from keras.models import Sequential
@@ -227,7 +227,7 @@ model.compile(loss='categorical_crossentropy', optimizer=sgd)
 model.fit(x_train, y_train, batch_size=32, epochs=10)
 score = model.evaluate(x_test, y_test, batch_size=32)
 </code></pre>
-<h3 id="lstm">Ê¹ÓÃLSTMµÄĞòÁĞ·ÖÀà</h3>
+<h3 id="lstm">ä½¿ç”¨LSTMçš„åºåˆ—åˆ†ç±»</h3>
 <pre><code class="python">from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.layers import Embedding
@@ -246,7 +246,7 @@ model.compile(loss='binary_crossentropy',
 model.fit(x_train, y_train, batch_size=16, epochs=10)
 score = model.evaluate(x_test, y_test, batch_size=16)
 </code></pre>
-<h3 id="1d">Ê¹ÓÃ1D¾í»ıµÄĞòÁĞ·ÖÀà</h3>
+<h3 id="1d">ä½¿ç”¨1Då·ç§¯çš„åºåˆ—åˆ†ç±»</h3>
 <pre><code class="python">from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.layers import Embedding
@@ -269,9 +269,9 @@ model.compile(loss='binary_crossentropy',
 model.fit(x_train, y_train, batch_size=16, epochs=10)
 score = model.evaluate(x_test, y_test, batch_size=16)
 </code></pre>
-<h3 id="lstm_1">ÓÃÓÚĞòÁĞ·ÖÀàµÄÕ»Ê½LSTM</h3>
-<p>ÔÚ¸ÃÄ£ĞÍÖĞ£¬ÎÒÃÇ½«Èı¸öLSTM¶ÑµşÔÚÒ»Æğ£¬ÊÇ¸ÃÄ£ĞÍÄÜ¹»Ñ§Ï°¸ü¸ß²ã´ÎµÄÊ±ÓòÌØÕ÷±íÊ¾¡£</p>
-<p>¿ªÊ¼µÄÁ½²ãLSTM·µ»ØÆäÈ«²¿Êä³öĞòÁĞ£¬¶øµÚÈı²ãLSTMÖ»·µ»ØÆäÊä³öĞòÁĞµÄ×îºóÒ»²½½á¹û£¬´Ó¶øÆäÊ±ÓòÎ¬¶È½µµÍ£¨¼´½«ÊäÈëĞòÁĞ×ª»»Îªµ¥¸öÏòÁ¿£©</p>
+<h3 id="lstm_1">ç”¨äºåºåˆ—åˆ†ç±»çš„æ ˆå¼LSTM</h3>
+<p>åœ¨è¯¥æ¨¡å‹ä¸­ï¼Œæˆ‘ä»¬å°†ä¸‰ä¸ªLSTMå †å åœ¨ä¸€èµ·ï¼Œæ˜¯è¯¥æ¨¡å‹èƒ½å¤Ÿå­¦ä¹ æ›´é«˜å±‚æ¬¡çš„æ—¶åŸŸç‰¹å¾è¡¨ç¤ºã€‚</p>
+<p>å¼€å§‹çš„ä¸¤å±‚LSTMè¿”å›å…¶å…¨éƒ¨è¾“å‡ºåºåˆ—ï¼Œè€Œç¬¬ä¸‰å±‚LSTMåªè¿”å›å…¶è¾“å‡ºåºåˆ—çš„æœ€åä¸€æ­¥ç»“æœï¼Œä»è€Œå…¶æ—¶åŸŸç»´åº¦é™ä½ï¼ˆå³å°†è¾“å…¥åºåˆ—è½¬æ¢ä¸ºå•ä¸ªå‘é‡ï¼‰</p>
 <p><img alt="regular_stacked_lstm" src="images/db8ae582b5660e4a5a7d27c7850a9619.png"/></p>
 <pre><code class="python">from keras.models import Sequential
 from keras.layers import LSTM, Dense
@@ -305,9 +305,9 @@ model.fit(x_train, y_train,
           batch_size=64, epochs=5,
           validation_data=(x_val, y_val))
 </code></pre>
-<h3 id="stateful-lstm">²ÉÓÃstateful LSTMµÄÏàÍ¬Ä£ĞÍ</h3>
-<p>stateful LSTMµÄÌØµãÊÇ£¬ÔÚ´¦Àí¹ıÒ»¸öbatchµÄÑµÁ·Êı¾İºó£¬ÆäÄÚ²¿×´Ì¬£¨¼ÇÒä£©»á±»×÷ÎªÏÂÒ»¸öbatchµÄÑµÁ·Êı¾İµÄ³õÊ¼×´Ì¬¡£×´Ì¬LSTMÊ¹µÃÎÒÃÇ¿ÉÒÔÔÚºÏÀíµÄ¼ÆËã¸´ÔÓ¶ÈÄÚ´¦Àí½Ï³¤ĞòÁĞ</p>
-<p>ÇëFAQÖĞ¹ØÓÚ<a href="../../for_beginners/FAQ/">stateful LSTM</a>µÄ²¿·Ö»ñÈ¡¸ü¶àĞÅÏ¢</p>
+<h3 id="stateful-lstm">é‡‡ç”¨stateful LSTMçš„ç›¸åŒæ¨¡å‹</h3>
+<p>stateful LSTMçš„ç‰¹ç‚¹æ˜¯ï¼Œåœ¨å¤„ç†è¿‡ä¸€ä¸ªbatchçš„è®­ç»ƒæ•°æ®åï¼Œå…¶å†…éƒ¨çŠ¶æ€ï¼ˆè®°å¿†ï¼‰ä¼šè¢«ä½œä¸ºä¸‹ä¸€ä¸ªbatchçš„è®­ç»ƒæ•°æ®çš„åˆå§‹çŠ¶æ€ã€‚çŠ¶æ€LSTMä½¿å¾—æˆ‘ä»¬å¯ä»¥åœ¨åˆç†çš„è®¡ç®—å¤æ‚åº¦å†…å¤„ç†è¾ƒé•¿åºåˆ—</p>
+<p>è¯·FAQä¸­å…³äº<a href="../../for_beginners/FAQ/">stateful LSTM</a>çš„éƒ¨åˆ†è·å–æ›´å¤šä¿¡æ¯</p>
 <pre><code class="python">from keras.models import Sequential
 from keras.layers import LSTM, Dense
 import numpy as np

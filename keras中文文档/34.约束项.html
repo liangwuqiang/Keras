@@ -1,36 +1,36 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="_1">Ô¼ÊøÏî</h1>
-<p>À´×Ô<code>constraints</code>Ä£¿éµÄº¯ÊıÔÚÓÅ»¯¹ı³ÌÖĞÎªÍøÂçµÄ²ÎÊıÊ©¼ÓÔ¼Êø</p>
-<p>³Í·£Ïî»ùÓÚ²ã½øĞĞ³Í·££¬Ä¿Ç°³Í·£ÏîµÄ½Ó¿ÚÓë²ãÓĞ¹Ø£¬µ«<code>Dense, Conv1D, Conv2D, Conv3D</code>¾ßÓĞ¹²Í¬µÄ½Ó¿Ú¡£</p>
-<p>ÕâĞ©²ãÍ¨¹ıÒ»ÏÂ¹Ø¼ü×ÖÊ©¼ÓÔ¼ÊøÏî</p>
+<h1 id="_1">çº¦æŸé¡¹</h1>
+<p>æ¥è‡ª<code>constraints</code>æ¨¡å—çš„å‡½æ•°åœ¨ä¼˜åŒ–è¿‡ç¨‹ä¸­ä¸ºç½‘ç»œçš„å‚æ•°æ–½åŠ çº¦æŸ</p>
+<p>æƒ©ç½šé¡¹åŸºäºå±‚è¿›è¡Œæƒ©ç½šï¼Œç›®å‰æƒ©ç½šé¡¹çš„æ¥å£ä¸å±‚æœ‰å…³ï¼Œä½†<code>Dense, Conv1D, Conv2D, Conv3D</code>å…·æœ‰å…±åŒçš„æ¥å£ã€‚</p>
+<p>è¿™äº›å±‚é€šè¿‡ä¸€ä¸‹å…³é”®å­—æ–½åŠ çº¦æŸé¡¹</p>
 <ul>
 <li>
-<p><code>kernel_constraint</code>£º¶ÔÖ÷È¨ÖØ¾ØÕó½øĞĞÔ¼Êø</p>
+<p><code>kernel_constraint</code>ï¼šå¯¹ä¸»æƒé‡çŸ©é˜µè¿›è¡Œçº¦æŸ</p>
 </li>
 <li>
-<p><code>bias_constraint</code>£º¶ÔÆ«ÖÃÏòÁ¿½øĞĞÔ¼Êø</p>
+<p><code>bias_constraint</code>ï¼šå¯¹åç½®å‘é‡è¿›è¡Œçº¦æŸ</p>
 </li>
 </ul>
 <pre><code class="python">from keras.constraints import maxnorm
 model.add(Dense(64, kernel_constraint=max_norm(2.)))
 </code></pre>
-<h2 id="_2">Ô¤¶¨ÒåÔ¼ÊøÏî</h2>
+<h2 id="_2">é¢„å®šä¹‰çº¦æŸé¡¹</h2>
 <ul>
 <li>
-<p>max_norm(m=2)£º×î´óÄ£Ô¼Êø</p>
+<p>max_norm(m=2)ï¼šæœ€å¤§æ¨¡çº¦æŸ</p>
 </li>
 <li>
-<p>non_neg()£º·Ç¸ºĞÔÔ¼Êø</p>
+<p>non_neg()ï¼šéè´Ÿæ€§çº¦æŸ</p>
 </li>
 <li>
-<p>unit_norm()£ºµ¥Î»·¶ÊıÔ¼Êø, Ç¿ÖÆ¾ØÕóÑØ×îºóÒ»¸öÖáÓµÓĞµ¥Î»·¶Êı</p>
+<p>unit_norm()ï¼šå•ä½èŒƒæ•°çº¦æŸ, å¼ºåˆ¶çŸ©é˜µæ²¿æœ€åä¸€ä¸ªè½´æ‹¥æœ‰å•ä½èŒƒæ•°</p>
 </li>
 <li>
-<p>min_max_norm(min_value=0.0, max_value=1.0, rate=1.0, axis=0): ×îĞ¡/×î´ó·¶ÊıÔ¼Êø</p>
+<p>min_max_norm(min_value=0.0, max_value=1.0, rate=1.0, axis=0): æœ€å°/æœ€å¤§èŒƒæ•°çº¦æŸ</p>
 </li>
 </ul>
 </div>

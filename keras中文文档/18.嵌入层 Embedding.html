@@ -1,43 +1,43 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="embedding">Ç¶Èë²ã Embedding</h1>
-<h2 id="embedding_1">Embedding²ã</h2>
+<h1 id="embedding">åµŒå…¥å±‚ Embedding</h1>
+<h2 id="embedding_1">Embeddingå±‚</h2>
 <pre><code class="python">keras.layers.embeddings.Embedding(input_dim, output_dim, embeddings_initializer='uniform', embeddings_regularizer=None, activity_regularizer=None, embeddings_constraint=None, mask_zero=False, input_length=None)
 </code></pre>
-<p>Ç¶Èë²ã½«ÕıÕûÊı£¨ÏÂ±ê£©×ª»»Îª¾ßÓĞ¹Ì¶¨´óĞ¡µÄÏòÁ¿£¬Èç[[4],[20]]-&gt;[[0.25,0.1],[0.6,-0.2]]</p>
-<p>Embedding²ãÖ»ÄÜ×÷ÎªÄ£ĞÍµÄµÚÒ»²ã</p>
-<h3 id="_1">²ÎÊı</h3>
+<p>åµŒå…¥å±‚å°†æ­£æ•´æ•°ï¼ˆä¸‹æ ‡ï¼‰è½¬æ¢ä¸ºå…·æœ‰å›ºå®šå¤§å°çš„å‘é‡ï¼Œå¦‚[[4],[20]]-&gt;[[0.25,0.1],[0.6,-0.2]]</p>
+<p>Embeddingå±‚åªèƒ½ä½œä¸ºæ¨¡å‹çš„ç¬¬ä¸€å±‚</p>
+<h3 id="_1">å‚æ•°</h3>
 <ul>
 <li>
-<p>input_dim£º´ó»òµÈÓÚ0µÄÕûÊı£¬×Öµä³¤¶È£¬¼´ÊäÈëÊı¾İ×î´óÏÂ±ê+1</p>
+<p>input_dimï¼šå¤§æˆ–ç­‰äº0çš„æ•´æ•°ï¼Œå­—å…¸é•¿åº¦ï¼Œå³è¾“å…¥æ•°æ®æœ€å¤§ä¸‹æ ‡+1</p>
 </li>
 <li>
-<p>output_dim£º´óÓÚ0µÄÕûÊı£¬´ú±íÈ«Á¬½ÓÇ¶ÈëµÄÎ¬¶È</p>
+<p>output_dimï¼šå¤§äº0çš„æ•´æ•°ï¼Œä»£è¡¨å…¨è¿æ¥åµŒå…¥çš„ç»´åº¦</p>
 </li>
 <li>
-<p>embeddings_initializer: Ç¶Èë¾ØÕóµÄ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>embeddings_initializer: åµŒå…¥çŸ©é˜µçš„åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>embeddings_regularizer: Ç¶Èë¾ØÕóµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>embeddings_regularizer: åµŒå…¥çŸ©é˜µçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>embeddings_constraint: Ç¶Èë¾ØÕóµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>embeddings_constraint: åµŒå…¥çŸ©é˜µçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>mask_zero£º²¼¶ûÖµ£¬È·¶¨ÊÇ·ñ½«ÊäÈëÖĞµÄ¡®0¡¯¿´×÷ÊÇÓ¦¸Ã±»ºöÂÔµÄ¡®Ìî³ä¡¯£¨padding£©Öµ£¬¸Ã²ÎÊıÔÚÊ¹ÓÃ<a href="../recurrent_layer">µİ¹é²ã</a>´¦Àí±ä³¤ÊäÈëÊ±ÓĞÓÃ¡£ÉèÖÃÎª<code>True</code>µÄ»°£¬Ä£ĞÍÖĞºóĞøµÄ²ã±ØĞë¶¼Ö§³Ömasking£¬·ñÔò»áÅ×³öÒì³£¡£Èç¹û¸ÃÖµÎªTrue£¬ÔòÏÂ±ê0ÔÚ×ÖµäÖĞ²»¿ÉÓÃ£¬input_dimÓ¦ÉèÖÃÎª|vocabulary| + 1¡£ </p>
+<p>mask_zeroï¼šå¸ƒå°”å€¼ï¼Œç¡®å®šæ˜¯å¦å°†è¾“å…¥ä¸­çš„â€˜0â€™çœ‹ä½œæ˜¯åº”è¯¥è¢«å¿½ç•¥çš„â€˜å¡«å……â€™ï¼ˆpaddingï¼‰å€¼ï¼Œè¯¥å‚æ•°åœ¨ä½¿ç”¨<a href="../recurrent_layer">é€’å½’å±‚</a>å¤„ç†å˜é•¿è¾“å…¥æ—¶æœ‰ç”¨ã€‚è®¾ç½®ä¸º<code>True</code>çš„è¯ï¼Œæ¨¡å‹ä¸­åç»­çš„å±‚å¿…é¡»éƒ½æ”¯æŒmaskingï¼Œå¦åˆ™ä¼šæŠ›å‡ºå¼‚å¸¸ã€‚å¦‚æœè¯¥å€¼ä¸ºTrueï¼Œåˆ™ä¸‹æ ‡0åœ¨å­—å…¸ä¸­ä¸å¯ç”¨ï¼Œinput_dimåº”è®¾ç½®ä¸º|vocabulary| + 1ã€‚ </p>
 </li>
 <li>
-<p>input_length£ºµ±ÊäÈëĞòÁĞµÄ³¤¶È¹Ì¶¨Ê±£¬¸ÃÖµÎªÆä³¤¶È¡£Èç¹ûÒªÔÚ¸Ã²ãºó½Ó<code>Flatten</code>²ã£¬È»ºó½Ó<code>Dense</code>²ã£¬Ôò±ØĞëÖ¸¶¨¸Ã²ÎÊı£¬·ñÔò<code>Dense</code>²ãµÄÊä³öÎ¬¶ÈÎŞ·¨×Ô¶¯ÍÆ¶Ï¡£</p>
+<p>input_lengthï¼šå½“è¾“å…¥åºåˆ—çš„é•¿åº¦å›ºå®šæ—¶ï¼Œè¯¥å€¼ä¸ºå…¶é•¿åº¦ã€‚å¦‚æœè¦åœ¨è¯¥å±‚åæ¥<code>Flatten</code>å±‚ï¼Œç„¶åæ¥<code>Dense</code>å±‚ï¼Œåˆ™å¿…é¡»æŒ‡å®šè¯¥å‚æ•°ï¼Œå¦åˆ™<code>Dense</code>å±‚çš„è¾“å‡ºç»´åº¦æ— æ³•è‡ªåŠ¨æ¨æ–­ã€‚</p>
 </li>
 </ul>
-<h3 id="shape">ÊäÈëshape</h3>
-<p>ĞÎÈç£¨samples£¬sequence_length£©µÄ2DÕÅÁ¿</p>
-<h3 id="shape_1">Êä³öshape</h3>
-<p>ĞÎÈç(samples, sequence_length, output_dim)µÄ3DÕÅÁ¿</p>
-<h3 id="_2">Àı×Ó</h3>
+<h3 id="shape">è¾“å…¥shape</h3>
+<p>å½¢å¦‚ï¼ˆsamplesï¼Œsequence_lengthï¼‰çš„2Då¼ é‡</p>
+<h3 id="shape_1">è¾“å‡ºshape</h3>
+<p>å½¢å¦‚(samples, sequence_length, output_dim)çš„3Då¼ é‡</p>
+<h3 id="_2">ä¾‹å­</h3>
 <pre><code class="python">model = Sequential()
 model.add(Embedding(1000, 64, input_length=10))
 # the model will take as input an integer matrix of size (batch, input_length).
@@ -50,7 +50,7 @@ model.compile('rmsprop', 'mse')
 output_array = model.predict(input_array)
 assert output_array.shape == (32, 10, 64)
 </code></pre>
-<h3 id="_3">²Î¿¼ÎÄÏ×</h3>
+<h3 id="_3">å‚è€ƒæ–‡çŒ®</h3>
 <ul>
 <li><a href="http://arxiv.org/abs/1512.05287">A Theoretically Grounded Application of Dropout in Recurrent Neural Networks</a></li>
 </ul>

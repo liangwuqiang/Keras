@@ -1,16 +1,16 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="_1">³£ÓÃ²ã</h1>
-<p>³£ÓÃ²ã¶ÔÓ¦ÓÚcoreÄ£¿é£¬coreÄÚ²¿¶¨ÒåÁËÒ»ÏµÁĞ³£ÓÃµÄÍøÂç²ã£¬°üÀ¨È«Á¬½Ó¡¢¼¤»î²ãµÈ</p>
-<h2 id="dense">Dense²ã</h2>
+<h1 id="_1">å¸¸ç”¨å±‚</h1>
+<p>å¸¸ç”¨å±‚å¯¹åº”äºcoreæ¨¡å—ï¼Œcoreå†…éƒ¨å®šä¹‰äº†ä¸€ç³»åˆ—å¸¸ç”¨çš„ç½‘ç»œå±‚ï¼ŒåŒ…æ‹¬å…¨è¿æ¥ã€æ¿€æ´»å±‚ç­‰</p>
+<h2 id="dense">Denseå±‚</h2>
 <pre><code class="python">keras.layers.core.Dense(units, activation=None, use_bias=True, kernel_initializer='glorot_uniform', bias_initializer='zeros', kernel_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, bias_constraint=None)
 </code></pre>
-<p>Dense¾ÍÊÇ³£ÓÃµÄÈ«Á¬½Ó²ã£¬ËùÊµÏÖµÄÔËËãÊÇ<code>output = activation(dot(input, kernel)+bias)</code>¡£ÆäÖĞ<code>activation</code>ÊÇÖğÔªËØ¼ÆËãµÄ¼¤»îº¯Êı£¬<code>kernel</code>ÊÇ±¾²ãµÄÈ¨Öµ¾ØÕó£¬<code>bias</code>ÎªÆ«ÖÃÏòÁ¿£¬Ö»ÓĞµ±<code>use_bias=True</code>²Å»áÌí¼Ó¡£</p>
-<p>Èç¹û±¾²ãµÄÊäÈëÊı¾İµÄÎ¬¶È´óÓÚ2£¬Ôò»áÏÈ±»Ñ¹ÎªÓë<code>kernel</code>ÏàÆ¥ÅäµÄ´óĞ¡¡£</p>
-<p>ÕâÀïÊÇÒ»¸öÊ¹ÓÃÊ¾Àı£º</p>
+<p>Denseå°±æ˜¯å¸¸ç”¨çš„å…¨è¿æ¥å±‚ï¼Œæ‰€å®ç°çš„è¿ç®—æ˜¯<code>output = activation(dot(input, kernel)+bias)</code>ã€‚å…¶ä¸­<code>activation</code>æ˜¯é€å…ƒç´ è®¡ç®—çš„æ¿€æ´»å‡½æ•°ï¼Œ<code>kernel</code>æ˜¯æœ¬å±‚çš„æƒå€¼çŸ©é˜µï¼Œ<code>bias</code>ä¸ºåç½®å‘é‡ï¼Œåªæœ‰å½“<code>use_bias=True</code>æ‰ä¼šæ·»åŠ ã€‚</p>
+<p>å¦‚æœæœ¬å±‚çš„è¾“å…¥æ•°æ®çš„ç»´åº¦å¤§äº2ï¼Œåˆ™ä¼šå…ˆè¢«å‹ä¸ºä¸<code>kernel</code>ç›¸åŒ¹é…çš„å¤§å°ã€‚</p>
+<p>è¿™é‡Œæ˜¯ä¸€ä¸ªä½¿ç”¨ç¤ºä¾‹ï¼š</p>
 <pre><code class="python"># as first layer in a sequential model:
 # as first layer in a sequential model:
 model = Sequential()
@@ -22,46 +22,46 @@ model.add(Dense(32, input_shape=(16,)))
 # the size of the input anymore:
 model.add(Dense(32))
 </code></pre>
-<h3 id="_2">²ÎÊı£º</h3>
+<h3 id="_2">å‚æ•°ï¼š</h3>
 <ul>
 <li>
-<p>units£º´óÓÚ0µÄÕûÊı£¬´ú±í¸Ã²ãµÄÊä³öÎ¬¶È¡£</p>
+<p>unitsï¼šå¤§äº0çš„æ•´æ•°ï¼Œä»£è¡¨è¯¥å±‚çš„è¾“å‡ºç»´åº¦ã€‚</p>
 </li>
 <li>
-<p>activation£º¼¤»îº¯Êı£¬ÎªÔ¤¶¨ÒåµÄ¼¤»îº¯ÊıÃû£¨²Î¿¼<a href="../../other/activations">¼¤»îº¯Êı</a>£©£¬»òÖğÔªËØ£¨element-wise£©µÄTheanoº¯Êı¡£Èç¹û²»Ö¸¶¨¸Ã²ÎÊı£¬½«²»»áÊ¹ÓÃÈÎºÎ¼¤»îº¯Êı£¨¼´Ê¹ÓÃÏßĞÔ¼¤»îº¯Êı£ºa(x)=x£©</p>
+<p>activationï¼šæ¿€æ´»å‡½æ•°ï¼Œä¸ºé¢„å®šä¹‰çš„æ¿€æ´»å‡½æ•°åï¼ˆå‚è€ƒ<a href="../../other/activations">æ¿€æ´»å‡½æ•°</a>ï¼‰ï¼Œæˆ–é€å…ƒç´ ï¼ˆelement-wiseï¼‰çš„Theanoå‡½æ•°ã€‚å¦‚æœä¸æŒ‡å®šè¯¥å‚æ•°ï¼Œå°†ä¸ä¼šä½¿ç”¨ä»»ä½•æ¿€æ´»å‡½æ•°ï¼ˆå³ä½¿ç”¨çº¿æ€§æ¿€æ´»å‡½æ•°ï¼ša(x)=xï¼‰</p>
 </li>
 <li>
-<p>use_bias: ²¼¶ûÖµ£¬ÊÇ·ñÊ¹ÓÃÆ«ÖÃÏî</p>
+<p>use_bias: å¸ƒå°”å€¼ï¼Œæ˜¯å¦ä½¿ç”¨åç½®é¡¹</p>
 </li>
 <li>
-<p>kernel_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>kernel_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>bias_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>bias_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>kernel_regularizer£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>kernel_regularizerï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_regularizer£ºÊ©¼ÓÔÚÆ«ÖÃÏòÁ¿ÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>bias_regularizerï¼šæ–½åŠ åœ¨åç½®å‘é‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>activity_regularizer£ºÊ©¼ÓÔÚÊä³öÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>activity_regularizerï¼šæ–½åŠ åœ¨è¾“å‡ºä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>kernel_constraints£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>kernel_constraintsï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_constraints£ºÊ©¼ÓÔÚÆ«ÖÃÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>bias_constraintsï¼šæ–½åŠ åœ¨åç½®ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 </ul>
-<h3 id="_3">ÊäÈë</h3>
-<p>ĞÎÈç(batch_size, ..., input_dim)µÄnDÕÅÁ¿£¬×î³£¼ûµÄÇé¿öÎª(batch_size, input_dim)µÄ2DÕÅÁ¿</p>
-<h3 id="_4">Êä³ö</h3>
-<p>ĞÎÈç(batch_size, ..., units)µÄnDÕÅÁ¿£¬×î³£¼ûµÄÇé¿öÎª(batch_size, units)µÄ2DÕÅÁ¿</p>
+<h3 id="_3">è¾“å…¥</h3>
+<p>å½¢å¦‚(batch_size, ..., input_dim)çš„nDå¼ é‡ï¼Œæœ€å¸¸è§çš„æƒ…å†µä¸º(batch_size, input_dim)çš„2Då¼ é‡</p>
+<h3 id="_4">è¾“å‡º</h3>
+<p>å½¢å¦‚(batch_size, ..., units)çš„nDå¼ é‡ï¼Œæœ€å¸¸è§çš„æƒ…å†µä¸º(batch_size, units)çš„2Då¼ é‡</p>
 <hr/>
 <p><a name="activation">
 <font color="#404040"></font></a></p>
-<h2 id="activation">Activation²ã</h2>
+<h2 id="activation">Activationå±‚</h2>
 <p></p></div>
     </body></html>

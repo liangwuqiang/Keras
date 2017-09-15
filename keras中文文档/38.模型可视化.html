@@ -1,25 +1,25 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="_1">Ä£ĞÍ¿ÉÊÓ»¯</h1>
-<p><code>keras.utils.vis_utils</code>Ä£¿éÌá¹©ÁË»­³öKerasÄ£ĞÍµÄº¯Êı£¨ÀûÓÃgraphviz£©</p>
-<p>¸Ãº¯Êı½«»­³öÄ£ĞÍ½á¹¹Í¼£¬²¢±£´æ³ÉÍ¼Æ¬£º</p>
+<h1 id="_1">æ¨¡å‹å¯è§†åŒ–</h1>
+<p><code>keras.utils.vis_utils</code>æ¨¡å—æä¾›äº†ç”»å‡ºKerasæ¨¡å‹çš„å‡½æ•°ï¼ˆåˆ©ç”¨graphvizï¼‰</p>
+<p>è¯¥å‡½æ•°å°†ç”»å‡ºæ¨¡å‹ç»“æ„å›¾ï¼Œå¹¶ä¿å­˜æˆå›¾ç‰‡ï¼š</p>
 <pre><code class="python">from keras.utils import plot_model
 plot_model(model, to_file='model.png')
 </code></pre>
-<p><code>plot_model</code>½ÓÊÕÁ½¸ö¿ÉÑ¡²ÎÊı£º</p>
+<p><code>plot_model</code>æ¥æ”¶ä¸¤ä¸ªå¯é€‰å‚æ•°ï¼š</p>
 <ul>
-<li><code>show_shapes</code>£ºÖ¸¶¨ÊÇ·ñÏÔÊ¾Êä³öÊı¾İµÄĞÎ×´£¬Ä¬ÈÏÎª<code>False</code></li>
-<li><code>show_layer_names</code>:Ö¸¶¨ÊÇ·ñÏÔÊ¾²ãÃû³Æ,Ä¬ÈÏÎª<code>True</code></li>
+<li><code>show_shapes</code>ï¼šæŒ‡å®šæ˜¯å¦æ˜¾ç¤ºè¾“å‡ºæ•°æ®çš„å½¢çŠ¶ï¼Œé»˜è®¤ä¸º<code>False</code></li>
+<li><code>show_layer_names</code>:æŒ‡å®šæ˜¯å¦æ˜¾ç¤ºå±‚åç§°,é»˜è®¤ä¸º<code>True</code></li>
 </ul>
-<p>ÎÒÃÇÒ²¿ÉÒÔÖ±½Ó»ñÈ¡Ò»¸ö<code>pydot.Graph</code>¶ÔÏó£¬È»ºó°´ÕÕ×Ô¼ºµÄĞèÒªÅäÖÃËü£¬ÀıÈç£¬Èç¹ûÒªÔÚipythonÖĞÕ¹Ê¾Í¼Æ¬</p>
+<p>æˆ‘ä»¬ä¹Ÿå¯ä»¥ç›´æ¥è·å–ä¸€ä¸ª<code>pydot.Graph</code>å¯¹è±¡ï¼Œç„¶åæŒ‰ç…§è‡ªå·±çš„éœ€è¦é…ç½®å®ƒï¼Œä¾‹å¦‚ï¼Œå¦‚æœè¦åœ¨ipythonä¸­å±•ç¤ºå›¾ç‰‡</p>
 <pre><code class="python">from IPython.display import SVG
 from keras.utils.vis_utils import model_to_dot
 
 SVG(model_to_dot(model).create(prog='dot', format='svg'))
 </code></pre>
-<p>¡¾Tips¡¿ÒÀÀµ pydot-ng ºÍ graphviz£¬Èô³öÏÖ´íÎó£¬ÓÃÃüÁîĞĞÊäÈë<code>pip install pydot-ng &amp; brew install graphviz</code></p>
+<p>ã€Tipsã€‘ä¾èµ– pydot-ng å’Œ graphvizï¼Œè‹¥å‡ºç°é”™è¯¯ï¼Œç”¨å‘½ä»¤è¡Œè¾“å…¥<code>pip install pydot-ng &amp; brew install graphviz</code></p>
 </div>
     </body></html>

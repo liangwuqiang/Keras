@@ -1,10 +1,10 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="_1">Í¼Æ¬Ô¤´¦Àí</h1>
-<h2 id="imagedatagenerator">Í¼Æ¬Éú³ÉÆ÷ImageDataGenerator</h2>
+<h1 id="_1">å›¾ç‰‡é¢„å¤„ç†</h1>
+<h2 id="imagedatagenerator">å›¾ç‰‡ç”Ÿæˆå™¨ImageDataGenerator</h2>
 <pre><code class="python">keras.preprocessing.image.ImageDataGenerator(featurewise_center=False,
     samplewise_center=False,
     featurewise_std_normalization=False,
@@ -25,139 +25,139 @@
     preprocessing_function=None,
     data_format=K.image_data_format())
 </code></pre>
-<p>ÓÃÒÔÉú³ÉÒ»¸öbatchµÄÍ¼ÏñÊı¾İ£¬Ö§³ÖÊµÊ±Êı¾İÌáÉı¡£ÑµÁ·Ê±¸Ãº¯Êı»áÎŞÏŞÉú³ÉÊı¾İ£¬Ö±µ½´ïµ½¹æ¶¨µÄepoch´ÎÊıÎªÖ¹¡£</p>
-<h3 id="_2">²ÎÊı</h3>
+<p>ç”¨ä»¥ç”Ÿæˆä¸€ä¸ªbatchçš„å›¾åƒæ•°æ®ï¼Œæ”¯æŒå®æ—¶æ•°æ®æå‡ã€‚è®­ç»ƒæ—¶è¯¥å‡½æ•°ä¼šæ— é™ç”Ÿæˆæ•°æ®ï¼Œç›´åˆ°è¾¾åˆ°è§„å®šçš„epochæ¬¡æ•°ä¸ºæ­¢ã€‚</p>
+<h3 id="_2">å‚æ•°</h3>
 <ul>
 <li>
-<p>featurewise_center£º²¼¶ûÖµ£¬Ê¹ÊäÈëÊı¾İ¼¯È¥ÖĞĞÄ»¯£¨¾ùÖµÎª0£©, °´featureÖ´ĞĞ</p>
+<p>featurewise_centerï¼šå¸ƒå°”å€¼ï¼Œä½¿è¾“å…¥æ•°æ®é›†å»ä¸­å¿ƒåŒ–ï¼ˆå‡å€¼ä¸º0ï¼‰, æŒ‰featureæ‰§è¡Œ</p>
 </li>
 <li>
-<p>samplewise_center£º²¼¶ûÖµ£¬Ê¹ÊäÈëÊı¾İµÄÃ¿¸öÑù±¾¾ùÖµÎª0</p>
+<p>samplewise_centerï¼šå¸ƒå°”å€¼ï¼Œä½¿è¾“å…¥æ•°æ®çš„æ¯ä¸ªæ ·æœ¬å‡å€¼ä¸º0</p>
 </li>
 <li>
-<p>featurewise_std_normalization£º²¼¶ûÖµ£¬½«ÊäÈë³ıÒÔÊı¾İ¼¯µÄ±ê×¼²îÒÔÍê³É±ê×¼»¯, °´featureÖ´ĞĞ</p>
+<p>featurewise_std_normalizationï¼šå¸ƒå°”å€¼ï¼Œå°†è¾“å…¥é™¤ä»¥æ•°æ®é›†çš„æ ‡å‡†å·®ä»¥å®Œæˆæ ‡å‡†åŒ–, æŒ‰featureæ‰§è¡Œ</p>
 </li>
 <li>
-<p>samplewise_std_normalization£º²¼¶ûÖµ£¬½«ÊäÈëµÄÃ¿¸öÑù±¾³ıÒÔÆä×ÔÉíµÄ±ê×¼²î</p>
+<p>samplewise_std_normalizationï¼šå¸ƒå°”å€¼ï¼Œå°†è¾“å…¥çš„æ¯ä¸ªæ ·æœ¬é™¤ä»¥å…¶è‡ªèº«çš„æ ‡å‡†å·®</p>
 </li>
 <li>
-<p>zca_whitening£º²¼¶ûÖµ£¬¶ÔÊäÈëÊı¾İÊ©¼ÓZCA°×»¯</p>
+<p>zca_whiteningï¼šå¸ƒå°”å€¼ï¼Œå¯¹è¾“å…¥æ•°æ®æ–½åŠ ZCAç™½åŒ–</p>
 </li>
 <li>
-<p>zca_epsilon: ZCAÊ¹ÓÃµÄeposilon£¬Ä¬ÈÏ1e-6</p>
+<p>zca_epsilon: ZCAä½¿ç”¨çš„eposilonï¼Œé»˜è®¤1e-6</p>
 </li>
 <li>
-<p>rotation_range£ºÕûÊı£¬Êı¾İÌáÉıÊ±Í¼Æ¬Ëæ»ú×ª¶¯µÄ½Ç¶È</p>
+<p>rotation_rangeï¼šæ•´æ•°ï¼Œæ•°æ®æå‡æ—¶å›¾ç‰‡éšæœºè½¬åŠ¨çš„è§’åº¦</p>
 </li>
 <li>
-<p>width_shift_range£º¸¡µãÊı£¬Í¼Æ¬¿í¶ÈµÄÄ³¸ö±ÈÀı£¬Êı¾İÌáÉıÊ±Í¼Æ¬Ë®Æ½Æ«ÒÆµÄ·ù¶È</p>
+<p>width_shift_rangeï¼šæµ®ç‚¹æ•°ï¼Œå›¾ç‰‡å®½åº¦çš„æŸä¸ªæ¯”ä¾‹ï¼Œæ•°æ®æå‡æ—¶å›¾ç‰‡æ°´å¹³åç§»çš„å¹…åº¦</p>
 </li>
 <li>
-<p>height_shift_range£º¸¡µãÊı£¬Í¼Æ¬¸ß¶ÈµÄÄ³¸ö±ÈÀı£¬Êı¾İÌáÉıÊ±Í¼Æ¬ÊúÖ±Æ«ÒÆµÄ·ù¶È</p>
+<p>height_shift_rangeï¼šæµ®ç‚¹æ•°ï¼Œå›¾ç‰‡é«˜åº¦çš„æŸä¸ªæ¯”ä¾‹ï¼Œæ•°æ®æå‡æ—¶å›¾ç‰‡ç«–ç›´åç§»çš„å¹…åº¦</p>
 </li>
 <li>
-<p>shear_range£º¸¡µãÊı£¬¼ôÇĞÇ¿¶È£¨ÄæÊ±Õë·½ÏòµÄ¼ôÇĞ±ä»»½Ç¶È£©</p>
+<p>shear_rangeï¼šæµ®ç‚¹æ•°ï¼Œå‰ªåˆ‡å¼ºåº¦ï¼ˆé€†æ—¶é’ˆæ–¹å‘çš„å‰ªåˆ‡å˜æ¢è§’åº¦ï¼‰</p>
 </li>
 <li>
-<p>zoom_range£º¸¡µãÊı»òĞÎÈç<code>[lower,upper]</code>µÄÁĞ±í£¬Ëæ»úËõ·ÅµÄ·ù¶È£¬ÈôÎª¸¡µãÊı£¬ÔòÏàµ±ÓÚ<code>[lower,upper] = [1 - zoom_range, 1+zoom_range]</code></p>
+<p>zoom_rangeï¼šæµ®ç‚¹æ•°æˆ–å½¢å¦‚<code>[lower,upper]</code>çš„åˆ—è¡¨ï¼Œéšæœºç¼©æ”¾çš„å¹…åº¦ï¼Œè‹¥ä¸ºæµ®ç‚¹æ•°ï¼Œåˆ™ç›¸å½“äº<code>[lower,upper] = [1 - zoom_range, 1+zoom_range]</code></p>
 </li>
 <li>
-<p>channel_shift_range£º¸¡µãÊı£¬Ëæ»úÍ¨µÀÆ«ÒÆµÄ·ù¶È</p>
+<p>channel_shift_rangeï¼šæµ®ç‚¹æ•°ï¼Œéšæœºé€šé“åç§»çš„å¹…åº¦</p>
 </li>
 <li>
-<p>fill_mode£º£»¡®constant¡¯£¬¡®nearest¡¯£¬¡®reflect¡¯»ò¡®wrap¡¯Ö®Ò»£¬µ±½øĞĞ±ä»»Ê±³¬³ö±ß½çµÄµã½«¸ù¾İ±¾²ÎÊı¸ø¶¨µÄ·½·¨½øĞĞ´¦Àí</p>
+<p>fill_modeï¼šï¼›â€˜constantâ€™ï¼Œâ€˜nearestâ€™ï¼Œâ€˜reflectâ€™æˆ–â€˜wrapâ€™ä¹‹ä¸€ï¼Œå½“è¿›è¡Œå˜æ¢æ—¶è¶…å‡ºè¾¹ç•Œçš„ç‚¹å°†æ ¹æ®æœ¬å‚æ•°ç»™å®šçš„æ–¹æ³•è¿›è¡Œå¤„ç†</p>
 </li>
 <li>
-<p>cval£º¸¡µãÊı»òÕûÊı£¬µ±<code>fill_mode=constant</code>Ê±£¬Ö¸¶¨ÒªÏò³¬³ö±ß½çµÄµãÌî³äµÄÖµ</p>
+<p>cvalï¼šæµ®ç‚¹æ•°æˆ–æ•´æ•°ï¼Œå½“<code>fill_mode=constant</code>æ—¶ï¼ŒæŒ‡å®šè¦å‘è¶…å‡ºè¾¹ç•Œçš„ç‚¹å¡«å……çš„å€¼</p>
 </li>
 <li>
-<p>horizontal_flip£º²¼¶ûÖµ£¬½øĞĞËæ»úË®Æ½·­×ª</p>
+<p>horizontal_flipï¼šå¸ƒå°”å€¼ï¼Œè¿›è¡Œéšæœºæ°´å¹³ç¿»è½¬</p>
 </li>
 <li>
-<p>vertical_flip£º²¼¶ûÖµ£¬½øĞĞËæ»úÊúÖ±·­×ª</p>
+<p>vertical_flipï¼šå¸ƒå°”å€¼ï¼Œè¿›è¡Œéšæœºç«–ç›´ç¿»è½¬</p>
 </li>
 <li>
-<p>rescale: ÖØ·ÅËõÒò×Ó,Ä¬ÈÏÎªNone. Èç¹ûÎªNone»ò0Ôò²»½øĞĞ·ÅËõ,·ñÔò»á½«¸ÃÊıÖµ³Ëµ½Êı¾İÉÏ(ÔÚÓ¦ÓÃÆäËû±ä»»Ö®Ç°)</p>
+<p>rescale: é‡æ”¾ç¼©å› å­,é»˜è®¤ä¸ºNone. å¦‚æœä¸ºNoneæˆ–0åˆ™ä¸è¿›è¡Œæ”¾ç¼©,å¦åˆ™ä¼šå°†è¯¥æ•°å€¼ä¹˜åˆ°æ•°æ®ä¸Š(åœ¨åº”ç”¨å…¶ä»–å˜æ¢ä¹‹å‰)</p>
 </li>
 <li>
-<p>preprocessing_function: ½«±»Ó¦ÓÃÓÚÃ¿¸öÊäÈëµÄº¯Êı¡£¸Ãº¯Êı½«ÔÚÈÎºÎÆäËûĞŞ¸ÄÖ®Ç°ÔËĞĞ¡£¸Ãº¯Êı½ÓÊÜÒ»¸ö²ÎÊı£¬ÎªÒ»ÕÅÍ¼Æ¬£¨ÖÈÎª3µÄnumpy array£©£¬²¢ÇÒÊä³öÒ»¸ö¾ßÓĞÏàÍ¬shapeµÄnumpy array</p>
+<p>preprocessing_function: å°†è¢«åº”ç”¨äºæ¯ä¸ªè¾“å…¥çš„å‡½æ•°ã€‚è¯¥å‡½æ•°å°†åœ¨ä»»ä½•å…¶ä»–ä¿®æ”¹ä¹‹å‰è¿è¡Œã€‚è¯¥å‡½æ•°æ¥å—ä¸€ä¸ªå‚æ•°ï¼Œä¸ºä¸€å¼ å›¾ç‰‡ï¼ˆç§©ä¸º3çš„numpy arrayï¼‰ï¼Œå¹¶ä¸”è¾“å‡ºä¸€ä¸ªå…·æœ‰ç›¸åŒshapeçš„numpy array</p>
 </li>
 <li>
-<p>data_format£º×Ö·û´®£¬¡°channel_first¡±»ò¡°channel_last¡±Ö®Ò»£¬´ú±íÍ¼ÏñµÄÍ¨µÀÎ¬µÄÎ»ÖÃ¡£¸Ã²ÎÊıÊÇKeras 1.xÖĞµÄimage_dim_ordering£¬¡°channel_last¡±¶ÔÓ¦Ô­±¾µÄ¡°tf¡±£¬¡°channel_first¡±¶ÔÓ¦Ô­±¾µÄ¡°th¡±¡£ÒÔ128x128µÄRGBÍ¼ÏñÎªÀı£¬¡°channel_first¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨3,128,128£©£¬¶ø¡°channel_last¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨128,128,3£©¡£¸Ã²ÎÊıµÄÄ¬ÈÏÖµÊÇ<code>~/.keras/keras.json</code>ÖĞÉèÖÃµÄÖµ£¬Èô´ÓÎ´ÉèÖÃ¹ı£¬ÔòÎª¡°channel_last¡±</p>
+<p>data_formatï¼šå­—ç¬¦ä¸²ï¼Œâ€œchannel_firstâ€æˆ–â€œchannel_lastâ€ä¹‹ä¸€ï¼Œä»£è¡¨å›¾åƒçš„é€šé“ç»´çš„ä½ç½®ã€‚è¯¥å‚æ•°æ˜¯Keras 1.xä¸­çš„image_dim_orderingï¼Œâ€œchannel_lastâ€å¯¹åº”åŸæœ¬çš„â€œtfâ€ï¼Œâ€œchannel_firstâ€å¯¹åº”åŸæœ¬çš„â€œthâ€ã€‚ä»¥128x128çš„RGBå›¾åƒä¸ºä¾‹ï¼Œâ€œchannel_firstâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ3,128,128ï¼‰ï¼Œè€Œâ€œchannel_lastâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ128,128,3ï¼‰ã€‚è¯¥å‚æ•°çš„é»˜è®¤å€¼æ˜¯<code>~/.keras/keras.json</code>ä¸­è®¾ç½®çš„å€¼ï¼Œè‹¥ä»æœªè®¾ç½®è¿‡ï¼Œåˆ™ä¸ºâ€œchannel_lastâ€</p>
 </li>
 </ul>
 <hr/>
-<h3 id="_3">·½·¨</h3>
+<h3 id="_3">æ–¹æ³•</h3>
 <ul>
 <li>
-<p>fit(x, augment=False, rounds=1)£º¼ÆËãÒÀÀµÓÚÊı¾İµÄ±ä»»ËùĞèÒªµÄÍ³¼ÆĞÅÏ¢(¾ùÖµ·½²îµÈ),Ö»ÓĞÊ¹ÓÃ<code>featurewise_center</code>£¬<code>featurewise_std_normalization</code>»ò<code>zca_whitening</code>Ê±ĞèÒª´Ëº¯Êı¡£</p>
+<p>fit(x, augment=False, rounds=1)ï¼šè®¡ç®—ä¾èµ–äºæ•°æ®çš„å˜æ¢æ‰€éœ€è¦çš„ç»Ÿè®¡ä¿¡æ¯(å‡å€¼æ–¹å·®ç­‰),åªæœ‰ä½¿ç”¨<code>featurewise_center</code>ï¼Œ<code>featurewise_std_normalization</code>æˆ–<code>zca_whitening</code>æ—¶éœ€è¦æ­¤å‡½æ•°ã€‚</p>
 <ul>
 <li>
-<p>X£ºnumpy array£¬Ñù±¾Êı¾İ£¬ÖÈÓ¦Îª4.ÔÚºÚ°×Í¼ÏñµÄÇé¿öÏÂchannelÖáµÄÖµÎª1£¬ÔÚ²ÊÉ«Í¼ÏñÇé¿öÏÂÖµÎª3</p>
+<p>Xï¼šnumpy arrayï¼Œæ ·æœ¬æ•°æ®ï¼Œç§©åº”ä¸º4.åœ¨é»‘ç™½å›¾åƒçš„æƒ…å†µä¸‹channelè½´çš„å€¼ä¸º1ï¼Œåœ¨å½©è‰²å›¾åƒæƒ…å†µä¸‹å€¼ä¸º3</p>
 </li>
 <li>
-<p>augment£º²¼¶ûÖµ£¬È·¶¨ÊÇ·ñÊ¹ÓÃËæ¼´ÌáÉı¹ıµÄÊı¾İ</p>
+<p>augmentï¼šå¸ƒå°”å€¼ï¼Œç¡®å®šæ˜¯å¦ä½¿ç”¨éšå³æå‡è¿‡çš„æ•°æ®</p>
 </li>
 <li>
-<p>round£ºÈôÉè<code>augment=True</code>£¬È·¶¨ÒªÔÚÊı¾İÉÏ½øĞĞ¶àÉÙÂÖÊı¾İÌáÉı£¬Ä¬ÈÏÖµÎª1</p>
+<p>roundï¼šè‹¥è®¾<code>augment=True</code>ï¼Œç¡®å®šè¦åœ¨æ•°æ®ä¸Šè¿›è¡Œå¤šå°‘è½®æ•°æ®æå‡ï¼Œé»˜è®¤å€¼ä¸º1</p>
 </li>
 <li>
-<p>seed: ÕûÊı,Ëæ»úÊıÖÖ×Ó</p>
+<p>seed: æ•´æ•°,éšæœºæ•°ç§å­</p>
 </li>
 </ul>
 </li>
 <li>
-<p>flow(self, X, y, batch_size=32, shuffle=True, seed=None, save_to_dir=None, save_prefix='', save_format='png')£º½ÓÊÕnumpyÊı×éºÍ±êÇ©Îª²ÎÊı,Éú³É¾­¹ıÊı¾İÌáÉı»ò±ê×¼»¯ºóµÄbatchÊı¾İ,²¢ÔÚÒ»¸öÎŞÏŞÑ­»·ÖĞ²»¶ÏµÄ·µ»ØbatchÊı¾İ</p>
+<p>flow(self, X, y, batch_size=32, shuffle=True, seed=None, save_to_dir=None, save_prefix='', save_format='png')ï¼šæ¥æ”¶numpyæ•°ç»„å’Œæ ‡ç­¾ä¸ºå‚æ•°,ç”Ÿæˆç»è¿‡æ•°æ®æå‡æˆ–æ ‡å‡†åŒ–åçš„batchæ•°æ®,å¹¶åœ¨ä¸€ä¸ªæ— é™å¾ªç¯ä¸­ä¸æ–­çš„è¿”å›batchæ•°æ®</p>
 <ul>
 <li>
-<p>x£ºÑù±¾Êı¾İ£¬ÖÈÓ¦Îª4.ÔÚºÚ°×Í¼ÏñµÄÇé¿öÏÂchannelÖáµÄÖµÎª1£¬ÔÚ²ÊÉ«Í¼ÏñÇé¿öÏÂÖµÎª3</p>
+<p>xï¼šæ ·æœ¬æ•°æ®ï¼Œç§©åº”ä¸º4.åœ¨é»‘ç™½å›¾åƒçš„æƒ…å†µä¸‹channelè½´çš„å€¼ä¸º1ï¼Œåœ¨å½©è‰²å›¾åƒæƒ…å†µä¸‹å€¼ä¸º3</p>
 </li>
 <li>
-<p>y£º±êÇ©</p>
+<p>yï¼šæ ‡ç­¾</p>
 </li>
 <li>
-<p>batch_size£ºÕûÊı£¬Ä¬ÈÏ32</p>
+<p>batch_sizeï¼šæ•´æ•°ï¼Œé»˜è®¤32</p>
 </li>
 <li>
-<p>shuffle£º²¼¶ûÖµ£¬ÊÇ·ñËæ»ú´òÂÒÊı¾İ£¬Ä¬ÈÏÎªTrue</p>
+<p>shuffleï¼šå¸ƒå°”å€¼ï¼Œæ˜¯å¦éšæœºæ‰“ä¹±æ•°æ®ï¼Œé»˜è®¤ä¸ºTrue</p>
 </li>
 <li>
-<p>save_to_dir£ºNone»ò×Ö·û´®£¬¸Ã²ÎÊıÄÜÈÃÄã½«ÌáÉıºóµÄÍ¼Æ¬±£´æÆğÀ´£¬ÓÃÒÔ¿ÉÊÓ»¯</p>
+<p>save_to_dirï¼šNoneæˆ–å­—ç¬¦ä¸²ï¼Œè¯¥å‚æ•°èƒ½è®©ä½ å°†æå‡åçš„å›¾ç‰‡ä¿å­˜èµ·æ¥ï¼Œç”¨ä»¥å¯è§†åŒ–</p>
 </li>
 <li>
-<p>save_prefix£º×Ö·û´®£¬±£´æÌáÉıºóÍ¼Æ¬Ê±Ê¹ÓÃµÄÇ°×º, ½öµ±ÉèÖÃÁË<code>save_to_dir</code>Ê±ÉúĞ§</p>
+<p>save_prefixï¼šå­—ç¬¦ä¸²ï¼Œä¿å­˜æå‡åå›¾ç‰‡æ—¶ä½¿ç”¨çš„å‰ç¼€, ä»…å½“è®¾ç½®äº†<code>save_to_dir</code>æ—¶ç”Ÿæ•ˆ</p>
 </li>
 <li>
-<p>save_format£º"png"»ò"jpeg"Ö®Ò»£¬Ö¸¶¨±£´æÍ¼Æ¬µÄÊı¾İ¸ñÊ½,Ä¬ÈÏ"jpeg"</p>
+<p>save_formatï¼š"png"æˆ–"jpeg"ä¹‹ä¸€ï¼ŒæŒ‡å®šä¿å­˜å›¾ç‰‡çš„æ•°æ®æ ¼å¼,é»˜è®¤"jpeg"</p>
 </li>
 <li>
-<p>yields:ĞÎÈç(x,y)µÄtuple,xÊÇ´ú±íÍ¼ÏñÊı¾İµÄnumpyÊı×é.yÊÇ´ú±í±êÇ©µÄnumpyÊı×é.¸Ãµü´úÆ÷ÎŞÏŞÑ­»·.</p>
+<p>yields:å½¢å¦‚(x,y)çš„tuple,xæ˜¯ä»£è¡¨å›¾åƒæ•°æ®çš„numpyæ•°ç»„.yæ˜¯ä»£è¡¨æ ‡ç­¾çš„numpyæ•°ç»„.è¯¥è¿­ä»£å™¨æ— é™å¾ªç¯.</p>
 </li>
 <li>
-<p>seed: ÕûÊı,Ëæ»úÊıÖÖ×Ó</p>
+<p>seed: æ•´æ•°,éšæœºæ•°ç§å­</p>
 </li>
 </ul>
 </li>
 <li>
-<p>flow_from_directory(directory): ÒÔÎÄ¼ş¼ĞÂ·¾¶Îª²ÎÊı,Éú³É¾­¹ıÊı¾İÌáÉı/¹éÒ»»¯ºóµÄÊı¾İ,ÔÚÒ»¸öÎŞÏŞÑ­»·ÖĞÎŞÏŞ²úÉúbatchÊı¾İ</p>
+<p>flow_from_directory(directory): ä»¥æ–‡ä»¶å¤¹è·¯å¾„ä¸ºå‚æ•°,ç”Ÿæˆç»è¿‡æ•°æ®æå‡/å½’ä¸€åŒ–åçš„æ•°æ®,åœ¨ä¸€ä¸ªæ— é™å¾ªç¯ä¸­æ— é™äº§ç”Ÿbatchæ•°æ®</p>
 <ul>
-<li>directory: Ä¿±êÎÄ¼ş¼ĞÂ·¾¶,¶ÔÓÚÃ¿Ò»¸öÀà,¸ÃÎÄ¼ş¼Ğ¶¼Òª°üº¬Ò»¸ö×ÓÎÄ¼ş¼Ğ.×ÓÎÄ¼ş¼ĞÖĞÈÎºÎJPG¡¢PNGºÍBNPµÄÍ¼Æ¬¶¼»á±»Éú³ÉÆ÷Ê¹ÓÃ.ÏêÇéÇë²é¿´<a href="https://gist.github.com/fchollet/0830affa1f7f19fd47b06d4cf89ed44d"><font color="#FF0000">´Ë½Å±¾</font></a></li>
-<li>target_size: ÕûÊıtuple,Ä¬ÈÏÎª(256, 256). Í¼Ïñ½«±»resize³É¸Ã³ß´ç</li>
-<li>color_mode: ÑÕÉ«Ä£Ê½,Îª"grayscale","rgb"Ö®Ò»,Ä¬ÈÏÎª"rgb".´ú±íÕâĞ©Í¼Æ¬ÊÇ·ñ»á±»×ª»»Îªµ¥Í¨µÀ»òÈıÍ¨µÀµÄÍ¼Æ¬.</li>
-<li>classes: ¿ÉÑ¡²ÎÊı,Îª×ÓÎÄ¼ş¼ĞµÄÁĞ±í,Èç['dogs','cats']Ä¬ÈÏÎªNone. ÈôÎ´Ìá¹©,Ôò¸ÃÀà±ğÁĞ±í½«´Ó<code>directory</code>ÏÂµÄ×ÓÎÄ¼ş¼ĞÃû³Æ/½á¹¹×Ô¶¯ÍÆ¶Ï¡£Ã¿Ò»¸ö×ÓÎÄ¼ş¼Ğ¶¼»á±»ÈÏÎªÊÇÒ»¸öĞÂµÄÀà¡£(Àà±ğµÄË³Ğò½«°´ÕÕ×ÖÄ¸±íË³ĞòÓ³Éäµ½±êÇ©Öµ)¡£Í¨¹ıÊôĞÔ<code>class_indices</code>¿É»ñµÃÎÄ¼ş¼ĞÃûÓëÀàµÄĞòºÅµÄ¶ÔÓ¦×Öµä¡£</li>
-<li>class_mode: "categorical", "binary", "sparse"»òNoneÖ®Ò». Ä¬ÈÏÎª"categorical. ¸Ã²ÎÊı¾ö¶¨ÁË·µ»ØµÄ±êÇ©Êı×éµÄĞÎÊ½, "categorical"»á·µ»Ø2DµÄone-hot±àÂë±êÇ©,"binary"·µ»Ø1DµÄ¶şÖµ±êÇ©."sparse"·µ»Ø1DµÄÕûÊı±êÇ©,Èç¹ûÎªNoneÔò²»·µ»ØÈÎºÎ±êÇ©, Éú³ÉÆ÷½«½ö½öÉú³ÉbatchÊı¾İ, ÕâÖÖÇé¿öÔÚÊ¹ÓÃ<code>model.predict_generator()</code>ºÍ<code>model.evaluate_generator()</code>µÈº¯ÊıÊ±»áÓÃµ½.</li>
-<li>batch_size: batchÊı¾İµÄ´óĞ¡,Ä¬ÈÏ32</li>
-<li>shuffle: ÊÇ·ñ´òÂÒÊı¾İ,Ä¬ÈÏÎªTrue</li>
-<li>seed: ¿ÉÑ¡²ÎÊı,´òÂÒÊı¾İºÍ½øĞĞ±ä»»Ê±µÄËæ»úÊıÖÖ×Ó</li>
-<li>save_to_dir: None»ò×Ö·û´®£¬¸Ã²ÎÊıÄÜÈÃÄã½«ÌáÉıºóµÄÍ¼Æ¬±£´æÆğÀ´£¬ÓÃÒÔ¿ÉÊÓ»¯</li>
-<li>save_prefix£º×Ö·û´®£¬±£´æÌáÉıºóÍ¼Æ¬Ê±Ê¹ÓÃµÄÇ°×º, ½öµ±ÉèÖÃÁË<code>save_to_dir</code>Ê±ÉúĞ§</li>
-<li>save_format£º"png"»ò"jpeg"Ö®Ò»£¬Ö¸¶¨±£´æÍ¼Æ¬µÄÊı¾İ¸ñÊ½,Ä¬ÈÏ"jpeg"</li>
-<li>flollow_links: ÊÇ·ñ·ÃÎÊ×ÓÎÄ¼ş¼ĞÖĞµÄÈíÁ´½Ó</li>
+<li>directory: ç›®æ ‡æ–‡ä»¶å¤¹è·¯å¾„,å¯¹äºæ¯ä¸€ä¸ªç±»,è¯¥æ–‡ä»¶å¤¹éƒ½è¦åŒ…å«ä¸€ä¸ªå­æ–‡ä»¶å¤¹.å­æ–‡ä»¶å¤¹ä¸­ä»»ä½•JPGã€PNGå’ŒBNPçš„å›¾ç‰‡éƒ½ä¼šè¢«ç”Ÿæˆå™¨ä½¿ç”¨.è¯¦æƒ…è¯·æŸ¥çœ‹<a href="https://gist.github.com/fchollet/0830affa1f7f19fd47b06d4cf89ed44d"><font color="#FF0000">æ­¤è„šæœ¬</font></a></li>
+<li>target_size: æ•´æ•°tuple,é»˜è®¤ä¸º(256, 256). å›¾åƒå°†è¢«resizeæˆè¯¥å°ºå¯¸</li>
+<li>color_mode: é¢œè‰²æ¨¡å¼,ä¸º"grayscale","rgb"ä¹‹ä¸€,é»˜è®¤ä¸º"rgb".ä»£è¡¨è¿™äº›å›¾ç‰‡æ˜¯å¦ä¼šè¢«è½¬æ¢ä¸ºå•é€šé“æˆ–ä¸‰é€šé“çš„å›¾ç‰‡.</li>
+<li>classes: å¯é€‰å‚æ•°,ä¸ºå­æ–‡ä»¶å¤¹çš„åˆ—è¡¨,å¦‚['dogs','cats']é»˜è®¤ä¸ºNone. è‹¥æœªæä¾›,åˆ™è¯¥ç±»åˆ«åˆ—è¡¨å°†ä»<code>directory</code>ä¸‹çš„å­æ–‡ä»¶å¤¹åç§°/ç»“æ„è‡ªåŠ¨æ¨æ–­ã€‚æ¯ä¸€ä¸ªå­æ–‡ä»¶å¤¹éƒ½ä¼šè¢«è®¤ä¸ºæ˜¯ä¸€ä¸ªæ–°çš„ç±»ã€‚(ç±»åˆ«çš„é¡ºåºå°†æŒ‰ç…§å­—æ¯è¡¨é¡ºåºæ˜ å°„åˆ°æ ‡ç­¾å€¼)ã€‚é€šè¿‡å±æ€§<code>class_indices</code>å¯è·å¾—æ–‡ä»¶å¤¹åä¸ç±»çš„åºå·çš„å¯¹åº”å­—å…¸ã€‚</li>
+<li>class_mode: "categorical", "binary", "sparse"æˆ–Noneä¹‹ä¸€. é»˜è®¤ä¸º"categorical. è¯¥å‚æ•°å†³å®šäº†è¿”å›çš„æ ‡ç­¾æ•°ç»„çš„å½¢å¼, "categorical"ä¼šè¿”å›2Dçš„one-hotç¼–ç æ ‡ç­¾,"binary"è¿”å›1Dçš„äºŒå€¼æ ‡ç­¾."sparse"è¿”å›1Dçš„æ•´æ•°æ ‡ç­¾,å¦‚æœä¸ºNoneåˆ™ä¸è¿”å›ä»»ä½•æ ‡ç­¾, ç”Ÿæˆå™¨å°†ä»…ä»…ç”Ÿæˆbatchæ•°æ®, è¿™ç§æƒ…å†µåœ¨ä½¿ç”¨<code>model.predict_generator()</code>å’Œ<code>model.evaluate_generator()</code>ç­‰å‡½æ•°æ—¶ä¼šç”¨åˆ°.</li>
+<li>batch_size: batchæ•°æ®çš„å¤§å°,é»˜è®¤32</li>
+<li>shuffle: æ˜¯å¦æ‰“ä¹±æ•°æ®,é»˜è®¤ä¸ºTrue</li>
+<li>seed: å¯é€‰å‚æ•°,æ‰“ä¹±æ•°æ®å’Œè¿›è¡Œå˜æ¢æ—¶çš„éšæœºæ•°ç§å­</li>
+<li>save_to_dir: Noneæˆ–å­—ç¬¦ä¸²ï¼Œè¯¥å‚æ•°èƒ½è®©ä½ å°†æå‡åçš„å›¾ç‰‡ä¿å­˜èµ·æ¥ï¼Œç”¨ä»¥å¯è§†åŒ–</li>
+<li>save_prefixï¼šå­—ç¬¦ä¸²ï¼Œä¿å­˜æå‡åå›¾ç‰‡æ—¶ä½¿ç”¨çš„å‰ç¼€, ä»…å½“è®¾ç½®äº†<code>save_to_dir</code>æ—¶ç”Ÿæ•ˆ</li>
+<li>save_formatï¼š"png"æˆ–"jpeg"ä¹‹ä¸€ï¼ŒæŒ‡å®šä¿å­˜å›¾ç‰‡çš„æ•°æ®æ ¼å¼,é»˜è®¤"jpeg"</li>
+<li>flollow_links: æ˜¯å¦è®¿é—®å­æ–‡ä»¶å¤¹ä¸­çš„è½¯é“¾æ¥</li>
 </ul>
 </li>
 </ul>
-<h3 id="_4">Àı×Ó</h3>
-<p>Ê¹ÓÃ<code>.flow()</code>µÄÀı×Ó</p>
+<h3 id="_4">ä¾‹å­</h3>
+<p>ä½¿ç”¨<code>.flow()</code>çš„ä¾‹å­</p>
 <pre><code class="python">(x_train, y_train), (x_test, y_test) = cifar10.load_data()
 y_train = np_utils.to_categorical(y_train, num_classes)
 y_test = np_utils.to_categorical(y_test, num_classes)
@@ -190,7 +190,7 @@ for e in range(epochs):
             # the generator loops indefinitely
             break
 </code></pre>
-<p>Ê¹ÓÃ<code>.flow_from_directory(directory)</code>µÄÀı×Ó</p>
+<p>ä½¿ç”¨<code>.flow_from_directory(directory)</code>çš„ä¾‹å­</p>
 <pre><code class="python">train_datagen = ImageDataGenerator(
         rescale=1./255,
         shear_range=0.2,
@@ -218,7 +218,7 @@ model.fit_generator(
         validation_data=validation_generator,
         validation_steps=800)
 </code></pre>
-<p>Í¬Ê±±ä»»Í¼ÏñºÍmask</p>
+<p>åŒæ—¶å˜æ¢å›¾åƒå’Œmask</p>
 <pre><code class="python"># we create two instances with the same arguments
 data_gen_args = dict(featurewise_center=True,
                      featurewise_std_normalization=True,

@@ -1,36 +1,36 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="_1">ÕıÔòÏî</h1>
-<p>ÕıÔòÏîÔÚÓÅ»¯¹ı³ÌÖĞ²ãµÄ²ÎÊı»ò²ãµÄ¼¤»îÖµÌí¼Ó³Í·£Ïî£¬ÕâĞ©³Í·£Ïî½«ÓëËğÊ§º¯ÊıÒ»Æğ×÷ÎªÍøÂçµÄ×îÖÕÓÅ»¯Ä¿±ê</p>
-<p>³Í·£Ïî»ùÓÚ²ã½øĞĞ³Í·££¬Ä¿Ç°³Í·£ÏîµÄ½Ó¿ÚÓë²ãÓĞ¹Ø£¬µ«<code>Dense, Conv1D, Conv2D, Conv3D</code>¾ßÓĞ¹²Í¬µÄ½Ó¿Ú¡£</p>
-<p>ÕâĞ©²ãÓĞÈı¸ö¹Ø¼ü×Ö²ÎÊıÒÔÊ©¼ÓÕıÔòÏî£º</p>
+<h1 id="_1">æ­£åˆ™é¡¹</h1>
+<p>æ­£åˆ™é¡¹åœ¨ä¼˜åŒ–è¿‡ç¨‹ä¸­å±‚çš„å‚æ•°æˆ–å±‚çš„æ¿€æ´»å€¼æ·»åŠ æƒ©ç½šé¡¹ï¼Œè¿™äº›æƒ©ç½šé¡¹å°†ä¸æŸå¤±å‡½æ•°ä¸€èµ·ä½œä¸ºç½‘ç»œçš„æœ€ç»ˆä¼˜åŒ–ç›®æ ‡</p>
+<p>æƒ©ç½šé¡¹åŸºäºå±‚è¿›è¡Œæƒ©ç½šï¼Œç›®å‰æƒ©ç½šé¡¹çš„æ¥å£ä¸å±‚æœ‰å…³ï¼Œä½†<code>Dense, Conv1D, Conv2D, Conv3D</code>å…·æœ‰å…±åŒçš„æ¥å£ã€‚</p>
+<p>è¿™äº›å±‚æœ‰ä¸‰ä¸ªå…³é”®å­—å‚æ•°ä»¥æ–½åŠ æ­£åˆ™é¡¹ï¼š</p>
 <ul>
 <li>
-<p><code>kernel_regularizer</code>£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÕıÔòÏî£¬Îª<code>keras.regularizer.Regularizer</code>¶ÔÏó</p>
+<p><code>kernel_regularizer</code>ï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<code>keras.regularizer.Regularizer</code>å¯¹è±¡</p>
 </li>
 <li>
-<p><code>bias_regularizer</code>£ºÊ©¼ÓÔÚÆ«ÖÃÏòÁ¿ÉÏµÄÕıÔòÏî£¬Îª<code>keras.regularizer.Regularizer</code>¶ÔÏó</p>
+<p><code>bias_regularizer</code>ï¼šæ–½åŠ åœ¨åç½®å‘é‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<code>keras.regularizer.Regularizer</code>å¯¹è±¡</p>
 </li>
 <li>
-<p><code>activity_regularizer</code>£ºÊ©¼ÓÔÚÊä³öÉÏµÄÕıÔòÏî£¬Îª<code>keras.regularizer.Regularizer</code>¶ÔÏó</p>
+<p><code>activity_regularizer</code>ï¼šæ–½åŠ åœ¨è¾“å‡ºä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<code>keras.regularizer.Regularizer</code>å¯¹è±¡</p>
 </li>
 </ul>
-<h2 id="_2">Àı×Ó</h2>
+<h2 id="_2">ä¾‹å­</h2>
 <pre><code class="python">from keras import regularizers
 model.add(Dense(64, input_dim=64,
                 kernel_regularizer=regularizers.l2(0.01),
                 activity_regularizer=regularizers.l1(0.01)))
 </code></pre>
-<h2 id="_3">¿ÉÓÃÕıÔòÏî</h2>
+<h2 id="_3">å¯ç”¨æ­£åˆ™é¡¹</h2>
 <pre><code class="python">keras.regularizers.l1(0.)
 keras.regularizers.l2(0.)
 keras.regularizers.l1_l2(0.)
 </code></pre>
-<h2 id="_4">¿ª·¢ĞÂµÄÕıÔòÏî</h2>
-<p>ÈÎºÎÒÔÈ¨ÖØ¾ØÕó×÷ÎªÊäÈë²¢·µ»Øµ¥¸öÊıÖµµÄº¯Êı¾ù¿ÉÒÔ×÷ÎªÕıÔòÏî£¬Ê¾Àı£º</p>
+<h2 id="_4">å¼€å‘æ–°çš„æ­£åˆ™é¡¹</h2>
+<p>ä»»ä½•ä»¥æƒé‡çŸ©é˜µä½œä¸ºè¾“å…¥å¹¶è¿”å›å•ä¸ªæ•°å€¼çš„å‡½æ•°å‡å¯ä»¥ä½œä¸ºæ­£åˆ™é¡¹ï¼Œç¤ºä¾‹ï¼š</p>
 <pre><code class="python">from keras import backend as K
 
 def l1_reg(weight_matrix):
@@ -39,6 +39,6 @@ def l1_reg(weight_matrix):
 model.add(Dense(64, input_dim=64,
                 kernel_regularizer=l1_reg)
 </code></pre>
-<p>¿É²Î¿¼Ô´´úÂë<a href="https://github.com/fchollet/keras/blob/master/keras/regularizers.py">keras/regularizer.py</a></p>
+<p>å¯å‚è€ƒæºä»£ç <a href="https://github.com/fchollet/keras/blob/master/keras/regularizers.py">keras/regularizer.py</a></p>
 </div>
     </body></html>

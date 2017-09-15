@@ -1,16 +1,16 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="_1">³õÊ¼»¯·½·¨</h1>
-<p>³õÊ¼»¯·½·¨¶¨ÒåÁË¶ÔKeras²ãÉèÖÃ³õÊ¼»¯È¨ÖØµÄ·½·¨</p>
-<p>²»Í¬µÄ²ã¿ÉÄÜÊ¹ÓÃ²»Í¬µÄ¹Ø¼ü×ÖÀ´´«µİ³õÊ¼»¯·½·¨£¬Ò»°ãÀ´ËµÖ¸¶¨³õÊ¼»¯·½·¨µÄ¹Ø¼ü×ÖÊÇ<code>kernel_initializer</code> ºÍ <code>bias_initializer</code>£¬ÀıÈç£º</p>
+<h1 id="_1">åˆå§‹åŒ–æ–¹æ³•</h1>
+<p>åˆå§‹åŒ–æ–¹æ³•å®šä¹‰äº†å¯¹Keraså±‚è®¾ç½®åˆå§‹åŒ–æƒé‡çš„æ–¹æ³•</p>
+<p>ä¸åŒçš„å±‚å¯èƒ½ä½¿ç”¨ä¸åŒçš„å…³é”®å­—æ¥ä¼ é€’åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸€èˆ¬æ¥è¯´æŒ‡å®šåˆå§‹åŒ–æ–¹æ³•çš„å…³é”®å­—æ˜¯<code>kernel_initializer</code> å’Œ <code>bias_initializer</code>ï¼Œä¾‹å¦‚ï¼š</p>
 <pre><code class="python">model.add(Dense(64,
                 kernel_initializer='random_uniform',
                 bias_initializer='zeros'))
 </code></pre>
-<p>Ò»¸ö³õÊ¼»¯Æ÷¿ÉÒÔÓÉ×Ö·û´®Ö¸¶¨£¨±ØĞëÊÇÏÂÃæµÄÔ¤¶¨Òå³õÊ¼»¯Æ÷Ö®Ò»£©£¬»òÒ»¸öcallableµÄº¯Êı£¬ÀıÈç</p>
+<p>ä¸€ä¸ªåˆå§‹åŒ–å™¨å¯ä»¥ç”±å­—ç¬¦ä¸²æŒ‡å®šï¼ˆå¿…é¡»æ˜¯ä¸‹é¢çš„é¢„å®šä¹‰åˆå§‹åŒ–å™¨ä¹‹ä¸€ï¼‰ï¼Œæˆ–ä¸€ä¸ªcallableçš„å‡½æ•°ï¼Œä¾‹å¦‚</p>
 <pre><code class="python">from keras import initializers
 
 model.add(Dense(64, kernel_initializer=initializers.random_normal(stddev=0.01)))
@@ -19,129 +19,129 @@ model.add(Dense(64, kernel_initializer=initializers.random_normal(stddev=0.01)))
 model.add(Dense(64, kernel_initializer='random_normal'))
 </code></pre>
 <h2 id="initializer">Initializer</h2>
-<p>InitializerÊÇËùÓĞ³õÊ¼»¯·½·¨µÄ¸¸Àà£¬²»ÄÜÖ±½ÓÊ¹ÓÃ£¬Èç¹ûÏëÒª¶¨Òå×Ô¼ºµÄ³õÊ¼»¯·½·¨£¬Çë¼Ì³Ğ´ËÀà¡£</p>
-<h2 id="_2">Ô¤¶¨Òå³õÊ¼»¯·½·¨</h2>
+<p>Initializeræ˜¯æ‰€æœ‰åˆå§‹åŒ–æ–¹æ³•çš„çˆ¶ç±»ï¼Œä¸èƒ½ç›´æ¥ä½¿ç”¨ï¼Œå¦‚æœæƒ³è¦å®šä¹‰è‡ªå·±çš„åˆå§‹åŒ–æ–¹æ³•ï¼Œè¯·ç»§æ‰¿æ­¤ç±»ã€‚</p>
+<h2 id="_2">é¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•</h2>
 <h3 id="zeros">Zeros</h3>
 <pre><code class="python">keras.initializers.Zeros()
 </code></pre>
-<p>È«Áã³õÊ¼»¯</p>
+<p>å…¨é›¶åˆå§‹åŒ–</p>
 <h3 id="ones">Ones</h3>
 <pre><code class="python">keras.initializers.Ones()
 </code></pre>
-<p>È«1³õÊ¼»¯</p>
+<p>å…¨1åˆå§‹åŒ–</p>
 <h3 id="constant">Constant</h3>
 <pre><code class="python">keras.initializers.Constant(value=0)
 </code></pre>
-<p>³õÊ¼»¯Îª¹Ì¶¨Öµvalue</p>
+<p>åˆå§‹åŒ–ä¸ºå›ºå®šå€¼value</p>
 <h3 id="randomnormal">RandomNormal</h3>
 <pre><code class="python">keras.initializers.RandomNormal(mean=0.0, stddev=0.05, seed=None))
 </code></pre>
-<p>ÕıÌ¬·Ö²¼³õÊ¼»¯</p>
+<p>æ­£æ€åˆ†å¸ƒåˆå§‹åŒ–</p>
 <ul>
-<li>mean£º¾ùÖµ</li>
-<li>stddev£º±ê×¼²î</li>
-<li>seed£ºËæ»úÊıÖÖ×Ó</li>
+<li>meanï¼šå‡å€¼</li>
+<li>stddevï¼šæ ‡å‡†å·®</li>
+<li>seedï¼šéšæœºæ•°ç§å­</li>
 </ul>
 <h3 id="randomuniform">RandomUniform</h3>
 <pre><code class="python">keras.initializers.RandomUniform(minval=-0.05, maxval=0.05, seed=None)
 </code></pre>
-<p>¾ùÔÈ·Ö²¼³õÊ¼»¯
-<em> minval£º¾ùÔÈ·Ö²¼ÏÂ±ß½ç
-</em> maxval£º¾ùÔÈ·Ö²¼ÉÏ±ß½ç
-* seed£ºËæ»úÊıÖÖ×Ó</p>
+<p>å‡åŒ€åˆ†å¸ƒåˆå§‹åŒ–
+<em> minvalï¼šå‡åŒ€åˆ†å¸ƒä¸‹è¾¹ç•Œ
+</em> maxvalï¼šå‡åŒ€åˆ†å¸ƒä¸Šè¾¹ç•Œ
+* seedï¼šéšæœºæ•°ç§å­</p>
 <h3 id="truncatednormal">TruncatedNormal</h3>
 <pre><code class="python">keras.initializers.TruncatedNormal(mean=0.0, stddev=0.05, seed=None)
 </code></pre>
-<p>½ØÎ²¸ßË¹·Ö²¼³õÊ¼»¯£¬¸Ã³õÊ¼»¯·½·¨ÓëRandomNormalÀàËÆ£¬µ«Î»ÓÚ¾ùÖµÁ½¸ö±ê×¼²îÒÔÍâµÄÊı¾İ½«»á±»¶ªÆú²¢ÖØĞÂÉú³É£¬ĞÎ³É½ØÎ²·Ö²¼¡£¸Ã·Ö²¼ÊÇÉñ¾­ÍøÂçÈ¨ÖØºÍÂË²¨Æ÷µÄÍÆ¼ö³õÊ¼»¯·½·¨¡£</p>
+<p>æˆªå°¾é«˜æ–¯åˆ†å¸ƒåˆå§‹åŒ–ï¼Œè¯¥åˆå§‹åŒ–æ–¹æ³•ä¸RandomNormalç±»ä¼¼ï¼Œä½†ä½äºå‡å€¼ä¸¤ä¸ªæ ‡å‡†å·®ä»¥å¤–çš„æ•°æ®å°†ä¼šè¢«ä¸¢å¼ƒå¹¶é‡æ–°ç”Ÿæˆï¼Œå½¢æˆæˆªå°¾åˆ†å¸ƒã€‚è¯¥åˆ†å¸ƒæ˜¯ç¥ç»ç½‘ç»œæƒé‡å’Œæ»¤æ³¢å™¨çš„æ¨èåˆå§‹åŒ–æ–¹æ³•ã€‚</p>
 <ul>
-<li>mean£º¾ùÖµ</li>
-<li>stddev£º±ê×¼²î</li>
-<li>seed£ºËæ»úÊıÖÖ×Ó</li>
+<li>meanï¼šå‡å€¼</li>
+<li>stddevï¼šæ ‡å‡†å·®</li>
+<li>seedï¼šéšæœºæ•°ç§å­</li>
 </ul>
 <h3 id="variancescaling">VarianceScaling</h3>
 <pre><code class="python">keras.initializers.VarianceScaling(scale=1.0, mode='fan_in', distribution='normal', seed=None)
 </code></pre>
-<p>¸Ã³õÊ¼»¯·½·¨ÄÜ¹»×ÔÊÊÓ¦Ä¿±êÕÅÁ¿µÄshape¡£</p>
-<p>µ±<code>distribution="normal"</code>Ê±£¬Ñù±¾´Ó0¾ùÖµ£¬±ê×¼²îÎªsqrt(scale / n)µÄ½ØÎ²ÕıÌ¬·Ö²¼ÖĞ²úÉú¡£ÆäÖĞ£º</p>
-<pre><code>* µ±```mode = "fan_in"```Ê±£¬È¨ÖØÕÅÁ¿µÄÊäÈëµ¥ÔªÊı¡£
-* µ±```mode = "fan_out"```Ê±£¬È¨ÖØÕÅÁ¿µÄÊä³öµ¥ÔªÊı
-* µ±```mode = "fan_avg"```Ê±£¬È¨ÖØÕÅÁ¿µÄÊäÈëÊä³öµ¥ÔªÊıµÄ¾ùÖµ
+<p>è¯¥åˆå§‹åŒ–æ–¹æ³•èƒ½å¤Ÿè‡ªé€‚åº”ç›®æ ‡å¼ é‡çš„shapeã€‚</p>
+<p>å½“<code>distribution="normal"</code>æ—¶ï¼Œæ ·æœ¬ä»0å‡å€¼ï¼Œæ ‡å‡†å·®ä¸ºsqrt(scale / n)çš„æˆªå°¾æ­£æ€åˆ†å¸ƒä¸­äº§ç”Ÿã€‚å…¶ä¸­ï¼š</p>
+<pre><code>* å½“```mode = "fan_in"```æ—¶ï¼Œæƒé‡å¼ é‡çš„è¾“å…¥å•å…ƒæ•°ã€‚
+* å½“```mode = "fan_out"```æ—¶ï¼Œæƒé‡å¼ é‡çš„è¾“å‡ºå•å…ƒæ•°
+* å½“```mode = "fan_avg"```æ—¶ï¼Œæƒé‡å¼ é‡çš„è¾“å…¥è¾“å‡ºå•å…ƒæ•°çš„å‡å€¼
 </code></pre>
-<p>µ±<code>distribution="uniform"</code>Ê±£¬È¨ÖØ´Ó[-limit, limit]·¶Î§ÄÚ¾ùÔÈ²ÉÑù£¬ÆäÖĞlimit = limit = sqrt(3 * scale / n)</p>
+<p>å½“<code>distribution="uniform"</code>æ—¶ï¼Œæƒé‡ä»[-limit, limit]èŒƒå›´å†…å‡åŒ€é‡‡æ ·ï¼Œå…¶ä¸­limit = limit = sqrt(3 * scale / n)</p>
 <ul>
-<li>scale: ·ÅËõÒò×Ó£¬Õı¸¡µãÊı</li>
-<li>mode: ×Ö·û´®£¬¡°fan_in¡±£¬¡°fan_out¡±»ò¡°fan_avg¡±fan_in", "fan_out", "fan_avg".</li>
-<li>distribution: ×Ö·û´®£¬¡°normal¡±»ò¡°uniform¡±.</li>
-<li>seed: Ëæ»úÊıÖÖ×Ó</li>
+<li>scale: æ”¾ç¼©å› å­ï¼Œæ­£æµ®ç‚¹æ•°</li>
+<li>mode: å­—ç¬¦ä¸²ï¼Œâ€œfan_inâ€ï¼Œâ€œfan_outâ€æˆ–â€œfan_avgâ€fan_in", "fan_out", "fan_avg".</li>
+<li>distribution: å­—ç¬¦ä¸²ï¼Œâ€œnormalâ€æˆ–â€œuniformâ€.</li>
+<li>seed: éšæœºæ•°ç§å­</li>
 </ul>
 <h3 id="orthogonal">Orthogonal</h3>
 <pre><code class="python">keras.initializers.Orthogonal(gain=1.0, seed=None)
 </code></pre>
-<p>ÓÃËæ»úÕı½»¾ØÕó³õÊ¼»¯</p>
+<p>ç”¨éšæœºæ­£äº¤çŸ©é˜µåˆå§‹åŒ–</p>
 <ul>
-<li>gain: Õı½»¾ØÕóµÄ³ËĞÔÏµÊı</li>
-<li>seed£ºËæ»úÊıÖÖ×Ó</li>
+<li>gain: æ­£äº¤çŸ©é˜µçš„ä¹˜æ€§ç³»æ•°</li>
+<li>seedï¼šéšæœºæ•°ç§å­</li>
 </ul>
-<p>²Î¿¼ÎÄÏ×£º<a href="http://arxiv.org/abs/1312.6120">Saxe et al.</a></p>
+<p>å‚è€ƒæ–‡çŒ®ï¼š<a href="http://arxiv.org/abs/1312.6120">Saxe et al.</a></p>
 <h3 id="identiy">Identiy</h3>
 <pre><code class="python">keras.initializers.Identity(gain=1.0)
 </code></pre>
-<p>Ê¹ÓÃµ¥Î»¾ØÕó³õÊ¼»¯£¬½öÊÊÓÃÓÚ2D·½Õó</p>
+<p>ä½¿ç”¨å•ä½çŸ©é˜µåˆå§‹åŒ–ï¼Œä»…é€‚ç”¨äº2Dæ–¹é˜µ</p>
 <ul>
-<li>gain£ºµ¥Î»¾ØÕóµÄ³ËĞÔÏµÊı</li>
+<li>gainï¼šå•ä½çŸ©é˜µçš„ä¹˜æ€§ç³»æ•°</li>
 </ul>
 <h3 id="lecun_uniform">lecun_uniform</h3>
 <pre><code class="python">lecun_uniform(seed=None)
 </code></pre>
-<p>LeCun¾ùÔÈ·Ö²¼³õÊ¼»¯·½·¨£¬²ÎÊıÓÉ[-limit, limit]µÄÇø¼äÖĞ¾ùÔÈ²ÉÑù»ñµÃ£¬ÆäÖĞlimit=sqrt(3 / fan_in), fin_inÊÇÈ¨ÖØÏòÁ¿µÄÊäÈëµ¥ÔªÊı£¨ÉÈÈë£©</p>
+<p>LeCunå‡åŒ€åˆ†å¸ƒåˆå§‹åŒ–æ–¹æ³•ï¼Œå‚æ•°ç”±[-limit, limit]çš„åŒºé—´ä¸­å‡åŒ€é‡‡æ ·è·å¾—ï¼Œå…¶ä¸­limit=sqrt(3 / fan_in), fin_inæ˜¯æƒé‡å‘é‡çš„è¾“å…¥å•å…ƒæ•°ï¼ˆæ‰‡å…¥ï¼‰</p>
 <ul>
-<li>seed£ºËæ»úÊıÖÖ×Ó</li>
+<li>seedï¼šéšæœºæ•°ç§å­</li>
 </ul>
-<p>²Î¿¼ÎÄÏ×£º<a href="http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf">LeCun 98, Efficient Backprop</a></p>
+<p>å‚è€ƒæ–‡çŒ®ï¼š<a href="http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf">LeCun 98, Efficient Backprop</a></p>
 <h3 id="lecun_normal">lecun_normal</h3>
 <pre><code class="python">lecun_normal(seed=None)
 </code></pre>
-<p>LeCunÕıÌ¬·Ö²¼³õÊ¼»¯·½·¨£¬²ÎÊıÓÉ0¾ùÖµ£¬±ê×¼²îÎªstddev = sqrt(1 / fan_in)µÄÕıÌ¬·Ö²¼²úÉú£¬ÆäÖĞfan_inºÍfan_outÊÇÈ¨ÖØÕÅÁ¿µÄÉÈÈëÉÈ³ö£¨¼´ÊäÈëºÍÊä³öµ¥ÔªÊıÄ¿£©</p>
+<p>LeCunæ­£æ€åˆ†å¸ƒåˆå§‹åŒ–æ–¹æ³•ï¼Œå‚æ•°ç”±0å‡å€¼ï¼Œæ ‡å‡†å·®ä¸ºstddev = sqrt(1 / fan_in)çš„æ­£æ€åˆ†å¸ƒäº§ç”Ÿï¼Œå…¶ä¸­fan_inå’Œfan_outæ˜¯æƒé‡å¼ é‡çš„æ‰‡å…¥æ‰‡å‡ºï¼ˆå³è¾“å…¥å’Œè¾“å‡ºå•å…ƒæ•°ç›®ï¼‰</p>
 <ul>
-<li>seed£ºËæ»úÊıÖÖ×Ó</li>
+<li>seedï¼šéšæœºæ•°ç§å­</li>
 </ul>
-<p>²Î¿¼ÎÄÏ×£º</p>
+<p>å‚è€ƒæ–‡çŒ®ï¼š</p>
 <p><a href="https://arxiv.org/abs/1706.02515">Self-Normalizing Neural Networks</a>
 <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf">Efficient Backprop</a></p>
 <h3 id="glorot_normal">glorot_normal</h3>
 <pre><code class="python">glorot_normal(seed=None)
 </code></pre>
-<p>GlorotÕıÌ¬·Ö²¼³õÊ¼»¯·½·¨£¬Ò²³Æ×÷XavierÕıÌ¬·Ö²¼³õÊ¼»¯£¬²ÎÊıÓÉ0¾ùÖµ£¬±ê×¼²îÎªsqrt(2 / (fan_in + fan_out))µÄÕıÌ¬·Ö²¼²úÉú£¬ÆäÖĞfan_inºÍfan_outÊÇÈ¨ÖØÕÅÁ¿µÄÉÈÈëÉÈ³ö£¨¼´ÊäÈëºÍÊä³öµ¥ÔªÊıÄ¿£©</p>
+<p>Glorotæ­£æ€åˆ†å¸ƒåˆå§‹åŒ–æ–¹æ³•ï¼Œä¹Ÿç§°ä½œXavieræ­£æ€åˆ†å¸ƒåˆå§‹åŒ–ï¼Œå‚æ•°ç”±0å‡å€¼ï¼Œæ ‡å‡†å·®ä¸ºsqrt(2 / (fan_in + fan_out))çš„æ­£æ€åˆ†å¸ƒäº§ç”Ÿï¼Œå…¶ä¸­fan_inå’Œfan_outæ˜¯æƒé‡å¼ é‡çš„æ‰‡å…¥æ‰‡å‡ºï¼ˆå³è¾“å…¥å’Œè¾“å‡ºå•å…ƒæ•°ç›®ï¼‰</p>
 <ul>
-<li>seed£ºËæ»úÊıÖÖ×Ó</li>
+<li>seedï¼šéšæœºæ•°ç§å­</li>
 </ul>
-<p>²Î¿¼ÎÄÏ×£º<a href="http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf">Glorot &amp; Bengio, AISTATS 2010</a></p>
+<p>å‚è€ƒæ–‡çŒ®ï¼š<a href="http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf">Glorot &amp; Bengio, AISTATS 2010</a></p>
 <h3 id="glorot_uniform">glorot_uniform</h3>
 <pre><code class="python">glorot_uniform(seed=None)
 </code></pre>
-<p>Glorot¾ùÔÈ·Ö²¼³õÊ¼»¯·½·¨£¬ÓÖ³ÉXavier¾ùÔÈ³õÊ¼»¯£¬²ÎÊı´Ó[-limit, limit]µÄ¾ùÔÈ·Ö²¼²úÉú£¬ÆäÖĞlimitÎª<code>sqrt(6 / (fan_in + fan_out))</code>¡£fan_inÎªÈ¨ÖµÕÅÁ¿µÄÊäÈëµ¥ÔªÊı£¬fan_outÊÇÈ¨ÖØÕÅÁ¿µÄÊä³öµ¥ÔªÊı¡£</p>
+<p>Glorotå‡åŒ€åˆ†å¸ƒåˆå§‹åŒ–æ–¹æ³•ï¼ŒåˆæˆXavierå‡åŒ€åˆå§‹åŒ–ï¼Œå‚æ•°ä»[-limit, limit]çš„å‡åŒ€åˆ†å¸ƒäº§ç”Ÿï¼Œå…¶ä¸­limitä¸º<code>sqrt(6 / (fan_in + fan_out))</code>ã€‚fan_inä¸ºæƒå€¼å¼ é‡çš„è¾“å…¥å•å…ƒæ•°ï¼Œfan_outæ˜¯æƒé‡å¼ é‡çš„è¾“å‡ºå•å…ƒæ•°ã€‚</p>
 <ul>
-<li>seed£ºËæ»úÊıÖÖ×Ó</li>
+<li>seedï¼šéšæœºæ•°ç§å­</li>
 </ul>
-<p>²Î¿¼ÎÄÏ×£º<a href="http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf">Glorot &amp; Bengio, AISTATS 2010</a></p>
+<p>å‚è€ƒæ–‡çŒ®ï¼š<a href="http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf">Glorot &amp; Bengio, AISTATS 2010</a></p>
 <h3 id="he_normal">he_normal</h3>
 <pre><code class="python">he_normal(seed=None)
 </code></pre>
-<p>HeÕıÌ¬·Ö²¼³õÊ¼»¯·½·¨£¬²ÎÊıÓÉ0¾ùÖµ£¬±ê×¼²îÎªsqrt(2 / fan_in) µÄÕıÌ¬·Ö²¼²úÉú£¬ÆäÖĞfan_inÈ¨ÖØÕÅÁ¿µÄÉÈÈë</p>
+<p>Heæ­£æ€åˆ†å¸ƒåˆå§‹åŒ–æ–¹æ³•ï¼Œå‚æ•°ç”±0å‡å€¼ï¼Œæ ‡å‡†å·®ä¸ºsqrt(2 / fan_in) çš„æ­£æ€åˆ†å¸ƒäº§ç”Ÿï¼Œå…¶ä¸­fan_inæƒé‡å¼ é‡çš„æ‰‡å…¥</p>
 <ul>
-<li>seed£ºËæ»úÊıÖÖ×Ó</li>
+<li>seedï¼šéšæœºæ•°ç§å­</li>
 </ul>
-<p>²Î¿¼ÎÄÏ×£º<a href="http://arxiv.org/abs/1502.01852">He et al</a></p>
+<p>å‚è€ƒæ–‡çŒ®ï¼š<a href="http://arxiv.org/abs/1502.01852">He et al</a></p>
 <h3 id="he_uniform">he_uniform</h3>
 <pre><code class="python">he_normal(seed=None)
 </code></pre>
-<p>LeCun¾ùÔÈ·Ö²¼³õÊ¼»¯·½·¨£¬²ÎÊıÓÉ[-limit, limit]µÄÇø¼äÖĞ¾ùÔÈ²ÉÑù»ñµÃ£¬ÆäÖĞlimit=sqrt(6 / fan_in), fin_inÊÇÈ¨ÖØÏòÁ¿µÄÊäÈëµ¥ÔªÊı£¨ÉÈÈë£©</p>
+<p>LeCunå‡åŒ€åˆ†å¸ƒåˆå§‹åŒ–æ–¹æ³•ï¼Œå‚æ•°ç”±[-limit, limit]çš„åŒºé—´ä¸­å‡åŒ€é‡‡æ ·è·å¾—ï¼Œå…¶ä¸­limit=sqrt(6 / fan_in), fin_inæ˜¯æƒé‡å‘é‡çš„è¾“å…¥å•å…ƒæ•°ï¼ˆæ‰‡å…¥ï¼‰</p>
 <ul>
-<li>seed£ºËæ»úÊıÖÖ×Ó</li>
+<li>seedï¼šéšæœºæ•°ç§å­</li>
 </ul>
-<p>²Î¿¼ÎÄÏ×£º<a href="http://arxiv.org/abs/1502.01852">He et al</a></p>
-<h2 id="_3">×Ô¶¨Òå³õÊ¼»¯Æ÷</h2>
-<p>Èç¹ûĞèÒª´«µİ×Ô¶¨ÒåµÄ³õÊ¼»¯Æ÷£¬Ôò¸Ã³õÊ¼»¯Æ÷±ØĞëÊÇcallableµÄ£¬²¢ÇÒ½ÓÊÕ<code>shape</code>£¨½«±»³õÊ¼»¯µÄÕÅÁ¿shape£©ºÍ<code>dtype</code>£¨Êı¾İÀàĞÍ£©Á½¸ö²ÎÊı£¬²¢·µ»Ø·ûºÏ<code>shape</code>ºÍ<code>dtype</code>µÄÕÅÁ¿¡£</p>
+<p>å‚è€ƒæ–‡çŒ®ï¼š<a href="http://arxiv.org/abs/1502.01852">He et al</a></p>
+<h2 id="_3">è‡ªå®šä¹‰åˆå§‹åŒ–å™¨</h2>
+<p>å¦‚æœéœ€è¦ä¼ é€’è‡ªå®šä¹‰çš„åˆå§‹åŒ–å™¨ï¼Œåˆ™è¯¥åˆå§‹åŒ–å™¨å¿…é¡»æ˜¯callableçš„ï¼Œå¹¶ä¸”æ¥æ”¶<code>shape</code>ï¼ˆå°†è¢«åˆå§‹åŒ–çš„å¼ é‡shapeï¼‰å’Œ<code>dtype</code>ï¼ˆæ•°æ®ç±»å‹ï¼‰ä¸¤ä¸ªå‚æ•°ï¼Œå¹¶è¿”å›ç¬¦åˆ<code>shape</code>å’Œ<code>dtype</code>çš„å¼ é‡ã€‚</p>
 <pre><code class="python">from keras import backend as K
 
 def my_init(shape, dtype=None):

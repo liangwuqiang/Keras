@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="https://morvanzhou.github.io/tutorials/machine-learning/keras/">原文链接</a></p>
+        <div class="tut-main-content-pad">
+<hr>
+<h1>兼容 backend</h1>
+<p style="text-align: center;">
+        
+          作者: <strong>刘思成</strong>   
+        
+        编辑: <strong>莫烦</strong>   
+        
+          2016-10-29
+        
+      </p>
+<p>学习资料:</p>
+<ul>
+<li>backend <a href="https://github.com/MorvanZhou/tutorials/blob/master/kerasTUT/3-backend.py">说明</a></li>
+</ul>
+<p>我们来介绍 Keras 的两个 Backend，也就是Keras基于什么东西来做运算。Keras 可以基于两个Backend，一个是 Theano，一个是 Tensorflow。如果我们选择Theano作为Keras的Backend，
+那么Keras就用 Theano 在底层搭建你需要的神经网络；同样，如果选择 Tensorflow 的话呢，Keras 就使用 Tensorflow 在底层搭建神经网络。</p>
+<p>目前 Tensorflow 支持 Mac 和 Linux 系统，而 Theano 不但支持包括 Mac 和 Linux，还支持 Windows 系统，
+所以我们就可以选择自己可以用的 Backend 就可以。</p>
+<h4 class="tut-h4-pad" id="如何看当前使用的是什么Backend">如何看当前使用的是什么Backend</h4>
+<p>每次当我们<code class="highlighter-rouge">import keras</code>的时候，就会看到屏幕显示当前使用的 Backend</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">keras</span>
+</code></pre>
+</div>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">Using</span> <span class="n">Theano</span> <span class="n">Backend</span>
+</code></pre>
+</div>
+<p>这就说明现在使用的是Theano在作Backend。</p>
+<h4 class="tut-h4-pad" id="如何修改Backend">如何修改Backend</h4>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">~/.</span><span class="n">keras</span><span class="o">/</span><span class="n">keras</span><span class="o">.</span><span class="n">json</span>
+</code></pre>
+</div>
+<p>文件内容：</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+	<span class="s">"image_dim_ordering"</span><span class="p">:</span> <span class="s">"tf"</span><span class="p">,</span>
+	<span class="s">"epsilon"</span><span class="p">:</span> <span class="mf">1e-07</span><span class="p">,</span>
+	<span class="s">"floatx"</span><span class="p">:</span> <span class="s">"float32"</span><span class="p">,</span>
+	<span class="s">"backend"</span><span class="p">:</span> <span class="s">"theano"</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>每次<code class="highlighter-rouge">import</code>的时候，keras 就会检查这个 <code class="highlighter-rouge">keras.json</code> 文件。一般我们以为，如果需要把 Backend 改成 Tensorflow 的话，只需要改动最后一行”backend”对应的值，修改后的文件内容：</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+	<span class="s">"image_dim_ordering"</span><span class="p">:</span> <span class="s">"tf"</span><span class="p">,</span>
+	<span class="s">"epsilon"</span><span class="p">:</span> <span class="mf">1e-07</span><span class="p">,</span>
+	<span class="s">"floatx"</span><span class="p">:</span> <span class="s">"float32"</span><span class="p">,</span>
+	<span class="s">"backend"</span><span class="p">:</span> <span class="s">"tensorflow"</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>但这样修改后，<code class="highlighter-rouge">import</code> 的时候会出现错误信息。</p>
+<p>解决的方法有几种:</p>
+<ul>
+<li>可以在其他文本编辑器内编辑好这段文本，然后整体拷贝到这个文件里。</li>
+<li>还可以在terminal中直接输入临时环境变量执行</li>
+</ul>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># python2+输入:</span>
+<span class="n">KERAS_BACKEND</span><span class="o">=</span><span class="n">tensorflow</span> <span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">"from keras import backend"</span>
+</code></pre>
+</div>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># python3+输入:</span>
+<span class="n">KERAS_BACKEND</span><span class="o">=</span><span class="n">tensorflow</span> <span class="n">python3</span> <span class="o">-</span><span class="n">c</span> <span class="s">"from keras import backend"</span>
+</code></pre>
+</div>
+<ul>
+<li>最好的解决方法，还是在python代码中<code class="highlighter-rouge">import keras</code>前加入一个环境变量修改的语句：</li>
+</ul>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'KERAS_BACKEND'</span><span class="p">]</span><span class="o">=</span><span class="s">'theano'</span>
+</code></pre>
+</div>
+<p>这时<code class="highlighter-rouge">import keras</code>就会显示<code class="highlighter-rouge">Using Theano backend</code>。</p>
+<p>如果语句改为：</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'KERAS_BACKEND'</span><span class="p">]</span><span class="o">=</span><span class="s">'tensorflow'</span>
+</code></pre>
+</div>
+<p>这时<code class="highlighter-rouge">import keras</code>就会显示<code class="highlighter-rouge">Using Tensorflow backend</code>。
+第三种修改影响的范围是仅这个脚本内，所以其他文件的执行Keras还是会去找<code class="highlighter-rouge">keras.json</code>配置文件来确定用什么<code class="highlighter-rouge">backend</code>。</p>
+<p style="font-size: 0.8em; padding:4em 1em 0.5em 1em; margin: 0 auto;">
+        如果你觉得这篇文章或视频对你的学习很有帮助, 请你也分享它, 让它能再次帮助到更多的需要学习的人.
+
+        莫烦没有正式的经济来源, 如果你也想支持 <strong>莫烦Python</strong> 并看到更好的教学内容, 赞助他一点点, 作为鼓励他继续开源的动力.
+      </p>
+<!-- donation -->
+<div id="bottom-donation-section">
+<h3 id="bottom-donation-title">支持 让教学变得更优秀</h3>
+<br>
+<div>
+<a href="/support/" id="bottom-donation-button"><strong>点我 赞助 莫烦</strong></a>
+</div>
+<br>
+</br></br></div>
+<hr>
+</hr></hr></div>
+    </body></html>
