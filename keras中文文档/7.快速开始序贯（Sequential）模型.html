@@ -1,347 +1,367 @@
-<!DOCTYPE html>
-    <html><head><meta charset="UTF-8">
-    </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
-        <div class="section">
-<h1 id="sequential">快速开始序贯（Sequential）模型</h1>
-<p>序贯模型是多个网络层的线性堆叠，也就是“一条路走到黑”。</p>
-<p>可以通过向<code>Sequential</code>模型传递一个layer的list来构造该模型：</p>
-<pre><code class="python">from keras.models import Sequential
-from keras.layers import Dense, Activation
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-09-18T09:27:22.034779002"/>
+	<meta name="" content=""/>
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-09-17T16:54:49.609226286">
+	<style type="text/css">
+		pre.ctl { font-family: "Liberation Mono", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+	</style>
+</head>
+<body lang="zh-CN" dir="ltr">
+<p><span style="background: #ffff00"><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></span></p>
+<h1><a name="sequential"></a><span style="background: #ffff00">快速开始序贯（<font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US"><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US">Sequential</span></font></font></span></font></font>）模型</span></h1>
+<p><span style="background: #ffff00">序贯模型是多个网络层的线性堆叠，也就是“一条路走到黑”。</span></p>
+<p><span style="background: #ffff00">可以通过向</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Sequential</span></span></font></code></span></font><span style="background: #ffff00">模型传递一个</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">layer</span></span></font></span></font><span style="background: #ffff00">的</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">list</span></span></font></span></font><span style="background: #ffff00">来构造该模型：</span></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">from keras.models import Sequential</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">from keras.layers import Dense, Activation</span></span></font></code></span></font>
 
-model = Sequential([
-Dense(32, units=784),
-Activation('relu'),
-Dense(10),
-Activation('softmax'),
-])
-</code></pre>
-<p>也可以通过<code>.add()</code>方法一个个的将layer加入模型中：</p>
-<pre><code class="python">model = Sequential()
-model.add(Dense(32, input_shape=(784,)))
-model.add(Activation('relu'))
-</code></pre>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model = Sequential([</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">Dense(32, units=784),</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">Activation('relu'),</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">Dense(10),</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">Activation('softmax'),</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">])</span></span></font></code></span></font></pre><p>
+<span style="background: #ffff00">也可以通过</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">.add()</span></span></font></code></span></font><span style="background: #ffff00">方法一个个的将</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">layer</span></span></font></span></font><span style="background: #ffff00">加入模型中：</span></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model = Sequential()</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.add(Dense(32, input_shape=(784,)))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.add(Activation('relu'))</span></span></font></code></span></font></pre>
 <hr/>
-<h2 id="shape">指定输入数据的shape</h2>
-<p>模型需要知道输入数据的shape，因此，<code>Sequential</code>的第一层需要接受一个关于输入数据shape的参数，后面的各个层则可以自动的推导出中间数据的shape，因此不需要为每个层都指定这个参数。有几种方法来为第一层指定输入数据的shape</p>
+
+<h2><a name="shape"></a><span style="background: #ffff00">指定输入数据的<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">shape</span></font></span></span></font></h2>
+<p><span style="background: #ffff00">模型需要知道输入数据的</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">shape</span></span></font></span></font><span style="background: #ffff00">，因此，</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Sequential</span></span></font></code></span></font><span style="background: #ffff00">的第一层需要接受一个关于输入数据</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">shape</span></span></font></span></font><span style="background: #ffff00">的参数，后面的各个层则可以自动的推导出中间数据的</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">shape</span></span></font></span></font><span style="background: #ffff00">，因此不需要为每个层都指定这个参数。有几种方法来为第一层指定输入数据的</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">shape</span></span></font></span></font></p>
 <ul>
-<li>
-<p>传递一个<code>input_shape</code>的关键字参数给第一层，<code>input_shape</code>是一个tuple类型的数据，其中也可以填入<code>None</code>，如果填入<code>None</code>则表示此位置可能是任何正整数。数据的batch大小不应包含在其中。</p>
-</li>
-<li>
-<p>有些2D层，如<code>Dense</code>，支持通过指定其输入维度<code>input_dim</code>来隐含的指定输入数据shape。一些3D的时域层支持通过参数<code>input_dim</code>和<code>input_length</code>来指定输入shape。</p>
-</li>
-<li>
-<p>如果你需要为输入指定一个固定大小的batch_size（常用于stateful RNN网络），可以传递<code>batch_size</code>参数到一个层中，例如你想指定输入张量的batch大小是32，数据shape是（6，8），则你需要传递<code>batch_size=32</code>和<code>input_shape=(6,8)</code>。</p>
-</li>
+	<li/>
+<p><span style="background: #ffff00">传递一个</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">input_shape</span></span></font></code></span></font><span style="background: #ffff00">的关键字参数给第一层，</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">input_shape</span></span></font></code></span></font><span style="background: #ffff00">是一个</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">tuple</span></span></font></span></font><span style="background: #ffff00">类型的数据，其中也可以填入</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">None</span></span></font></code></span></font><span style="background: #ffff00">，如果填入</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">None</span></span></font></code></span></font><span style="background: #ffff00">则表示此位置可能是任何正整数。数据的</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">batch</span></span></font></span></font><span style="background: #ffff00">大小不应包含在其中。</span></p>
+	<li/>
+<p><span style="background: #ffff00">有些</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">2D</span></span></font></span></font><span style="background: #ffff00">层，如</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Dense</span></span></font></code></span></font><span style="background: #ffff00">，支持通过指定其输入维度</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">input_dim</span></span></font></code></span></font><span style="background: #ffff00">来隐含的指定输入数据</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">shape</span></span></font></span></font><span style="background: #ffff00">。一些</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">3D</span></span></font></span></font><span style="background: #ffff00">的时域层支持通过参数</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">input_dim</span></span></font></code></span></font><span style="background: #ffff00">和</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">input_length</span></span></font></code></span></font><span style="background: #ffff00">来指定输入</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">shape</span></span></font></span></font><span style="background: #ffff00">。</span></p>
+	<li/>
+<p><span style="background: #ffff00">如果你需要为输入指定一个固定大小的</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">batch_size</span></span></font></span></font><span style="background: #ffff00">（常用于</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">stateful
+	RNN</span></span></font></span></font><span style="background: #ffff00">网络），可以传递</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">batch_size</span></span></font></code></span></font><span style="background: #ffff00">参数到一个层中，例如你想指定输入张量的</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">batch</span></span></font></span></font><span style="background: #ffff00">大小是</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">32</span></span></font></span></font><span style="background: #ffff00">，数据</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">shape</span></span></font></span></font><span style="background: #ffff00">是（</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">6</span></span></font></span></font><span style="background: #ffff00">，</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">8</span></span></font></span></font><span style="background: #ffff00">），则你需要传递</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">batch_size=32</span></span></font></code></span></font><span style="background: #ffff00">和</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">input_shape=(6,8)</span></span></font></code></span></font><span style="background: #ffff00">。</span></p>
 </ul>
-<pre><code class="python">model = Sequential()
-model.add(Dense(32, input_dim=784))
-</code></pre>
-<pre><code class="python">model = Sequential()
-model.add(Dense(32, input_shape=784))
-</code></pre>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model = Sequential()</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.add(Dense(32, input_dim=784))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model = Sequential()</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.add(Dense(32, input_shape=784))</span></span></font></code></span></font></pre>
 <hr/>
-<h2 id="_1">编译</h2>
-<p>在训练模型之前，我们需要通过<code>compile</code>来对学习过程进行配置。<code>compile</code>接收三个参数：</p>
+
+<h2><a name="_1"></a><span style="background: #ffff00">编译</span></h2>
+<p><span style="background: #ffff00">在训练模型之前，我们需要通过</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">compile</span></span></font></code></span></font><span style="background: #ffff00">来对学习过程进行配置。</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">compile</span></span></font></code></span></font><span style="background: #ffff00">接收三个参数：</span></p>
 <ul>
-<li>
-<p>优化器optimizer：该参数可指定为已预定义的优化器名，如<code>rmsprop</code>、<code>adagrad</code>，或一个<code>Optimizer</code>类的对象，详情见<a href="../../other/optimizers/">optimizers</a></p>
-</li>
-<li>
-<p>损失函数loss：该参数为模型试图最小化的目标函数，它可为预定义的损失函数名，如<code>categorical_crossentropy</code>、<code>mse</code>，也可以为一个损失函数。详情见<a href="../../other/objectives/">losses</a></p>
-</li>
-<li>
-<p>指标列表metrics：对分类问题，我们一般将该列表设置为<code>metrics=['accuracy']</code>。指标可以是一个预定义指标的名字,也可以是一个用户定制的函数.指标函数应该返回单个张量,或一个完成<code>metric_name - &gt; metric_value</code>映射的字典.请参考<a href="../other/metrices.md">性能评估</a></p>
-</li>
+	<li/>
+<p><span style="background: #ffff00">优化器</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">optimizer</span></span></font></span></font><span style="background: #ffff00">：该参数可指定为已预定义的优化器名，如</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">rmsprop</span></span></font></code></span></font><span style="background: #ffff00">、</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">adagrad</span></span></font></code></span></font><span style="background: #ffff00">，或一个</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Optimizer</span></span></font></code></span></font><span style="background: #ffff00">类的对象，详情见</span><font face="Liberation Serif, serif"><span lang="en-US"><a href="../../other/optimizers/"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">optimizers</span></span></font></a></span></font></p>
+	<li/>
+<p><span style="background: #ffff00">损失函数</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">loss</span></span></font></span></font><span style="background: #ffff00">：该参数为模型试图最小化的目标函数，它可为预定义的损失函数名，如</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">categorical_crossentropy</span></span></font></code></span></font><span style="background: #ffff00">、</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">mse</span></span></font></code></span></font><span style="background: #ffff00">，也可以为一个损失函数。详情见</span><font face="Liberation Serif, serif"><span lang="en-US"><a href="../../other/objectives/"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">losses</span></span></font></a></span></font></p>
+	<li/>
+<p><span style="background: #ffff00">指标列表</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">metrics</span></span></font></span></font><span style="background: #ffff00">：对分类问题，我们一般将该列表设置为</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">metrics=['accuracy']</span></span></font></code></span></font><span style="background: #ffff00">。指标可以是一个预定义指标的名字</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">,</span></span></font></span></font><span style="background: #ffff00">也可以是一个用户定制的函数</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">.</span></span></font></span></font><span style="background: #ffff00">指标函数应该返回单个张量</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">,</span></span></font></span></font><span style="background: #ffff00">或一个完成</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">metric_name
+	- &gt; metric_value</span></span></font></code></span></font><span style="background: #ffff00">映射的字典</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">.</span></span></font></span></font><span style="background: #ffff00">请参考<a href="../other/metrices.md">性能评估</a></span></p>
 </ul>
-<pre><code class="python"># For a multi-class classification problem
-model.compile(optimizer='rmsprop',
-              loss='categorical_crossentropy',
-              metrics=['accuracy'])
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># For a multi-class classification problem</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.compile(optimizer='rmsprop',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">loss='categorical_crossentropy',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">metrics=['accuracy'])</span></span></font></code></span></font>
 
-# For a binary classification problem
-model.compile(optimizer='rmsprop',
-              loss='binary_crossentropy',
-              metrics=['accuracy'])
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># For a binary classification problem</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.compile(optimizer='rmsprop',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">loss='binary_crossentropy',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">metrics=['accuracy'])</span></span></font></code></span></font>
 
-# For a mean squared error regression problem
-model.compile(optimizer='rmsprop',
-              loss='mse')
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># For a mean squared error regression problem</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.compile(optimizer='rmsprop',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">loss='mse')</span></span></font></code></span></font>
 
-# For custom metrics
-import keras.backend as K
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># For custom metrics</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">import keras.backend as K</span></span></font></code></span></font>
 
-def mean_pred(y_true, y_pred):
-    return K.mean(y_pred)
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">def mean_pred(y_true, y_pred):</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">return K.mean(y_pred)</span></span></font></code></span></font>
 
-model.compile(optimizer='rmsprop',
-              loss='binary_crossentropy',
-              metrics=['accuracy', mean_pred])
-</code></pre>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.compile(optimizer='rmsprop',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">loss='binary_crossentropy',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">metrics=['accuracy', mean_pred])</span></span></font></code></span></font></pre>
 <hr/>
-<h2 id="_2">训练</h2>
-<p>Keras以Numpy数组作为输入数据和标签的数据类型。训练模型一般使用<code>fit</code>函数，该函数的详情见<a href="../../models/sequential/">这里</a>。下面是一些例子。</p>
-<pre><code class="python"># For a single-input model with 2 classes (binary classification):
 
-model = Sequential()
-model.add(Dense(32, activation='relu', input_dim=100))
-model.add(Dense(1, activation='sigmoid'))
-model.compile(optimizer='rmsprop',
-              loss='binary_crossentropy',
-              metrics=['accuracy'])
+<h2><a name="_2"></a><span style="background: #ffff00">训练</span></h2>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Keras</span></span></font></span></font><span style="background: #ffff00"><span lang="en-US">以</span></span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Numpy</span></span></font></span></font><span style="background: #ffff00"><span lang="en-US">数组作为输入数据和标签的数据类型。训练模型一般使用</span></span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">fit</span></span></font></code></span></font><span style="background: #ffff00">函数，该函数的详情</span><span style="background: #ffff00">见<a href="../../models/sequential/">这里</a>。下面是一些例子。</span></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># For a single-input model with 2 classes (binary classification):</span></span></font></code></span></font>
 
-# Generate dummy data
-import numpy as np
-data = np.random.random((1000, 100))
-labels = np.random.randint(2, size=(1000, 1))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model = Sequential()</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.add(Dense(32, activation='relu', input_dim=100))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.add(Dense(1, activation='sigmoid'))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.compile(optimizer='rmsprop',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">loss='binary_crossentropy',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">metrics=['accuracy'])</span></span></font></code></span></font>
 
-# Train the model, iterating on the data in batches of 32 samples
-model.fit(data, labels, epochs=10, batch_size=32)
-</code></pre>
-<pre><code class="python"># For a single-input model with 10 classes (categorical classification):
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># Generate dummy data</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">import numpy as np</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">data = np.random.random((1000, 100))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">labels = np.random.randint(2, size=(1000, 1))</span></span></font></code></span></font>
 
-model = Sequential()
-model.add(Dense(32, activation='relu', input_dim=100))
-model.add(Dense(10, activation='softmax'))
-model.compile(optimizer='rmsprop',
-              loss='categorical_crossentropy',
-              metrics=['accuracy'])
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># Train the model, iterating on the data in batches of 32 samples</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.fit(data, labels, epochs=10, batch_size=32)</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># For a single-input model with 10 classes (categorical classification):</span></span></font></code></span></font>
 
-# Generate dummy data
-import numpy as np
-data = np.random.random((1000, 100))
-labels = np.random.randint(10, size=(1000, 1))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model = Sequential()</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.add(Dense(32, activation='relu', input_dim=100))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.add(Dense(10, activation='softmax'))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.compile(optimizer='rmsprop',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">loss='categorical_crossentropy',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">metrics=['accuracy'])</span></span></font></code></span></font>
 
-# Convert labels to categorical one-hot encoding
-one_hot_labels = keras.utils.to_categorical(labels, num_classes=10)
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># Generate dummy data</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">import numpy as np</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">data = np.random.random((1000, 100))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">labels = np.random.randint(10, size=(1000, 1))</span></span></font></code></span></font>
 
-# Train the model, iterating on the data in batches of 32 samples
-model.fit(data, one_hot_labels, epochs=10, batch_size=32)
-</code></pre>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># Convert labels to categorical one-hot encoding</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">one_hot_labels = keras.utils.to_categorical(labels, num_classes=10)</span></span></font></code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># Train the model, iterating on the data in batches of 32 samples</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.fit(data, one_hot_labels, epochs=10, batch_size=32)</span></span></font></code></span></font></pre>
 <hr/>
-<h2 id="_3">例子</h2>
-<p>这里是一些帮助你开始的例子</p>
-<p>在Keras代码包的examples文件夹中，你将找到使用真实数据的示例模型：</p>
+
+<h2><a name="_3"></a><span style="background: #ffff00">例子</span></h2>
+<p><span style="background: #ffff00">这里是一些帮助你开始的例子</span></p>
+<p><span style="background: #ffff00">在<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font></span></font>代码包的<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">examples</span></font></span></font>文件夹中，你将找到使用真实数据的示例模型：</span></p>
 <ul>
-<li>CIFAR10 小图片分类：使用CNN和实时数据提升</li>
-<li>IMDB 电影评论观点分类：使用LSTM处理成序列的词语</li>
-<li>Reuters（路透社）新闻主题分类：使用多层感知器（MLP）</li>
-<li>MNIST手写数字识别：使用多层感知器和CNN</li>
-<li>字符级文本生成：使用LSTM
-...</li>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00"><font face="Liberation Serif, serif"><span lang="en-US">CIFAR10
+	</span></font></span></font><span lang="en-US">小图片分类：使用</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">CNN</span></font></span></font><span lang="en-US">和实时数据提升
+	</span></span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00"><font face="Liberation Serif, serif"><span lang="en-US">IMDB
+	</span></font></span></font><span lang="en-US">电影评论观点分类：使用</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">LSTM</span></font></span></font><span lang="en-US">处理成序列的词语
+	</span></span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00"><font face="Liberation Serif, serif"><span lang="en-US">Reuters</span></font></span></font><span lang="en-US">（路透社）新闻主题分类：使用多层感知器（</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">MLP</span></font></span></font><span lang="en-US">）
+	</span></span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00"><font face="Liberation Serif, serif"><span lang="en-US">MNIST</span></font></span></font><span lang="en-US">手写数字识别：使用多层感知器和</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">CNN
+	</span></font></span></span></font>
+	</p>
+	<li/>
+<p><span style="background: #ffff00">字符级文本生成：使用<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">LSTM
+	... </span></font></span></span></font>
+	</p>
 </ul>
-<h3 id="softmax">基于多层感知器的softmax多分类：</h3>
-<pre><code class="python">from keras.models import Sequential
-from keras.layers import Dense, Dropout, Activation
-from keras.optimizers import SGD
+<h3><a name="softmax"></a><span style="background: #ffff00">基于多层感知器的<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">softmax</span></font></span></font>多分类：</span></h3>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">from keras.models import Sequential</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">from keras.layers import Dense, Dropout, Activation</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">from keras.optimizers import SGD</span></span></font></code></span></font>
 
-# Generate dummy data
-import numpy as np
-x_train = np.random.random((1000, 20))
-y_train = keras.utils.to_categorical(np.random.randint(10, size=(1000, 1)), num_classes=10)
-x_test = np.random.random((100, 20))
-y_test = keras.utils.to_categorical(np.random.randint(10, size=(100, 1)), num_classes=10)
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># Generate dummy data</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">import numpy as np</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">x_train = np.random.random((1000, 20))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">y_train = keras.utils.to_categorical(np.random.randint(10, size=(1000, 1)),</span></span></font></code><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"> </span></font></code><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">num_classes=10)</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">x_test = np.random.random((100, 20))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">y_test = keras.utils.to_categorical(np.random.randint(10, size=(100, 1)),</span></span></font></code><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"> </span></font></code><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">num_classes=10)</span></span></font></code></span></font>
 
-model = Sequential()
-# Dense(64) is a fully-connected layer with 64 hidden units.
-# in the first layer, you must specify the expected input data shape:
-# here, 20-dimensional vectors.
-model.add(Dense(64, activation='relu', input_dim=20))
-model.add(Dropout(0.5))
-model.add(Dense(64, activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(10, activation='softmax'))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model = Sequential()</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># Dense(64) is a fully-connected layer with 64 hidden units.</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># in the first layer, you must specify the expected input data shape:</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># here, 20-dimensional vectors.</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.add(Dense(64, activation='relu', input_dim=20))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dropout(0.5))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.add(Dense(64, activation='relu'))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dropout(0.5))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.add(Dense(10, activation='softmax'))</span></span></font></code></span></font>
 
-sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
-model.compile(loss='categorical_crossentropy',
-              optimizer=sgd,
-              metrics=['accuracy'])
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.compile(loss='categorical_crossentropy',</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">optimizer=sgd,</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">              </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">metrics=['accuracy'])</span></span></font></code></span></font>
 
-model.fit(x_train, y_train,
-          epochs=20,
-          batch_size=128)
-score = model.evaluate(x_test, y_test, batch_size=128)
-</code></pre>
-<h3 id="mlp">MLP的二分类：</h3>
-<pre><code class="python">import numpy as np
-from keras.models import Sequential
-from keras.layers import Dense, Dropout
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">model.fit(x_train, y_train,</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">          </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">epochs=20,</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">          </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">batch_size=128)</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">score = model.evaluate(x_test, y_test, batch_size=128)</span></span></font></code></span></font></pre><h3>
+<a name="mlp"></a><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">MLP</span></font></span></font>的二分类：</h3>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">import numpy as np</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.models import Sequential</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.layers import Dense, Dropout</span></font></code></span></font>
 
-# Generate dummy data
-x_train = np.random.random((1000, 20))
-y_train = np.random.randint(2, size=(1000, 1))
-x_test = np.random.random((100, 20))
-y_test = np.random.randint(2, size=(100, 1))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># Generate dummy data</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">x_train = np.random.random((1000, 20))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">y_train = np.random.randint(2, size=(1000, 1))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">x_test = np.random.random((100, 20))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">y_test = np.random.randint(2, size=(100, 1))</span></font></code></span></font>
 
-model = Sequential()
-model.add(Dense(64, input_dim=20, activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(64, activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(1, activation='sigmoid'))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model = Sequential()</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dense(64, input_dim=20, activation='relu'))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dropout(0.5))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dense(64, activation='relu'))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dropout(0.5))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dense(1, activation='sigmoid'))</span></font></code></span></font>
 
-model.compile(loss='binary_crossentropy',
-              optimizer='rmsprop',
-              metrics=['accuracy'])
-model.fit(x_train, y_train,
-          epochs=20,
-          batch_size=128)
-score = model.evaluate(x_test, y_test, batch_size=128)
-</code></pre>
-<h3 id="vgg">类似VGG的卷积神经网络：</h3>
-<pre><code class="python">import numpy as np
-import keras
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten
-from keras.layers import Conv2D, MaxPooling2D
-from keras.optimizers import SGD
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.compile(loss='binary_crossentropy',</span></font></code></span></font>
+<code class="cjk">              </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">optimizer='rmsprop',</span></font></code></span></font>
+<code class="cjk">              </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">metrics=['accuracy'])</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.fit(x_train, y_train,</span></font></code></span></font>
+<code class="cjk">          </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">epochs=20,</span></font></code></span></font>
+<code class="cjk">          </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">batch_size=128)</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">score = model.evaluate(x_test, y_test, batch_size=128)</span></font></code></span></font></pre><h3>
+<a name="vgg"></a>类似<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">VGG</span></font></span></font>的卷积神经网络：</h3>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">import numpy as np</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">import keras</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.models import Sequential</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.layers import Dense, Dropout, Flatten</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.layers import Conv2D, MaxPooling2D</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.optimizers import SGD</span></font></code></span></font>
 
-# Generate dummy data
-x_train = np.random.random((100, 100, 100, 3))
-y_train = keras.utils.to_categorical(np.random.randint(10, size=(100, 1)), num_classes=10)
-x_test = np.random.random((20, 100, 100, 3))
-y_test = keras.utils.to_categorical(np.random.randint(10, size=(20, 1)), num_classes=10)
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># Generate dummy data</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">x_train = np.random.random((100, 100, 100, 3))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">y_train = keras.utils.to_categorical(np.random.randint(10, size=(100, 1)), num_classes=10)</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">x_test = np.random.random((20, 100, 100, 3))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">y_test = keras.utils.to_categorical(np.random.randint(10, size=(20, 1)), num_classes=10)</span></font></code></span></font>
 
-model = Sequential()
-# input: 100x100 images with 3 channels -&gt; (100, 100, 3) tensors.
-# this applies 32 convolution filters of size 3x3 each.
-model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(100, 100, 3)))
-model.add(Conv2D(32, (3, 3), activation='relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.25))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model = Sequential()</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># input: 100x100 images with 3 channels -&gt; (100, 100, 3) tensors.</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># this applies 32 convolution filters of size 3x3 each.</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(100, 100, 3)))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Conv2D(32, (3, 3), activation='relu'))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(MaxPooling2D(pool_size=(2, 2)))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dropout(0.25))</span></font></code></span></font>
 
-model.add(Conv2D(64, (3, 3), activation='relu'))
-model.add(Conv2D(64, (3, 3), activation='relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.25))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Conv2D(64, (3, 3), activation='relu'))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Conv2D(64, (3, 3), activation='relu'))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(MaxPooling2D(pool_size=(2, 2)))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dropout(0.25))</span></font></code></span></font>
 
-model.add(Flatten())
-model.add(Dense(256, activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(10, activation='softmax'))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Flatten())</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dense(256, activation='relu'))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dropout(0.5))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dense(10, activation='softmax'))</span></font></code></span></font>
 
-sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
-model.compile(loss='categorical_crossentropy', optimizer=sgd)
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.compile(loss='categorical_crossentropy', optimizer=sgd)</span></font></code></span></font>
 
-model.fit(x_train, y_train, batch_size=32, epochs=10)
-score = model.evaluate(x_test, y_test, batch_size=32)
-</code></pre>
-<h3 id="lstm">使用LSTM的序列分类</h3>
-<pre><code class="python">from keras.models import Sequential
-from keras.layers import Dense, Dropout
-from keras.layers import Embedding
-from keras.layers import LSTM
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.fit(x_train, y_train, batch_size=32, epochs=10)</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">score = model.evaluate(x_test, y_test, batch_size=32)</span></font></code></span></font></pre><h3>
+<a name="lstm"></a>使用<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">LSTM</span></font></span></font>的序列分类</h3>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.models import Sequential</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.layers import Dense, Dropout</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.layers import Embedding</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.layers import LSTM</span></font></code></span></font>
 
-model = Sequential()
-model.add(Embedding(max_features, output_dim=256))
-model.add(LSTM(128))
-model.add(Dropout(0.5))
-model.add(Dense(1, activation='sigmoid'))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model = Sequential()</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Embedding(max_features, output_dim=256))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(LSTM(128))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dropout(0.5))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dense(1, activation='sigmoid'))</span></font></code></span></font>
 
-model.compile(loss='binary_crossentropy',
-              optimizer='rmsprop',
-              metrics=['accuracy'])
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.compile(loss='binary_crossentropy',</span></font></code></span></font>
+<code class="cjk">              </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">optimizer='rmsprop',</span></font></code></span></font>
+<code class="cjk">              </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">metrics=['accuracy'])</span></font></code></span></font>
 
-model.fit(x_train, y_train, batch_size=16, epochs=10)
-score = model.evaluate(x_test, y_test, batch_size=16)
-</code></pre>
-<h3 id="1d">使用1D卷积的序列分类</h3>
-<pre><code class="python">from keras.models import Sequential
-from keras.layers import Dense, Dropout
-from keras.layers import Embedding
-from keras.layers import Conv1D, GlobalAveragePooling1D, MaxPooling1D
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.fit(x_train, y_train, batch_size=16, epochs=10)</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">score = model.evaluate(x_test, y_test, batch_size=16)</span></font></code></span></font></pre><h3>
+<a name="1d"></a>使用<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">1D</span></font></span></font>卷积的序列分类</h3>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.models import Sequential</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.layers import Dense, Dropout</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.layers import Embedding</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.layers import Conv1D, GlobalAveragePooling1D, MaxPooling1D</span></font></code></span></font>
 
-model = Sequential()
-model.add(Conv1D(64, 3, activation='relu', input_shape=(seq_length, 100)))
-model.add(Conv1D(64, 3, activation='relu'))
-model.add(MaxPooling1D(3))
-model.add(Conv1D(128, 3, activation='relu'))
-model.add(Conv1D(128, 3, activation='relu'))
-model.add(GlobalAveragePooling1D())
-model.add(Dropout(0.5))
-model.add(Dense(1, activation='sigmoid'))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model = Sequential()</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Conv1D(64, 3, activation='relu', input_shape=(seq_length, 100)))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Conv1D(64, 3, activation='relu'))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(MaxPooling1D(3))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Conv1D(128, 3, activation='relu'))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Conv1D(128, 3, activation='relu'))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(GlobalAveragePooling1D())</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dropout(0.5))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dense(1, activation='sigmoid'))</span></font></code></span></font>
 
-model.compile(loss='binary_crossentropy',
-              optimizer='rmsprop',
-              metrics=['accuracy'])
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.compile(loss='binary_crossentropy',</span></font></code></span></font>
+<code class="cjk">              </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">optimizer='rmsprop',</span></font></code></span></font>
+<code class="cjk">              </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">metrics=['accuracy'])</span></font></code></span></font>
 
-model.fit(x_train, y_train, batch_size=16, epochs=10)
-score = model.evaluate(x_test, y_test, batch_size=16)
-</code></pre>
-<h3 id="lstm_1">用于序列分类的栈式LSTM</h3>
-<p>在该模型中，我们将三个LSTM堆叠在一起，是该模型能够学习更高层次的时域特征表示。</p>
-<p>开始的两层LSTM返回其全部输出序列，而第三层LSTM只返回其输出序列的最后一步结果，从而其时域维度降低（即将输入序列转换为单个向量）</p>
-<p><img alt="regular_stacked_lstm" src="images/db8ae582b5660e4a5a7d27c7850a9619.png"/></p>
-<pre><code class="python">from keras.models import Sequential
-from keras.layers import LSTM, Dense
-import numpy as np
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.fit(x_train, y_train, batch_size=16, epochs=10)</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">score = model.evaluate(x_test, y_test, batch_size=16)</span></font></code></span></font></pre><h3>
+<a name="lstm_1"></a><span style="background: #ffff00">用于序列分类的栈式<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">LSTM</span></font></span></span></font></h3>
+<p><span style="background: #ffff00">在该模型中，我们将三个<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">LSTM</span></font></span></font>堆叠在一起，是该模型能够学习更高层次的时域特征表示。</span></p>
+<p><span style="background: #ffff00">开始的两层</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">LSTM</span></span></font></span></font><span style="background: #ffff00">返回其全部输出序列，而第三层</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">LSTM</span></span></font></span></font><span style="background: #ffff00">只返回其输出序列的最后一步结果，从而其时域维度降低（即将输入序列转换为单个向量）</span></p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcUAAAGQCAYAAADfgnvAAAB530lEQVR4nO3dBZxsdf3/8WNjF3YrdmGLYie2hIlit2IhtiIWJnYnKGKLhSI2omK3gmJ3F1jw+z+/zHf/5547cWZndmb33vfr8djHvXfu7pkTs9/399OnPPH/0YQQQgihOeWyTyCEEEJYL0QUQwghhAERxRBCCGFARDGEEEIYEFEMIYQQBmwmihe5yEWaH//4x0s4lRBCCGFxnOIUp2g++9nPNte85jVXXttMFH/5y182D33oQ5vrXOc6Cz25EMLa8/vf/7550IMe1DzjGc9oLn7xiy/7dNY1D3jAA5pb3epW5Stsefz3v/9t7nKXuzS/+c1vNnl9qPv0Gte4RrPbbrst5MRCCIvjZz/7WRHFG93oRuX3PIzmkY98ZLP99ttnLdxC+fe//z309cQUQwghhAERxRBCCGFARDGEEEIYEFEMIYQQBkQUQwghhAERxRDC1LzgBS9ottlmm5LJGjZHuv8Xv/jFUvf9yU9+srx2spOdrNlll12aU53qVJt872c+85nm5z//+cq/z3e+8zXXve51F3m6vfn73//evP3tby+17Gr7bnKTm2x2PdPy61//uvne977XXP/61x/7fV//+tebT3/6082pT33q5pa3vGVz/vOfv3nPe97T3P72t5/p/btEFEMIU/P617++OcMZzhBRHMJf/vKX5uUvf3nzkIc8pNyjy172smXh/tGPflRqH1/xilds8v2Xu9zlms9//vPNYx7zmObJT35yKZdZj3z/+98vNZsvetGLmjvc4Q7N+9///ma77bZrDjjggFWJ+O9+97tmv/32K/fqvve970hRVFv72Mc+ttTQv/KVr2wueMELrvzfuc51rvKz7ukpTzkfOYsohhCm5gtf+EJz8pOffNmn0bz5zW9u7n73uy/7NFb4xS9+0TzwgQ8sQnHGM56xvHaFK1yhufe979084QlPKIv6Va961fLvylnPetbm0Y9+dPPUpz61ecpTnrIu7uswHvGIRzTXu971mlvc4hbl33e+852bj3zkI80Tn/jEYsFNC2vTs3v+858/9nuudrWrNTe/+c2bD33oQ5v9/7Wuda3mr3/9a3O/+92vbNTmQUQxhDA1pz/96Zd9Cs0nPvGJ5vGPf/y6EkUF/6zCM5/5zJu8znVaF+4HP/jBxTps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zRDC4okohrAEWIN3vvOdm9e//vXNf/7zn03+76xnPWtzoxvdaElnFsLWTUQxhCXBGnzVq161yWunOtWpmt13371kn4YQFk9EMYQlseOOOzbnOte5mt/85jcrr7EaWZAhhOUQUQxhSZzsZCdr7n73uzf777//igv1vOc9b7PDDjss+cxC2HqJKIawRO5yl7s0z33uc8vfuU732GOPJZ9RCFs3EcUQlsj222/fXPSiF21+9KMfFWuRSIYQlkdEMYQlc4973KN58pOf3FziEpdoLne5yy37dELYqtlMFPfaa6/mJz/5yTLOJYStkr///e/lz1Of+tTNHe5whyWfTQhbD0qj9ttvv+YCF7jA/3+t+00vfvGLi0vnQhe60EJPLoStlTOc4QzNNa95zebc5z73mr/XP//5z+aDH/xgaTZ+9rOffc3fbyPzgQ98oFjvvsKWxwknnNAcdNBBzR3veMfxooiHPexh6agRwhbIz372s+aCF7xg88xnPrO5xjWusezTWddYKCU+PeIRj1j2qYQ14N///ndzmtOcZrPXE1MMIYQQBkQUQwghhAERxRBCCGFARDGEEEIYEFEMIYQQBkQUQwghhAERxRDC1LzgBS9ottlmm+ZBD3rQsk9lXWJQ9Be/+MXmIhe5SPPJT36yvKYB/C677FJ63Lb5zGc+0/z85z9f+ff5zne+5rrXve4iT7c3Gk28/e1vb3784x+X2tqb3OQmm11PX/785z83r3vd65qf/vSnzS1vecsyQ7Q7Mu1vf/tb89a3vrU59thjm+222660QTzd6U638v/vec97mtvf/vYzXVOXiGIIYWoMR9Z0IKK4OX/5y1+al7/85c1DHvKQco8ue9nLloVbf9sHPOABzSte8YpNvl9rv89//vPNYx7zmNLub70OmP7+97/f3OpWt2pe9KIXlc5L73//+4tQHXDAAVOL+B//+Mfm6le/enOta12r+cUvftG89KUvba561as2X/jCFzZ5v+tf//rNGc94xtJlTV3hs5/97Oazn/3sSqMLo9fue9/7lnuqO808iCiGEKbG4nXyk5982afRvPnNby7jt9YLFvgHPvCBRSgs5rjCFa7Q3Pve926e8IQnNK985SvL4u/flbOe9azNox/96OapT31q85SnPGVd3NdhaGJwvetdr7nFLW5R/m3u50c+8pHmiU98YvPpT396qmOxNlnSZzvb2cq/991337IhOOKII5prX/vaK+/n+O7f7373u+bxj39889rXvrbcRxYmiOpf//rX5n73u1/ZqM2DiGIIYWpOf/rTL/sUmk984hNloVxPovjIRz6yWIVnPvOZN3md67Qu3A9+8IOLddjuKOT/L3zhC69bQcSvfvWr5k9/+tMmr+kI869//Wuq47D4bnazm60IIjxDonimM52p/PvLX/5y6apGEHGOc5yjedrTnlbu3+c+97lNjnfzm9+8efrTn94ceuih5e+zElEMIUzNb3/729Ib9F73utfKa1rIvfvd724e+tCHNt/5znea973vfaWlnMWtLvZiZ4ccckixpj71qU8VS0AMjeV02tOetiy8jmGMlngV1yPx+/rXv15+fueddy7H9Nptb3vbIiavetWrynDmW9/61s3vf//75jWveU05L661RcLy0VeWNTMM/WZdz5577lmuw8Lf7nc7zP0npvahD32o+e53v1vazt30pjfdpE9nn3te+djHPlYsfJapfp/T9r51zoTrwAMPbHbfffcSXxTT406dBo3vxVrbfOMb3yiu2ctf/vLl3zYIV77ylTf5nvOc5zzNVa5ylaH36eEPf3jz2Mc+ttyfWTcWEcUQQm/+97//Fdeg/sgSHqooii8RNm6uE088sSxy/s61Rggf97jHNW95y1vK4n388cc33/zmN4vF8Otf/7rEiRxTrMjCd85znrPErIgLEbnBDW5QklG4Fi9zmcuURd/Czor4wQ9+0FzykpdsznKWs5TzeO9731usR7E877VInvOc5zQ77LDDitt0GO7bV77yleZNb3pTs+uuuxZxH5WoYiNwt7vdrbhVWZdcxa7/ZS97WbGs+txzuM9+XqyS8LCq3EubEsfrC0vXM3ROruHb3/522ZDMkujivN/xjnc0++yzT9kgVUYJtk3AsDg2l6v7ZaN2m9vcZtXng4hiCKE3sgPNf7Qgi/9UWGkWaAJnt2/nDjv7d73rXWWBZr1wcVlYJaEQPLA+xJS4xu5///sPXaivdKUrbfJvk3y41GQuSsaoiHMRa+ezaIgSUZwEIWH5uX9Espt4A0J2pzvdqWwOWGh41KMeVcRIYom4ZJ97jpe85CXFGnc8vPCFLyzWJlev59EXlrfNiWt0DH+K6a2Wf/zjHyVu6PNgeotr+OhHP9pc7WpXG/r94pasxGEN2m2m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EEIlohjCgrnABS7Q7LDDDs3nP//55sQTTxz6Pf/73/+KeIYQFktEMYQlcPe73735whe+MFQUT37ykzfXvva1m/Oc5zxLOLMQtm4iiiEsgd122615yEMeMvL/4zoNYTlEFENYAmc/+9mbG93oRs3hhx9eXKVtWIo777zzks4shK2biGIIS4IL9bDDDtvktVOc4hTNzW9+8+asZz3rks4qhK2biGIIS+K2t71tc6pTnar597//vfLaCSec0Oy+++5LPKsQtm4iiiEsiTOc4QxFGN/znvc0//3vf8trpznNaZpb3/rWSz6zELZeIoohLBFW4Tve8Y7yd7WJt7/97ZvTne50Sz6rELZeIoohLBHxQxbj3//+92ItxnUawnKJKIawRE596lOXIv3Xve51zZnOdKbmpje96bJPKYStms1E8Ygjjmh++ctfLuNcQtgqOd/5zlf+vPrVr17iiyGExSBkcctb3rJsTlde637TTW5yk+a4445b6ImFEJrmYx/7WPkKISyOD3zgA0UYK5uJokLiAw88sLnrXe+60BMLIaw9P/vZz5oLXvCCpe/qNa5xjWWfzrpGj9pHPvKRzSMe8Yhln0pYA5RCyfaumd+VxBRDCCGEARHFEEIIYUBEMYQQQhgQUQwhhBAGRBRDCCGEARHFEEIIYUBEMYQwNS94wQuabbbZpnnQgx607FNZl0jz/+IXv9hc5CIXaT75yU+W1052spM1u+yyS5mM0uYzn/lM8/Of/3zl35o5XPe6113k6fZGO8K3v/3tzY9//OPmmte8Zqlr715PX/785z+XTk4//elPS52g+aJGp7X529/+1rz1rW9tjj322Ga77bZr7nKXu2zSG1izC/2C50lEMYQwNa9//etLz9aI4ub85S9/aV7+8pc3D3nIQ8o9uuxlL1sW7h/96EfNAx7wgOYVr3jFJt9/uctdrtSNPuYxj2me/OQnF3FYj3z/+99vbnWrWzUvetGLmjvc4Q7N+9///iJUBxxwwNQi/sc//rF0cLrWta7V/OIXv2he+tKXNle96lWbL3zhC5u83/Wvf/3mjGc8Y/OTn/yk1BU++9nPbj772c825z73ucv3nOtc52rue9/7lnuqO808iCiGEKbG4nXyk5982afRvPnNby7DmtcLFvgHPvCBRSgs5rjCFa7Q3Pve926e8IQnNK985SvL4u/fFQOlH/3oRzdPfepTm6c85Snr4r4OQxOD613ves0tbnGL8u873/nOzUc+8pHmiU98YvPpT396qmOxNlnSZzvb2cq/991337Ih0Gb02te+9sr7Ob7797vf/a55/OMf37z2ta8t95GFCaL617/+tbnf/e5XNmrzIKIYQpia05/+9Ms+heYTn/hEWSjXkyjqgMMqPPOZz7zJ61yndeF+8IMfXKzDdkch/3/hC1943QoifvWrXzV/+tOfNnlNR5h//etfUx2HxXezm91sRRDhGRJFTfHx5S9/uXRVI4g4xznO0TztaU8r9+9zn/vcJsczaebpT396c+ihh5a/z0pEMYQwNb/97W9Lz8h73eteK69pIffud7+7eehDH9p85zvfad73vveVlnIWt7rYi50dcsghxZr61Kc+VSwBMTSW02lPe9qy8DrGf/7znxKv4nokfl//+tfLz++8887lmF4zoJmYvOpVr2rOe97zluHMv//975vXvOY15by41hYJy+eDH/xgsWaGccMb3rBcz5577lmuw8Jf3YAY5v4TU/vQhz7UfPe73y1t50xR8Welzz2v6KvLwmeZmsxy9rOffarrc86ESxtQI87EF8X0uFOnQfNtsdY23/jGN4pr9vKXv3z5tw3Cla985U2+5zznOU9zlatcZeh9evjDH9489rGPLfdn1o1FRDGE0Bu9kbkGH/awh5WEhyqK4kuEjZvrxBNPLIucv3OtEcLHPe5xzVve8payeB9//PHNN7/5zWIx/PrXvy5xIscUK7LwnfOc5ywxK+JCRG5wgxuUZBSuxctc5jJl0bewsyJ+8IMfNJe85CWbs5zlLOU83vve9xbrUSzPey2S5zznOc0OO+yw4jYdhvv2la98pXnTm97U7LrrrkXcRyWq2Ajc7W53K25V1iVXset/2cteViyrPvcc7rOfF6skPKwq99KmxPH6wtL1DJ2Ta/j2t79dNiSzJLo4b0O299lnn7JBqowSbJuAYXFsLlf3y0btNre5zarPBxHFEEJvZAfe4x73KAuy+E+FlWaBJnB2+3busLN/17veVRZo1gsXl4VVEgrBA+tDTIlr7P73v//QhfpKV7rSJv/efvvti0tN5qJkjIo4F7F2PouGKBHFSRASlp/7RyS7iTcgZHe6053K5oCFhkc96lFFjCSWiEv2ued4yUteUqxxx8MLX/jClWbnnkdfWN42J67R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C/ivf/3rymtHHnlk87znPa85xSlOUf7N6vUzrOOjjjqqiCL8/yMf+chyT/zMRiSiGEJY4YQTTmg+9alPlYXxale7WnntZz/7WbEUuMa+853vNO973/tK3EhbubrYG458+OGHl+5UF7/4xcv3sEAsrkRCO0fHsACLRV32spct4vf1r3+9/PzOO+9cjum12972tkVMXvWqVzXnPe95i+Xx+9//vnnNa17T3Ote92rOda5zLfy+7L333s1d7nKXob1pb3jDG5br4V50HYZGn/vc5175fxZUl7/97W8lfvfd7363zM+86U1vuskcTffTvXB/d9hhh+K2/f73v19ifZe4xCU2OdbHPvax5gtf+EKxzgjVtE3lL3nJS27yb5+BH/7wh82znvWslde4SKsgVm51q1sVUfS+bTS2f/jDH16et/ux0YgohhAKBI+b753vfGdZ7IiixZhLkEtV0/5vfOMb5e9PfOITSxLJ4x73uPInQbAI3uY2tykDky90oQuVxs5ccW9729tKIooxWVxur33ta4uIGJklGcV7XuYylymiaIHllvzBD35QFuuznOUs5dze+973FuuRWBPnRcJKJGDefxRmYorHirlxJxK0buJNxUbAEARuVdYlV7HrZ4myjv/0pz8VF637ZuPBCj3HOc5R/s1N63zOdrazNf/+97/Lz7PaCJQEKffSpsbxVoPeowSQEF/72tdeed37d7FZ8rwMxu7iZ5/xjGdEFEMIGxcLqYQQolhhpRFFCRViRCwASDR517veVURR/Ok5z3lOEcXTnOY0zdvf/vbyPY5Vf4b1N2yhvtKVrrTJv7fffvuyAEvkuP71r7/yuuSN053udOV8Fo2NAFit42DZsvyOOOKIIpLdxBsQMtaezUEVjEc96lFFUDUoF5d0nyQ7EcFf/vKXJduTtUn8bDpkgBLBl7zkJSVD1PHwwhe+sFib3JeHHnro1NfJ4nzIQx5SLFIQSMk3ozj44IOLCJ/pTGfa7P9seoi56z31qU899bksk4hiCGEFotalTu+41KUutfKahfsjH/nIyr+5TUHUKtycFvpnPvOZzbHHHjvVeXTdlI7PfbkMCB3aLtFhuHc2BoRtWOINiNX3vve9zayrm93sZs1b3/rW5nWve12xriX0uAcal1f3a91U2DBA4o/3YC1WWNd//OMfV3Wd3J7O7cc//nFxe8tCtRlp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" name="图像1" alt="regular_stacked_lstm" align="bottom" width="453" height="400" border="0"/>
 
-data_dim = 16
-timesteps = 8
-num_classes = 10
+</p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.models import Sequential</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.layers import LSTM, Dense</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">import numpy as np</span></font></code></span></font>
 
-# expected input data shape: (batch_size, timesteps, data_dim)
-model = Sequential()
-model.add(LSTM(32, return_sequences=True,
-               input_shape=(timesteps, data_dim)))  # returns a sequence of vectors of dimension 32
-model.add(LSTM(32, return_sequences=True))  # returns a sequence of vectors of dimension 32
-model.add(LSTM(32))  # return a single vector of dimension 32
-model.add(Dense(10, activation='softmax'))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">data_dim = 16</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">timesteps = 8</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">num_classes = 10</span></font></code></span></font>
 
-model.compile(loss='categorical_crossentropy',
-              optimizer='rmsprop',
-              metrics=['accuracy'])
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># expected input data shape: (batch_size, timesteps, data_dim)</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model = Sequential()</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(LSTM(32, return_sequences=True,</span></font></code></span></font>
+<code class="cjk">               </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">input_shape=(timesteps, data_dim)))  # returns a sequence of vectors of dimension 32</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(LSTM(32, return_sequences=True))  # returns a sequence of vectors of dimension 32</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(LSTM(32))  # return a single vector of dimension 32</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dense(10, activation='softmax'))</span></font></code></span></font>
 
-# Generate dummy training data
-x_train = np.random.random((1000, timesteps, data_dim))
-y_train = np.random.random((1000, num_classes))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.compile(loss='categorical_crossentropy',</span></font></code></span></font>
+<code class="cjk">              </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">optimizer='rmsprop',</span></font></code></span></font>
+<code class="cjk">              </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">metrics=['accuracy'])</span></font></code></span></font>
 
-# Generate dummy validation data
-x_val = np.random.random((100, timesteps, data_dim))
-y_val = np.random.random((100, num_classes))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># Generate dummy training data</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">x_train = np.random.random((1000, timesteps, data_dim))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">y_train = np.random.random((1000, num_classes))</span></font></code></span></font>
 
-model.fit(x_train, y_train,
-          batch_size=64, epochs=5,
-          validation_data=(x_val, y_val))
-</code></pre>
-<h3 id="stateful-lstm">采用stateful LSTM的相同模型</h3>
-<p>stateful LSTM的特点是，在处理过一个batch的训练数据后，其内部状态（记忆）会被作为下一个batch的训练数据的初始状态。状态LSTM使得我们可以在合理的计算复杂度内处理较长序列</p>
-<p>请FAQ中关于<a href="../../for_beginners/FAQ/">stateful LSTM</a>的部分获取更多信息</p>
-<pre><code class="python">from keras.models import Sequential
-from keras.layers import LSTM, Dense
-import numpy as np
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># Generate dummy validation data</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">x_val = np.random.random((100, timesteps, data_dim))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">y_val = np.random.random((100, num_classes))</span></font></code></span></font>
 
-data_dim = 16
-timesteps = 8
-num_classes = 10
-batch_size = 32
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.fit(x_train, y_train,</span></font></code></span></font>
+<code class="cjk">          </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">batch_size=64, epochs=5,</span></font></code></span></font>
+<code class="cjk">          </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">validation_data=(x_val, y_val))</span></font></code></span></font></pre><h3>
+<a name="stateful-lstm"></a>采用<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">stateful
+LSTM</span></font></span></font>的相同模型</h3>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">stateful
+LSTM</span></font></span></font>的特点是，在处理过一个<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">batch</span></font></span></font>的训练数据后，其内部状态（记忆）会被作为下一个<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">batch</span></font></span></font>的训练数据的初始状态。状态<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">LSTM</span></font></span></font>使得我们可以在合理的计算复杂度内处理较长序列</p>
+<p>请<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">FAQ</span></font></span></font>中关于<font face="Liberation Serif, serif"><span lang="en-US"><a href="../../for_beginners/FAQ/"><font face="Liberation Serif, serif"><span lang="en-US">stateful
+LSTM</span></font></a></span></font>的部分获取更多信息</p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.models import Sequential</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">from keras.layers import LSTM, Dense</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">import numpy as np</span></font></code></span></font>
 
-# Expected input batch shape: (batch_size, timesteps, data_dim)
-# Note that we have to provide the full batch_input_shape since the network is stateful.
-# the sample of index i in batch k is the follow-up for the sample i in batch k-1.
-model = Sequential()
-model.add(LSTM(32, return_sequences=True, stateful=True,
-               batch_input_shape=(batch_size, timesteps, data_dim)))
-model.add(LSTM(32, return_sequences=True, stateful=True))
-model.add(LSTM(32, stateful=True))
-model.add(Dense(10, activation='softmax'))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">data_dim = 16</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">timesteps = 8</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">num_classes = 10</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">batch_size = 32</span></font></code></span></font>
 
-model.compile(loss='categorical_crossentropy',
-              optimizer='rmsprop',
-              metrics=['accuracy'])
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># Expected input batch shape: (batch_size, timesteps, data_dim)</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># Note that we have to provide the full batch_input_shape since the network is stateful.</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># the sample of index i in batch k is the follow-up for the sample i in batch k-1.</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model = Sequential()</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(LSTM(32, return_sequences=True, stateful=True,</span></font></code></span></font>
+<code class="cjk">               </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">batch_input_shape=(batch_size, timesteps, data_dim)))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(LSTM(32, return_sequences=True, stateful=True))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(LSTM(32, stateful=True))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.add(Dense(10, activation='softmax'))</span></font></code></span></font>
 
-# Generate dummy training data
-x_train = np.random.random((batch_size * 10, timesteps, data_dim))
-y_train = np.random.random((batch_size * 10, num_classes))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.compile(loss='categorical_crossentropy',</span></font></code></span></font>
+<code class="cjk">              </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">optimizer='rmsprop',</span></font></code></span></font>
+<code class="cjk">              </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">metrics=['accuracy'])</span></font></code></span></font>
 
-# Generate dummy validation data
-x_val = np.random.random((batch_size * 3, timesteps, data_dim))
-y_val = np.random.random((batch_size * 3, num_classes))
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># Generate dummy training data</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">x_train = np.random.random((batch_size * 10, timesteps, data_dim))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">y_train = np.random.random((batch_size * 10, num_classes))</span></font></code></span></font>
 
-model.fit(x_train, y_train,
-          batch_size=batch_size, epochs=5, shuffle=False,
-          validation_data=(x_val, y_val))
-</code></pre>
-</div>
-    </body></html>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># Generate dummy validation data</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">x_val = np.random.random((batch_size * 3, timesteps, data_dim))</span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">y_val = np.random.random((batch_size * 3, num_classes))</span></font></code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">model.fit(x_train, y_train,</span></font></code></span></font>
+<code class="cjk">          </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">batch_size=batch_size, epochs=5, shuffle=False,</span></font></code></span></font>
+<code class="cjk">          </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US">validation_data=(x_val, y_val))</span></font></code></span></font></pre>
+</body>
+</html>

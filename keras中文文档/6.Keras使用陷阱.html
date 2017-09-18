@@ -1,34 +1,46 @@
-<!DOCTYPE html>
-    <html><head><meta charset="UTF-8">
-    </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
-        <div class="section">
-<h1 id="keras">Keras使用陷阱</h1>
-<p>这里归纳了Keras使用过程中的一些常见陷阱和解决方法，如果你的模型怎么调都搞不对，或许你有必要看看是不是掉进了哪个猎人的陷阱，成为了一只嗷嗷待宰（？）的猎物</p>
-<p>Keras陷阱不多，我们保持更新，希望能做一个陷阱大全</p>
-<p>内有恶犬，小心哟</p>
-<h2 id="tfth">TF卷积核与TH卷积核</h2>
-<p>Keras提供了两套后端，Theano和Tensorflow，这是一件幸福的事，就像手中拿着馒头，想蘸红糖蘸红糖，想蘸白糖蘸白糖</p>
-<p>如果你从无到有搭建自己的一套网络，则大可放心。但如果你想使用一个已有网络，或把一个用th/tf
-训练的网络以另一种后端应用，在载入的时候你就应该特别小心了。</p>
-<p>卷积核与所使用的后端不匹配，不会报任何错误，因为它们的shape是完全一致的，没有方法能够检测出这种错误。</p>
-<p>在使用预训练模型时，一个建议是首先找一些测试样本，看看模型的表现是否与预计的一致。</p>
-<p>如需对卷积核进行转换，可以使用utils.convert_all_kernels_in_model对模型的所有卷积核进行转换</p>
-<h2 id="bn">向BN层中载入权重</h2>
-<p>如果你不知道从哪里淘来一个预训练好的BN层，想把它的权重载入到Keras中，要小心参数的载入顺序。</p>
-<p>一个典型的例子是，将caffe的BN层参数载入Keras中，caffe的BN由两部分构成，bn层的参数是mean，std，scale层的参数是gamma，beta</p>
-<p>按照BN的文章顺序，似乎载入Keras BN层的参数应该是[mean, std, gamma, beta]</p>
-<p>然而不是的，Keras的BN层参数顺序应该是[gamma, beta, mean, std]，这是因为gamma和beta是可训练的参数，而mean和std不是</p>
-<p>Keras的可训练参数在前，不可训练参数在后</p>
-<p>错误的权重顺序不会引起任何报错，因为它们的shape完全相同</p>
-<h2 id="shufflevalidation_split">shuffle和validation_split的顺序</h2>
-<p>模型的fit函数有两个参数，shuffle用于将数据打乱，validation_split用于在没有提供验证集的时候，按一定比例从训练集中取出一部分作为验证集</p>
-<p>这里有个陷阱是，程序是先执行validation_split，再执行shuffle的，所以会出现这种情况：</p>
-<p>假如你的训练集是有序的，比方说正样本在前负样本在后，又设置了validation_split，那么你的验证集中很可能将全部是负样本</p>
-<p>同样的，这个东西不会有任何错误报出来，因为Keras不可能知道你的数据有没有经过shuffle，保险起见如果你的数据是没shuffle过的，最好手动shuffle一下</p>
-<h2 id="merge">Merge层的层对象与函数方法</h2>
-<p>Keras定义了一套用于融合张量的方法，位于keras.layers.Merge，里面有两套工具，以大写字母开头的是Keras Layer类，使用这种工具是需要实例化一个Layer对象，然后再使用。以小写字母开头的是张量函数方法，本质上是对Merge Layer对象的一个包装，但使用更加方便一些。注意辨析。</p>
-<h2 id="_1">未完待续</h2>
-<p>如果你在使用Keras中遇到难以察觉的陷阱，请发信到moyan_work@foxmail.com说明~赠人玫瑰，手有余香，前人踩坑，后人沾光，有道是我不入地狱谁入地狱，愿各位Keras使用者积极贡献Keras陷阱。老规矩，陷阱贡献者将被列入致谢一栏</p>
-</div>
-    </body></html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-09-17T15:59:19.659757597"/>
+	<meta name="" content=""/>
+</head>
+<body lang="zh-CN" dir="ltr">
+<p><a href="http://keras-cn.readthedocs.io/en/latest/"><span style="background: #ffff00">原文链接</span></a></p>
+<h1><a name="keras"></a><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US"><span style="background: #ffff00">Keras</span></font></font>使用陷阱</span></h1>
+<p><span style="background: #ffff00">这里归纳了<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>使用过程中的一些常见陷阱和解决方法，如果你的模型怎么调都搞不对，或许你有必要看看是不是掉进了哪个猎人的陷阱，成为了一只嗷嗷待宰（？）的猎物</span></p>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Keras</span></font>陷阱不多，我们保持更新，希望能做一个陷阱大全</span></p>
+<p><span style="background: #ffff00">内有恶犬，小心哟</span></p>
+<h2><a name="tfth"></a><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">TF</span></font>卷积核与<font face="Liberation Serif, serif"><span lang="en-US">TH</span></font>卷积核</span></h2>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Keras</span></font>提供了两套后端，<font face="Liberation Serif, serif"><span lang="en-US">Theano</span></font>和<font face="Liberation Serif, serif"><span lang="en-US">Tensorflow</span></font>，这是一件幸福的事，就像手中拿着馒头，想蘸红糖蘸红糖，想蘸白糖蘸白糖</span></p>
+<p><span style="background: #ffff00">如果你从无到有搭建自己的一套网络，则大可放心。但如果你想使用一个已有网络，或把一个用<font face="Liberation Serif, serif"><span lang="en-US">th/tf
+</span></font>训练的网络以另一种后端应用，在载入的时候你就应该特别小心了。</span></p>
+<p><span style="background: #ffff00">卷积核与所使用的后端不匹配，不会报任何错误，因为它们的<font face="Liberation Serif, serif"><span lang="en-US">shape</span></font>是完全一致的，没有方法能够检测出这种错误。</span></p>
+<p><span style="background: #ffff00">在使用预训练模型时，一个建议是首先找一些测试样本，看看模型的表现是否与预计的一致。</span></p>
+<p><span style="background: #ffff00">如需对卷积核进行转换，可以使用<font face="Liberation Serif, serif"><span lang="en-US">utils.convert_all_kernels_in_model</span></font>对模型的所有卷积核进行转换</span></p>
+<h2><a name="bn"></a><span style="background: #ffff00">向<font face="Liberation Serif, serif"><span lang="en-US">BN</span></font>层中载入权重</span></h2>
+<p><span style="background: #ffff00">如果你不知道从哪里淘来一个预训练好的<font face="Liberation Serif, serif"><span lang="en-US">BN</span></font>层，想把它的权重载入到<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>中，要小心参数的载入顺序。</span></p>
+<p><span style="background: #ffff00">一个典型的例子是，将<font face="Liberation Serif, serif"><span lang="en-US">caffe</span></font>的<font face="Liberation Serif, serif"><span lang="en-US">BN</span></font>层参数载入<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>中，<font face="Liberation Serif, serif"><span lang="en-US">caffe</span></font>的<font face="Liberation Serif, serif"><span lang="en-US">BN</span></font>由两部分构成，<font face="Liberation Serif, serif"><span lang="en-US">bn</span></font>层的参数是<font face="Liberation Serif, serif"><span lang="en-US">mean</span></font>，<font face="Liberation Serif, serif"><span lang="en-US">std</span></font>，<font face="Liberation Serif, serif"><span lang="en-US">scale</span></font>层的参数是<font face="Liberation Serif, serif"><span lang="en-US">gamma</span></font>，<font face="Liberation Serif, serif"><span lang="en-US">beta</span></span></font></p>
+<p><span style="background: #ffff00">按照<font face="Liberation Serif, serif"><span lang="en-US">BN</span></font>的文章顺序，似乎载入<font face="Liberation Serif, serif"><span lang="en-US">Keras
+BN</span></font>层的参数应该是<font face="Liberation Serif, serif"><span lang="en-US">[mean,
+std, gamma, beta]</span></span></font></p>
+<p><span style="background: #ffff00">然而不是的，<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>的<font face="Liberation Serif, serif"><span lang="en-US">BN</span></font>层参数顺序应该是<font face="Liberation Serif, serif"><span lang="en-US">[gamma,
+beta, mean, std]</span></font>，这是因为<font face="Liberation Serif, serif"><span lang="en-US">gamma</span></font>和<font face="Liberation Serif, serif"><span lang="en-US">beta</span></font>是可训练的参数，而<font face="Liberation Serif, serif"><span lang="en-US">mean</span></font>和<font face="Liberation Serif, serif"><span lang="en-US">std</span></font>不是</span></p>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Keras</span></font>的可训练参数在前，不可训练参数在后</span></p>
+<p><span style="background: #ffff00">错误的权重顺序不会引起任何报错，因为它们的<font face="Liberation Serif, serif"><span lang="en-US">shape</span></font>完全相同</span></p>
+<h2><a name="shufflevalidation_split"></a><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">shuffle</span></font>和<font face="Liberation Serif, serif"><span lang="en-US">validation_split</span></font>的顺序</span></h2>
+<p><span style="background: #ffff00">模型的<font face="Liberation Serif, serif"><span lang="en-US">fit</span></font>函数有两个参数，<font face="Liberation Serif, serif"><span lang="en-US">shuffle</span></font>用于将数据打乱，<font face="Liberation Serif, serif"><span lang="en-US">validation_split</span></font>用于在没有提供验证集的时候，按一定比例从训练集中取出一部分作为验证集</span></p>
+<p><span style="background: #ffff00">这里有个陷阱是，程序是先执行<font face="Liberation Serif, serif"><span lang="en-US">validation_split</span></font>，再执行<font face="Liberation Serif, serif"><span lang="en-US">shuffle</span></font>的，所以会出现这种情况：</span></p>
+<p><span style="background: #ffff00">假如你的训练集是有序的，比方说正样本在前负样本在后，又设置了<font face="Liberation Serif, serif"><span lang="en-US">validation_split</span></font>，那么你的验证集中很可能将全部是负样本</span></p>
+<p><span style="background: #ffff00">同样的，这个东西不会有任何错误报出来，因为<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>不可能知道你的数据有没有经过<font face="Liberation Serif, serif"><span lang="en-US">shuffle</span></font>，保险起见如果你的数据是没<font face="Liberation Serif, serif"><span lang="en-US">shuffle</span></font>过的，最好手动<font face="Liberation Serif, serif"><span lang="en-US">shuffle</span></font>一下</span></p>
+<h2><a name="merge"></a><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Merge</span></font>层的层对象与函数方法</span></h2>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Keras</span></font>定义了一套用于融合张量的方法，位于<font face="Liberation Serif, serif"><span lang="en-US">keras.layers.Merge</span></font>，里面有两套工具，以大写字母开头的是<font face="Liberation Serif, serif"><span lang="en-US">Keras
+Layer</span></font>类，使用这种工具是需要实例化一个<font face="Liberation Serif, serif"><span lang="en-US">Layer</span></font>对象，然后再使用。以小写字母开头的是张量函数方法，本质上是对<font face="Liberation Serif, serif"><span lang="en-US">Merge
+Layer</span></font>对象的一个包装，但使用更加方便一些。注意辨析。</span></p>
+<h2><a name="_1"></a><span style="background: #ffff00">未完待续</span></h2>
+<p><span style="background: #ffff00">如果你在使用<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>中遇到难以察觉的陷阱，请发信到<font face="Liberation Serif, serif"><span lang="en-US">moyan_work@foxmail.com</span></font>说明<font face="Liberation Serif, serif"><span lang="en-US">~</span></font>赠人玫瑰，手有余香，前人踩坑，后人沾光，有道是我不入地狱谁入地狱，愿各位<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>使用者积极贡献<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>陷阱。老规矩，陷阱贡献者将被列入致谢一栏</span></p>
+</body>
+</html>
