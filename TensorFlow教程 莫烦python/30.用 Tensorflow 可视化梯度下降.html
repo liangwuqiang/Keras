@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/">原文链接</a></p>
+        <div class="tut-main-content-pad">
+<hr>
+<h1>用 Tensorflow 可视化梯度下降</h1>
+<p style="text-align: center;">
+        
+          作者: <strong>莫烦</strong>   
+        
+        编辑: <strong>莫烦</strong>   
+        
+          2017-07-01
+        
+      </p>
+<p>学习资料:</p>
+<ul>
+<li><a href="https://github.com/MorvanZhou/Tensorflow-Tutorial/blob/master/tutorial-contents/503_visualize_gradient_descent.py">本节代码</a></li>
+<li>为 TF 2017 打造的<a href="https://github.com/MorvanZhou/Tensorflow-Tutorial">新版可视化教学代码</a></li>
+<li><a href="/tutorials/machine-learning/ML-intro/2-8-gradient-descent/">什么是梯度下降4分钟短视频</a></li>
+</ul>
+<h4 class="tut-h4-pad" id="要点">要点</h4>
+<p>这一次, 我们想要真正意义上的看到自己手中的模型是怎么样进行梯度下降 (gradient descent) 的. 打个比方就像下面这张图. 红色圆点就是最开始的参数误差.</p>
+<p><img class="course-image" src="images/6f3424386a7694eb86825bd174d6cab2.gif"/></p>
+<p>同时, 我们还可以扩展开来, 神经网络就是一种梯度下降的方法. 而梯度下降是一种最优化方法, 我们还能拿它来干点其它事. 比如说 <strong>为公式调参</strong>.
+我们会在下面具体讲解.</p>
+<p>接着我们还会提到在梯度下降中, 以及神经网络中很难避免的一种现象, 叫做局部最优, 以及局部最优的影响.</p>
+<h4 class="tut-h4-pad" id="普通的梯度下降">普通的梯度下降</h4>
+<p>这次我们还是以代码的形式直观地展示我们要做的事情.
+为了可视化梯度下降的过程, 我们需要用到 Python 中的几个模块, <code class="highlighter-rouge">matplotlib</code>, <code class="highlighter-rouge">numpy</code>, <code class="highlighter-rouge">tensorflow</code>.
+如果对画图感兴趣的朋友们, 可以来看看我的 <a href="https://morvanzhou.github.io/tutorials/data-manipulation/plt/">python 画图教程</a>.</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>     <span class="c"># 画 3D 图的功能</span>
+
+<span class="n">LR</span> <span class="o">=</span> <span class="o">.</span><span class="mi">1</span>     <span class="c"># 神经网络的学习率</span>
+<span class="n">REAL_PARAMS</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]</span>    <span class="c"># 我们假设的需要被学习的真实参数</span>
+<span class="n">INIT_PARAMS</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>      <span class="c"># 在调参中不同初始化的参数点</span>
+               <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+               <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">]][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>   <span class="c"># x 数据</span>
+</code></pre>
+</div>
+<p>我们需要用 <code class="highlighter-rouge">tensorflow</code> 来帮我们梯度下降, 我们需要规定的就是最开始从哪里开始梯度下降, 这就是 <code class="highlighter-rouge">INIT_PARAMS</code> 的作用了.
+我们会在之后的内容中尝试上面不同的初始化地点, 然后看看会有什么样的效果. 同时我们也会看看不同学习效率 <code class="highlighter-rouge">LR</code> 对模型学习的影响.</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># test 1</span>
+<span class="n">y_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+<span class="n">tf_y_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre>
+</div>
+<p>接着我们开始定义第一轮测试的公式. 假设我们要来拟合公式 <code class="highlighter-rouge">a*x+b</code> 中的参数 <code class="highlighter-rouge">a</code> 和 <code class="highlighter-rouge">b</code>, 我们就用 python 中的 <code class="highlighter-rouge">lambda</code> 来定义一个方程 <code class="highlighter-rouge">y_fun</code>.
+<code class="highlighter-rouge">y_fun</code> 的输入就是不同参数 <code class="highlighter-rouge">a</code> <code class="highlighter-rouge">b</code> 的值, 和 我们之前定义的数据 <code class="highlighter-rouge">x</code>, 输出 <code class="highlighter-rouge">y</code> 值. 这里的 <code class="highlighter-rouge">tf_y_fun</code> 是传给 tensorflow 去优化的方程.
+<code class="highlighter-rouge">y_fun</code> 是用来可视化和计算真是 <code class="highlighter-rouge">y</code> 用的.</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y_fun</span><span class="p">(</span><span class="o">*</span><span class="n">REAL_PARAMS</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span>         <span class="c"># target</span>
+</code></pre>
+</div>
+<p>所以我们就能用 <code class="highlighter-rouge">y_fun</code> 来输出 正是 y数据. 当然为了看起来真实点, 我们还加了些随机噪点.</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># tensorflow 计算优化图</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">initial_value</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">INIT_PARAMS</span><span class="p">]</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">tf_y_fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">pred</span><span class="p">))</span>
+<span class="n">train_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="n">LR</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>接着我们就来定义 Tensorflow 的计算优化图纸. 定义两个参数 <code class="highlighter-rouge">a, b</code> 并给他们初始化成我们最开始假设的初始化值 <code class="highlighter-rouge">INIT_PARAMS</code>.
+然后预测, 然后算误差, 最后优化.</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">a_list</span><span class="p">,</span> <span class="n">b_list</span><span class="p">,</span> <span class="n">cost_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">400</span><span class="p">):</span>
+        <span class="n">a_</span><span class="p">,</span> <span class="n">b_</span><span class="p">,</span> <span class="n">mse_</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">mse</span><span class="p">])</span>
+        <span class="n">a_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a_</span><span class="p">);</span> <span class="n">b_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b_</span><span class="p">);</span> <span class="n">cost_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mse_</span><span class="p">)</span>    <span class="c"># record parameter changes</span>
+        <span class="n">result</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">pred</span><span class="p">,</span> <span class="n">train_op</span><span class="p">])</span>                          <span class="c"># training</span>
+</code></pre>
+</div>
+<p>接着我们就开始训练, 并时刻记录训练时的 <code class="highlighter-rouge">a,b</code> 参数 以及 误差 变化.</p>
+<p>最后可视化他们, 因为可视化代码不是重点, 所以想仔细看代码的朋友, 欢迎来我的 <a href="https://github.com/MorvanZhou/Tensorflow-Tutorial/blob/master/tutorial-contents/503_visualize_gradient_descent.py">Github 中看全套代码</a>.</p>
+<p>首先我们先看看训练出来的预测线和数据的拟合度吧:</p>
+<p><img class="course-image" src="images/d44a427108209068bc84168fbc3b67c4.png"/></p>
+<p>看起来非常完美, 成功的用一条直线预测出了规律. 那我们看看梯度下降的 3D 图,</p>
+<p><img class="course-image" src="images/5943ac6c4a1f357fde508491ac4e4d50.gif"/></p>
+<p>看上去他从最开始的红点, 很顺利的滑落到了误差最小的地方. 梯度下降圆满完成.</p>
+<p>如果我们来尝试不同的学习效率呢, 比如调整最开始的 <code class="highlighter-rouge">LR=1</code>, 就会发生下面这样的事.</p>
+<p><img class="course-image" src="images/156ac78057bc1dd0cccaf8dc92728fcd.gif"/></p>
+<p>貌似这时的梯度下降变得纠结起来, 梯度下不去了. 原来这就是因为学习效率过大的原因, 导致虽然学得快, 但是没办法收敛.
+我们也能从学习到的预测线看出来这样的现象, 现在下面的预测线没有办法预测出真实数据了. 所以切记, 当你的模型没办法收敛的时候, 试试调低学习率.</p>
+<p><img class="course-image" src="images/e451fb517fd890716cfb18c5585ca8f0.png"/></p>
+<h4 class="tut-h4-pad" id="为模型,公式调参">为模型,公式调参</h4>
+<p>接下来我们看看 Tensorflow 的另一种用途, 为公式调参. 说到底, 神经网络就是用梯度下降, 而梯度下降就是一种优化模式 具体参考我制作的这个<a href="/tutorials/machine-learning/ML-intro/2-8-gradient-descent/">短视频</a>.
+所以我们也可以使用 Tensorflow 的梯度下降机制来调参. 比如我们将上面的提到的 <code class="highlighter-rouge">y_fun</code> 和 <code class="highlighter-rouge">tf_y_fun</code> 改成下面这样 (其实上面也是在调参).</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># test 2</span>
+<span class="n">y_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">tf_y_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+</code></pre>
+</div>
+<p>现在有点像一个经验公式了吧. 其实很多时候, 人们总结出来的经验公式其实是很有用的, 我们没必要大费周章来使用神经网络处理所有问题, 首先遇到一个问题, 你要想的是,
+在这个问题中, 是否以前有人提出过什么经验公式的, 那我来对这个经验公式调调参. 这可比神经网络方便多了. 而且梯度下降调参只是调参中的一种方式, 还有很多种调参方式,
+具体可以看看和使用 python 的另一个模块 <code class="highlighter-rouge">scipy</code> 中的 <code class="highlighter-rouge">optimization</code> <a href="https://docs.scipy.org/doc/scipy-0.19.0/reference/optimize.html">链接</a>.</p>
+<p>好了, 如果你决定用梯度下降调参, 这份代码就是一种途径. 代码的其他部分不用过多更改. 我们直接来看效果吧. 首先看看数据点和拟合参数<code class="highlighter-rouge">a</code>, <code class="highlighter-rouge">b</code> 后的曲线.</p>
+<p><img class="course-image" src="images/0fc4f24b04214514f4a009a6a92886cd.png"/></p>
+<p>再来看看之前的梯度下降图:</p>
+<p><img class="course-image" src="images/59dfed6521aafbc3f7ff2184cda4a2f3.gif"/></p>
+<h4 class="tut-h4-pad" id="局部最优,全局最优">局部最优,全局最优</h4>
+<p>在回到神经网络的话题中来, 多层的有激活神经网络必定有很多局部最优解的. 我在这个<a href="/tutorials/machine-learning/ML-intro/2-8-gradient-descent/">短视频</a>中也提过什么是全局最优和局部最优.
+那么我们就来做一个有两个参数的简单神经网络吧. 同样, 我们至于要修改 <code class="highlighter-rouge">y_fun</code> 和 <code class="highlighter-rouge">tf_y_fun</code> 就好了:</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># test 3</span>
+<span class="n">y_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+<span class="n">tf_y_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">tf</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+</code></pre>
+</div>
+<p>想象 <code class="highlighter-rouge">np.cos(a*x)</code> 是有激活的一层神经层, <code class="highlighter-rouge">np.sin(b*last_layer)</code> 是有激活的第二层. 那么这个方程就是最简单的一种两层神经网络了.
+如果使用的初始参数点是 <code class="highlighter-rouge">INIT_PARAMS=[2, 4.5]</code> 他的数据点和拟合曲线是下面这样:</p>
+<p><img class="course-image" src="images/0b61f79125ebac214332c25a96084f2e.png"/></p>
+<p>他的梯度下降空间就是我们最开始看到的那个.</p>
+<p><img class="course-image" src="images/6f3424386a7694eb86825bd174d6cab2.gif"/></p>
+<p>从初始的 <code class="highlighter-rouge">INIT_PARAMS=[2, 4.5]</code> 这个点开始梯度下降, 我们就能成功的找到接近全局最优的 <code class="highlighter-rouge">a=1.2; b=2.5</code>,
+但是这个3D 图上有很多局部最优点, 如果我们换一个初始参数位置, 比如  <code class="highlighter-rouge">INIT_PARAMS=[5, 1]</code>. 那么就会下降到一个最靠近他的局部最优.</p>
+<p><img class="course-image" src="images/1566d3bdcb8e4166c8c9cf7fc706d6ef.gif"/></p>
+<p>这样, 我们的模型就只能止步在这, 而且并不能继续向前拟合数据点了. 所以可以看出参数的初始化位置的确很重要.</p>
+<p><img class="course-image" src="images/5f7aaef0985963653a33e5438bea4378.png"/></p>
+<p>通常, 在初始化神经网络的参数时, 我们可以用到 Normal distribution 等方式, 并且多做几次初始化实验, 看看效果如何. 运气好的时候, 初始化很成功,
+带来的比较好的局部最优, 运气不好的时候.. 你懂的.. 继续做实验吧.</p>
+<p style="font-size: 0.8em; padding:4em 1em 0.5em 1em; margin: 0 auto;">
+        如果你觉得这篇文章或视频对你的学习很有帮助, 请你也分享它, 让它能再次帮助到更多的需要学习的人.
+
+        莫烦没有正式的经济来源, 如果你也想支持 <strong>莫烦Python</strong> 并看到更好的教学内容, 赞助他一点点, 作为鼓励他继续开源的动力.
+      </p>
+<!-- donation -->
+<div id="bottom-donation-section">
+<h3 id="bottom-donation-title">支持 让教学变得更优秀</h3>
+<br>
+<div>
+<a href="/support/" id="bottom-donation-button"><strong>点我 赞助 莫烦</strong></a>
+</div>
+<br>
+</br></br></div>
+<hr>
+</hr></hr></div>
+    </body></html>

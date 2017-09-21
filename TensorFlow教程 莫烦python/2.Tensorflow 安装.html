@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-09-18T21:16:57.475702039"/>
+	<meta name="" content=""/>
+	<style type="text/css">
+		pre.ctl { font-family: "Liberation Mono", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+	</style>
+</head>
+<body lang="zh-CN" dir="ltr">
+<p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/"><span style="background: #ffff00">原文链接</span></a></p>
+<hr/>
+
+<h1><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US"><span style="background: #ffff00">Tensorflow
+</span></font></font>安装</span></h1>
+<p align="center"><span style="background: #ffff00">作者<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">莫烦</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; 编辑<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">莫烦</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; <font face="Liberation Serif, serif"><span lang="en-US">2016-11-30
+</span></span></font>
+</p>
+<p><span style="background: #ffff00">学习资料<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<ul>
+	<li/>
+<p><span style="background: #ffff00">官方关于 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow
+	</span></font>安装的 <a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html">说明</a>
+	</span>
+	</p>
+</ul>
+<p><span style="background: #ffff00">安装 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow
+</span></font>时需要注意的几点<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<ol>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">MacOS,
+	Linux, Windows </span></font>系统均已支持 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow
+	</span></span></font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00">确定你的
+	<font face="Liberation Serif, serif"><span lang="en-US">python </span></font>版本
+	</span>
+	</p>
+	<li/>
+<p><span style="background: #ffff00">你的 <font face="Liberation Serif, serif"><span lang="en-US">GPU
+	</span></font>是 <font face="Liberation Serif, serif"><span lang="en-US">NVIDIA,
+	</span></font>就可以安装 <font face="Liberation Serif, serif"><span lang="en-US">GPU
+	</span></font>版本的 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow;
+	</span></font>你的 <font face="Liberation Serif, serif"><span lang="en-US">GPU
+	</span></font>不是 <font face="Liberation Serif, serif"><span lang="en-US">NVIDIA
+	</span></font>也没有关系<font face="Liberation Serif, serif"><span lang="en-US">,
+	</span></font>安装 <font face="Liberation Serif, serif"><span lang="en-US">CPU
+	</span></font>版本的就好了<font face="Liberation Serif, serif"><span lang="en-US">.
+	</span></span></font>
+	</p>
+</ol>
+<h4><a name="多种安装途径"></a><span style="background: #ffff00">多种安装途径</span></h4>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Tensorflow
+</span></font>的安装方式很多<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>比如官网提供的<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00"><a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#pip-installation">Pip
+	</span></font>安装</a> </span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00"><a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#virtualenv-installation">Virtualenv
+	</span></font>安装</a> </span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00"><a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#anaconda-installation">Anaconda
+	</span></font>安装</a> </span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00"><a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#docker-installation">Docker
+	</span></font>安装</a> </span>
+	</p>
+	<li/>
+<p><span style="background: #ffff00"><a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#installing-from-sources">从安装源
+	安装</a> </span>
+	</p>
+</ul>
+<p><span style="background: #ffff00">这节内容使用 <font face="Liberation Serif, serif"><span lang="en-US">pip
+</span></font>在每个系统的安装方式<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<h4><a name="Linux 和 MacOS"></a><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Linux
+</span></font>和 <font face="Liberation Serif, serif"><span lang="en-US">MacOS</span></span></font></h4>
+<p><span style="background: #ffff00">本文将提到第一种最简单的安装方式<font face="Liberation Serif, serif"><span lang="en-US">,
+pip </span></font>安装<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>使用 <font face="Liberation Serif, serif"><span lang="en-US">pip
+</span></font>安装的时候要确保你的 <font face="Liberation Serif, serif"><span lang="en-US">pip
+</span></font>已经存在于你的电脑中<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>如果还没有安装 <font face="Liberation Serif, serif"><span lang="en-US">pip.
+</span></font>你可以在 <font face="Liberation Serif, serif"><span lang="en-US">Terminal
+</span></font>窗口中运行这个<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># Ubuntu/Linux 64-</code></span></font><code class="cjk">位 系统的执行代码</code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">:</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">$ sudo apt-get install python-pip python-dev</span></code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># Mac OS X </code></span></font><code class="cjk">系统的执行代码</code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">:</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ sudo easy_install pip</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ sudo easy_install --upgrade six</code></span></font></pre><h5>
+<a name="LM-CPU"></a><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">CPU
+</span></font>版</span></h5>
+<p><span style="background: #ffff00">激动人心的时刻到了<font face="Liberation Serif, serif"><span lang="en-US">,
+Tensorflow (0.12) </span></font>刚刚做了更新<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>绕过了复杂的安装步骤<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>如果你只需要安装</span> <font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">CPU
+</span></font>版本的 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow,
+</span></font>运行下面这个就好了<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># python 2+ </code></span></font><code class="cjk">的用户</code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">:</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">$ pip install tensorflow</span></code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># python 3+ </code></span></font><code class="cjk">的用户</code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">:</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">$ pip3 install tensorflow</span></code></span></font></pre><p>
+<span style="background: #ffff00">注意<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></font>你需要<font face="Liberation Serif, serif"><span lang="en-US">8.1</span></font>或更高版的
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">pip</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">才能顺利安装<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<h5><a name="LM-GPU"></a><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">GPU
+</span></font>版</span></h5>
+<p>但是 如果你想安装 <font face="Liberation Serif, serif"><span lang="en-US">GPU
+</span></font>版的 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow,
+</span></font>你要在下面找一个适合你版本的安装文件<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>并在 <font face="Liberation Serif, serif"><span lang="en-US">terminal
+</span></font>中执行<font face="Liberation Serif, serif"><span lang="en-US">:</span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Ubuntu/Linux 64-bit, CPU only, Python 2.7</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.0rc0-cp27-none-linux_x86_64.whl</code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Ubuntu/Linux 64-bit, GPU enabled, Python 2.7</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Requires CUDA toolkit 8.0 and CuDNN v5. For other versions, see &quot;Installing from sources&quot; below.</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.12.0rc0-cp27-none-linux_x86_64.whl</code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Mac OS X, CPU only, Python 2.7:</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.0rc0-py2-none-any.whl</code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Mac OS X, GPU enabled, Python 2.7:</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/gpu/tensorflow_gpu-0.12.0rc0-py2-none-any.whl</code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Ubuntu/Linux 64-bit, CPU only, Python 3.4</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.0rc0-cp34-cp34m-linux_x86_64.whl</code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Ubuntu/Linux 64-bit, GPU enabled, Python 3.4</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Requires CUDA toolkit 8.0 and CuDNN v5. For other versions, see &quot;Installing from sources&quot; below.</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.12.0rc0-cp34-cp34m-linux_x86_64.whl</code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Ubuntu/Linux 64-bit, CPU only, Python 3.5</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.0rc0-cp35-cp35m-linux_x86_64.whl</code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Ubuntu/Linux 64-bit, GPU enabled, Python 3.5</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Requires CUDA toolkit 8.0 and CuDNN v5. For other versions, see &quot;Installing from sources&quot; below.</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.12.0rc0-cp35-cp35m-linux_x86_64.whl</code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Mac OS X, CPU only, Python 3.4 or 3.5:</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.0rc0-py3-none-any.whl</code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># Mac OS X, GPU enabled, Python 3.4 or 3.5:</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/gpu/tensorflow_gpu-0.12.0rc0-py3-none-any.whl</code></span></font></pre><p>
+最后<font face="Liberation Serif, serif"><span lang="en-US">, </span></font>根据自己的
+<font face="Liberation Serif, serif"><span lang="en-US">python </span></font>版本<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>在 <font face="Liberation Serif, serif"><span lang="en-US">terminal
+</span></font>中执行以下语句<font face="Liberation Serif, serif"><span lang="en-US">:</span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># </code></span></font><code class="cjk">如果你是 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">Python 2, </code></span></font><code class="cjk">请复制下面</code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ sudo pip install --upgrade $TF_BINARY_URL</code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># </code></span></font><code class="cjk">如果你是 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">Python 3, </code></span></font><code class="cjk">请复制下面</code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">$ sudo pip3 install --upgrade $TF_BINARY_URL</code></span></font></pre><h4>
+<a name="Windows"></a><font face="Liberation Serif, serif"><span lang="en-US">Windows</span></font></h4>
+<p><font face="Liberation Serif, serif"><span lang="en-US">tf 0.12
+</span></font>版的英文<a href="https://www.tensorflow.org/versions/r0.12/get_started/os_setup.html#pip-installation-on-windows">安装说明</a></p>
+<p>安装前的检查<font face="Liberation Serif, serif"><span lang="en-US">:</span></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0cm">目前只支持 <font face="Liberation Serif, serif"><span lang="en-US"><strong>Python
+	3.5 (64bit)</strong> </span></font>版本 
+	</p>
+	<li/>
+<p>你有安装 <font face="Liberation Serif, serif"><span lang="en-US">numpy
+	(</span></font>没有的话<font face="Liberation Serif, serif"><span lang="en-US">,</span></font>请看这里<font face="Liberation Serif, serif"><span lang="en-US"><a href="/tutorials/data-manipulation/np-pd/1-2-install/">numpy
+	</span></font>安装教程</a><font face="Liberation Serif, serif"><span lang="en-US">)
+	</span></font>
+	</p>
+</ul>
+<p>接下来惊心动魄啦<font face="Liberation Serif, serif"><span lang="en-US">!
+</span></font>在 <font face="Liberation Serif, serif"><span lang="en-US">command
+</span></font>窗口中执行</p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># CPU </code></span></font><code class="cjk">版的</code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">C:\&gt; pip install tensorflow</code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># GPU </code></span></font><code class="cjk">版的</code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">C:\&gt; pip install tensorflow-gpu</code></span></font></pre><p>
+<strong>注意</strong> <font face="Liberation Serif, serif"><span lang="en-US">Windows
+</span></font>运行 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow
+</span></font>如果遇到这个报错<font face="Liberation Serif, serif"><span lang="en-US">:</span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">Error importing tensorflow.  Unless you are using bazel,</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">you should not try to import tensorflow from its source directory;</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">please exit the tensorflow source tree, and relaunch your python interpreter</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">from there.</code></span></font></pre><p>
+不要惊慌<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>尝试下载安装 <font face="Liberation Serif, serif"><span lang="en-US"><a href="https://www.visualstudio.com/downloads/">Windows
+</span></font>的 <font face="Liberation Serif, serif"><span lang="en-US">Microsoft
+Visual C++ 2015 redistributable update 3 64 bit</a>. </span></font>就能解决这个问题<font face="Liberation Serif, serif"><span lang="en-US">.</span></font></p>
+<h4><a name="测试"></a><span style="background: #ffff00">测试</span></h4>
+<p><span style="background: #ffff00">然后打开你的 <font face="Liberation Serif, serif"><span lang="en-US">python
+</span></font>编辑器<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>输入</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">import tensorflow</span></code></span></font></pre><p>
+<span style="background: #ffff00">运行脚本来检查一下是否有正确安装<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<h4><a name="更新 Tensorflow"></a><span style="background: #ffff00">更新
+<font face="Liberation Serif, serif"><span lang="en-US">Tensorflow</span></span></font></h4>
+<p><span style="background: #ffff00">最后<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>如果你需要升级 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow
+</span></font>的版本<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>推荐的方式是<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<p><span style="background: #ffff00">根据你的 <font face="Liberation Serif, serif"><span lang="en-US">python
+</span></font>版本<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>在 <font face="Liberation Serif, serif"><span lang="en-US">terminal
+</span></font>中删除原有的版本</span></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># </code></span></font><code class="cjk">如果你是 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">Python 2, </code></span></font><code class="cjk">请复制下面</span></code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">pip uninstall tensorflow</span></code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># </code></span></font><code class="cjk">如果你是 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">Python 3, </code></span></font><code class="cjk">请复制下面</span></code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">pip3 uninstall tensorflow</span></code></span></font></pre><p>
+<span style="background: #ffff00">然后重复这个安装教程的步骤<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>从头安装新版本<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<p><span style="background: #ffff00">如果你觉得这篇文章或视频对你的学习很有帮助<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>请你也分享它<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>让它能再次帮助到更多的需要学习的人<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>莫烦没有正式的经济来源<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>如果你也想支持 </span><strong><span style="background: #ffff00">莫烦<font face="Liberation Serif, serif"><span lang="en-US">Python</span></strong><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">并看到更好的教学内容<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>赞助他一点点<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>作为鼓励他继续开源的动力<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></span></font>
+</p>
+<div id="bottom-donation-section" dir="ltr">
+	<h3><a name="bottom-donation-title"></a><span style="background: #ffff00"><!-- donation -->支持
+	让教学变得更优秀</span></h3>
+	<p style="margin-bottom: 0cm"><br/>
+
+	</p>
+	<p style="margin-bottom: 0cm"><a name="bottom-donation-button"></a><strong><a href="/support/"><span style="background: #ffff00">点我
+	赞助 莫烦</span></a></strong><span style="background: #ffff00"> </span>
+	</p>
+	<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><br/>
+<br/>
+<br/>
+</span></font><br/>
+
+	</p>
+</div>
+<hr/>
+
+</body>
+</html>

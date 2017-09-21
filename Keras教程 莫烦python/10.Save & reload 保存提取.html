@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="https://morvanzhou.github.io/tutorials/machine-learning/keras/">原文链接</a></p>
+        <div class="tut-main-content-pad">
+<hr>
+<h1>Save &amp; reload 保存提取</h1>
+<p style="text-align: center;">
+        
+          作者: <strong>Alice</strong>   
+        
+        编辑: <strong>莫烦</strong>   
+        
+          2016-10-30
+        
+      </p>
+<p>学习资料:</p>
+<ul>
+<li><a href="https://github.com/MorvanZhou/tutorials/blob/master/kerasTUT/10-save.py">代码链接</a></li>
+</ul>
+<p>今天学习如何保存神经网络，这样以后想要用的时候直接提取就可以。</p>
+<h4 class="tut-h4-pad" id="训练模型">训练模型</h4>
+<p>下面的导入数据和训练模型用的是之前讲过的回归模型的例子，今天要做的是如何保存这个模型。</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1337</span><span class="p">)</span>  <span class="c"># for reproducibility</span>
+
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
+
+<span class="c"># create some data</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>    <span class="c"># randomize the data</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">X</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">))</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">160</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:</span><span class="mi">160</span><span class="p">]</span>     <span class="c"># first 160 data points</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">160</span><span class="p">:],</span> <span class="n">Y</span><span class="p">[</span><span class="mi">160</span><span class="p">:]</span>       <span class="c"># last 40 data points</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">output_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">'mse'</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s">'sgd'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">301</span><span class="p">):</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">train_on_batch</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+
+</code></pre>
+</div>
+<h4 class="tut-h4-pad" id="保存模型">保存模型</h4>
+<p>训练完模型之后，可以打印一下预测的结果，接下来就保存模型。</p>
+<p>保存的时候只需要一行代码 <code class="highlighter-rouge">model.save</code>，再给它加一个名字就可以用 <code class="highlighter-rouge">h5</code> 的格式保存起来。</p>
+<p>这里注意，需要已经安装了 <code class="highlighter-rouge">HDF5</code> 这个模块。</p>
+<p>保存完模型之后，删掉它，后面可以来比较是否成功的保存。</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># save</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'test before save: '</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">'my_model.h5'</span><span class="p">)</span>   <span class="c"># HDF5 file, you have to pip3 install h5py if don't have it</span>
+<span class="k">del</span> <span class="n">model</span>  <span class="c"># deletes the existing model</span>
+
+<span class="s">"""
+test before save:  [[ 1.87243938] [ 2.20500779]]
+"""</span>
+</code></pre>
+</div>
+<h4 class="tut-h4-pad" id="导入模型并应用">导入模型并应用</h4>
+<p>导入保存好的模型，再执行一遍预测，与之前预测的结果比较，可以发现结果是一样的。</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># load</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="s">'my_model.h5'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'test after load: '</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]))</span>
+
+<span class="s">"""
+test after load:  [[ 1.87243938] [ 2.20500779]]
+"""</span>
+</code></pre>
+</div>
+<p>另外还有其他保存模型并调用的方式，第一种是只保存权重而不保存模型的结构。</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># save and load weights</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_weights</span><span class="p">(</span><span class="s">'my_model_weights.h5'</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_weights</span><span class="p">(</span><span class="s">'my_model_weights.h5'</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>第二种是用 <code class="highlighter-rouge">model.to_json</code> 保存完结构之后，然后再去加载这个<code class="highlighter-rouge">json_string</code>。</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># save and load fresh network without trained weights</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">model_from_json</span>
+<span class="n">json_string</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model_from_json</span><span class="p">(</span><span class="n">json_string</span><span class="p">)</span>
+</code></pre>
+</div>
+<p style="font-size: 0.8em; padding:4em 1em 0.5em 1em; margin: 0 auto;">
+        如果你觉得这篇文章或视频对你的学习很有帮助, 请你也分享它, 让它能再次帮助到更多的需要学习的人.
+
+        莫烦没有正式的经济来源, 如果你也想支持 <strong>莫烦Python</strong> 并看到更好的教学内容, 赞助他一点点, 作为鼓励他继续开源的动力.
+      </p>
+<!-- donation -->
+<div id="bottom-donation-section">
+<h3 id="bottom-donation-title">支持 让教学变得更优秀</h3>
+<br>
+<div>
+<a href="/support/" id="bottom-donation-button"><strong>点我 赞助 莫烦</strong></a>
+</div>
+<br>
+</br></br></div>
+<hr>
+</hr></hr></div>
+    </body></html>

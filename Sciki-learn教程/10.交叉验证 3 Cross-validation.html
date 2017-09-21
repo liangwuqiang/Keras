@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="https://morvanzhou.github.io/tutorials/machine-learning/sklearn/">原文链接</a></p>
+        <div class="tut-main-content-pad">
+<hr>
+<h1>交叉验证 3 Cross-validation</h1>
+<p style="text-align: center;">
+        
+          作者: <strong>Bhan</strong>   
+        
+        编辑: <strong>莫烦</strong>   
+        
+          2016-11-03
+        
+      </p>
+<p>学习资料:</p>
+<ul>
+<li><a href="https://github.com/MorvanZhou/tutorials/blob/master/sklearnTUT/sk10_cross_validation3.py">相关代码</a></li>
+</ul>
+<p>连续三节的交叉验证(cross validation)让我们知道在机器学习中验证是有多么的重要,
+这一次的 sklearn 中我们用到了<code class="highlighter-rouge">sklearn.learning_curve</code>当中的另外一种, 
+叫做<code class="highlighter-rouge">validation_curve</code>,用这一种曲线我们就能更加直观看出改变模型中的参数的时候有没有过拟合(overfitting)的问题了.
+这也是可以让我们更好的选择参数的方法.</p>
+<h4 class="tut-h4-pad" id="validation_curve 检视过拟合">validation_curve 检视过拟合</h4>
+<p>继续上一节的例子，并稍作小修改即可画出图形。这次我们来验证<code class="highlighter-rouge">SVC</code>中的一个参数 <code class="highlighter-rouge">gamma</code> 在什么范围内能使 model 产生好的结果. 以及过拟合和 <code class="highlighter-rouge">gamma</code> 取值的关系.</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.learning_curve</span> <span class="kn">import</span> <span class="n">validation_curve</span> <span class="c">#validation_curve模块</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span> 
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c">#digits数据集</span>
+<span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span>
+
+<span class="c">#建立参数测试集</span>
+<span class="n">param_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c">#使用validation_curve快速找出参数对模型的影响</span>
+<span class="n">train_loss</span><span class="p">,</span> <span class="n">test_loss</span> <span class="o">=</span> <span class="n">validation_curve</span><span class="p">(</span>
+    <span class="n">SVC</span><span class="p">(),</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">param_name</span><span class="o">=</span><span class="s">'gamma'</span><span class="p">,</span> <span class="n">param_range</span><span class="o">=</span><span class="n">param_range</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">'mean_squared_error'</span><span class="p">)</span>
+
+<span class="c">#平均每一轮的平均方差</span>
+<span class="n">train_loss_mean</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">train_loss</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">test_loss_mean</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">test_loss</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c">#可视化图形</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">param_range</span><span class="p">,</span> <span class="n">train_loss_mean</span><span class="p">,</span> <span class="s">'o-'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"r"</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="s">"Training"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">param_range</span><span class="p">,</span> <span class="n">test_loss_mean</span><span class="p">,</span> <span class="s">'o-'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"g"</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s">"Cross-validation"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"gamma"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Loss"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">"best"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+<p><img class="course-image" src="images/5a7e36794212670556ffc5130ffe3349.png"/></p>
+<p>由图中可以明显看到gamma值大于<code class="highlighter-rouge">0.001</code>，模型就会有过拟合(Overfitting)的问题。</p>
+<p style="font-size: 0.8em; padding:4em 1em 0.5em 1em; margin: 0 auto;">
+        如果你觉得这篇文章或视频对你的学习很有帮助, 请你也分享它, 让它能再次帮助到更多的需要学习的人.
+
+        莫烦没有正式的经济来源, 如果你也想支持 <strong>莫烦Python</strong> 并看到更好的教学内容, 赞助他一点点, 作为鼓励他继续开源的动力.
+      </p>
+<!-- donation -->
+<div id="bottom-donation-section">
+<h3 id="bottom-donation-title">支持 让教学变得更优秀</h3>
+<br>
+<div>
+<a href="/support/" id="bottom-donation-button"><strong>点我 赞助 莫烦</strong></a>
+</div>
+<br>
+</br></br></div>
+<hr>
+</hr></hr></div>
+    </body></html>
