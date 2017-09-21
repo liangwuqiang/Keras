@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<h1 id="scikit-learn">Scikit-Learn接口包装器</h1>
+<p>我们可以通过包装器将<code>Sequential</code>模型（仅有一个输入）作为Scikit-Learn工作流的一部分，相关的包装器定义在<code>keras.wrappers.scikit_learn.py</code>中</p>
+<p>目前，有两个包装器可用：</p>
+<p><code>keras.wrappers.scikit_learn.KerasClassifier(build_fn=None, **sk_params)</code>实现了sklearn的分类器接口</p>
+<p><code>keras.wrappers.scikit_learn.KerasRegressor(build_fn=None, **sk_params)</code>实现了sklearn的回归器接口</p>
+<h2 id="_1">参数</h2>
+<ul>
+<li>
+<p>build_fn：可调用的函数或类对象</p>
+</li>
+<li>
+<p>sk_params：模型参数和训练参数</p>
+</li>
+</ul>
+<p><code>build_fn</code>应构造、编译并返回一个Keras模型，该模型将稍后用于训练/测试。<code>build_fn</code>的值可能为下列三种之一：</p>
+<ol>
+<li>
+<p>一个函数</p>
+</li>
+<li>
+<p>一个具有<code>call</code>方法的类对象</p>
+</li>
+<li>
+<p>None，代表你的类继承自<code>KerasClassifier</code>或<code>KerasRegressor</code>，其<code>call</code>方法为其父类的<code>call</code>方法</p>
+</li>
+</ol>
+<p><code>sk_params</code>以模型参数和训练（超）参数作为参数。合法的模型参数为<code>build_fn</code>的参数。注意，‘build_fn’应提供其参数的默认值。所以我们不传递任何值给<code>sk_params</code>也可以创建一个分类器/回归器</p>
+<p><code>sk_params</code>还接受用于调用<code>fit</code>，<code>predict</code>，<code>predict_proba</code>和<code>score</code>方法的参数，如<code>nb_epoch</code>，<code>batch_size</code>等。这些用于训练或预测的参数按如下顺序选择：</p>
+<ol>
+<li>
+<p>传递给<code>fit</code>，<code>predict</code>，<code>predict_proba</code>和<code>score</code>的字典参数</p>
+</li>
+<li>
+<p>传递个<code>sk_params</code>的参数</p>
+</li>
+<li>
+<p><code>keras.models.Sequential</code>，<code>fit</code>，<code>predict</code>，<code>predict_proba</code>和<code>score</code>的默认值</p>
+</li>
+</ol>
+<p>当使用scikit-learn的<code>grid_search</code>接口时，合法的可转换参数是你可以传递给<code>sk_params</code>的参数，包括训练参数。即，你可以使用<code>grid_search</code>来搜索最佳的<code>batch_size</code>或<code>nb_epoch</code>以及其他模型参数</p>
+</div>
+    </body></html>

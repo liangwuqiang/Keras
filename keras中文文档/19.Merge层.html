@@ -1,115 +1,115 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŽŸæ–‡é“¾æŽ¥</a></p>
         <div class="section">
-<h1 id="merge">Merge²ã</h1>
-<p>Merge²ãÌá¹©ÁËÒ»ÏµÁÐÓÃÓÚÈÚºÏÁ½¸ö²ã»òÁ½¸öÕÅÁ¿µÄ²ã¶ÔÏóºÍ·½·¨¡£ÒÔ´óÐ´Ê××ÖÄ¸¿ªÍ·µÄÊÇLayerÀà£¬ÒÔÐ¡Ð´×ÖÄ¸¿ªÍ·µÄÊÇÕÅÁ¿µÄº¯Êý¡£Ð¡Ð´×ÖÄ¸¿ªÍ·µÄÕÅÁ¿º¯ÊýÔÚÄÚ²¿Êµ¼ÊÉÏÊÇµ÷ÓÃÁË´óÐ´×ÖÄ¸¿ªÍ·µÄ²ã¡£</p>
+<h1 id="merge">Mergeå±‚</h1>
+<p>Mergeå±‚æä¾›äº†ä¸€ç³»åˆ—ç”¨äºŽèžåˆä¸¤ä¸ªå±‚æˆ–ä¸¤ä¸ªå¼ é‡çš„å±‚å¯¹è±¡å’Œæ–¹æ³•ã€‚ä»¥å¤§å†™é¦–å­—æ¯å¼€å¤´çš„æ˜¯Layerç±»ï¼Œä»¥å°å†™å­—æ¯å¼€å¤´çš„æ˜¯å¼ é‡çš„å‡½æ•°ã€‚å°å†™å­—æ¯å¼€å¤´çš„å¼ é‡å‡½æ•°åœ¨å†…éƒ¨å®žé™…ä¸Šæ˜¯è°ƒç”¨äº†å¤§å†™å­—æ¯å¼€å¤´çš„å±‚ã€‚</p>
 <h2 id="add">Add</h2>
 <pre><code class="python">keras.layers.merge.Add()
 </code></pre>
-<p>½«Layer that adds a list of inputs.</p>
-<p>¸Ã²ã½ÓÊÕÒ»¸öÁÐ±íµÄÍ¬shapeÕÅÁ¿£¬²¢·µ»ØËüÃÇµÄºÍ£¬shape²»±ä¡£</p>
+<p>å°†Layer that adds a list of inputs.</p>
+<p>è¯¥å±‚æŽ¥æ”¶ä¸€ä¸ªåˆ—è¡¨çš„åŒshapeå¼ é‡ï¼Œå¹¶è¿”å›žå®ƒä»¬çš„å’Œï¼Œshapeä¸å˜ã€‚</p>
 <h2 id="multiply">Multiply</h2>
 <p>``python
 keras.layers.merge.Multiply()</p>
-<pre><code>¸Ã²ã½ÓÊÕÒ»¸öÁÐ±íµÄÍ¬shapeÕÅÁ¿£¬²¢·µ»ØËüÃÇµÄÖðÔªËØ»ýµÄÕÅÁ¿£¬shape²»±ä¡£
+<pre><code>è¯¥å±‚æŽ¥æ”¶ä¸€ä¸ªåˆ—è¡¨çš„åŒshapeå¼ é‡ï¼Œå¹¶è¿”å›žå®ƒä»¬çš„é€å…ƒç´ ç§¯çš„å¼ é‡ï¼Œshapeä¸å˜ã€‚
 
 ## Average
 ```python
 keras.layers.merge.Average()
 </code></pre>
-<p>¸Ã²ã½ÓÊÕÒ»¸öÁÐ±íµÄÍ¬shapeÕÅÁ¿£¬²¢·µ»ØËüÃÇµÄÖðÔªËØ¾ùÖµ£¬shape²»±ä¡£</p>
+<p>è¯¥å±‚æŽ¥æ”¶ä¸€ä¸ªåˆ—è¡¨çš„åŒshapeå¼ é‡ï¼Œå¹¶è¿”å›žå®ƒä»¬çš„é€å…ƒç´ å‡å€¼ï¼Œshapeä¸å˜ã€‚</p>
 <h2 id="maximum">Maximum</h2>
 <pre><code class="python">keras.layers.merge.Maximum()
 </code></pre>
-<p>¸Ã²ã½ÓÊÕÒ»¸öÁÐ±íµÄÍ¬shapeÕÅÁ¿£¬²¢·µ»ØËüÃÇµÄÖðÔªËØ×î´óÖµ£¬shape²»±ä¡£</p>
+<p>è¯¥å±‚æŽ¥æ”¶ä¸€ä¸ªåˆ—è¡¨çš„åŒshapeå¼ é‡ï¼Œå¹¶è¿”å›žå®ƒä»¬çš„é€å…ƒç´ æœ€å¤§å€¼ï¼Œshapeä¸å˜ã€‚</p>
 <h2 id="concatenate">Concatenate</h2>
 <pre><code class="python">keras.layers.merge.Concatenate(axis=-1)
 </code></pre>
-<p>¸Ã²ã½ÓÊÕÒ»¸öÁÐ±íµÄÍ¬shapeÕÅÁ¿£¬²¢·µ»ØËüÃÇµÄ°´ÕÕ¸ø¶¨ÖáÏà½Ó¹¹³ÉµÄÏòÁ¿¡£</p>
-<h3 id="_1">²ÎÊý</h3>
+<p>è¯¥å±‚æŽ¥æ”¶ä¸€ä¸ªåˆ—è¡¨çš„åŒshapeå¼ é‡ï¼Œå¹¶è¿”å›žå®ƒä»¬çš„æŒ‰ç…§ç»™å®šè½´ç›¸æŽ¥æž„æˆçš„å‘é‡ã€‚</p>
+<h3 id="_1">å‚æ•°</h3>
 <ul>
-<li>axis: Ïë½ÓµÄÖá</li>
-<li>**kwargs: ÆÕÍ¨µÄLayer¹Ø¼ü×Ö²ÎÊý</li>
+<li>axis: æƒ³æŽ¥çš„è½´</li>
+<li>**kwargs: æ™®é€šçš„Layerå…³é”®å­—å‚æ•°</li>
 </ul>
 <h2 id="dot">Dot</h2>
 <pre><code class="python">keras.layers.merge.Dot(axes, normalize=False)
 </code></pre>
-<p>¼ÆËãÁ½¸ötensorÖÐÑù±¾µÄÕÅÁ¿³Ë»ý¡£ÀýÈç£¬Èç¹ûÁ½¸öÕÅÁ¿<code>a</code>ºÍ<code>b</code>µÄshape¶¼Îª£¨batch_size, n£©£¬ÔòÊä³öÎªÐÎÈç£¨batch_size,1£©µÄÕÅÁ¿£¬½á¹ûÕÅÁ¿Ã¿¸öbatchµÄÊý¾Ý¶¼ÊÇa[i,:]ºÍb[i,:]µÄ¾ØÕó£¨ÏòÁ¿£©µã»ý¡£</p>
-<h3 id="_2">²ÎÊý</h3>
+<p>è®¡ç®—ä¸¤ä¸ªtensorä¸­æ ·æœ¬çš„å¼ é‡ä¹˜ç§¯ã€‚ä¾‹å¦‚ï¼Œå¦‚æžœä¸¤ä¸ªå¼ é‡<code>a</code>å’Œ<code>b</code>çš„shapeéƒ½ä¸ºï¼ˆbatch_size, nï¼‰ï¼Œåˆ™è¾“å‡ºä¸ºå½¢å¦‚ï¼ˆbatch_size,1ï¼‰çš„å¼ é‡ï¼Œç»“æžœå¼ é‡æ¯ä¸ªbatchçš„æ•°æ®éƒ½æ˜¯a[i,:]å’Œb[i,:]çš„çŸ©é˜µï¼ˆå‘é‡ï¼‰ç‚¹ç§¯ã€‚</p>
+<h3 id="_2">å‚æ•°</h3>
 <ul>
-<li>axes: ÕûÊý»òÕûÊýµÄtuple£¬Ö´ÐÐ³Ë·¨µÄÖá¡£</li>
-<li>normalize: ²¼¶ûÖµ£¬ÊÇ·ñÑØÖ´ÐÐ³É¼¨µÄÖá×öL2¹æ·¶»¯£¬Èç¹ûÉèÎªTrue£¬ÄÇÃ´³Ë»ýµÄÊä³öÊÇÁ½¸öÑù±¾µÄÓàÏÒÏàËÆÐÔ¡£</li>
-<li>**kwargs: ÆÕÍ¨µÄLayer¹Ø¼ü×Ö²ÎÊý</li>
+<li>axes: æ•´æ•°æˆ–æ•´æ•°çš„tupleï¼Œæ‰§è¡Œä¹˜æ³•çš„è½´ã€‚</li>
+<li>normalize: å¸ƒå°”å€¼ï¼Œæ˜¯å¦æ²¿æ‰§è¡Œæˆç»©çš„è½´åšL2è§„èŒƒåŒ–ï¼Œå¦‚æžœè®¾ä¸ºTrueï¼Œé‚£ä¹ˆä¹˜ç§¯çš„è¾“å‡ºæ˜¯ä¸¤ä¸ªæ ·æœ¬çš„ä½™å¼¦ç›¸ä¼¼æ€§ã€‚</li>
+<li>**kwargs: æ™®é€šçš„Layerå…³é”®å­—å‚æ•°</li>
 </ul>
 <h2 id="add_1">add</h2>
 <pre><code class="python">add(inputs)
 </code></pre>
-<p>Add²ãµÄº¯ÊýÊ½°ü×°</p>
-<h3 id="_3">²ÎÊý£º</h3>
+<p>Addå±‚çš„å‡½æ•°å¼åŒ…è£…</p>
+<h3 id="_3">å‚æ•°ï¼š</h3>
 <ul>
-<li>inputs: ³¤¶ÈÖÁÉÙÎª2µÄÕÅÁ¿ÁÐ±íA</li>
-<li>**kwargs: ÆÕÍ¨µÄLayer¹Ø¼ü×Ö²ÎÊý</li>
+<li>inputs: é•¿åº¦è‡³å°‘ä¸º2çš„å¼ é‡åˆ—è¡¨A</li>
+<li>**kwargs: æ™®é€šçš„Layerå…³é”®å­—å‚æ•°</li>
 </ul>
-<h3 id="_4">·µ»ØÖµ</h3>
-<p>ÊäÈëÁÐ±íÕÅÁ¿Ö®ºÍ</p>
+<h3 id="_4">è¿”å›žå€¼</h3>
+<p>è¾“å…¥åˆ—è¡¨å¼ é‡ä¹‹å’Œ</p>
 <h2 id="multiply_1">multiply</h2>
 <p>``python
 multiply(inputs)</p>
-<pre><code>MultiplyµÄº¯Êý°ü×°
+<pre><code>Multiplyçš„å‡½æ•°åŒ…è£…
 
-###²ÎÊý£º
+###å‚æ•°ï¼š
 
-* inputs: ³¤¶ÈÖÁÉÙÎª2µÄÕÅÁ¿ÁÐ±í
-* **kwargs: ÆÕÍ¨µÄLayer¹Ø¼ü×Ö²ÎÊý
-###·µ»ØÖµ
+* inputs: é•¿åº¦è‡³å°‘ä¸º2çš„å¼ é‡åˆ—è¡¨
+* **kwargs: æ™®é€šçš„Layerå…³é”®å­—å‚æ•°
+###è¿”å›žå€¼
 
-ÊäÈëÁÐ±íÕÅÁ¿Ö®ÖðÔªËØ»ý
+è¾“å…¥åˆ—è¡¨å¼ é‡ä¹‹é€å…ƒç´ ç§¯
 
 ## average
 ```python
 average(inputs)
 </code></pre>
-<p>AverageµÄº¯Êý°ü×°</p>
-<h3 id="_5">²ÎÊý£º</h3>
+<p>Averageçš„å‡½æ•°åŒ…è£…</p>
+<h3 id="_5">å‚æ•°ï¼š</h3>
 <ul>
-<li>inputs: ³¤¶ÈÖÁÉÙÎª2µÄÕÅÁ¿ÁÐ±í</li>
-<li>**kwargs: ÆÕÍ¨µÄLayer¹Ø¼ü×Ö²ÎÊý</li>
+<li>inputs: é•¿åº¦è‡³å°‘ä¸º2çš„å¼ é‡åˆ—è¡¨</li>
+<li>**kwargs: æ™®é€šçš„Layerå…³é”®å­—å‚æ•°</li>
 </ul>
-<h3 id="_6">·µ»ØÖµ</h3>
-<p>ÊäÈëÁÐ±íÕÅÁ¿Ö®ÖðÔªËØ¾ùÖµ</p>
+<h3 id="_6">è¿”å›žå€¼</h3>
+<p>è¾“å…¥åˆ—è¡¨å¼ é‡ä¹‹é€å…ƒç´ å‡å€¼</p>
 <h2 id="maximum_1">maximum</h2>
 <pre><code class="python">maximum(inputs)
 </code></pre>
-<p>MaximumµÄº¯Êý°ü×°</p>
-<h3 id="_7">²ÎÊý£º</h3>
+<p>Maximumçš„å‡½æ•°åŒ…è£…</p>
+<h3 id="_7">å‚æ•°ï¼š</h3>
 <ul>
-<li>inputs: ³¤¶ÈÖÁÉÙÎª2µÄÕÅÁ¿ÁÐ±í</li>
-<li>**kwargs: ÆÕÍ¨µÄLayer¹Ø¼ü×Ö²ÎÊý</li>
+<li>inputs: é•¿åº¦è‡³å°‘ä¸º2çš„å¼ é‡åˆ—è¡¨</li>
+<li>**kwargs: æ™®é€šçš„Layerå…³é”®å­—å‚æ•°</li>
 </ul>
-<h3 id="_8">·µ»ØÖµ</h3>
-<p>ÊäÈëÁÐ±íÕÅÁ¿Ö®ÖðÔªËØ¾ùÖµ</p>
+<h3 id="_8">è¿”å›žå€¼</h3>
+<p>è¾“å…¥åˆ—è¡¨å¼ é‡ä¹‹é€å…ƒç´ å‡å€¼</p>
 <h2 id="concatenate_1">concatenate</h2>
 <pre><code class="python">concatenate(inputs, axis=-1))
 </code></pre>
-<p>ConcatenateµÄº¯Êý°ü×°</p>
-<h3 id="_9">²ÎÊý</h3>
+<p>Concatenateçš„å‡½æ•°åŒ…è£…</p>
+<h3 id="_9">å‚æ•°</h3>
 <ul>
-<li>inputs: ³¤¶ÈÖÁÉÙÎª2µÄÕÅÁ¿ÁÐ</li>
-<li>axis: Ïà½ÓµÄÖá</li>
-<li>**kwargs: ÆÕÍ¨µÄLayer¹Ø¼ü×Ö²ÎÊý</li>
+<li>inputs: é•¿åº¦è‡³å°‘ä¸º2çš„å¼ é‡åˆ—</li>
+<li>axis: ç›¸æŽ¥çš„è½´</li>
+<li>**kwargs: æ™®é€šçš„Layerå…³é”®å­—å‚æ•°</li>
 </ul>
 <h2 id="dot_1">dot</h2>
 <pre><code class="python">dot(inputs, axes, normalize=False)
 </code></pre>
-<p>DotµÄº¯Êý°ü×°</p>
-<h3 id="_10">²ÎÊý</h3>
+<p>Dotçš„å‡½æ•°åŒ…è£…</p>
+<h3 id="_10">å‚æ•°</h3>
 <ul>
-<li>inputs: ³¤¶ÈÖÁÉÙÎª2µÄÕÅÁ¿ÁÐ</li>
-<li>axes: ÕûÊý»òÕûÊýµÄtuple£¬Ö´ÐÐ³Ë·¨µÄÖá¡£</li>
-<li>normalize: ²¼¶ûÖµ£¬ÊÇ·ñÑØÖ´ÐÐ³É¼¨µÄÖá×öL2¹æ·¶»¯£¬Èç¹ûÉèÎªTrue£¬ÄÇÃ´³Ë»ýµÄÊä³öÊÇÁ½¸öÑù±¾µÄÓàÏÒÏàËÆÐÔ¡£</li>
-<li>**kwargs: ÆÕÍ¨µÄLayer¹Ø¼ü×Ö²ÎÊý</li>
+<li>inputs: é•¿åº¦è‡³å°‘ä¸º2çš„å¼ é‡åˆ—</li>
+<li>axes: æ•´æ•°æˆ–æ•´æ•°çš„tupleï¼Œæ‰§è¡Œä¹˜æ³•çš„è½´ã€‚</li>
+<li>normalize: å¸ƒå°”å€¼ï¼Œæ˜¯å¦æ²¿æ‰§è¡Œæˆç»©çš„è½´åšL2è§„èŒƒåŒ–ï¼Œå¦‚æžœè®¾ä¸ºTrueï¼Œé‚£ä¹ˆä¹˜ç§¯çš„è¾“å‡ºæ˜¯ä¸¤ä¸ªæ ·æœ¬çš„ä½™å¼¦ç›¸ä¼¼æ€§ã€‚</li>
+<li>**kwargs: æ™®é€šçš„Layerå…³é”®å­—å‚æ•°</li>
 </ul>
 </div>
     </body></html>

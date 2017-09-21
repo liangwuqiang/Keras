@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
@@ -59,3 +60,91 @@
 <hr>
 </hr></hr></div>
     </body></html>
+=======
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-09-19T14:48:01.009442836"/>
+	<meta name="" content=""/>
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-09-19T11:59:16.637322952">
+	<style type="text/css">
+		pre.ctl { font-family: "Liberation Mono", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+	</style>
+</head>
+<body lang="zh-CN" dir="ltr">
+<p><span style="background: #ffff00"><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/">原文链接</a></span></p>
+<hr/>
+
+<h1><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US"><span style="background: #ffff00"><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US">Placeholder
+</span></font></font></span></font></font><span lang="en-US">传入值</span></span></h1>
+<p align="center"><span style="background: #ffff00">作者</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">:
+</span></span></font></span></font><strong><span style="background: #ffff00">商晋</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; 编辑</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">:
+</span></span></font></span></font><strong><span style="background: #ffff00">莫烦</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; </span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">2016-11-03
+</span></span></font></span></font>
+</p>
+<p><span style="background: #ffff00">学习资料<font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US">:</span></font></span></span></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00"><a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tensorflow8_feeds.py">相关代码</a>
+	</span>
+	</p>
+	<li/>
+<p><span style="background: #ffff00">为 </span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">TF
+	2017 </span></span></font></span></font><span style="background: #ffff00">打造的<a href="https://github.com/MorvanZhou/Tensorflow-Tutorial">新版可视化教学代码</a>
+	</span>
+	</p>
+</ul>
+<h4><a name="简单运用"></a><span style="background: #ffff00">简单运用</span></h4>
+<p><span style="background: #ffff00">这一次我们会讲到
+</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Tensorflow
+</span></span></font></span></font><span style="background: #ffff00">中的
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">placeholder</span></span></font></code><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">
+, </span></span></font><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">placeholder</span></span></font></code><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">
+</span></span></font></span></font><span style="background: #ffff00">是
+</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Tensorflow
+</span></span></font></span></font><span style="background: #ffff00">中的占位符，暂时储存变量</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">.</span></span></font></span></font></p>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">Tensorflow
+</span></span></font></span></font><span style="background: #ffff00"><span lang="en-US">如果想要从外部传入</span></span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">data,
+</span></span></font></span></font><span style="background: #ffff00"><span lang="en-US">那就需要用到
+</span></span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">tf.placeholder()</span></span></font></code><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">,
+</span></span></font></span></font><span style="background: #ffff00">然后以这种形式传输数据</span><span style="background: #ffff00">
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">sess.run(***,
+feed_dict={input: **})</span></span></font></code><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">.</span></span></font></span></font></p>
+<p><span style="background: #ffff00">示例：</span></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">import tensorflow as tf</span></span></font></code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">#</span></span></font></code></span></font><code class="cjk"><span style="background: #ffff00"><span lang="en-US">在 </span></span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">Tensorflow </span></span></font></code></span></font><code class="cjk"><span style="background: #ffff00"><span lang="en-US">中需要定义 </span></span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">placeholder </span></span></font></code></span></font><code class="cjk"><span style="background: #ffff00"><span lang="en-US">的 </span></span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">type </span></span></font></code></span></font><code class="cjk"><span style="background: #ffff00"><span lang="en-US">，一般为 </span></span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">float32 </span></span></font></code></span></font><code class="cjk"><span style="background: #ffff00"><span lang="en-US">形式</span></span></code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">input1 = tf.placeholder(tf.float32)</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">input2 = tf.placeholder(tf.float32)</span></span></font></code></span></font>
+
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00"># mul = multiply </span></span></font></code></span></font><code class="cjk"><span style="background: #ffff00">是将</span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">input1</span></span></font></code></span></font><code class="cjk"><span style="background: #ffff00">和</span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">input2 </span></span></font></code></span></font><code class="cjk"><span style="background: #ffff00">做乘法运算，并输出为 </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">output </span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">ouput = tf.multiply(input1, input2)</span></span></font></code></span></font></pre><p>
+<span style="background: #ffff00">接下来</span><font face="Liberation Serif, serif"><span lang="en-US"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">,
+</span></span></font></span></font><span style="background: #ffff00">传值的工作交给了
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">sess.run()</span></span></font></code><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">
+, </span></span></font></span></font><span style="background: #ffff00">需要传入的值放在了</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">feed_dict={}</span></span></font></code><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">
+</span></span></font></span></font><span style="background: #ffff00">并一一对应每一个
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">input</span></span></font></code><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">.</span></span></font><font face="Liberation Serif, serif"><span lang="en-US">
+</span></font><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">placeholder</span></span></font></code><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">
+</span></span></font></span></font><span style="background: #ffff00">与
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">feed_dict={}</span></span></font></code><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">
+</span></span></font></span></font><span style="background: #ffff00">是绑定在一起出现的。</span></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">with tf.Session() as sess:</span></span></font></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </span></code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"><span style="background: #ffff00">print(sess.run(ouput, feed_dict={input1: [7.], input2: [2.]}))</span></span></font></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><font face="Liberation Mono, monospace"><span lang="en-US"># [ 14.]</span></font></code></span></font></pre>
+<div id="bottom-donation-section" dir="ltr">
+	<p style="margin-bottom: 0cm"><br/>
+
+	</p>
+</div>
+</body>
+</html>
+>>>>>>> dbe96efc57d6db2998967ee467c1f1106a52b1ba

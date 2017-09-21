@@ -1,216 +1,216 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="_1">³Ø»¯²ã</h1>
-<h2 id="maxpooling1d">MaxPooling1D²ã</h2>
+<h1 id="_1">æ± åŒ–å±‚</h1>
+<h2 id="maxpooling1d">MaxPooling1Då±‚</h2>
 <pre><code class="python">keras.layers.pooling.MaxPooling1D(pool_size=2, strides=None, padding='valid')
 </code></pre>
-<p>¶ÔÊ±Óò1DĞÅºÅ½øĞĞ×î´óÖµ³Ø»¯</p>
-<h3 id="_2">²ÎÊı</h3>
+<p>å¯¹æ—¶åŸŸ1Dä¿¡å·è¿›è¡Œæœ€å¤§å€¼æ± åŒ–</p>
+<h3 id="_2">å‚æ•°</h3>
 <ul>
 <li>
-<p>pool_size£ºÕûÊı£¬³Ø»¯´°¿Ú´óĞ¡</p>
+<p>pool_sizeï¼šæ•´æ•°ï¼Œæ± åŒ–çª—å£å¤§å°</p>
 </li>
 <li>
-<p>strides£ºÕûÊı»òNone£¬ÏÂ²ÉÑùÒò×Ó£¬ÀıÈçÉè2½«»áÊ¹µÃÊä³öshapeÎªÊäÈëµÄÒ»°ë£¬ÈôÎªNoneÔòÄ¬ÈÏÖµÎªpool_size¡£</p>
+<p>stridesï¼šæ•´æ•°æˆ–Noneï¼Œä¸‹é‡‡æ ·å› å­ï¼Œä¾‹å¦‚è®¾2å°†ä¼šä½¿å¾—è¾“å‡ºshapeä¸ºè¾“å…¥çš„ä¸€åŠï¼Œè‹¥ä¸ºNoneåˆ™é»˜è®¤å€¼ä¸ºpool_sizeã€‚</p>
 </li>
 <li>
-<p>padding£º¡®valid¡¯»òÕß¡®same¡¯</p>
+<p>paddingï¼šâ€˜validâ€™æˆ–è€…â€˜sameâ€™</p>
 </li>
 </ul>
-<h3 id="shape">ÊäÈëshape</h3>
+<h3 id="shape">è¾“å…¥shape</h3>
 <ul>
-<li>ĞÎÈç£¨samples£¬steps£¬features£©µÄ3DÕÅÁ¿</li>
+<li>å½¢å¦‚ï¼ˆsamplesï¼Œstepsï¼Œfeaturesï¼‰çš„3Då¼ é‡</li>
 </ul>
-<h3 id="shape_1">Êä³öshape</h3>
+<h3 id="shape_1">è¾“å‡ºshape</h3>
 <ul>
-<li>ĞÎÈç£¨samples£¬downsampled_steps£¬features£©µÄ3DÕÅÁ¿</li>
+<li>å½¢å¦‚ï¼ˆsamplesï¼Œdownsampled_stepsï¼Œfeaturesï¼‰çš„3Då¼ é‡</li>
 </ul>
 <hr/>
-<h2 id="maxpooling2d">MaxPooling2D²ã</h2>
+<h2 id="maxpooling2d">MaxPooling2Då±‚</h2>
 <pre><code class="python">keras.layers.pooling.MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None)
 </code></pre>
-<p>Îª¿ÕÓòĞÅºÅÊ©¼Ó×î´óÖµ³Ø»¯</p>
-<h3 id="_3">²ÎÊı</h3>
+<p>ä¸ºç©ºåŸŸä¿¡å·æ–½åŠ æœ€å¤§å€¼æ± åŒ–</p>
+<h3 id="_3">å‚æ•°</h3>
 <ul>
 <li>
-<p>pool_size£ºÕûÊı»ò³¤Îª2µÄÕûÊıtuple£¬´ú±íÔÚÁ½¸ö·½Ïò£¨ÊúÖ±£¬Ë®Æ½£©ÉÏµÄÏÂ²ÉÑùÒò×Ó£¬ÈçÈ¡£¨2£¬2£©½«Ê¹Í¼Æ¬ÔÚÁ½¸öÎ¬¶ÈÉÏ¾ù±äÎªÔ­³¤µÄÒ»°ë¡£ÎªÕûÊıÒâÎª¸÷¸öÎ¬¶ÈÖµÏàÍ¬ÇÒÎª¸ÃÊı×Ö¡£</p>
+<p>pool_sizeï¼šæ•´æ•°æˆ–é•¿ä¸º2çš„æ•´æ•°tupleï¼Œä»£è¡¨åœ¨ä¸¤ä¸ªæ–¹å‘ï¼ˆç«–ç›´ï¼Œæ°´å¹³ï¼‰ä¸Šçš„ä¸‹é‡‡æ ·å› å­ï¼Œå¦‚å–ï¼ˆ2ï¼Œ2ï¼‰å°†ä½¿å›¾ç‰‡åœ¨ä¸¤ä¸ªç»´åº¦ä¸Šå‡å˜ä¸ºåŸé•¿çš„ä¸€åŠã€‚ä¸ºæ•´æ•°æ„ä¸ºå„ä¸ªç»´åº¦å€¼ç›¸åŒä¸”ä¸ºè¯¥æ•°å­—ã€‚</p>
 </li>
 <li>
-<p>strides£ºÕûÊı»ò³¤Îª2µÄÕûÊıtuple£¬»òÕßNone£¬²½³¤Öµ¡£</p>
+<p>stridesï¼šæ•´æ•°æˆ–é•¿ä¸º2çš„æ•´æ•°tupleï¼Œæˆ–è€…Noneï¼Œæ­¥é•¿å€¼ã€‚</p>
 </li>
 <li>
-<p>border_mode£º¡®valid¡¯»òÕß¡®same¡¯</p>
+<p>border_modeï¼šâ€˜validâ€™æˆ–è€…â€˜sameâ€™</p>
 </li>
 <li>
-<p>data_format£º×Ö·û´®£¬¡°channels_first¡±»ò¡°channels_last¡±Ö®Ò»£¬´ú±íÍ¼ÏñµÄÍ¨µÀÎ¬µÄÎ»ÖÃ¡£¸Ã²ÎÊıÊÇKeras 1.xÖĞµÄimage_dim_ordering£¬¡°channels_last¡±¶ÔÓ¦Ô­±¾µÄ¡°tf¡±£¬¡°channels_first¡±¶ÔÓ¦Ô­±¾µÄ¡°th¡±¡£ÒÔ128x128µÄRGBÍ¼ÏñÎªÀı£¬¡°channels_first¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨3,128,128£©£¬¶ø¡°channels_last¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨128,128,3£©¡£¸Ã²ÎÊıµÄÄ¬ÈÏÖµÊÇ<code>~/.keras/keras.json</code>ÖĞÉèÖÃµÄÖµ£¬Èô´ÓÎ´ÉèÖÃ¹ı£¬ÔòÎª¡°channels_last¡±¡£</p>
+<p>data_formatï¼šå­—ç¬¦ä¸²ï¼Œâ€œchannels_firstâ€æˆ–â€œchannels_lastâ€ä¹‹ä¸€ï¼Œä»£è¡¨å›¾åƒçš„é€šé“ç»´çš„ä½ç½®ã€‚è¯¥å‚æ•°æ˜¯Keras 1.xä¸­çš„image_dim_orderingï¼Œâ€œchannels_lastâ€å¯¹åº”åŸæœ¬çš„â€œtfâ€ï¼Œâ€œchannels_firstâ€å¯¹åº”åŸæœ¬çš„â€œthâ€ã€‚ä»¥128x128çš„RGBå›¾åƒä¸ºä¾‹ï¼Œâ€œchannels_firstâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ3,128,128ï¼‰ï¼Œè€Œâ€œchannels_lastâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ128,128,3ï¼‰ã€‚è¯¥å‚æ•°çš„é»˜è®¤å€¼æ˜¯<code>~/.keras/keras.json</code>ä¸­è®¾ç½®çš„å€¼ï¼Œè‹¥ä»æœªè®¾ç½®è¿‡ï¼Œåˆ™ä¸ºâ€œchannels_lastâ€ã€‚</p>
 </li>
 </ul>
-<h3 id="shape_2">ÊäÈëshape</h3>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬channels, rows£¬cols£©µÄ4DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬rows, cols£¬channels£©µÄ4DÕÅÁ¿</p>
-<h3 id="shape_3">Êä³öshape</h3>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬channels, pooled_rows, pooled_cols£©µÄ4DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬pooled_rows, pooled_cols£¬channels£©µÄ4DÕÅÁ¿</p>
+<h3 id="shape_2">è¾“å…¥shape</h3>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œchannels, rowsï¼Œcolsï¼‰çš„4Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œrows, colsï¼Œchannelsï¼‰çš„4Då¼ é‡</p>
+<h3 id="shape_3">è¾“å‡ºshape</h3>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œchannels, pooled_rows, pooled_colsï¼‰çš„4Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œpooled_rows, pooled_colsï¼Œchannelsï¼‰çš„4Då¼ é‡</p>
 <hr/>
-<h2 id="maxpooling3d">MaxPooling3D²ã</h2>
+<h2 id="maxpooling3d">MaxPooling3Då±‚</h2>
 <pre><code class="python">keras.layers.pooling.MaxPooling3D(pool_size=(2, 2, 2), strides=None, padding='valid', data_format=None)
 </code></pre>
-<p>Îª3DĞÅºÅ£¨¿ÕÓò»òÊ±¿ÕÓò£©Ê©¼Ó×î´óÖµ³Ø»¯</p>
-<p>±¾²ãÄ¿Ç°Ö»ÄÜÔÚÊ¹ÓÃTheanoÎªºó¶ËÊ±¿ÉÓÃ</p>
-<h3 id="_4">²ÎÊı</h3>
+<p>ä¸º3Dä¿¡å·ï¼ˆç©ºåŸŸæˆ–æ—¶ç©ºåŸŸï¼‰æ–½åŠ æœ€å¤§å€¼æ± åŒ–</p>
+<p>æœ¬å±‚ç›®å‰åªèƒ½åœ¨ä½¿ç”¨Theanoä¸ºåç«¯æ—¶å¯ç”¨</p>
+<h3 id="_4">å‚æ•°</h3>
 <ul>
 <li>
-<p>pool_size£ºÕûÊı»ò³¤Îª3µÄÕûÊıtuple£¬´ú±íÔÚÈı¸öÎ¬¶ÈÉÏµÄÏÂ²ÉÑùÒò×Ó£¬ÈçÈ¡£¨2£¬2£¬2£©½«Ê¹ĞÅºÅÔÚÃ¿¸öÎ¬¶È¶¼±äÎªÔ­À´µÄÒ»°ë³¤¡£</p>
+<p>pool_sizeï¼šæ•´æ•°æˆ–é•¿ä¸º3çš„æ•´æ•°tupleï¼Œä»£è¡¨åœ¨ä¸‰ä¸ªç»´åº¦ä¸Šçš„ä¸‹é‡‡æ ·å› å­ï¼Œå¦‚å–ï¼ˆ2ï¼Œ2ï¼Œ2ï¼‰å°†ä½¿ä¿¡å·åœ¨æ¯ä¸ªç»´åº¦éƒ½å˜ä¸ºåŸæ¥çš„ä¸€åŠé•¿ã€‚</p>
 </li>
 <li>
-<p>strides£ºÕûÊı»ò³¤Îª3µÄÕûÊıtuple£¬»òÕßNone£¬²½³¤Öµ¡£</p>
+<p>stridesï¼šæ•´æ•°æˆ–é•¿ä¸º3çš„æ•´æ•°tupleï¼Œæˆ–è€…Noneï¼Œæ­¥é•¿å€¼ã€‚</p>
 </li>
 <li>
-<p>padding£º¡®valid¡¯»òÕß¡®same¡¯</p>
+<p>paddingï¼šâ€˜validâ€™æˆ–è€…â€˜sameâ€™</p>
 </li>
 <li>
-<p>data_format£º×Ö·û´®£¬¡°channels_first¡±»ò¡°channels_last¡±Ö®Ò»£¬´ú±íÊı¾İµÄÍ¨µÀÎ¬µÄÎ»ÖÃ¡£¸Ã²ÎÊıÊÇKeras 1.xÖĞµÄimage_dim_ordering£¬¡°channels_last¡±¶ÔÓ¦Ô­±¾µÄ¡°tf¡±£¬¡°channels_first¡±¶ÔÓ¦Ô­±¾µÄ¡°th¡±¡£ÒÔ128x128x128µÄÊı¾İÎªÀı£¬¡°channels_first¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨3,128,128,128£©£¬¶ø¡°channels_last¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨128,128,128,3£©¡£¸Ã²ÎÊıµÄÄ¬ÈÏÖµÊÇ<code>~/.keras/keras.json</code>ÖĞÉèÖÃµÄÖµ£¬Èô´ÓÎ´ÉèÖÃ¹ı£¬ÔòÎª¡°channels_last¡±¡£</p>
+<p>data_formatï¼šå­—ç¬¦ä¸²ï¼Œâ€œchannels_firstâ€æˆ–â€œchannels_lastâ€ä¹‹ä¸€ï¼Œä»£è¡¨æ•°æ®çš„é€šé“ç»´çš„ä½ç½®ã€‚è¯¥å‚æ•°æ˜¯Keras 1.xä¸­çš„image_dim_orderingï¼Œâ€œchannels_lastâ€å¯¹åº”åŸæœ¬çš„â€œtfâ€ï¼Œâ€œchannels_firstâ€å¯¹åº”åŸæœ¬çš„â€œthâ€ã€‚ä»¥128x128x128çš„æ•°æ®ä¸ºä¾‹ï¼Œâ€œchannels_firstâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ3,128,128,128ï¼‰ï¼Œè€Œâ€œchannels_lastâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ128,128,128,3ï¼‰ã€‚è¯¥å‚æ•°çš„é»˜è®¤å€¼æ˜¯<code>~/.keras/keras.json</code>ä¸­è®¾ç½®çš„å€¼ï¼Œè‹¥ä»æœªè®¾ç½®è¿‡ï¼Œåˆ™ä¸ºâ€œchannels_lastâ€ã€‚</p>
 </li>
 </ul>
-<h3 id="shape_4">ÊäÈëshape</h3>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples, channels, len_pool_dim1, len_pool_dim2, len_pool_dim3£©µÄ5DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples, len_pool_dim1, len_pool_dim2, len_pool_dim3£¬channels, £©µÄ5DÕÅÁ¿</p>
-<h3 id="shape_5">Êä³öshape</h3>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples, channels, pooled_dim1, pooled_dim2, pooled_dim3£©µÄ5DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples, pooled_dim1, pooled_dim2, pooled_dim3,channels,£©µÄ5DÕÅÁ¿</p>
+<h3 id="shape_4">è¾“å…¥shape</h3>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamples, channels, len_pool_dim1, len_pool_dim2, len_pool_dim3ï¼‰çš„5Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamples, len_pool_dim1, len_pool_dim2, len_pool_dim3ï¼Œchannels, ï¼‰çš„5Då¼ é‡</p>
+<h3 id="shape_5">è¾“å‡ºshape</h3>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamples, channels, pooled_dim1, pooled_dim2, pooled_dim3ï¼‰çš„5Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamples, pooled_dim1, pooled_dim2, pooled_dim3,channels,ï¼‰çš„5Då¼ é‡</p>
 <hr/>
-<h2 id="averagepooling1d">AveragePooling1D²ã</h2>
+<h2 id="averagepooling1d">AveragePooling1Då±‚</h2>
 <pre><code class="python">keras.layers.pooling.AveragePooling1D(pool_size=2, strides=None, padding='valid')
 </code></pre>
-<p>¶ÔÊ±Óò1DĞÅºÅ½øĞĞÆ½¾ùÖµ³Ø»¯</p>
-<h3 id="_5">²ÎÊı</h3>
+<p>å¯¹æ—¶åŸŸ1Dä¿¡å·è¿›è¡Œå¹³å‡å€¼æ± åŒ–</p>
+<h3 id="_5">å‚æ•°</h3>
 <ul>
 <li>
-<p>pool_size£ºÕûÊı£¬³Ø»¯´°¿Ú´óĞ¡</p>
+<p>pool_sizeï¼šæ•´æ•°ï¼Œæ± åŒ–çª—å£å¤§å°</p>
 </li>
 <li>
-<p>strides£ºÕûÊı»òNone£¬ÏÂ²ÉÑùÒò×Ó£¬ÀıÈçÉè2½«»áÊ¹µÃÊä³öshapeÎªÊäÈëµÄÒ»°ë£¬ÈôÎªNoneÔòÄ¬ÈÏÖµÎªpool_size¡£</p>
+<p>stridesï¼šæ•´æ•°æˆ–Noneï¼Œä¸‹é‡‡æ ·å› å­ï¼Œä¾‹å¦‚è®¾2å°†ä¼šä½¿å¾—è¾“å‡ºshapeä¸ºè¾“å…¥çš„ä¸€åŠï¼Œè‹¥ä¸ºNoneåˆ™é»˜è®¤å€¼ä¸ºpool_sizeã€‚</p>
 </li>
 <li>
-<p>padding£º¡®valid¡¯»òÕß¡®same¡¯</p>
+<p>paddingï¼šâ€˜validâ€™æˆ–è€…â€˜sameâ€™</p>
 </li>
 </ul>
-<h3 id="shape_6">ÊäÈëshape</h3>
+<h3 id="shape_6">è¾“å…¥shape</h3>
 <ul>
-<li>ĞÎÈç£¨samples£¬steps£¬features£©µÄ3DÕÅÁ¿</li>
+<li>å½¢å¦‚ï¼ˆsamplesï¼Œstepsï¼Œfeaturesï¼‰çš„3Då¼ é‡</li>
 </ul>
-<h3 id="shape_7">Êä³öshape</h3>
+<h3 id="shape_7">è¾“å‡ºshape</h3>
 <ul>
-<li>ĞÎÈç£¨samples£¬downsampled_steps£¬features£©µÄ3DÕÅÁ¿</li>
+<li>å½¢å¦‚ï¼ˆsamplesï¼Œdownsampled_stepsï¼Œfeaturesï¼‰çš„3Då¼ é‡</li>
 </ul>
 <hr/>
-<h2 id="averagepooling2d">AveragePooling2D²ã</h2>
+<h2 id="averagepooling2d">AveragePooling2Då±‚</h2>
 <pre><code class="python">keras.layers.pooling.AveragePooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None)
 </code></pre>
-<p>Îª¿ÕÓòĞÅºÅÊ©¼ÓÆ½¾ùÖµ³Ø»¯</p>
-<h3 id="_6">²ÎÊı</h3>
+<p>ä¸ºç©ºåŸŸä¿¡å·æ–½åŠ å¹³å‡å€¼æ± åŒ–</p>
+<h3 id="_6">å‚æ•°</h3>
 <ul>
 <li>
-<p>pool_size£ºÕûÊı»ò³¤Îª2µÄÕûÊıtuple£¬´ú±íÔÚÁ½¸ö·½Ïò£¨ÊúÖ±£¬Ë®Æ½£©ÉÏµÄÏÂ²ÉÑùÒò×Ó£¬ÈçÈ¡£¨2£¬2£©½«Ê¹Í¼Æ¬ÔÚÁ½¸öÎ¬¶ÈÉÏ¾ù±äÎªÔ­³¤µÄÒ»°ë¡£ÎªÕûÊıÒâÎª¸÷¸öÎ¬¶ÈÖµÏàÍ¬ÇÒÎª¸ÃÊı×Ö¡£</p>
+<p>pool_sizeï¼šæ•´æ•°æˆ–é•¿ä¸º2çš„æ•´æ•°tupleï¼Œä»£è¡¨åœ¨ä¸¤ä¸ªæ–¹å‘ï¼ˆç«–ç›´ï¼Œæ°´å¹³ï¼‰ä¸Šçš„ä¸‹é‡‡æ ·å› å­ï¼Œå¦‚å–ï¼ˆ2ï¼Œ2ï¼‰å°†ä½¿å›¾ç‰‡åœ¨ä¸¤ä¸ªç»´åº¦ä¸Šå‡å˜ä¸ºåŸé•¿çš„ä¸€åŠã€‚ä¸ºæ•´æ•°æ„ä¸ºå„ä¸ªç»´åº¦å€¼ç›¸åŒä¸”ä¸ºè¯¥æ•°å­—ã€‚</p>
 </li>
 <li>
-<p>strides£ºÕûÊı»ò³¤Îª2µÄÕûÊıtuple£¬»òÕßNone£¬²½³¤Öµ¡£</p>
+<p>stridesï¼šæ•´æ•°æˆ–é•¿ä¸º2çš„æ•´æ•°tupleï¼Œæˆ–è€…Noneï¼Œæ­¥é•¿å€¼ã€‚</p>
 </li>
 <li>
-<p>border_mode£º¡®valid¡¯»òÕß¡®same¡¯</p>
+<p>border_modeï¼šâ€˜validâ€™æˆ–è€…â€˜sameâ€™</p>
 </li>
 <li>
-<p>data_format£º×Ö·û´®£¬¡°channels_first¡±»ò¡°channels_last¡±Ö®Ò»£¬´ú±íÍ¼ÏñµÄÍ¨µÀÎ¬µÄÎ»ÖÃ¡£¸Ã²ÎÊıÊÇKeras 1.xÖĞµÄimage_dim_ordering£¬¡°channels_last¡±¶ÔÓ¦Ô­±¾µÄ¡°tf¡±£¬¡°channels_first¡±¶ÔÓ¦Ô­±¾µÄ¡°th¡±¡£ÒÔ128x128µÄRGBÍ¼ÏñÎªÀı£¬¡°channels_first¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨3,128,128£©£¬¶ø¡°channels_last¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨128,128,3£©¡£¸Ã²ÎÊıµÄÄ¬ÈÏÖµÊÇ<code>~/.keras/keras.json</code>ÖĞÉèÖÃµÄÖµ£¬Èô´ÓÎ´ÉèÖÃ¹ı£¬ÔòÎª¡°channels_last¡±¡£</p>
+<p>data_formatï¼šå­—ç¬¦ä¸²ï¼Œâ€œchannels_firstâ€æˆ–â€œchannels_lastâ€ä¹‹ä¸€ï¼Œä»£è¡¨å›¾åƒçš„é€šé“ç»´çš„ä½ç½®ã€‚è¯¥å‚æ•°æ˜¯Keras 1.xä¸­çš„image_dim_orderingï¼Œâ€œchannels_lastâ€å¯¹åº”åŸæœ¬çš„â€œtfâ€ï¼Œâ€œchannels_firstâ€å¯¹åº”åŸæœ¬çš„â€œthâ€ã€‚ä»¥128x128çš„RGBå›¾åƒä¸ºä¾‹ï¼Œâ€œchannels_firstâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ3,128,128ï¼‰ï¼Œè€Œâ€œchannels_lastâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ128,128,3ï¼‰ã€‚è¯¥å‚æ•°çš„é»˜è®¤å€¼æ˜¯<code>~/.keras/keras.json</code>ä¸­è®¾ç½®çš„å€¼ï¼Œè‹¥ä»æœªè®¾ç½®è¿‡ï¼Œåˆ™ä¸ºâ€œchannels_lastâ€ã€‚</p>
 </li>
 </ul>
-<h3 id="shape_8">ÊäÈëshape</h3>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬channels, rows£¬cols£©µÄ4DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬rows, cols£¬channels£©µÄ4DÕÅÁ¿</p>
-<h3 id="shape_9">Êä³öshape</h3>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬channels, pooled_rows, pooled_cols£©µÄ4DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬pooled_rows, pooled_cols£¬channels£©µÄ4DÕÅÁ¿</p>
+<h3 id="shape_8">è¾“å…¥shape</h3>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œchannels, rowsï¼Œcolsï¼‰çš„4Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œrows, colsï¼Œchannelsï¼‰çš„4Då¼ é‡</p>
+<h3 id="shape_9">è¾“å‡ºshape</h3>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œchannels, pooled_rows, pooled_colsï¼‰çš„4Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œpooled_rows, pooled_colsï¼Œchannelsï¼‰çš„4Då¼ é‡</p>
 <hr/>
-<h2 id="averagepooling3d">AveragePooling3D²ã</h2>
+<h2 id="averagepooling3d">AveragePooling3Då±‚</h2>
 <pre><code class="python">keras.layers.pooling.AveragePooling3D(pool_size=(2, 2, 2), strides=None, padding='valid', data_format=None)
 </code></pre>
-<p>Îª3DĞÅºÅ£¨¿ÕÓò»òÊ±¿ÕÓò£©Ê©¼ÓÆ½¾ùÖµ³Ø»¯</p>
-<p>±¾²ãÄ¿Ç°Ö»ÄÜÔÚÊ¹ÓÃTheanoÎªºó¶ËÊ±¿ÉÓÃ</p>
-<h3 id="_7">²ÎÊı</h3>
+<p>ä¸º3Dä¿¡å·ï¼ˆç©ºåŸŸæˆ–æ—¶ç©ºåŸŸï¼‰æ–½åŠ å¹³å‡å€¼æ± åŒ–</p>
+<p>æœ¬å±‚ç›®å‰åªèƒ½åœ¨ä½¿ç”¨Theanoä¸ºåç«¯æ—¶å¯ç”¨</p>
+<h3 id="_7">å‚æ•°</h3>
 <ul>
 <li>
-<p>pool_size£ºÕûÊı»ò³¤Îª3µÄÕûÊıtuple£¬´ú±íÔÚÈı¸öÎ¬¶ÈÉÏµÄÏÂ²ÉÑùÒò×Ó£¬ÈçÈ¡£¨2£¬2£¬2£©½«Ê¹ĞÅºÅÔÚÃ¿¸öÎ¬¶È¶¼±äÎªÔ­À´µÄÒ»°ë³¤¡£</p>
+<p>pool_sizeï¼šæ•´æ•°æˆ–é•¿ä¸º3çš„æ•´æ•°tupleï¼Œä»£è¡¨åœ¨ä¸‰ä¸ªç»´åº¦ä¸Šçš„ä¸‹é‡‡æ ·å› å­ï¼Œå¦‚å–ï¼ˆ2ï¼Œ2ï¼Œ2ï¼‰å°†ä½¿ä¿¡å·åœ¨æ¯ä¸ªç»´åº¦éƒ½å˜ä¸ºåŸæ¥çš„ä¸€åŠé•¿ã€‚</p>
 </li>
 <li>
-<p>strides£ºÕûÊı»ò³¤Îª3µÄÕûÊıtuple£¬»òÕßNone£¬²½³¤Öµ¡£</p>
+<p>stridesï¼šæ•´æ•°æˆ–é•¿ä¸º3çš„æ•´æ•°tupleï¼Œæˆ–è€…Noneï¼Œæ­¥é•¿å€¼ã€‚</p>
 </li>
 <li>
-<p>padding£º¡®valid¡¯»òÕß¡®same¡¯</p>
+<p>paddingï¼šâ€˜validâ€™æˆ–è€…â€˜sameâ€™</p>
 </li>
 <li>
-<p>data_format£º×Ö·û´®£¬¡°channels_first¡±»ò¡°channels_last¡±Ö®Ò»£¬´ú±íÊı¾İµÄÍ¨µÀÎ¬µÄÎ»ÖÃ¡£¸Ã²ÎÊıÊÇKeras 1.xÖĞµÄimage_dim_ordering£¬¡°channels_last¡±¶ÔÓ¦Ô­±¾µÄ¡°tf¡±£¬¡°channels_first¡±¶ÔÓ¦Ô­±¾µÄ¡°th¡±¡£ÒÔ128x128x128µÄÊı¾İÎªÀı£¬¡°channels_first¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨3,128,128,128£©£¬¶ø¡°channels_last¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨128,128,128,3£©¡£¸Ã²ÎÊıµÄÄ¬ÈÏÖµÊÇ<code>~/.keras/keras.json</code>ÖĞÉèÖÃµÄÖµ£¬Èô´ÓÎ´ÉèÖÃ¹ı£¬ÔòÎª¡°channels_last¡±¡£</p>
+<p>data_formatï¼šå­—ç¬¦ä¸²ï¼Œâ€œchannels_firstâ€æˆ–â€œchannels_lastâ€ä¹‹ä¸€ï¼Œä»£è¡¨æ•°æ®çš„é€šé“ç»´çš„ä½ç½®ã€‚è¯¥å‚æ•°æ˜¯Keras 1.xä¸­çš„image_dim_orderingï¼Œâ€œchannels_lastâ€å¯¹åº”åŸæœ¬çš„â€œtfâ€ï¼Œâ€œchannels_firstâ€å¯¹åº”åŸæœ¬çš„â€œthâ€ã€‚ä»¥128x128x128çš„æ•°æ®ä¸ºä¾‹ï¼Œâ€œchannels_firstâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ3,128,128,128ï¼‰ï¼Œè€Œâ€œchannels_lastâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ128,128,128,3ï¼‰ã€‚è¯¥å‚æ•°çš„é»˜è®¤å€¼æ˜¯<code>~/.keras/keras.json</code>ä¸­è®¾ç½®çš„å€¼ï¼Œè‹¥ä»æœªè®¾ç½®è¿‡ï¼Œåˆ™ä¸ºâ€œchannels_lastâ€ã€‚</p>
 </li>
 </ul>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples, channels, len_pool_dim1, len_pool_dim2, len_pool_dim3£©µÄ5DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples, len_pool_dim1, len_pool_dim2, len_pool_dim3£¬channels, £©µÄ5DÕÅÁ¿</p>
-<h3 id="shape_10">Êä³öshape</h3>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples, channels, pooled_dim1, pooled_dim2, pooled_dim3£©µÄ5DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples, pooled_dim1, pooled_dim2, pooled_dim3,channels,£©µÄ5DÕÅÁ¿</p>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamples, channels, len_pool_dim1, len_pool_dim2, len_pool_dim3ï¼‰çš„5Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamples, len_pool_dim1, len_pool_dim2, len_pool_dim3ï¼Œchannels, ï¼‰çš„5Då¼ é‡</p>
+<h3 id="shape_10">è¾“å‡ºshape</h3>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamples, channels, pooled_dim1, pooled_dim2, pooled_dim3ï¼‰çš„5Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamples, pooled_dim1, pooled_dim2, pooled_dim3,channels,ï¼‰çš„5Då¼ é‡</p>
 <hr/>
-<h2 id="globalmaxpooling1d">GlobalMaxPooling1D²ã</h2>
+<h2 id="globalmaxpooling1d">GlobalMaxPooling1Då±‚</h2>
 <pre><code class="python">keras.layers.pooling.GlobalMaxPooling1D()
 </code></pre>
-<p>¶ÔÓÚÊ±¼äĞÅºÅµÄÈ«¾Ö×î´ó³Ø»¯</p>
-<h3 id="shape_11">ÊäÈëshape</h3>
+<p>å¯¹äºæ—¶é—´ä¿¡å·çš„å…¨å±€æœ€å¤§æ± åŒ–</p>
+<h3 id="shape_11">è¾“å…¥shape</h3>
 <ul>
-<li>ĞÎÈç£¨samples£¬steps£¬features£©µÄ3DÕÅÁ¿</li>
+<li>å½¢å¦‚ï¼ˆsamplesï¼Œstepsï¼Œfeaturesï¼‰çš„3Då¼ é‡</li>
 </ul>
-<h3 id="shape_12">Êä³öshape</h3>
+<h3 id="shape_12">è¾“å‡ºshape</h3>
 <ul>
-<li>ĞÎÈç(samples, features)µÄ2DÕÅÁ¿</li>
+<li>å½¢å¦‚(samples, features)çš„2Då¼ é‡</li>
 </ul>
 <hr/>
-<h2 id="globalaveragepooling1d">GlobalAveragePooling1D²ã</h2>
+<h2 id="globalaveragepooling1d">GlobalAveragePooling1Då±‚</h2>
 <pre><code class="python">keras.layers.pooling.GlobalAveragePooling1D()
 </code></pre>
-<p>ÎªÊ±ÓòĞÅºÅÊ©¼ÓÈ«¾ÖÆ½¾ùÖµ³Ø»¯</p>
-<h3 id="shape_13">ÊäÈëshape</h3>
+<p>ä¸ºæ—¶åŸŸä¿¡å·æ–½åŠ å…¨å±€å¹³å‡å€¼æ± åŒ–</p>
+<h3 id="shape_13">è¾“å…¥shape</h3>
 <ul>
-<li>ĞÎÈç£¨samples£¬steps£¬features£©µÄ3DÕÅÁ¿</li>
+<li>å½¢å¦‚ï¼ˆsamplesï¼Œstepsï¼Œfeaturesï¼‰çš„3Då¼ é‡</li>
 </ul>
-<h3 id="shape_14">Êä³öshape</h3>
+<h3 id="shape_14">è¾“å‡ºshape</h3>
 <ul>
-<li>ĞÎÈç(samples, features)µÄ2DÕÅÁ¿</li>
+<li>å½¢å¦‚(samples, features)çš„2Då¼ é‡</li>
 </ul>
 <hr/>
-<h2 id="globalmaxpooling2d">GlobalMaxPooling2D²ã</h2>
+<h2 id="globalmaxpooling2d">GlobalMaxPooling2Då±‚</h2>
 <pre><code class="python">keras.layers.pooling.GlobalMaxPooling2D(dim_ordering='default')
 </code></pre>
-<p>Îª¿ÕÓòĞÅºÅÊ©¼ÓÈ«¾Ö×î´óÖµ³Ø»¯</p>
-<h3 id="_8">²ÎÊı</h3>
+<p>ä¸ºç©ºåŸŸä¿¡å·æ–½åŠ å…¨å±€æœ€å¤§å€¼æ± åŒ–</p>
+<h3 id="_8">å‚æ•°</h3>
 <ul>
-<li>data_format£º×Ö·û´®£¬¡°channels_first¡±»ò¡°channels_last¡±Ö®Ò»£¬´ú±íÍ¼ÏñµÄÍ¨µÀÎ¬µÄÎ»ÖÃ¡£¸Ã²ÎÊıÊÇKeras 1.xÖĞµÄimage_dim_ordering£¬¡°channels_last¡±¶ÔÓ¦Ô­±¾µÄ¡°tf¡±£¬¡°channels_first¡±¶ÔÓ¦Ô­±¾µÄ¡°th¡±¡£ÒÔ128x128µÄRGBÍ¼ÏñÎªÀı£¬¡°channels_first¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨3,128,128£©£¬¶ø¡°channels_last¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨128,128,3£©¡£¸Ã²ÎÊıµÄÄ¬ÈÏÖµÊÇ<code>~/.keras/keras.json</code>ÖĞÉèÖÃµÄÖµ£¬Èô´ÓÎ´ÉèÖÃ¹ı£¬ÔòÎª¡°channels_last¡±¡£</li>
+<li>data_formatï¼šå­—ç¬¦ä¸²ï¼Œâ€œchannels_firstâ€æˆ–â€œchannels_lastâ€ä¹‹ä¸€ï¼Œä»£è¡¨å›¾åƒçš„é€šé“ç»´çš„ä½ç½®ã€‚è¯¥å‚æ•°æ˜¯Keras 1.xä¸­çš„image_dim_orderingï¼Œâ€œchannels_lastâ€å¯¹åº”åŸæœ¬çš„â€œtfâ€ï¼Œâ€œchannels_firstâ€å¯¹åº”åŸæœ¬çš„â€œthâ€ã€‚ä»¥128x128çš„RGBå›¾åƒä¸ºä¾‹ï¼Œâ€œchannels_firstâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ3,128,128ï¼‰ï¼Œè€Œâ€œchannels_lastâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ128,128,3ï¼‰ã€‚è¯¥å‚æ•°çš„é»˜è®¤å€¼æ˜¯<code>~/.keras/keras.json</code>ä¸­è®¾ç½®çš„å€¼ï¼Œè‹¥ä»æœªè®¾ç½®è¿‡ï¼Œåˆ™ä¸ºâ€œchannels_lastâ€ã€‚</li>
 </ul>
-<h3 id="shape_15">ÊäÈëshape</h3>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬channels, rows£¬cols£©µÄ4DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬rows, cols£¬channels£©µÄ4DÕÅÁ¿</p>
-<h3 id="shape_16">Êä³öshape</h3>
-<p>ĞÎÈç(nb_samples, channels)µÄ2DÕÅÁ¿</p>
+<h3 id="shape_15">è¾“å…¥shape</h3>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œchannels, rowsï¼Œcolsï¼‰çš„4Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œrows, colsï¼Œchannelsï¼‰çš„4Då¼ é‡</p>
+<h3 id="shape_16">è¾“å‡ºshape</h3>
+<p>å½¢å¦‚(nb_samples, channels)çš„2Då¼ é‡</p>
 <hr/>
-<h2 id="globalaveragepooling2d">GlobalAveragePooling2D²ã</h2>
+<h2 id="globalaveragepooling2d">GlobalAveragePooling2Då±‚</h2>
 <pre><code class="python">keras.layers.pooling.GlobalAveragePooling2D(dim_ordering='default')
 </code></pre>
-<p>Îª¿ÕÓòĞÅºÅÊ©¼ÓÈ«¾ÖÆ½¾ùÖµ³Ø»¯</p>
-<h3 id="_9">²ÎÊı</h3>
+<p>ä¸ºç©ºåŸŸä¿¡å·æ–½åŠ å…¨å±€å¹³å‡å€¼æ± åŒ–</p>
+<h3 id="_9">å‚æ•°</h3>
 <ul>
-<li>data_format£º×Ö·û´®£¬¡°channels_first¡±»ò¡°channels_last¡±Ö®Ò»£¬´ú±íÍ¼ÏñµÄÍ¨µÀÎ¬µÄÎ»ÖÃ¡£¸Ã²ÎÊıÊÇKeras 1.xÖĞµÄimage_dim_ordering£¬¡°channels_last¡±¶ÔÓ¦Ô­±¾µÄ¡°tf¡±£¬¡°channels_first¡±¶ÔÓ¦Ô­±¾µÄ¡°th¡±¡£ÒÔ128x128µÄRGBÍ¼ÏñÎªÀı£¬¡°channels_first¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨3,128,128£©£¬¶ø¡°channels_last¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨128,128,3£©¡£¸Ã²ÎÊıµÄÄ¬ÈÏÖµÊÇ<code>~/.keras/keras.json</code>ÖĞÉèÖÃµÄÖµ£¬Èô´ÓÎ´ÉèÖÃ¹ı£¬ÔòÎª¡°channels_last¡±¡£</li>
+<li>data_formatï¼šå­—ç¬¦ä¸²ï¼Œâ€œchannels_firstâ€æˆ–â€œchannels_lastâ€ä¹‹ä¸€ï¼Œä»£è¡¨å›¾åƒçš„é€šé“ç»´çš„ä½ç½®ã€‚è¯¥å‚æ•°æ˜¯Keras 1.xä¸­çš„image_dim_orderingï¼Œâ€œchannels_lastâ€å¯¹åº”åŸæœ¬çš„â€œtfâ€ï¼Œâ€œchannels_firstâ€å¯¹åº”åŸæœ¬çš„â€œthâ€ã€‚ä»¥128x128çš„RGBå›¾åƒä¸ºä¾‹ï¼Œâ€œchannels_firstâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ3,128,128ï¼‰ï¼Œè€Œâ€œchannels_lastâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ128,128,3ï¼‰ã€‚è¯¥å‚æ•°çš„é»˜è®¤å€¼æ˜¯<code>~/.keras/keras.json</code>ä¸­è®¾ç½®çš„å€¼ï¼Œè‹¥ä»æœªè®¾ç½®è¿‡ï¼Œåˆ™ä¸ºâ€œchannels_lastâ€ã€‚</li>
 </ul>
-<h3 id="shape_17">ÊäÈëshape</h3>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬channels, rows£¬cols£©µÄ4DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬rows, cols£¬channels£©µÄ4DÕÅÁ¿</p>
-<h3 id="shape_18">Êä³öshape</h3>
-<p>ĞÎÈç(nb_samples, channels)µÄ2DÕÅÁ¿</p>
+<h3 id="shape_17">è¾“å…¥shape</h3>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œchannels, rowsï¼Œcolsï¼‰çš„4Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œrows, colsï¼Œchannelsï¼‰çš„4Då¼ é‡</p>
+<h3 id="shape_18">è¾“å‡ºshape</h3>
+<p>å½¢å¦‚(nb_samples, channels)çš„2Då¼ é‡</p>
 </div>
     </body></html>

@@ -1,121 +1,121 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="locallyconnceted">¾Ö²¿Á¬½Ó²ãLocallyConnceted</h1>
-<h2 id="locallyconnected1d">LocallyConnected1D²ã</h2>
+<h1 id="locallyconnceted">å±€éƒ¨è¿æ¥å±‚LocallyConnceted</h1>
+<h2 id="locallyconnected1d">LocallyConnected1Då±‚</h2>
 <pre><code class="python">keras.layers.local.LocallyConnected1D(filters, kernel_size, strides=1, padding='valid', data_format=None, activation=None, use_bias=True, kernel_initializer='glorot_uniform', bias_initializer='zeros', kernel_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, bias_constraint=None)
 </code></pre>
-<p><code>LocallyConnected1D</code>²ãÓë<code>Conv1D</code>¹¤×÷·½Ê½ÀàËÆ£¬Î¨Ò»µÄÇø±ğÊÇ²»½øĞĞÈ¨Öµ¹²Ïí¡£¼´Ê©¼ÓÔÚ²»Í¬ÊäÈëÎ»ÖÃµÄÂË²¨Æ÷ÊÇ²»Ò»ÑùµÄ¡£</p>
-<h3 id="_1">²ÎÊı</h3>
+<p><code>LocallyConnected1D</code>å±‚ä¸<code>Conv1D</code>å·¥ä½œæ–¹å¼ç±»ä¼¼ï¼Œå”¯ä¸€çš„åŒºåˆ«æ˜¯ä¸è¿›è¡Œæƒå€¼å…±äº«ã€‚å³æ–½åŠ åœ¨ä¸åŒè¾“å…¥ä½ç½®çš„æ»¤æ³¢å™¨æ˜¯ä¸ä¸€æ ·çš„ã€‚</p>
+<h3 id="_1">å‚æ•°</h3>
 <ul>
 <li>
-<p>filters£º¾í»ıºËµÄÊıÄ¿£¨¼´Êä³öµÄÎ¬¶È£©</p>
+<p>filtersï¼šå·ç§¯æ ¸çš„æ•°ç›®ï¼ˆå³è¾“å‡ºçš„ç»´åº¦ï¼‰</p>
 </li>
 <li>
-<p>kernel_size£ºÕûÊı»òÓÉµ¥¸öÕûÊı¹¹³ÉµÄlist/tuple£¬¾í»ıºËµÄ¿ÕÓò»òÊ±Óò´°³¤¶È</p>
+<p>kernel_sizeï¼šæ•´æ•°æˆ–ç”±å•ä¸ªæ•´æ•°æ„æˆçš„list/tupleï¼Œå·ç§¯æ ¸çš„ç©ºåŸŸæˆ–æ—¶åŸŸçª—é•¿åº¦</p>
 </li>
 <li>
-<p>strides£ºÕûÊı»òÓÉµ¥¸öÕûÊı¹¹³ÉµÄlist/tuple£¬Îª¾í»ıµÄ²½³¤¡£ÈÎºÎ²»Îª1µÄstrides¾ùÓëÈÎºÎ²»Îª1µÄdilation_rata¾ù²»¼æÈİ</p>
+<p>stridesï¼šæ•´æ•°æˆ–ç”±å•ä¸ªæ•´æ•°æ„æˆçš„list/tupleï¼Œä¸ºå·ç§¯çš„æ­¥é•¿ã€‚ä»»ä½•ä¸ä¸º1çš„strideså‡ä¸ä»»ä½•ä¸ä¸º1çš„dilation_rataå‡ä¸å…¼å®¹</p>
 </li>
 <li>
-<p>padding£º²¹0²ßÂÔ£¬Ä¿Ç°½öÖ§³Ö<code>valid</code>£¨´óĞ¡Ğ´Ãô¸Ğ£©£¬<code>same</code>¿ÉÄÜ»áÔÚ½«À´Ö§³Ö¡£</p>
+<p>paddingï¼šè¡¥0ç­–ç•¥ï¼Œç›®å‰ä»…æ”¯æŒ<code>valid</code>ï¼ˆå¤§å°å†™æ•æ„Ÿï¼‰ï¼Œ<code>same</code>å¯èƒ½ä¼šåœ¨å°†æ¥æ”¯æŒã€‚</p>
 </li>
 <li>
-<p>activation£º¼¤»îº¯Êı£¬ÎªÔ¤¶¨ÒåµÄ¼¤»îº¯ÊıÃû£¨²Î¿¼<a href="../../other/activations">¼¤»îº¯Êı</a>£©£¬»òÖğÔªËØ£¨element-wise£©µÄTheanoº¯Êı¡£Èç¹û²»Ö¸¶¨¸Ã²ÎÊı£¬½«²»»áÊ¹ÓÃÈÎºÎ¼¤»îº¯Êı£¨¼´Ê¹ÓÃÏßĞÔ¼¤»îº¯Êı£ºa(x)=x£©</p>
+<p>activationï¼šæ¿€æ´»å‡½æ•°ï¼Œä¸ºé¢„å®šä¹‰çš„æ¿€æ´»å‡½æ•°åï¼ˆå‚è€ƒ<a href="../../other/activations">æ¿€æ´»å‡½æ•°</a>ï¼‰ï¼Œæˆ–é€å…ƒç´ ï¼ˆelement-wiseï¼‰çš„Theanoå‡½æ•°ã€‚å¦‚æœä¸æŒ‡å®šè¯¥å‚æ•°ï¼Œå°†ä¸ä¼šä½¿ç”¨ä»»ä½•æ¿€æ´»å‡½æ•°ï¼ˆå³ä½¿ç”¨çº¿æ€§æ¿€æ´»å‡½æ•°ï¼ša(x)=xï¼‰</p>
 </li>
 <li>
-<p>dilation_rate£ºÕûÊı»òÓÉµ¥¸öÕûÊı¹¹³ÉµÄlist/tuple£¬Ö¸¶¨dilated convolutionÖĞµÄÅòÕÍ±ÈÀı¡£ÈÎºÎ²»Îª1µÄdilation_rata¾ùÓëÈÎºÎ²»Îª1µÄstrides¾ù²»¼æÈİ¡£</p>
+<p>dilation_rateï¼šæ•´æ•°æˆ–ç”±å•ä¸ªæ•´æ•°æ„æˆçš„list/tupleï¼ŒæŒ‡å®šdilated convolutionä¸­çš„è†¨èƒ€æ¯”ä¾‹ã€‚ä»»ä½•ä¸ä¸º1çš„dilation_rataå‡ä¸ä»»ä½•ä¸ä¸º1çš„strideså‡ä¸å…¼å®¹ã€‚</p>
 </li>
 <li>
-<p>use_bias:²¼¶ûÖµ£¬ÊÇ·ñÊ¹ÓÃÆ«ÖÃÏî</p>
+<p>use_bias:å¸ƒå°”å€¼ï¼Œæ˜¯å¦ä½¿ç”¨åç½®é¡¹</p>
 </li>
 <li>
-<p>kernel_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>kernel_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>bias_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>bias_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>kernel_regularizer£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>kernel_regularizerï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_regularizer£ºÊ©¼ÓÔÚÆ«ÖÃÏòÁ¿ÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>bias_regularizerï¼šæ–½åŠ åœ¨åç½®å‘é‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>activity_regularizer£ºÊ©¼ÓÔÚÊä³öÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>activity_regularizerï¼šæ–½åŠ åœ¨è¾“å‡ºä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>kernel_constraints£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>kernel_constraintsï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_constraints£ºÊ©¼ÓÔÚÆ«ÖÃÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>bias_constraintsï¼šæ–½åŠ åœ¨åç½®ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 </ul>
-<h3 id="shape">ÊäÈëshape</h3>
-<p>ĞÎÈç£¨samples£¬steps£¬input_dim£©µÄ3DÕÅÁ¿</p>
-<h3 id="shape_1">Êä³öshape</h3>
-<p>ĞÎÈç£¨samples£¬new_steps£¬nb_filter£©µÄ3DÕÅÁ¿£¬ÒòÎªÓĞÏòÁ¿Ìî³äµÄÔ­Òò£¬<code>steps</code>µÄÖµ»á¸Ä±ä</p>
+<h3 id="shape">è¾“å…¥shape</h3>
+<p>å½¢å¦‚ï¼ˆsamplesï¼Œstepsï¼Œinput_dimï¼‰çš„3Då¼ é‡</p>
+<h3 id="shape_1">è¾“å‡ºshape</h3>
+<p>å½¢å¦‚ï¼ˆsamplesï¼Œnew_stepsï¼Œnb_filterï¼‰çš„3Då¼ é‡ï¼Œå› ä¸ºæœ‰å‘é‡å¡«å……çš„åŸå› ï¼Œ<code>steps</code>çš„å€¼ä¼šæ”¹å˜</p>
 <hr/>
-<h2 id="locallyconnected2d">LocallyConnected2D²ã</h2>
+<h2 id="locallyconnected2d">LocallyConnected2Då±‚</h2>
 <pre><code class="python">keras.layers.local.LocallyConnected2D(filters, kernel_size, strides=(1, 1), padding='valid', data_format=None, activation=None, use_bias=True, kernel_initializer='glorot_uniform', bias_initializer='zeros', kernel_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, bias_constraint=None)
 </code></pre>
-<p><code>LocallyConnected2D</code>²ãÓë<code>Convolution2D</code>¹¤×÷·½Ê½ÀàËÆ£¬Î¨Ò»µÄÇø±ğÊÇ²»½øĞĞÈ¨Öµ¹²Ïí¡£¼´Ê©¼ÓÔÚ²»Í¬ÊäÈëpatchµÄÂË²¨Æ÷ÊÇ²»Ò»ÑùµÄ£¬µ±Ê¹ÓÃ¸Ã²ã×÷ÎªÄ£ĞÍÊ×²ãÊ±£¬ĞèÒªÌá¹©²ÎÊı<code>input_dim</code>»ò<code>input_shape</code>²ÎÊı¡£²ÎÊıº¬Òå²Î¿¼<code>Convolution2D</code>¡£</p>
-<h3 id="_2">²ÎÊı</h3>
+<p><code>LocallyConnected2D</code>å±‚ä¸<code>Convolution2D</code>å·¥ä½œæ–¹å¼ç±»ä¼¼ï¼Œå”¯ä¸€çš„åŒºåˆ«æ˜¯ä¸è¿›è¡Œæƒå€¼å…±äº«ã€‚å³æ–½åŠ åœ¨ä¸åŒè¾“å…¥patchçš„æ»¤æ³¢å™¨æ˜¯ä¸ä¸€æ ·çš„ï¼Œå½“ä½¿ç”¨è¯¥å±‚ä½œä¸ºæ¨¡å‹é¦–å±‚æ—¶ï¼Œéœ€è¦æä¾›å‚æ•°<code>input_dim</code>æˆ–<code>input_shape</code>å‚æ•°ã€‚å‚æ•°å«ä¹‰å‚è€ƒ<code>Convolution2D</code>ã€‚</p>
+<h3 id="_2">å‚æ•°</h3>
 <ul>
 <li>
-<p>filters£º¾í»ıºËµÄÊıÄ¿£¨¼´Êä³öµÄÎ¬¶È£©</p>
+<p>filtersï¼šå·ç§¯æ ¸çš„æ•°ç›®ï¼ˆå³è¾“å‡ºçš„ç»´åº¦ï¼‰</p>
 </li>
 <li>
-<p>kernel_size£ºµ¥¸öÕûÊı»òÓÉÁ½¸öÕûÊı¹¹³ÉµÄlist/tuple£¬¾í»ıºËµÄ¿í¶ÈºÍ³¤¶È¡£ÈçÎªµ¥¸öÕûÊı£¬Ôò±íÊ¾ÔÚ¸÷¸ö¿Õ¼äÎ¬¶ÈµÄÏàÍ¬³¤¶È¡£</p>
+<p>kernel_sizeï¼šå•ä¸ªæ•´æ•°æˆ–ç”±ä¸¤ä¸ªæ•´æ•°æ„æˆçš„list/tupleï¼Œå·ç§¯æ ¸çš„å®½åº¦å’Œé•¿åº¦ã€‚å¦‚ä¸ºå•ä¸ªæ•´æ•°ï¼Œåˆ™è¡¨ç¤ºåœ¨å„ä¸ªç©ºé—´ç»´åº¦çš„ç›¸åŒé•¿åº¦ã€‚</p>
 </li>
 <li>
-<p>strides£ºµ¥¸öÕûÊı»òÓÉÁ½¸öÕûÊı¹¹³ÉµÄlist/tuple£¬Îª¾í»ıµÄ²½³¤¡£ÈçÎªµ¥¸öÕûÊı£¬Ôò±íÊ¾ÔÚ¸÷¸ö¿Õ¼äÎ¬¶ÈµÄÏàÍ¬²½³¤¡£</p>
+<p>stridesï¼šå•ä¸ªæ•´æ•°æˆ–ç”±ä¸¤ä¸ªæ•´æ•°æ„æˆçš„list/tupleï¼Œä¸ºå·ç§¯çš„æ­¥é•¿ã€‚å¦‚ä¸ºå•ä¸ªæ•´æ•°ï¼Œåˆ™è¡¨ç¤ºåœ¨å„ä¸ªç©ºé—´ç»´åº¦çš„ç›¸åŒæ­¥é•¿ã€‚</p>
 </li>
 <li>
-<p>padding£º²¹0²ßÂÔ£¬Ä¿Ç°½öÖ§³Ö<code>valid</code>£¨´óĞ¡Ğ´Ãô¸Ğ£©£¬<code>same</code>¿ÉÄÜ»áÔÚ½«À´Ö§³Ö¡£</p>
+<p>paddingï¼šè¡¥0ç­–ç•¥ï¼Œç›®å‰ä»…æ”¯æŒ<code>valid</code>ï¼ˆå¤§å°å†™æ•æ„Ÿï¼‰ï¼Œ<code>same</code>å¯èƒ½ä¼šåœ¨å°†æ¥æ”¯æŒã€‚</p>
 </li>
 <li>
-<p>activation£º¼¤»îº¯Êı£¬ÎªÔ¤¶¨ÒåµÄ¼¤»îº¯ÊıÃû£¨²Î¿¼<a href="../../other/activations">¼¤»îº¯Êı</a>£©£¬»òÖğÔªËØ£¨element-wise£©µÄTheanoº¯Êı¡£Èç¹û²»Ö¸¶¨¸Ã²ÎÊı£¬½«²»»áÊ¹ÓÃÈÎºÎ¼¤»îº¯Êı£¨¼´Ê¹ÓÃÏßĞÔ¼¤»îº¯Êı£ºa(x)=x£©</p>
+<p>activationï¼šæ¿€æ´»å‡½æ•°ï¼Œä¸ºé¢„å®šä¹‰çš„æ¿€æ´»å‡½æ•°åï¼ˆå‚è€ƒ<a href="../../other/activations">æ¿€æ´»å‡½æ•°</a>ï¼‰ï¼Œæˆ–é€å…ƒç´ ï¼ˆelement-wiseï¼‰çš„Theanoå‡½æ•°ã€‚å¦‚æœä¸æŒ‡å®šè¯¥å‚æ•°ï¼Œå°†ä¸ä¼šä½¿ç”¨ä»»ä½•æ¿€æ´»å‡½æ•°ï¼ˆå³ä½¿ç”¨çº¿æ€§æ¿€æ´»å‡½æ•°ï¼ša(x)=xï¼‰</p>
 </li>
 <li>
-<p>data_format£º×Ö·û´®£¬¡°channels_first¡±»ò¡°channels_last¡±Ö®Ò»£¬´ú±íÍ¼ÏñµÄÍ¨µÀÎ¬µÄÎ»ÖÃ¡£¸Ã²ÎÊıÊÇKeras 1.xÖĞµÄimage_dim_ordering£¬¡°channels_last¡±¶ÔÓ¦Ô­±¾µÄ¡°tf¡±£¬¡°channels_first¡±¶ÔÓ¦Ô­±¾µÄ¡°th¡±¡£ÒÔ128x128µÄRGBÍ¼ÏñÎªÀı£¬¡°channels_first¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨3,128,128£©£¬¶ø¡°channels_last¡±Ó¦½«Êı¾İ×éÖ¯Îª£¨128,128,3£©¡£¸Ã²ÎÊıµÄÄ¬ÈÏÖµÊÇ<code>~/.keras/keras.json</code>ÖĞÉèÖÃµÄÖµ£¬Èô´ÓÎ´ÉèÖÃ¹ı£¬ÔòÎª¡°channels_last¡±¡£</p>
+<p>data_formatï¼šå­—ç¬¦ä¸²ï¼Œâ€œchannels_firstâ€æˆ–â€œchannels_lastâ€ä¹‹ä¸€ï¼Œä»£è¡¨å›¾åƒçš„é€šé“ç»´çš„ä½ç½®ã€‚è¯¥å‚æ•°æ˜¯Keras 1.xä¸­çš„image_dim_orderingï¼Œâ€œchannels_lastâ€å¯¹åº”åŸæœ¬çš„â€œtfâ€ï¼Œâ€œchannels_firstâ€å¯¹åº”åŸæœ¬çš„â€œthâ€ã€‚ä»¥128x128çš„RGBå›¾åƒä¸ºä¾‹ï¼Œâ€œchannels_firstâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ3,128,128ï¼‰ï¼Œè€Œâ€œchannels_lastâ€åº”å°†æ•°æ®ç»„ç»‡ä¸ºï¼ˆ128,128,3ï¼‰ã€‚è¯¥å‚æ•°çš„é»˜è®¤å€¼æ˜¯<code>~/.keras/keras.json</code>ä¸­è®¾ç½®çš„å€¼ï¼Œè‹¥ä»æœªè®¾ç½®è¿‡ï¼Œåˆ™ä¸ºâ€œchannels_lastâ€ã€‚</p>
 </li>
 <li>
-<p>use_bias:²¼¶ûÖµ£¬ÊÇ·ñÊ¹ÓÃÆ«ÖÃÏî</p>
+<p>use_bias:å¸ƒå°”å€¼ï¼Œæ˜¯å¦ä½¿ç”¨åç½®é¡¹</p>
 </li>
 <li>
-<p>kernel_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>kernel_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>bias_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>bias_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>kernel_regularizer£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>kernel_regularizerï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_regularizer£ºÊ©¼ÓÔÚÆ«ÖÃÏòÁ¿ÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>bias_regularizerï¼šæ–½åŠ åœ¨åç½®å‘é‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>activity_regularizer£ºÊ©¼ÓÔÚÊä³öÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>activity_regularizerï¼šæ–½åŠ åœ¨è¾“å‡ºä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>kernel_constraints£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>kernel_constraintsï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_constraints£ºÊ©¼ÓÔÚÆ«ÖÃÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>bias_constraintsï¼šæ–½åŠ åœ¨åç½®ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 </ul>
-<h3 id="shape_2">ÊäÈëshape</h3>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÊäÈëĞÎÈç£¨samples,channels£¬rows£¬cols£©µÄ4DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÊäÈëĞÎÈç£¨samples£¬rows£¬cols£¬channels£©µÄ4DÕÅÁ¿</p>
-<p>×¢ÒâÕâÀïµÄÊäÈëshapeÖ¸µÄÊÇº¯ÊıÄÚ²¿ÊµÏÖµÄÊäÈëshape£¬¶ø·Çº¯Êı½Ó¿ÚÓ¦Ö¸¶¨µÄ<code>input_shape</code>£¬Çë²Î¿¼ÏÂÃæÌá¹©µÄÀı×Ó¡£</p>
-<h3 id="shape_3">Êä³öshape</h3>
-<p>¡®channels_first¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬nb_filter, new_rows, new_cols£©µÄ4DÕÅÁ¿</p>
-<p>¡®channels_last¡¯Ä£Ê½ÏÂ£¬ÎªĞÎÈç£¨samples£¬new_rows, new_cols£¬nb_filter£©µÄ4DÕÅÁ¿</p>
-<p>Êä³öµÄĞĞÁĞÊı¿ÉÄÜ»áÒòÎªÌî³ä·½·¨¶ø¸Ä±ä</p>
-<h3 id="_3">Àı×Ó</h3>
+<h3 id="shape_2">è¾“å…¥shape</h3>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œè¾“å…¥å½¢å¦‚ï¼ˆsamples,channelsï¼Œrowsï¼Œcolsï¼‰çš„4Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œè¾“å…¥å½¢å¦‚ï¼ˆsamplesï¼Œrowsï¼Œcolsï¼Œchannelsï¼‰çš„4Då¼ é‡</p>
+<p>æ³¨æ„è¿™é‡Œçš„è¾“å…¥shapeæŒ‡çš„æ˜¯å‡½æ•°å†…éƒ¨å®ç°çš„è¾“å…¥shapeï¼Œè€Œéå‡½æ•°æ¥å£åº”æŒ‡å®šçš„<code>input_shape</code>ï¼Œè¯·å‚è€ƒä¸‹é¢æä¾›çš„ä¾‹å­ã€‚</p>
+<h3 id="shape_3">è¾“å‡ºshape</h3>
+<p>â€˜channels_firstâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œnb_filter, new_rows, new_colsï¼‰çš„4Då¼ é‡</p>
+<p>â€˜channels_lastâ€™æ¨¡å¼ä¸‹ï¼Œä¸ºå½¢å¦‚ï¼ˆsamplesï¼Œnew_rows, new_colsï¼Œnb_filterï¼‰çš„4Då¼ é‡</p>
+<p>è¾“å‡ºçš„è¡Œåˆ—æ•°å¯èƒ½ä¼šå› ä¸ºå¡«å……æ–¹æ³•è€Œæ”¹å˜</p>
+<h3 id="_3">ä¾‹å­</h3>
 <pre><code class="python"># apply a 3x3 unshared weights convolution with 64 output filters on a 32x32 image
 # with `data_format="channels_last"`:
 model = Sequential()

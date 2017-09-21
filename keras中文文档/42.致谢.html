@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
+        <div class="section">
+<p>﻿</p>
+<h1 id="_1">致谢</h1>
+<p>本项目由以下贡献者贡献：</p>
+<h2 id="_2">文档贡献</h2>
+<table>
+<thead>
+<tr>
+<th align="center">贡献者</th>
+<th align="center">页面</th>
+<th align="center">章节</th>
+<th align="center">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Bigmoyan</td>
+<td align="center">keras.io的全部正文</td>
+<td align="center">-</td>
+<td align="center">翻译</td>
+</tr>
+<tr>
+<td align="center">Bigmoyan</td>
+<td align="center">深度学习与Keras</td>
+<td align="center">CNN眼中的世界</td>
+<td align="center">翻译</td>
+</tr>
+<tr>
+<td align="center">Bigmoyan</td>
+<td align="center">深度学习与Keras</td>
+<td align="center">花式自动编码器</td>
+<td align="center">翻译</td>
+</tr>
+<tr>
+<td align="center">Bigmoyan</td>
+<td align="center">快速开始</td>
+<td align="center">一些基本概念</td>
+<td align="center">编写</td>
+</tr>
+<tr>
+<td align="center">SCP-173</td>
+<td align="center">快速开始</td>
+<td align="center">Keras安装和配置指南(Linux)</td>
+<td align="center">编写</td>
+</tr>
+<tr>
+<td align="center">SCP-173</td>
+<td align="center">快速开始</td>
+<td align="center">Keras安装和配置指南(Windows)</td>
+<td align="center">编写</td>
+</tr>
+<tr>
+<td align="center">Bigmoyan</td>
+<td align="center">深度学习与Keras</td>
+<td align="center">面向小数据集构建图像分类模型</td>
+<td align="center">翻译</td>
+</tr>
+<tr>
+<td align="center">leo-nlp</td>
+<td align="center">深度学习与Keras</td>
+<td align="center">在Keras模型中使用预训练的词向量</td>
+<td align="center">翻译</td>
+</tr>
+<tr>
+<td align="center">zhourunlai</td>
+<td align="center">工具</td>
+<td align="center">I/O工具</td>
+<td align="center">翻译</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tips">Tips</h2>
+<table>
+<thead>
+<tr>
+<th align="center">贡献者</th>
+<th align="center">页面</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Bigmoyan</td>
+<td align="center">Tips处标注</td>
+</tr>
+<tr>
+<td align="center">3rduncle</td>
+<td align="center">Tips处标注</td>
+</tr>
+<tr>
+<td align="center">白菜</td>
+<td align="center">Tips处标记</td>
+</tr>
+<tr>
+<td align="center">我是小将</td>
+<td align="center">Tips处标记</td>
+</tr>
+<tr>
+<td align="center">zhourunlai</td>
+<td align="center">可视化</td>
+</tr>
+</tbody>
+</table>
+<h2 id="keras">Keras陷阱提示</h2>
+<table>
+<thead>
+<tr>
+<th align="center">贡献者</th>
+<th align="center">页面</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Bigmoyan</td>
+<td align="center">tf与th卷积核陷阱</td>
+</tr>
+<tr>
+<td align="center">Bigmoyan</td>
+<td align="center">向BN层载入权重陷阱</td>
+</tr>
+<tr>
+<td align="center">Yin</td>
+<td align="center">validation_spilit与shuffle陷阱</td>
+</tr>
+<tr>
+<td align="center">Hui Liu</td>
+<td align="center">merge与Merge的区别</td>
+</tr>
+<tr>
+<td align="center">## Reviewers</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">Reviewer</th>
+<th align="center">页面</th>
+<th align="center">章节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">白菜</td>
+<td align="center">快速开始泛型模型</td>
+<td align="center">共享层</td>
+</tr>
+<tr>
+<td align="center">白菜</td>
+<td align="center">常用数据库</td>
+<td align="center">IMDB影评倾向分类</td>
+</tr>
+<tr>
+<td align="center">doudou</td>
+<td align="center">关于模型</td>
+<td align="center">关于Keras模型</td>
+</tr>
+<tr>
+<td align="center">doudou</td>
+<td align="center">常用层</td>
+<td align="center">Dense层</td>
+</tr>
+<tr>
+<td align="center">艾子</td>
+<td align="center">常用层</td>
+<td align="center">Merge层</td>
+</tr>
+<tr>
+<td align="center">NUDT-小超人、、</td>
+<td align="center">快速开始Sequential模型</td>
+<td align="center">Merge层</td>
+</tr>
+<tr>
+<td align="center">毛毛熊</td>
+<td align="center">常用数据库</td>
+<td align="center">cifar-10</td>
+</tr>
+<tr>
+<td align="center">迷川浩浩</td>
+<td align="center">回调函数</td>
+<td align="center">callback</td>
+</tr>
+<tr>
+<td align="center">tadakey</td>
+<td align="center">一些基本概念</td>
+<td align="center">张量</td>
+</tr>
+<tr>
+<td align="center">方渺渺</td>
+<td align="center">递归层</td>
+<td align="center">recurrent层</td>
+</tr>
+<tr>
+<td align="center">leo-nlp</td>
+<td align="center">快速开始泛型模型</td>
+<td align="center">共享层</td>
+</tr>
+<tr>
+<td align="center">单车</td>
+<td align="center">常用层</td>
+<td align="center">Masking层</td>
+</tr>
+<tr>
+<td align="center">张涛</td>
+<td align="center">快速开始泛型模型</td>
+<td align="center">多输入和多输出模型</td>
+</tr>
+<tr>
+<td align="center">白菜</td>
+<td align="center">FAQ</td>
+<td align="center">如何观察中间层的输出</td>
+</tr>
+<tr>
+<td align="center">毒液</td>
+<td align="center">文本预处理</td>
+<td align="center">one-hot</td>
+</tr>
+<tr>
+<td align="center">毒液</td>
+<td align="center">回调函数</td>
+<td align="center">EarlyStopping</td>
+</tr>
+<tr>
+<td align="center">毒液</td>
+<td align="center">目标函数</td>
+<td align="center">可用的目标函数</td>
+</tr>
+<tr>
+<td align="center">毛毛熊</td>
+<td align="center">正则项</td>
+<td align="center">缩写</td>
+</tr>
+<tr>
+<td align="center">木子天一</td>
+<td align="center">局部连接层LocallyConnceted</td>
+<td align="center">LocallyConnected2D层</td>
+</tr>
+<tr>
+<td align="center">QiaXi</td>
+<td align="center">Pooling层</td>
+<td align="center">GlobalMax/GlobalAve</td>
+</tr>
+<tr>
+<td align="center">shawn</td>
+<td align="center">Callback</td>
+<td align="center">ModelCheckpoint</td>
+</tr>
+<tr>
+<td align="center">smallYoki</td>
+<td align="center">快速开始</td>
+<td align="center">泛型模型</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">示例程序</h2>
+<ul>
+<li>虚位以待</li>
+</ul>
+</div>
+    </body></html>

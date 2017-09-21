@@ -1,48 +1,48 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŽŸæ–‡é“¾æŽ¥</a></p>
         <div class="section">
-<h1 id="sequential">SequentialÄ£ÐÍ½Ó¿Ú</h1>
-<p>Èç¹û¸Õ¿ªÊ¼Ñ§Ï°SequentialÄ£ÐÍ£¬ÇëÊ×ÏÈÒÆ²½<a href="../../getting_started/sequential_model/">ÕâÀï</a>ÔÄ¶ÁÎÄµµ£¬±¾½ÚÄÚÈÝÊÇSequentialµÄAPIºÍ²ÎÊý½éÉÜ¡£</p>
-<h2 id="sequential_1">³£ÓÃSequentialÊôÐÔ</h2>
+<h1 id="sequential">Sequentialæ¨¡åž‹æŽ¥å£</h1>
+<p>å¦‚æžœåˆšå¼€å§‹å­¦ä¹ Sequentialæ¨¡åž‹ï¼Œè¯·é¦–å…ˆç§»æ­¥<a href="../../getting_started/sequential_model/">è¿™é‡Œ</a>é˜…è¯»æ–‡æ¡£ï¼Œæœ¬èŠ‚å†…å®¹æ˜¯Sequentialçš„APIå’Œå‚æ•°ä»‹ç»ã€‚</p>
+<h2 id="sequential_1">å¸¸ç”¨Sequentialå±žæ€§</h2>
 <ul>
-<li><code>model.layers</code>ÊÇÌí¼Óµ½Ä£ÐÍÉÏµÄ²ãµÄlist</li>
+<li><code>model.layers</code>æ˜¯æ·»åŠ åˆ°æ¨¡åž‹ä¸Šçš„å±‚çš„list</li>
 </ul>
 <hr/>
-<h2 id="sequential_2">SequentialÄ£ÐÍ·½·¨</h2>
+<h2 id="sequential_2">Sequentialæ¨¡åž‹æ–¹æ³•</h2>
 <h3 id="add">add</h3>
 <pre><code class="python">add(self, layer)
 </code></pre>
-<p>ÏòÄ£ÐÍÖÐÌí¼ÓÒ»¸ö²ã</p>
+<p>å‘æ¨¡åž‹ä¸­æ·»åŠ ä¸€ä¸ªå±‚</p>
 <ul>
-<li>layer: Layer¶ÔÏó</li>
+<li>layer: Layerå¯¹è±¡</li>
 </ul>
 <hr/>
 <h3 id="pop">pop</h3>
 <pre><code class="python">pop(self)
 </code></pre>
-<p>µ¯³öÄ£ÐÍ×îºóµÄÒ»²ã£¬ÎÞ·µ»ØÖµ</p>
+<p>å¼¹å‡ºæ¨¡åž‹æœ€åŽçš„ä¸€å±‚ï¼Œæ— è¿”å›žå€¼</p>
 <hr/>
 <h3 id="compile">compile</h3>
 <pre><code class="python">compile(self, optimizer, loss, metrics=None, sample_weight_mode=None)
 </code></pre>
-<p>±àÒëÓÃÀ´ÅäÖÃÄ£ÐÍµÄÑ§Ï°¹ý³Ì£¬Æä²ÎÊýÓÐ</p>
+<p>ç¼–è¯‘ç”¨æ¥é…ç½®æ¨¡åž‹çš„å­¦ä¹ è¿‡ç¨‹ï¼Œå…¶å‚æ•°æœ‰</p>
 <ul>
 <li>
-<p>optimizer£º×Ö·û´®£¨Ô¤¶¨ÒåÓÅ»¯Æ÷Ãû£©»òÓÅ»¯Æ÷¶ÔÏó£¬²Î¿¼<a href="../../other/optimizers/">ÓÅ»¯Æ÷</a></p>
+<p>optimizerï¼šå­—ç¬¦ä¸²ï¼ˆé¢„å®šä¹‰ä¼˜åŒ–å™¨åï¼‰æˆ–ä¼˜åŒ–å™¨å¯¹è±¡ï¼Œå‚è€ƒ<a href="../../other/optimizers/">ä¼˜åŒ–å™¨</a></p>
 </li>
 <li>
-<p>loss£º×Ö·û´®£¨Ô¤¶¨ÒåËðÊ§º¯ÊýÃû£©»òÄ¿±êº¯Êý£¬²Î¿¼<a href="../../other/objectives/">ËðÊ§º¯Êý</a></p>
+<p>lossï¼šå­—ç¬¦ä¸²ï¼ˆé¢„å®šä¹‰æŸå¤±å‡½æ•°åï¼‰æˆ–ç›®æ ‡å‡½æ•°ï¼Œå‚è€ƒ<a href="../../other/objectives/">æŸå¤±å‡½æ•°</a></p>
 </li>
 <li>
-<p>metrics£ºÁÐ±í£¬°üº¬ÆÀ¹ÀÄ£ÐÍÔÚÑµÁ·ºÍ²âÊÔÊ±µÄÍøÂçÐÔÄÜµÄÖ¸±ê£¬µäÐÍÓÃ·¨ÊÇ<code>metrics=['accuracy']</code></p>
+<p>metricsï¼šåˆ—è¡¨ï¼ŒåŒ…å«è¯„ä¼°æ¨¡åž‹åœ¨è®­ç»ƒå’Œæµ‹è¯•æ—¶çš„ç½‘ç»œæ€§èƒ½çš„æŒ‡æ ‡ï¼Œå…¸åž‹ç”¨æ³•æ˜¯<code>metrics=['accuracy']</code></p>
 </li>
 <li>
-<p>sample_weight_mode£ºÈç¹ûÄãÐèÒª°´Ê±¼ä²½ÎªÑù±¾¸³È¨£¨2DÈ¨¾ØÕó£©£¬½«¸ÃÖµÉèÎª¡°temporal¡±¡£Ä¬ÈÏÎª¡°None¡±£¬´ú±í°´Ñù±¾¸³È¨£¨1DÈ¨£©¡£ÔÚÏÂÃæ<code>fit</code>º¯ÊýµÄ½âÊÍÖÐÓÐÏà¹ØµÄ²Î¿¼ÄÚÈÝ¡£</p>
+<p>sample_weight_modeï¼šå¦‚æžœä½ éœ€è¦æŒ‰æ—¶é—´æ­¥ä¸ºæ ·æœ¬èµ‹æƒï¼ˆ2DæƒçŸ©é˜µï¼‰ï¼Œå°†è¯¥å€¼è®¾ä¸ºâ€œtemporalâ€ã€‚é»˜è®¤ä¸ºâ€œNoneâ€ï¼Œä»£è¡¨æŒ‰æ ·æœ¬èµ‹æƒï¼ˆ1Dæƒï¼‰ã€‚åœ¨ä¸‹é¢<code>fit</code>å‡½æ•°çš„è§£é‡Šä¸­æœ‰ç›¸å…³çš„å‚è€ƒå†…å®¹ã€‚</p>
 </li>
 <li>
-<p>kwargs£ºÊ¹ÓÃTensorFlow×÷Îªºó¶ËÇëºöÂÔ¸Ã²ÎÊý£¬ÈôÊ¹ÓÃTheano×÷Îªºó¶Ë£¬kwargsµÄÖµ½«»á´«µÝ¸ø K.function</p>
+<p>kwargsï¼šä½¿ç”¨TensorFlowä½œä¸ºåŽç«¯è¯·å¿½ç•¥è¯¥å‚æ•°ï¼Œè‹¥ä½¿ç”¨Theanoä½œä¸ºåŽç«¯ï¼Œkwargsçš„å€¼å°†ä¼šä¼ é€’ç»™ K.function</p>
 </li>
 </ul>
 <pre><code class="python">model = Sequential()
@@ -52,50 +52,50 @@ model.compile(optimizer='rmsprop',
       loss='categorical_crossentropy',
       metrics=['accuracy'])
 </code></pre>
-<p>Ä£ÐÍÔÚÊ¹ÓÃÇ°±ØÐë±àÒë£¬·ñÔòÔÚµ÷ÓÃfit»òevaluateÊ±»áÅ×³öÒì³£¡£</p>
+<p>æ¨¡åž‹åœ¨ä½¿ç”¨å‰å¿…é¡»ç¼–è¯‘ï¼Œå¦åˆ™åœ¨è°ƒç”¨fitæˆ–evaluateæ—¶ä¼šæŠ›å‡ºå¼‚å¸¸ã€‚</p>
 <h3 id="fit">fit</h3>
 <pre><code class="python">fit(self, x, y, batch_size=32, epochs=10, verbose=1, callbacks=None, validation_split=0.0, validation_data=None, shuffle=True, class_weight=None, sample_weight=None, initial_epoch=0)
 </code></pre>
-<p>±¾º¯Êý½«Ä£ÐÍÑµÁ·<code>nb_epoch</code>ÂÖ£¬Æä²ÎÊýÓÐ£º</p>
+<p>æœ¬å‡½æ•°å°†æ¨¡åž‹è®­ç»ƒ<code>nb_epoch</code>è½®ï¼Œå…¶å‚æ•°æœ‰ï¼š</p>
 <ul>
 <li>
-<p>x£ºÊäÈëÊý¾Ý¡£Èç¹ûÄ£ÐÍÖ»ÓÐÒ»¸öÊäÈë£¬ÄÇÃ´xµÄÀàÐÍÊÇnumpy array£¬Èç¹ûÄ£ÐÍÓÐ¶à¸öÊäÈë£¬ÄÇÃ´xµÄÀàÐÍÓ¦µ±Îªlist£¬listµÄÔªËØÊÇ¶ÔÓ¦ÓÚ¸÷¸öÊäÈëµÄnumpy array</p>
+<p>xï¼šè¾“å…¥æ•°æ®ã€‚å¦‚æžœæ¨¡åž‹åªæœ‰ä¸€ä¸ªè¾“å…¥ï¼Œé‚£ä¹ˆxçš„ç±»åž‹æ˜¯numpy arrayï¼Œå¦‚æžœæ¨¡åž‹æœ‰å¤šä¸ªè¾“å…¥ï¼Œé‚£ä¹ˆxçš„ç±»åž‹åº”å½“ä¸ºlistï¼Œlistçš„å…ƒç´ æ˜¯å¯¹åº”äºŽå„ä¸ªè¾“å…¥çš„numpy array</p>
 </li>
 <li>
-<p>y£º±êÇ©£¬numpy array</p>
+<p>yï¼šæ ‡ç­¾ï¼Œnumpy array</p>
 </li>
 <li>
-<p>batch_size£ºÕûÊý£¬Ö¸¶¨½øÐÐÌÝ¶ÈÏÂ½µÊ±Ã¿¸öbatch°üº¬µÄÑù±¾Êý¡£ÑµÁ·Ê±Ò»¸öbatchµÄÑù±¾»á±»¼ÆËãÒ»´ÎÌÝ¶ÈÏÂ½µ£¬Ê¹Ä¿±êº¯ÊýÓÅ»¯Ò»²½¡£</p>
+<p>batch_sizeï¼šæ•´æ•°ï¼ŒæŒ‡å®šè¿›è¡Œæ¢¯åº¦ä¸‹é™æ—¶æ¯ä¸ªbatchåŒ…å«çš„æ ·æœ¬æ•°ã€‚è®­ç»ƒæ—¶ä¸€ä¸ªbatchçš„æ ·æœ¬ä¼šè¢«è®¡ç®—ä¸€æ¬¡æ¢¯åº¦ä¸‹é™ï¼Œä½¿ç›®æ ‡å‡½æ•°ä¼˜åŒ–ä¸€æ­¥ã€‚</p>
 </li>
 <li>
-<p>epochs£ºÕûÊý£¬ÑµÁ·µÄÂÖÊý£¬Ã¿¸öepoch»á°ÑÑµÁ·¼¯ÂÖÒ»±é¡£</p>
+<p>epochsï¼šæ•´æ•°ï¼Œè®­ç»ƒçš„è½®æ•°ï¼Œæ¯ä¸ªepochä¼šæŠŠè®­ç»ƒé›†è½®ä¸€éã€‚</p>
 </li>
 <li>
-<p>verbose£ºÈÕÖ¾ÏÔÊ¾£¬0Îª²»ÔÚ±ê×¼Êä³öÁ÷Êä³öÈÕÖ¾ÐÅÏ¢£¬1ÎªÊä³ö½ø¶ÈÌõ¼ÇÂ¼£¬2ÎªÃ¿¸öepochÊä³öÒ»ÐÐ¼ÇÂ¼</p>
+<p>verboseï¼šæ—¥å¿—æ˜¾ç¤ºï¼Œ0ä¸ºä¸åœ¨æ ‡å‡†è¾“å‡ºæµè¾“å‡ºæ—¥å¿—ä¿¡æ¯ï¼Œ1ä¸ºè¾“å‡ºè¿›åº¦æ¡è®°å½•ï¼Œ2ä¸ºæ¯ä¸ªepochè¾“å‡ºä¸€è¡Œè®°å½•</p>
 </li>
 <li>
-<p>callbacks£ºlist£¬ÆäÖÐµÄÔªËØÊÇ<code>keras.callbacks.Callback</code>µÄ¶ÔÏó¡£Õâ¸ölistÖÐµÄ»Øµ÷º¯Êý½«»áÔÚÑµÁ·¹ý³ÌÖÐµÄÊÊµ±Ê±»ú±»µ÷ÓÃ£¬²Î¿¼<a href="../../other/callbacks/">»Øµ÷º¯Êý</a></p>
+<p>callbacksï¼šlistï¼Œå…¶ä¸­çš„å…ƒç´ æ˜¯<code>keras.callbacks.Callback</code>çš„å¯¹è±¡ã€‚è¿™ä¸ªlistä¸­çš„å›žè°ƒå‡½æ•°å°†ä¼šåœ¨è®­ç»ƒè¿‡ç¨‹ä¸­çš„é€‚å½“æ—¶æœºè¢«è°ƒç”¨ï¼Œå‚è€ƒ<a href="../../other/callbacks/">å›žè°ƒå‡½æ•°</a></p>
 </li>
 <li>
-<p>validation_split£º0~1Ö®¼äµÄ¸¡µãÊý£¬ÓÃÀ´Ö¸¶¨ÑµÁ·¼¯µÄÒ»¶¨±ÈÀýÊý¾Ý×÷ÎªÑéÖ¤¼¯¡£ÑéÖ¤¼¯½«²»²ÎÓëÑµÁ·£¬²¢ÔÚÃ¿¸öepoch½áÊøºó²âÊÔµÄÄ£ÐÍµÄÖ¸±ê£¬ÈçËðÊ§º¯Êý¡¢¾«È·¶ÈµÈ¡£×¢Òâ£¬validation_splitµÄ»®·ÖÔÚshuffleÖ®Ç°£¬Òò´ËÈç¹ûÄãµÄÊý¾Ý±¾ÉíÊÇÓÐÐòµÄ£¬ÐèÒªÏÈÊÖ¹¤´òÂÒÔÙÖ¸¶¨validation_split£¬·ñÔò¿ÉÄÜ»á³öÏÖÑéÖ¤¼¯Ñù±¾²»¾ùÔÈ¡£</p>
+<p>validation_splitï¼š0~1ä¹‹é—´çš„æµ®ç‚¹æ•°ï¼Œç”¨æ¥æŒ‡å®šè®­ç»ƒé›†çš„ä¸€å®šæ¯”ä¾‹æ•°æ®ä½œä¸ºéªŒè¯é›†ã€‚éªŒè¯é›†å°†ä¸å‚ä¸Žè®­ç»ƒï¼Œå¹¶åœ¨æ¯ä¸ªepochç»“æŸåŽæµ‹è¯•çš„æ¨¡åž‹çš„æŒ‡æ ‡ï¼Œå¦‚æŸå¤±å‡½æ•°ã€ç²¾ç¡®åº¦ç­‰ã€‚æ³¨æ„ï¼Œvalidation_splitçš„åˆ’åˆ†åœ¨shuffleä¹‹å‰ï¼Œå› æ­¤å¦‚æžœä½ çš„æ•°æ®æœ¬èº«æ˜¯æœ‰åºçš„ï¼Œéœ€è¦å…ˆæ‰‹å·¥æ‰“ä¹±å†æŒ‡å®švalidation_splitï¼Œå¦åˆ™å¯èƒ½ä¼šå‡ºçŽ°éªŒè¯é›†æ ·æœ¬ä¸å‡åŒ€ã€‚</p>
 </li>
 <li>
-<p>validation_data£ºÐÎÊ½Îª£¨X£¬y£©µÄtuple£¬ÊÇÖ¸¶¨µÄÑéÖ¤¼¯¡£´Ë²ÎÊý½«¸²¸Çvalidation_spilt¡£</p>
+<p>validation_dataï¼šå½¢å¼ä¸ºï¼ˆXï¼Œyï¼‰çš„tupleï¼Œæ˜¯æŒ‡å®šçš„éªŒè¯é›†ã€‚æ­¤å‚æ•°å°†è¦†ç›–validation_spiltã€‚</p>
 </li>
 <li>
-<p>shuffle£º²¼¶ûÖµ»ò×Ö·û´®£¬Ò»°ãÎª²¼¶ûÖµ£¬±íÊ¾ÊÇ·ñÔÚÑµÁ·¹ý³ÌÖÐËæ»ú´òÂÒÊäÈëÑù±¾µÄË³Ðò¡£ÈôÎª×Ö·û´®¡°batch¡±£¬ÔòÊÇÓÃÀ´´¦ÀíHDF5Êý¾ÝµÄÌØÊâÇé¿ö£¬Ëü½«ÔÚbatchÄÚ²¿½«Êý¾Ý´òÂÒ¡£</p>
+<p>shuffleï¼šå¸ƒå°”å€¼æˆ–å­—ç¬¦ä¸²ï¼Œä¸€èˆ¬ä¸ºå¸ƒå°”å€¼ï¼Œè¡¨ç¤ºæ˜¯å¦åœ¨è®­ç»ƒè¿‡ç¨‹ä¸­éšæœºæ‰“ä¹±è¾“å…¥æ ·æœ¬çš„é¡ºåºã€‚è‹¥ä¸ºå­—ç¬¦ä¸²â€œbatchâ€ï¼Œåˆ™æ˜¯ç”¨æ¥å¤„ç†HDF5æ•°æ®çš„ç‰¹æ®Šæƒ…å†µï¼Œå®ƒå°†åœ¨batchå†…éƒ¨å°†æ•°æ®æ‰“ä¹±ã€‚</p>
 </li>
 <li>
-<p>class_weight£º×Öµä£¬½«²»Í¬µÄÀà±ðÓ³ÉäÎª²»Í¬µÄÈ¨Öµ£¬¸Ã²ÎÊýÓÃÀ´ÔÚÑµÁ·¹ý³ÌÖÐµ÷ÕûËðÊ§º¯Êý£¨Ö»ÄÜÓÃÓÚÑµÁ·£©</p>
+<p>class_weightï¼šå­—å…¸ï¼Œå°†ä¸åŒçš„ç±»åˆ«æ˜ å°„ä¸ºä¸åŒçš„æƒå€¼ï¼Œè¯¥å‚æ•°ç”¨æ¥åœ¨è®­ç»ƒè¿‡ç¨‹ä¸­è°ƒæ•´æŸå¤±å‡½æ•°ï¼ˆåªèƒ½ç”¨äºŽè®­ç»ƒï¼‰</p>
 </li>
 <li>
-<p>sample_weight£ºÈ¨ÖµµÄnumpy array£¬ÓÃÓÚÔÚÑµÁ·Ê±µ÷ÕûËðÊ§º¯Êý£¨½öÓÃÓÚÑµÁ·£©¡£¿ÉÒÔ´«µÝÒ»¸ö1DµÄÓëÑù±¾µÈ³¤µÄÏòÁ¿ÓÃÓÚ¶ÔÑù±¾½øÐÐ1¶Ô1µÄ¼ÓÈ¨£¬»òÕßÔÚÃæ¶ÔÊ±ÐòÊý¾ÝÊ±£¬´«µÝÒ»¸öµÄÐÎÊ½Îª£¨samples£¬sequence_length£©µÄ¾ØÕóÀ´ÎªÃ¿¸öÊ±¼ä²½ÉÏµÄÑù±¾¸³²»Í¬µÄÈ¨¡£ÕâÖÖÇé¿öÏÂÇëÈ·¶¨ÔÚ±àÒëÄ£ÐÍÊ±Ìí¼ÓÁË<code>sample_weight_mode='temporal'</code>¡£</p>
+<p>sample_weightï¼šæƒå€¼çš„numpy arrayï¼Œç”¨äºŽåœ¨è®­ç»ƒæ—¶è°ƒæ•´æŸå¤±å‡½æ•°ï¼ˆä»…ç”¨äºŽè®­ç»ƒï¼‰ã€‚å¯ä»¥ä¼ é€’ä¸€ä¸ª1Dçš„ä¸Žæ ·æœ¬ç­‰é•¿çš„å‘é‡ç”¨äºŽå¯¹æ ·æœ¬è¿›è¡Œ1å¯¹1çš„åŠ æƒï¼Œæˆ–è€…åœ¨é¢å¯¹æ—¶åºæ•°æ®æ—¶ï¼Œä¼ é€’ä¸€ä¸ªçš„å½¢å¼ä¸ºï¼ˆsamplesï¼Œsequence_lengthï¼‰çš„çŸ©é˜µæ¥ä¸ºæ¯ä¸ªæ—¶é—´æ­¥ä¸Šçš„æ ·æœ¬èµ‹ä¸åŒçš„æƒã€‚è¿™ç§æƒ…å†µä¸‹è¯·ç¡®å®šåœ¨ç¼–è¯‘æ¨¡åž‹æ—¶æ·»åŠ äº†<code>sample_weight_mode='temporal'</code>ã€‚</p>
 </li>
 <li>
-<p>initial_epoch: ´Ó¸Ã²ÎÊýÖ¸¶¨µÄepoch¿ªÊ¼ÑµÁ·£¬ÔÚ¼ÌÐøÖ®Ç°µÄÑµÁ·Ê±ÓÐÓÃ¡£</p>
+<p>initial_epoch: ä»Žè¯¥å‚æ•°æŒ‡å®šçš„epochå¼€å§‹è®­ç»ƒï¼Œåœ¨ç»§ç»­ä¹‹å‰çš„è®­ç»ƒæ—¶æœ‰ç”¨ã€‚</p>
 </li>
 </ul>
-<p><code>fit</code>º¯Êý·µ»ØÒ»¸ö<code>History</code>µÄ¶ÔÏó£¬Æä<code>History.history</code>ÊôÐÔ¼ÇÂ¼ÁËËðÊ§º¯ÊýºÍÆäËûÖ¸±êµÄÊýÖµËæepoch±ä»¯µÄÇé¿ö£¬Èç¹ûÓÐÑéÖ¤¼¯µÄ»°£¬Ò²°üº¬ÁËÑéÖ¤¼¯µÄÕâÐ©Ö¸±ê±ä»¯Çé¿ö</p>
+<p><code>fit</code>å‡½æ•°è¿”å›žä¸€ä¸ª<code>History</code>çš„å¯¹è±¡ï¼Œå…¶<code>History.history</code>å±žæ€§è®°å½•äº†æŸå¤±å‡½æ•°å’Œå…¶ä»–æŒ‡æ ‡çš„æ•°å€¼éšepochå˜åŒ–çš„æƒ…å†µï¼Œå¦‚æžœæœ‰éªŒè¯é›†çš„è¯ï¼Œä¹ŸåŒ…å«äº†éªŒè¯é›†çš„è¿™äº›æŒ‡æ ‡å˜åŒ–æƒ…å†µ</p>
 <hr/>
 <p><a name="evaluate">
 <font color="#404040"></font></a></p>

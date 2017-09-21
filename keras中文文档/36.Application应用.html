@@ -1,25 +1,25 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="application">ApplicationÓ¦ÓÃ</h1>
-<p>KeraµÄÓ¦ÓÃÄ£¿éApplicationÌá¹©ÁË´øÓĞÔ¤ÑµÁ·È¨ÖØµÄKerasÄ£ĞÍ£¬ÕâĞ©Ä£ĞÍ¿ÉÒÔÓÃÀ´½øĞĞÔ¤²â¡¢ÌØÕ÷ÌáÈ¡ºÍfinetune</p>
-<p>Ä£ĞÍµÄÔ¤ÑµÁ·È¨ÖØ½«ÏÂÔØµ½<code>~/.keras/models/</code>²¢ÔÚÔØÈëÄ£ĞÍÊ±×Ô¶¯ÔØÈë</p>
-<h2 id="_1">¿ÉÓÃµÄÄ£ĞÍ</h2>
-<p>Ó¦ÓÃÓÚÍ¼Ïñ·ÖÀàµÄÄ£ĞÍ,È¨ÖØÑµÁ·×ÔImageNet£º
+<h1 id="application">Applicationåº”ç”¨</h1>
+<p>Keraçš„åº”ç”¨æ¨¡å—Applicationæä¾›äº†å¸¦æœ‰é¢„è®­ç»ƒæƒé‡çš„Kerasæ¨¡å‹ï¼Œè¿™äº›æ¨¡å‹å¯ä»¥ç”¨æ¥è¿›è¡Œé¢„æµ‹ã€ç‰¹å¾æå–å’Œfinetune</p>
+<p>æ¨¡å‹çš„é¢„è®­ç»ƒæƒé‡å°†ä¸‹è½½åˆ°<code>~/.keras/models/</code>å¹¶åœ¨è½½å…¥æ¨¡å‹æ—¶è‡ªåŠ¨è½½å…¥</p>
+<h2 id="_1">å¯ç”¨çš„æ¨¡å‹</h2>
+<p>åº”ç”¨äºå›¾åƒåˆ†ç±»çš„æ¨¡å‹,æƒé‡è®­ç»ƒè‡ªImageNetï¼š
 <em> <a href="#xception">Xception</a>
 </em> <a href="#vgg16">VGG16</a>
 <em> <a href="#vgg19">VGG19</a>
 </em> <a href="#resnet50">ResNet50</a>
 <em> <a href="#inceptionv3">InceptionV3</a>
 </em> <a href="#mobilenet">MobileNet</a></p>
-<p>ËùÓĞµÄÕâĞ©Ä£ĞÍ(³ıÁËXceptionºÍMobileNet)¶¼¼æÈİTheanoºÍTensorflow£¬²¢»á×Ô¶¯»ùÓÚ<code>~/.keras/keras.json</code>µÄKerasµÄÍ¼ÏñÎ¬¶È½øĞĞ×Ô¶¯ÉèÖÃ¡£ÀıÈç£¬Èç¹ûÄãÉèÖÃ<code>data_format="channel_last"</code>£¬Ôò¼ÓÔØµÄÄ£ĞÍ½«°´ÕÕTensorFlowµÄÎ¬¶ÈË³ĞòÀ´¹¹Ôì£¬¼´¡°Width-Height-Depth¡±µÄË³Ğò</p>
-<p>XceptionÄ£ĞÍ½öÔÚTensorFlowÏÂ¿ÉÓÃ£¬ÒòÎªËüÒÀÀµµÄSeparableConvolution²ã½öÔÚTensorFlow¿ÉÓÃ¡£MobileNet½öÔÚTensorFlowÏÂ¿ÉÓÃ£¬ÒòÎªËüÒÀÀµµÄDepethwiseConvolution²ã½öÔÚTFÏÂ¿ÉÓÃ¡£</p>
-<p>ÒÔÉÏÄ£ĞÍ£¨ÔİÊ±³ıÁËMobileNet£©µÄÔ¤ÑµÁ·È¨ÖØ¿ÉÒÔÔÚÎÒµÄ<a href="http://pan.baidu.com/s/1geHmOpH">°Ù¶ÈÍøÅÌ</a>ÏÂÔØ£¬Èç¹ûÓĞ¸üĞÂµÄ»°»áÔÚÕâÀï±¨¸æ</p>
+<p>æ‰€æœ‰çš„è¿™äº›æ¨¡å‹(é™¤äº†Xceptionå’ŒMobileNet)éƒ½å…¼å®¹Theanoå’ŒTensorflowï¼Œå¹¶ä¼šè‡ªåŠ¨åŸºäº<code>~/.keras/keras.json</code>çš„Kerasçš„å›¾åƒç»´åº¦è¿›è¡Œè‡ªåŠ¨è®¾ç½®ã€‚ä¾‹å¦‚ï¼Œå¦‚æœä½ è®¾ç½®<code>data_format="channel_last"</code>ï¼Œåˆ™åŠ è½½çš„æ¨¡å‹å°†æŒ‰ç…§TensorFlowçš„ç»´åº¦é¡ºåºæ¥æ„é€ ï¼Œå³â€œWidth-Height-Depthâ€çš„é¡ºåº</p>
+<p>Xceptionæ¨¡å‹ä»…åœ¨TensorFlowä¸‹å¯ç”¨ï¼Œå› ä¸ºå®ƒä¾èµ–çš„SeparableConvolutionå±‚ä»…åœ¨TensorFlowå¯ç”¨ã€‚MobileNetä»…åœ¨TensorFlowä¸‹å¯ç”¨ï¼Œå› ä¸ºå®ƒä¾èµ–çš„DepethwiseConvolutionå±‚ä»…åœ¨TFä¸‹å¯ç”¨ã€‚</p>
+<p>ä»¥ä¸Šæ¨¡å‹ï¼ˆæš‚æ—¶é™¤äº†MobileNetï¼‰çš„é¢„è®­ç»ƒæƒé‡å¯ä»¥åœ¨æˆ‘çš„<a href="http://pan.baidu.com/s/1geHmOpH">ç™¾åº¦ç½‘ç›˜</a>ä¸‹è½½ï¼Œå¦‚æœæœ‰æ›´æ–°çš„è¯ä¼šåœ¨è¿™é‡ŒæŠ¥å‘Š</p>
 <hr/>
-<h2 id="_2">Í¼Æ¬·ÖÀàÄ£ĞÍµÄÊ¾Àı</h2>
-<h3 id="resnet50imagenet">ÀûÓÃResNet50ÍøÂç½øĞĞImageNet·ÖÀà</h3>
+<h2 id="_2">å›¾ç‰‡åˆ†ç±»æ¨¡å‹çš„ç¤ºä¾‹</h2>
+<h3 id="resnet50imagenet">åˆ©ç”¨ResNet50ç½‘ç»œè¿›è¡ŒImageNetåˆ†ç±»</h3>
 <pre><code class="python">from keras.applications.resnet50 import ResNet50
 from keras.preprocessing import image
 from keras.applications.resnet50 import preprocess_input, decode_predictions
@@ -40,7 +40,7 @@ print('Predicted:', decode_predictions(preds, top=3)[0])
 # Predicted: [(u'n02504013', u'Indian_elephant', 0.82658225), (u'n01871265', u'tusker', 0.1122357), (u'n02504458', u'African_elephant', 0.061040461)]
 
 </code></pre>
-<h3 id="vgg16">ÀûÓÃVGG16ÌáÈ¡ÌØÕ÷</h3>
+<h3 id="vgg16">åˆ©ç”¨VGG16æå–ç‰¹å¾</h3>
 <pre><code class="python">from keras.applications.vgg16 import VGG16
 from keras.preprocessing import image
 from keras.applications.vgg16 import preprocess_input
@@ -56,7 +56,7 @@ x = preprocess_input(x)
 
 features = model.predict(x)
 </code></pre>
-<h3 id="vgg19">´ÓVGG19µÄÈÎÒâÖĞ¼ä²ãÖĞ³éÈ¡ÌØÕ÷</h3>
+<h3 id="vgg19">ä»VGG19çš„ä»»æ„ä¸­é—´å±‚ä¸­æŠ½å–ç‰¹å¾</h3>
 <pre><code class="python">from keras.applications.vgg19 import VGG19
 from keras.preprocessing import image
 from keras.applications.vgg19 import preprocess_input
@@ -74,7 +74,7 @@ x = preprocess_input(x)
 
 block4_pool_features = model.predict(x)
 </code></pre>
-<h3 id="fine-tune-inceptionv3">ÔÚĞÂÀà±ğÉÏfine-tune inceptionV3</h3>
+<h3 id="fine-tune-inceptionv3">åœ¨æ–°ç±»åˆ«ä¸Šfine-tune inceptionV3</h3>
 <pre><code class="python">from keras.applications.inception_v3 import InceptionV3
 from keras.preprocessing import image
 from keras.models import Model
@@ -131,7 +131,7 @@ model.compile(optimizer=SGD(lr=0.0001, momentum=0.9), loss='categorical_crossent
 # alongside the top Dense layers
 model.fit_generator(...)
 </code></pre>
-<h3 id="tensorinceptionv3">ÔÚ¶¨ÖÆµÄÊäÈëtensorÉÏ¹¹½¨InceptionV3</h3>
+<h3 id="tensorinceptionv3">åœ¨å®šåˆ¶çš„è¾“å…¥tensorä¸Šæ„å»ºInceptionV3</h3>
 <pre><code class="python">from keras.applications.inception_v3 import InceptionV3
 from keras.layers import Input
 
@@ -141,7 +141,7 @@ input_tensor = Input(shape=(224, 224, 3))  # this assumes K.image_data_format() 
 model = InceptionV3(input_tensor=input_tensor, weights='imagenet', include_top=True)
 </code></pre>
 <hr/>
-<h2 id="_3">Ä£ĞÍÎÄµµ</h2>
+<h2 id="_3">æ¨¡å‹æ–‡æ¡£</h2>
 <ul>
 <li><a href="#xception">Xception</a></li>
 <li><a href="#vgg16">VGG16</a></li>
@@ -153,6 +153,6 @@ model = InceptionV3(input_tensor=input_tensor, weights='imagenet', include_top=T
 <hr/>
 <p><a name="xception">
 <font color="#404040"></font></a></p>
-<h2 id="xception">XceptionÄ£ĞÍ</h2>
+<h2 id="xception">Xceptionæ¨¡å‹</h2>
 <p></p></div>
     </body></html>

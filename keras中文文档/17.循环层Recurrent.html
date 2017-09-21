@@ -1,47 +1,47 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="recurrent">Ñ­»·²ãRecurrent</h1>
-<h2 id="recurrent_1">Recurrent²ã</h2>
+<h1 id="recurrent">å¾ªç¯å±‚Recurrent</h1>
+<h2 id="recurrent_1">Recurrentå±‚</h2>
 <pre><code class="python">keras.layers.recurrent.Recurrent(return_sequences=False, go_backwards=False, stateful=False, unroll=False, implementation=0)
 </code></pre>
-<p>ÕâÊÇÑ­»·²ãµÄ³éÏóÀà£¬Çë²»ÒªÔÚÄ£ĞÍÖĞÖ±½ÓÓ¦ÓÃ¸Ã²ã£¨ÒòÎªËüÊÇ³éÏóÀà£¬ÎŞ·¨ÊµÀı»¯ÈÎºÎ¶ÔÏó£©¡£ÇëÊ¹ÓÃËüµÄ×ÓÀà<code>LSTM</code>£¬<code>GRU</code>»ò<code>SimpleRNN</code>¡£</p>
-<p>ËùÓĞµÄÑ­»·²ã£¨<code>LSTM</code>,<code>GRU</code>,<code>SimpleRNN</code>£©¶¼·ş´Ó±¾²ãµÄĞÔÖÊ£¬²¢½ÓÊÜ±¾²ãÖ¸¶¨µÄËùÓĞ¹Ø¼ü×Ö²ÎÊı¡£</p>
-<h3 id="_1">²ÎÊı</h3>
+<p>è¿™æ˜¯å¾ªç¯å±‚çš„æŠ½è±¡ç±»ï¼Œè¯·ä¸è¦åœ¨æ¨¡å‹ä¸­ç›´æ¥åº”ç”¨è¯¥å±‚ï¼ˆå› ä¸ºå®ƒæ˜¯æŠ½è±¡ç±»ï¼Œæ— æ³•å®ä¾‹åŒ–ä»»ä½•å¯¹è±¡ï¼‰ã€‚è¯·ä½¿ç”¨å®ƒçš„å­ç±»<code>LSTM</code>ï¼Œ<code>GRU</code>æˆ–<code>SimpleRNN</code>ã€‚</p>
+<p>æ‰€æœ‰çš„å¾ªç¯å±‚ï¼ˆ<code>LSTM</code>,<code>GRU</code>,<code>SimpleRNN</code>ï¼‰éƒ½æœä»æœ¬å±‚çš„æ€§è´¨ï¼Œå¹¶æ¥å—æœ¬å±‚æŒ‡å®šçš„æ‰€æœ‰å…³é”®å­—å‚æ•°ã€‚</p>
+<h3 id="_1">å‚æ•°</h3>
 <ul>
 <li>
-<p>weights£ºnumpy arrayµÄlist£¬ÓÃÒÔ³õÊ¼»¯È¨ÖØ¡£¸ÃlistĞÎÈç<code>[(input_dim, output_dim),(output_dim, output_dim),(output_dim,)]</code></p>
+<p>weightsï¼šnumpy arrayçš„listï¼Œç”¨ä»¥åˆå§‹åŒ–æƒé‡ã€‚è¯¥listå½¢å¦‚<code>[(input_dim, output_dim),(output_dim, output_dim),(output_dim,)]</code></p>
 </li>
 <li>
-<p>return_sequences£º²¼¶ûÖµ£¬Ä¬ÈÏ<code>False</code>£¬¿ØÖÆ·µ»ØÀàĞÍ¡£ÈôÎª<code>True</code>Ôò·µ»ØÕû¸öĞòÁĞ£¬·ñÔò½ö·µ»ØÊä³öĞòÁĞµÄ×îºóÒ»¸öÊä³ö</p>
+<p>return_sequencesï¼šå¸ƒå°”å€¼ï¼Œé»˜è®¤<code>False</code>ï¼Œæ§åˆ¶è¿”å›ç±»å‹ã€‚è‹¥ä¸º<code>True</code>åˆ™è¿”å›æ•´ä¸ªåºåˆ—ï¼Œå¦åˆ™ä»…è¿”å›è¾“å‡ºåºåˆ—çš„æœ€åä¸€ä¸ªè¾“å‡º</p>
 </li>
 <li>
-<p>go_backwards£º²¼¶ûÖµ£¬Ä¬ÈÏÎª<code>False</code>£¬ÈôÎª<code>True</code>£¬ÔòÄæÏò´¦ÀíÊäÈëĞòÁĞ²¢·µ»ØÄæĞòºóµÄĞòÁĞ</p>
+<p>go_backwardsï¼šå¸ƒå°”å€¼ï¼Œé»˜è®¤ä¸º<code>False</code>ï¼Œè‹¥ä¸º<code>True</code>ï¼Œåˆ™é€†å‘å¤„ç†è¾“å…¥åºåˆ—å¹¶è¿”å›é€†åºåçš„åºåˆ—</p>
 </li>
 <li>
-<p>stateful£º²¼¶ûÖµ£¬Ä¬ÈÏÎª<code>False</code>£¬ÈôÎª<code>True</code>£¬ÔòÒ»¸öbatchÖĞÏÂ±êÎªiµÄÑù±¾µÄ×îÖÕ×´Ì¬½«»áÓÃ×÷ÏÂÒ»¸öbatchÍ¬ÑùÏÂ±êµÄÑù±¾µÄ³õÊ¼×´Ì¬¡£</p>
+<p>statefulï¼šå¸ƒå°”å€¼ï¼Œé»˜è®¤ä¸º<code>False</code>ï¼Œè‹¥ä¸º<code>True</code>ï¼Œåˆ™ä¸€ä¸ªbatchä¸­ä¸‹æ ‡ä¸ºiçš„æ ·æœ¬çš„æœ€ç»ˆçŠ¶æ€å°†ä¼šç”¨ä½œä¸‹ä¸€ä¸ªbatchåŒæ ·ä¸‹æ ‡çš„æ ·æœ¬çš„åˆå§‹çŠ¶æ€ã€‚</p>
 </li>
 <li>
-<p>unroll£º²¼¶ûÖµ£¬Ä¬ÈÏÎª<code>False</code>£¬ÈôÎª<code>True</code>£¬ÔòÑ­»·²ã½«±»Õ¹¿ª£¬·ñÔò¾ÍÊ¹ÓÃ·ûºÅ»¯µÄÑ­»·¡£µ±Ê¹ÓÃTensorFlowÎªºó¶ËÊ±£¬Ñ­»·ÍøÂç±¾À´¾ÍÊÇÕ¹¿ªµÄ£¬Òò´Ë¸Ã²ã²»×öÈÎºÎÊÂÇé¡£²ãÕ¹¿ª»áÕ¼ÓÃ¸ü¶àµÄÄÚ´æ£¬µ«»á¼ÓËÙRNNµÄÔËËã¡£²ãÕ¹¿ªÖ»ÊÊÓÃÓÚ¶ÌĞòÁĞ¡£</p>
+<p>unrollï¼šå¸ƒå°”å€¼ï¼Œé»˜è®¤ä¸º<code>False</code>ï¼Œè‹¥ä¸º<code>True</code>ï¼Œåˆ™å¾ªç¯å±‚å°†è¢«å±•å¼€ï¼Œå¦åˆ™å°±ä½¿ç”¨ç¬¦å·åŒ–çš„å¾ªç¯ã€‚å½“ä½¿ç”¨TensorFlowä¸ºåç«¯æ—¶ï¼Œå¾ªç¯ç½‘ç»œæœ¬æ¥å°±æ˜¯å±•å¼€çš„ï¼Œå› æ­¤è¯¥å±‚ä¸åšä»»ä½•äº‹æƒ…ã€‚å±‚å±•å¼€ä¼šå ç”¨æ›´å¤šçš„å†…å­˜ï¼Œä½†ä¼šåŠ é€ŸRNNçš„è¿ç®—ã€‚å±‚å±•å¼€åªé€‚ç”¨äºçŸ­åºåˆ—ã€‚</p>
 </li>
 <li>
-<p>implementation£º0£¬1»ò2£¬ ÈôÎª0£¬ÔòRNN½«ÒÔ¸üÉÙµ«ÊÇ¸ü´óµÄ¾ØÕó³Ë·¨ÊµÏÖ£¬Òò´ËÔÚCPUÉÏÔËĞĞ¸ü¿ì£¬µ«ÏûºÄ¸ü¶àµÄÄÚ´æ¡£Èç¹ûÉèÎª1£¬ÔòRNN½«ÒÔ¸ü¶àµ«¸üĞ¡µÄ¾ØÕó³Ë·¨ÊµÏÖ£¬Òò´ËÔÚCPUÉÏÔËĞĞ¸üÂı£¬ÔÚGPUÉÏÔËĞĞ¸ü¿ì£¬²¢ÇÒÏûºÄ¸üÉÙµÄÄÚ´æ¡£Èç¹ûÉèÎª2£¨½öLSTMºÍGRU¿ÉÒÔÉèÎª2£©£¬ÔòRNN½«°ÑÊäÈëÃÅ¡¢ÒÅÍüÃÅºÍÊä³öÃÅºÏ²¢Îªµ¥¸ö¾ØÕó£¬ÒÔ»ñµÃ¸ü¼ÓÔÚGPUÉÏ¸ü¼Ó¸ßĞ§µÄÊµÏÖ¡£×¢Òâ£¬RNN dropout±ØĞëÔÚËùÓĞÃÅÉÏ¹²Ïí£¬²¢µ¼ÖÂÕıÔòĞ§¹ûĞÔÄÜÎ¢Èõ½µµÍ¡£</p>
+<p>implementationï¼š0ï¼Œ1æˆ–2ï¼Œ è‹¥ä¸º0ï¼Œåˆ™RNNå°†ä»¥æ›´å°‘ä½†æ˜¯æ›´å¤§çš„çŸ©é˜µä¹˜æ³•å®ç°ï¼Œå› æ­¤åœ¨CPUä¸Šè¿è¡Œæ›´å¿«ï¼Œä½†æ¶ˆè€—æ›´å¤šçš„å†…å­˜ã€‚å¦‚æœè®¾ä¸º1ï¼Œåˆ™RNNå°†ä»¥æ›´å¤šä½†æ›´å°çš„çŸ©é˜µä¹˜æ³•å®ç°ï¼Œå› æ­¤åœ¨CPUä¸Šè¿è¡Œæ›´æ…¢ï¼Œåœ¨GPUä¸Šè¿è¡Œæ›´å¿«ï¼Œå¹¶ä¸”æ¶ˆè€—æ›´å°‘çš„å†…å­˜ã€‚å¦‚æœè®¾ä¸º2ï¼ˆä»…LSTMå’ŒGRUå¯ä»¥è®¾ä¸º2ï¼‰ï¼Œåˆ™RNNå°†æŠŠè¾“å…¥é—¨ã€é—å¿˜é—¨å’Œè¾“å‡ºé—¨åˆå¹¶ä¸ºå•ä¸ªçŸ©é˜µï¼Œä»¥è·å¾—æ›´åŠ åœ¨GPUä¸Šæ›´åŠ é«˜æ•ˆçš„å®ç°ã€‚æ³¨æ„ï¼ŒRNN dropoutå¿…é¡»åœ¨æ‰€æœ‰é—¨ä¸Šå…±äº«ï¼Œå¹¶å¯¼è‡´æ­£åˆ™æ•ˆæœæ€§èƒ½å¾®å¼±é™ä½ã€‚</p>
 </li>
 <li>
-<p>input_dim£ºÊäÈëÎ¬¶È£¬µ±Ê¹ÓÃ¸Ã²ãÎªÄ£ĞÍÊ×²ãÊ±£¬Ó¦Ö¸¶¨¸ÃÖµ£¨»òµÈ¼ÛµÄÖ¸¶¨input_shape)</p>
+<p>input_dimï¼šè¾“å…¥ç»´åº¦ï¼Œå½“ä½¿ç”¨è¯¥å±‚ä¸ºæ¨¡å‹é¦–å±‚æ—¶ï¼Œåº”æŒ‡å®šè¯¥å€¼ï¼ˆæˆ–ç­‰ä»·çš„æŒ‡å®šinput_shape)</p>
 </li>
 <li>
-<p>input_length£ºµ±ÊäÈëĞòÁĞµÄ³¤¶È¹Ì¶¨Ê±£¬¸Ã²ÎÊıÎªÊäÈëĞòÁĞµÄ³¤¶È¡£µ±ĞèÒªÔÚ¸Ã²ãºóÁ¬½Ó<code>Flatten</code>²ã£¬È»ºóÓÖÒªÁ¬½Ó<code>Dense</code>²ãÊ±£¬ĞèÒªÖ¸¶¨¸Ã²ÎÊı£¬·ñÔòÈ«Á¬½ÓµÄÊä³öÎŞ·¨¼ÆËã³öÀ´¡£×¢Òâ£¬Èç¹ûÑ­»·²ã²»ÊÇÍøÂçµÄµÚÒ»²ã£¬ÄãĞèÒªÔÚÍøÂçµÄµÚÒ»²ãÖĞÖ¸¶¨ĞòÁĞµÄ³¤¶È£¨Í¨¹ı<code>input_shape</code>Ö¸¶¨£©¡£</p>
+<p>input_lengthï¼šå½“è¾“å…¥åºåˆ—çš„é•¿åº¦å›ºå®šæ—¶ï¼Œè¯¥å‚æ•°ä¸ºè¾“å…¥åºåˆ—çš„é•¿åº¦ã€‚å½“éœ€è¦åœ¨è¯¥å±‚åè¿æ¥<code>Flatten</code>å±‚ï¼Œç„¶ååˆè¦è¿æ¥<code>Dense</code>å±‚æ—¶ï¼Œéœ€è¦æŒ‡å®šè¯¥å‚æ•°ï¼Œå¦åˆ™å…¨è¿æ¥çš„è¾“å‡ºæ— æ³•è®¡ç®—å‡ºæ¥ã€‚æ³¨æ„ï¼Œå¦‚æœå¾ªç¯å±‚ä¸æ˜¯ç½‘ç»œçš„ç¬¬ä¸€å±‚ï¼Œä½ éœ€è¦åœ¨ç½‘ç»œçš„ç¬¬ä¸€å±‚ä¸­æŒ‡å®šåºåˆ—çš„é•¿åº¦ï¼ˆé€šè¿‡<code>input_shape</code>æŒ‡å®šï¼‰ã€‚</p>
 </li>
 </ul>
-<h3 id="shape">ÊäÈëshape</h3>
-<p>ĞÎÈç£¨samples£¬timesteps£¬input_dim£©µÄ3DÕÅÁ¿</p>
-<h3 id="shape_1">Êä³öshape</h3>
-<p>Èç¹û<code>return_sequences=True</code>£º·µ»ØĞÎÈç£¨samples£¬timesteps£¬output_dim£©µÄ3DÕÅÁ¿</p>
-<p>·ñÔò£¬·µ»ØĞÎÈç£¨samples£¬output_dim£©µÄ2DÕÅÁ¿</p>
-<h3 id="_2">Àı×Ó</h3>
+<h3 id="shape">è¾“å…¥shape</h3>
+<p>å½¢å¦‚ï¼ˆsamplesï¼Œtimestepsï¼Œinput_dimï¼‰çš„3Då¼ é‡</p>
+<h3 id="shape_1">è¾“å‡ºshape</h3>
+<p>å¦‚æœ<code>return_sequences=True</code>ï¼šè¿”å›å½¢å¦‚ï¼ˆsamplesï¼Œtimestepsï¼Œoutput_dimï¼‰çš„3Då¼ é‡</p>
+<p>å¦åˆ™ï¼Œè¿”å›å½¢å¦‚ï¼ˆsamplesï¼Œoutput_dimï¼‰çš„2Då¼ é‡</p>
+<h3 id="_2">ä¾‹å­</h3>
 <pre><code class="python"># as the first layer in a Sequential model
 model = Sequential()
 model.add(LSTM(32, input_shape=(10, 64)))
@@ -63,129 +63,129 @@ model.add(LSTM(64, input_dim=64, input_length=10, return_sequences=True))
 model.add(LSTM(32, return_sequences=True))
 model.add(LSTM(10))
 </code></pre>
-<h3 id="rnn">Ö¸¶¨RNN³õÊ¼×´Ì¬µÄ×¢ÒâÊÂÏî</h3>
-<p>¿ÉÒÔÍ¨¹ıÉèÖÃ<code>initial_state</code>ÓÃ·ûºÅÊ½µÄ·½Ê½Ö¸¶¨RNN²ãµÄ³õÊ¼×´Ì¬¡£¼´£¬<code>initial_stat</code>µÄÖµÓ¦¸ÃÎªÒ»¸ötensor»òÒ»¸ötensorÁĞ±í£¬´ú±íRNN²ãµÄ³õÊ¼×´Ì¬¡£</p>
-<p>Ò²¿ÉÒÔÍ¨¹ıÉèÖÃ<code>reset_states</code>²ÎÊıÓÃÊıÖµµÄ·½·¨ÉèÖÃRNNµÄ³õÊ¼×´Ì¬£¬×´Ì¬µÄÖµÓ¦¸ÃÎªnumpyÊı×é»ònumpyÊı×éµÄÁĞ±í£¬´ú±íRNN²ãµÄ³õÊ¼×´Ì¬¡£</p>
-<h3 id="masking">ÆÁ±ÎÊäÈëÊı¾İ£¨Masking£©</h3>
-<p>Ñ­»·²ãÖ§³ÖÍ¨¹ıÊ±¼ä²½±äÁ¿¶ÔÊäÈëÊı¾İ½øĞĞMasking£¬Èç¹ûÏë½«ÊäÈëÊı¾İµÄÒ»²¿·ÖÆÁ±Îµô£¬ÇëÊ¹ÓÃ<a href="../embedding_layer">Embedding</a>²ã²¢½«²ÎÊı<code>mask_zero</code>ÉèÎª<code>True</code>¡£</p>
-<h3 id="rnn_1">Ê¹ÓÃ×´Ì¬RNNµÄ×¢ÒâÊÂÏî</h3>
-<p>¿ÉÒÔ½«RNNÉèÖÃÎª¡®stateful¡¯£¬ÒâÎ¶×ÅÓÉÃ¿¸öbatch¼ÆËã³öµÄ×´Ì¬¶¼»á±»ÖØÓÃÓÚ³õÊ¼»¯ÏÂÒ»¸öbatchµÄ³õÊ¼×´Ì¬¡£×´Ì¬RNN¼ÙÉèÁ¬ĞøµÄÁ½¸öbatchÖ®ÖĞ£¬ÏàÍ¬ÏÂ±êµÄÔªËØÓĞÒ»Ò»Ó³Éä¹ØÏµ¡£</p>
-<p>ÒªÆôÓÃ×´Ì¬RNN£¬ÇëÔÚÊµÀı»¯²ã¶ÔÏóÊ±Ö¸¶¨²ÎÊı<code>stateful=True</code>£¬²¢ÔÚSequentialÄ£ĞÍÊ¹ÓÃ¹Ì¶¨´óĞ¡µÄbatch£ºÍ¨¹ıÔÚÄ£ĞÍµÄµÚÒ»²ã´«Èë<code>batch_size=(...)</code>ºÍ<code>input_shape</code>À´ÊµÏÖ¡£ÔÚº¯ÊıÊ½Ä£ĞÍÖĞ£¬¶ÔËùÓĞµÄÊäÈë¶¼ÒªÖ¸¶¨ÏàÍ¬µÄ<code>batch_size</code>¡£</p>
-<p>Èç¹ûÒª½«Ñ­»·²ãµÄ×´Ì¬ÖØÖÃ£¬Çëµ÷ÓÃ<code>.reset_states()</code>£¬¶ÔÄ£ĞÍµ÷ÓÃ½«ÖØÖÃÄ£ĞÍÖĞËùÓĞ×´Ì¬RNNµÄ×´Ì¬¡£¶Ôµ¥¸ö²ãµ÷ÓÃÔòÖ»ÖØÖÃ¸Ã²ãµÄ×´Ì¬¡£</p>
+<h3 id="rnn">æŒ‡å®šRNNåˆå§‹çŠ¶æ€çš„æ³¨æ„äº‹é¡¹</h3>
+<p>å¯ä»¥é€šè¿‡è®¾ç½®<code>initial_state</code>ç”¨ç¬¦å·å¼çš„æ–¹å¼æŒ‡å®šRNNå±‚çš„åˆå§‹çŠ¶æ€ã€‚å³ï¼Œ<code>initial_stat</code>çš„å€¼åº”è¯¥ä¸ºä¸€ä¸ªtensoræˆ–ä¸€ä¸ªtensoråˆ—è¡¨ï¼Œä»£è¡¨RNNå±‚çš„åˆå§‹çŠ¶æ€ã€‚</p>
+<p>ä¹Ÿå¯ä»¥é€šè¿‡è®¾ç½®<code>reset_states</code>å‚æ•°ç”¨æ•°å€¼çš„æ–¹æ³•è®¾ç½®RNNçš„åˆå§‹çŠ¶æ€ï¼ŒçŠ¶æ€çš„å€¼åº”è¯¥ä¸ºnumpyæ•°ç»„æˆ–numpyæ•°ç»„çš„åˆ—è¡¨ï¼Œä»£è¡¨RNNå±‚çš„åˆå§‹çŠ¶æ€ã€‚</p>
+<h3 id="masking">å±è”½è¾“å…¥æ•°æ®ï¼ˆMaskingï¼‰</h3>
+<p>å¾ªç¯å±‚æ”¯æŒé€šè¿‡æ—¶é—´æ­¥å˜é‡å¯¹è¾“å…¥æ•°æ®è¿›è¡ŒMaskingï¼Œå¦‚æœæƒ³å°†è¾“å…¥æ•°æ®çš„ä¸€éƒ¨åˆ†å±è”½æ‰ï¼Œè¯·ä½¿ç”¨<a href="../embedding_layer">Embedding</a>å±‚å¹¶å°†å‚æ•°<code>mask_zero</code>è®¾ä¸º<code>True</code>ã€‚</p>
+<h3 id="rnn_1">ä½¿ç”¨çŠ¶æ€RNNçš„æ³¨æ„äº‹é¡¹</h3>
+<p>å¯ä»¥å°†RNNè®¾ç½®ä¸ºâ€˜statefulâ€™ï¼Œæ„å‘³ç€ç”±æ¯ä¸ªbatchè®¡ç®—å‡ºçš„çŠ¶æ€éƒ½ä¼šè¢«é‡ç”¨äºåˆå§‹åŒ–ä¸‹ä¸€ä¸ªbatchçš„åˆå§‹çŠ¶æ€ã€‚çŠ¶æ€RNNå‡è®¾è¿ç»­çš„ä¸¤ä¸ªbatchä¹‹ä¸­ï¼Œç›¸åŒä¸‹æ ‡çš„å…ƒç´ æœ‰ä¸€ä¸€æ˜ å°„å…³ç³»ã€‚</p>
+<p>è¦å¯ç”¨çŠ¶æ€RNNï¼Œè¯·åœ¨å®ä¾‹åŒ–å±‚å¯¹è±¡æ—¶æŒ‡å®šå‚æ•°<code>stateful=True</code>ï¼Œå¹¶åœ¨Sequentialæ¨¡å‹ä½¿ç”¨å›ºå®šå¤§å°çš„batchï¼šé€šè¿‡åœ¨æ¨¡å‹çš„ç¬¬ä¸€å±‚ä¼ å…¥<code>batch_size=(...)</code>å’Œ<code>input_shape</code>æ¥å®ç°ã€‚åœ¨å‡½æ•°å¼æ¨¡å‹ä¸­ï¼Œå¯¹æ‰€æœ‰çš„è¾“å…¥éƒ½è¦æŒ‡å®šç›¸åŒçš„<code>batch_size</code>ã€‚</p>
+<p>å¦‚æœè¦å°†å¾ªç¯å±‚çš„çŠ¶æ€é‡ç½®ï¼Œè¯·è°ƒç”¨<code>.reset_states()</code>ï¼Œå¯¹æ¨¡å‹è°ƒç”¨å°†é‡ç½®æ¨¡å‹ä¸­æ‰€æœ‰çŠ¶æ€RNNçš„çŠ¶æ€ã€‚å¯¹å•ä¸ªå±‚è°ƒç”¨åˆ™åªé‡ç½®è¯¥å±‚çš„çŠ¶æ€ã€‚</p>
 <hr/>
-<h2 id="simplernn">SimpleRNN²ã</h2>
+<h2 id="simplernn">SimpleRNNå±‚</h2>
 <pre><code class="python">keras.layers.recurrent.SimpleRNN(units, activation='tanh', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0)
 </code></pre>
-<p>È«Á¬½ÓRNNÍøÂç£¬RNNµÄÊä³ö»á±»»ØÀ¡µ½ÊäÈë</p>
-<h3 id="_3">²ÎÊı</h3>
+<p>å…¨è¿æ¥RNNç½‘ç»œï¼ŒRNNçš„è¾“å‡ºä¼šè¢«å›é¦ˆåˆ°è¾“å…¥</p>
+<h3 id="_3">å‚æ•°</h3>
 <ul>
 <li>
-<p>units£ºÊä³öÎ¬¶È</p>
+<p>unitsï¼šè¾“å‡ºç»´åº¦</p>
 </li>
 <li>
-<p>activation£º¼¤»îº¯Êı£¬ÎªÔ¤¶¨ÒåµÄ¼¤»îº¯ÊıÃû£¨²Î¿¼<a href="../../other/activations">¼¤»îº¯Êı</a>£©</p>
+<p>activationï¼šæ¿€æ´»å‡½æ•°ï¼Œä¸ºé¢„å®šä¹‰çš„æ¿€æ´»å‡½æ•°åï¼ˆå‚è€ƒ<a href="../../other/activations">æ¿€æ´»å‡½æ•°</a>ï¼‰</p>
 </li>
 <li>
-<p>use_bias: ²¼¶ûÖµ£¬ÊÇ·ñÊ¹ÓÃÆ«ÖÃÏî</p>
+<p>use_bias: å¸ƒå°”å€¼ï¼Œæ˜¯å¦ä½¿ç”¨åç½®é¡¹</p>
 </li>
 <li>
-<p>kernel_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>kernel_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>recurrent_initializer£ºÑ­»·ºËµÄ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>recurrent_initializerï¼šå¾ªç¯æ ¸çš„åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>bias_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>bias_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>kernel_regularizer£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>kernel_regularizerï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_regularizer£ºÊ©¼ÓÔÚÆ«ÖÃÏòÁ¿ÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>bias_regularizerï¼šæ–½åŠ åœ¨åç½®å‘é‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>recurrent_regularizer£ºÊ©¼ÓÔÚÑ­»·ºËÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>recurrent_regularizerï¼šæ–½åŠ åœ¨å¾ªç¯æ ¸ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>activity_regularizer£ºÊ©¼ÓÔÚÊä³öÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>activity_regularizerï¼šæ–½åŠ åœ¨è¾“å‡ºä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>kernel_constraints£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>kernel_constraintsï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>recurrent_constraints£ºÊ©¼ÓÔÚÑ­»·ºËÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>recurrent_constraintsï¼šæ–½åŠ åœ¨å¾ªç¯æ ¸ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_constraints£ºÊ©¼ÓÔÚÆ«ÖÃÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>bias_constraintsï¼šæ–½åŠ åœ¨åç½®ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>dropout£º0~1Ö®¼äµÄ¸¡µãÊı£¬¿ØÖÆÊäÈëÏßĞÔ±ä»»µÄÉñ¾­Ôª¶Ï¿ª±ÈÀı</p>
+<p>dropoutï¼š0~1ä¹‹é—´çš„æµ®ç‚¹æ•°ï¼Œæ§åˆ¶è¾“å…¥çº¿æ€§å˜æ¢çš„ç¥ç»å…ƒæ–­å¼€æ¯”ä¾‹</p>
 </li>
 <li>
-<p>recurrent_dropout£º0~1Ö®¼äµÄ¸¡µãÊı£¬¿ØÖÆÑ­»·×´Ì¬µÄÏßĞÔ±ä»»µÄÉñ¾­Ôª¶Ï¿ª±ÈÀı</p>
+<p>recurrent_dropoutï¼š0~1ä¹‹é—´çš„æµ®ç‚¹æ•°ï¼Œæ§åˆ¶å¾ªç¯çŠ¶æ€çš„çº¿æ€§å˜æ¢çš„ç¥ç»å…ƒæ–­å¼€æ¯”ä¾‹</p>
 </li>
 </ul>
-<h3 id="_4">²Î¿¼ÎÄÏ×</h3>
+<h3 id="_4">å‚è€ƒæ–‡çŒ®</h3>
 <ul>
 <li><a href="http://arxiv.org/abs/1512.05287">A Theoretically Grounded Application of Dropout in Recurrent Neural Networks</a></li>
 </ul>
 <hr/>
-<h2 id="gru">GRU²ã</h2>
+<h2 id="gru">GRUå±‚</h2>
 <pre><code class="python">keras.layers.recurrent.GRU(units, activation='tanh', recurrent_activation='hard_sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0)
 </code></pre>
-<p>ÃÅÏŞÑ­»·µ¥Ôª£¨Ïê¼û²Î¿¼ÎÄÏ×£©</p>
-<h3 id="_5">²ÎÊı</h3>
+<p>é—¨é™å¾ªç¯å•å…ƒï¼ˆè¯¦è§å‚è€ƒæ–‡çŒ®ï¼‰</p>
+<h3 id="_5">å‚æ•°</h3>
 <ul>
 <li>
-<p>units£ºÊä³öÎ¬¶È</p>
+<p>unitsï¼šè¾“å‡ºç»´åº¦</p>
 </li>
 <li>
-<p>activation£º¼¤»îº¯Êı£¬ÎªÔ¤¶¨ÒåµÄ¼¤»îº¯ÊıÃû£¨²Î¿¼<a href="../../other/activations">¼¤»îº¯Êı</a>£©</p>
+<p>activationï¼šæ¿€æ´»å‡½æ•°ï¼Œä¸ºé¢„å®šä¹‰çš„æ¿€æ´»å‡½æ•°åï¼ˆå‚è€ƒ<a href="../../other/activations">æ¿€æ´»å‡½æ•°</a>ï¼‰</p>
 </li>
 <li>
-<p>use_bias: ²¼¶ûÖµ£¬ÊÇ·ñÊ¹ÓÃÆ«ÖÃÏî</p>
+<p>use_bias: å¸ƒå°”å€¼ï¼Œæ˜¯å¦ä½¿ç”¨åç½®é¡¹</p>
 </li>
 <li>
-<p>kernel_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>kernel_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>recurrent_initializer£ºÑ­»·ºËµÄ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>recurrent_initializerï¼šå¾ªç¯æ ¸çš„åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>bias_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>bias_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>kernel_regularizer£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>kernel_regularizerï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_regularizer£ºÊ©¼ÓÔÚÆ«ÖÃÏòÁ¿ÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>bias_regularizerï¼šæ–½åŠ åœ¨åç½®å‘é‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>recurrent_regularizer£ºÊ©¼ÓÔÚÑ­»·ºËÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>recurrent_regularizerï¼šæ–½åŠ åœ¨å¾ªç¯æ ¸ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>activity_regularizer£ºÊ©¼ÓÔÚÊä³öÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>activity_regularizerï¼šæ–½åŠ åœ¨è¾“å‡ºä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>kernel_constraints£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>kernel_constraintsï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>recurrent_constraints£ºÊ©¼ÓÔÚÑ­»·ºËÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>recurrent_constraintsï¼šæ–½åŠ åœ¨å¾ªç¯æ ¸ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_constraints£ºÊ©¼ÓÔÚÆ«ÖÃÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>bias_constraintsï¼šæ–½åŠ åœ¨åç½®ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>dropout£º0~1Ö®¼äµÄ¸¡µãÊı£¬¿ØÖÆÊäÈëÏßĞÔ±ä»»µÄÉñ¾­Ôª¶Ï¿ª±ÈÀı</p>
+<p>dropoutï¼š0~1ä¹‹é—´çš„æµ®ç‚¹æ•°ï¼Œæ§åˆ¶è¾“å…¥çº¿æ€§å˜æ¢çš„ç¥ç»å…ƒæ–­å¼€æ¯”ä¾‹</p>
 </li>
 <li>
-<p>recurrent_dropout£º0~1Ö®¼äµÄ¸¡µãÊı£¬¿ØÖÆÑ­»·×´Ì¬µÄÏßĞÔ±ä»»µÄÉñ¾­Ôª¶Ï¿ª±ÈÀı</p>
+<p>recurrent_dropoutï¼š0~1ä¹‹é—´çš„æµ®ç‚¹æ•°ï¼Œæ§åˆ¶å¾ªç¯çŠ¶æ€çš„çº¿æ€§å˜æ¢çš„ç¥ç»å…ƒæ–­å¼€æ¯”ä¾‹</p>
 </li>
 </ul>
-<h3 id="_6">²Î¿¼ÎÄÏ×</h3>
+<h3 id="_6">å‚è€ƒæ–‡çŒ®</h3>
 <ul>
 <li>
-<p><a href="http://www.aclweb.org/anthology/W14-4012">On the Properties of Neural Machine Translation: Encoder¨CDecoder Approaches</a></p>
+<p><a href="http://www.aclweb.org/anthology/W14-4012">On the Properties of Neural Machine Translation: Encoderâ€“Decoder Approaches</a></p>
 </li>
 <li>
 <p><a href="http://arxiv.org/pdf/1412.3555v1.pdf">Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling</a></p>
@@ -195,65 +195,65 @@ model.add(LSTM(10))
 </li>
 </ul>
 <hr/>
-<h2 id="lstm">LSTM²ã</h2>
+<h2 id="lstm">LSTMå±‚</h2>
 <pre><code class="python">keras.layers.recurrent.LSTM(units, activation='tanh', recurrent_activation='hard_sigmoid', use_bias=True, kernel_initializer='glorot_uniform', recurrent_initializer='orthogonal', bias_initializer='zeros', unit_forget_bias=True, kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, recurrent_constraint=None, bias_constraint=None, dropout=0.0, recurrent_dropout=0.0)
 </code></pre>
-<p>Keras³¤¶ÌÆÚ¼ÇÒäÄ£ĞÍ£¬¹ØÓÚ´ËËã·¨µÄÏêÇé£¬Çë²Î¿¼<a href="http://deeplearning.net/tutorial/lstm.html">±¾½Ì³Ì</a></p>
-<h3 id="_7">²ÎÊı</h3>
+<p>Kerasé•¿çŸ­æœŸè®°å¿†æ¨¡å‹ï¼Œå…³äºæ­¤ç®—æ³•çš„è¯¦æƒ…ï¼Œè¯·å‚è€ƒ<a href="http://deeplearning.net/tutorial/lstm.html">æœ¬æ•™ç¨‹</a></p>
+<h3 id="_7">å‚æ•°</h3>
 <ul>
 <li>
-<p>units£ºÊä³öÎ¬¶È</p>
+<p>unitsï¼šè¾“å‡ºç»´åº¦</p>
 </li>
 <li>
-<p>activation£º¼¤»îº¯Êı£¬ÎªÔ¤¶¨ÒåµÄ¼¤»îº¯ÊıÃû£¨²Î¿¼<a href="../../other/activations">¼¤»îº¯Êı</a>£©</p>
+<p>activationï¼šæ¿€æ´»å‡½æ•°ï¼Œä¸ºé¢„å®šä¹‰çš„æ¿€æ´»å‡½æ•°åï¼ˆå‚è€ƒ<a href="../../other/activations">æ¿€æ´»å‡½æ•°</a>ï¼‰</p>
 </li>
 <li>
-<p>recurrent_activation: ÎªÑ­»·²½Ê©¼ÓµÄ¼¤»îº¯Êı£¨²Î¿¼<a href="../../other/activations">¼¤»îº¯Êı</a>£©</p>
+<p>recurrent_activation: ä¸ºå¾ªç¯æ­¥æ–½åŠ çš„æ¿€æ´»å‡½æ•°ï¼ˆå‚è€ƒ<a href="../../other/activations">æ¿€æ´»å‡½æ•°</a>ï¼‰</p>
 </li>
 <li>
-<p>use_bias: ²¼¶ûÖµ£¬ÊÇ·ñÊ¹ÓÃÆ«ÖÃÏî</p>
+<p>use_bias: å¸ƒå°”å€¼ï¼Œæ˜¯å¦ä½¿ç”¨åç½®é¡¹</p>
 </li>
 <li>
-<p>kernel_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>kernel_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>recurrent_initializer£ºÑ­»·ºËµÄ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>recurrent_initializerï¼šå¾ªç¯æ ¸çš„åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>bias_initializer£ºÈ¨Öµ³õÊ¼»¯·½·¨£¬ÎªÔ¤¶¨Òå³õÊ¼»¯·½·¨ÃûµÄ×Ö·û´®£¬»òÓÃÓÚ³õÊ¼»¯È¨ÖØµÄ³õÊ¼»¯Æ÷¡£²Î¿¼<a href="../../other/initializations">initializers</a></p>
+<p>bias_initializerï¼šæƒå€¼åˆå§‹åŒ–æ–¹æ³•ï¼Œä¸ºé¢„å®šä¹‰åˆå§‹åŒ–æ–¹æ³•åçš„å­—ç¬¦ä¸²ï¼Œæˆ–ç”¨äºåˆå§‹åŒ–æƒé‡çš„åˆå§‹åŒ–å™¨ã€‚å‚è€ƒ<a href="../../other/initializations">initializers</a></p>
 </li>
 <li>
-<p>kernel_regularizer£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>kernel_regularizerï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_regularizer£ºÊ©¼ÓÔÚÆ«ÖÃÏòÁ¿ÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>bias_regularizerï¼šæ–½åŠ åœ¨åç½®å‘é‡ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>recurrent_regularizer£ºÊ©¼ÓÔÚÑ­»·ºËÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>recurrent_regularizerï¼šæ–½åŠ åœ¨å¾ªç¯æ ¸ä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>activity_regularizer£ºÊ©¼ÓÔÚÊä³öÉÏµÄÕıÔòÏî£¬Îª<a href="../../other/regularizers">Regularizer</a>¶ÔÏó</p>
+<p>activity_regularizerï¼šæ–½åŠ åœ¨è¾“å‡ºä¸Šçš„æ­£åˆ™é¡¹ï¼Œä¸º<a href="../../other/regularizers">Regularizer</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>kernel_constraints£ºÊ©¼ÓÔÚÈ¨ÖØÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>kernel_constraintsï¼šæ–½åŠ åœ¨æƒé‡ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>recurrent_constraints£ºÊ©¼ÓÔÚÑ­»·ºËÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>recurrent_constraintsï¼šæ–½åŠ åœ¨å¾ªç¯æ ¸ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>bias_constraints£ºÊ©¼ÓÔÚÆ«ÖÃÉÏµÄÔ¼ÊøÏî£¬Îª<a href="../../other/constraints">Constraints</a>¶ÔÏó</p>
+<p>bias_constraintsï¼šæ–½åŠ åœ¨åç½®ä¸Šçš„çº¦æŸé¡¹ï¼Œä¸º<a href="../../other/constraints">Constraints</a>å¯¹è±¡</p>
 </li>
 <li>
-<p>dropout£º0~1Ö®¼äµÄ¸¡µãÊı£¬¿ØÖÆÊäÈëÏßĞÔ±ä»»µÄÉñ¾­Ôª¶Ï¿ª±ÈÀı</p>
+<p>dropoutï¼š0~1ä¹‹é—´çš„æµ®ç‚¹æ•°ï¼Œæ§åˆ¶è¾“å…¥çº¿æ€§å˜æ¢çš„ç¥ç»å…ƒæ–­å¼€æ¯”ä¾‹</p>
 </li>
 <li>
-<p>recurrent_dropout£º0~1Ö®¼äµÄ¸¡µãÊı£¬¿ØÖÆÑ­»·×´Ì¬µÄÏßĞÔ±ä»»µÄÉñ¾­Ôª¶Ï¿ª±ÈÀı</p>
+<p>recurrent_dropoutï¼š0~1ä¹‹é—´çš„æµ®ç‚¹æ•°ï¼Œæ§åˆ¶å¾ªç¯çŠ¶æ€çš„çº¿æ€§å˜æ¢çš„ç¥ç»å…ƒæ–­å¼€æ¯”ä¾‹</p>
 </li>
 </ul>
-<h3 id="_8">²Î¿¼ÎÄÏ×</h3>
+<h3 id="_8">å‚è€ƒæ–‡çŒ®</h3>
 <ul>
 <li>
-<p><a href="http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf">Long short-term memory</a>£¨original 1997 paper£©</p>
+<p><a href="http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf">Long short-term memory</a>ï¼ˆoriginal 1997 paperï¼‰</p>
 </li>
 <li>
 <p><a href="http://www.mitpressjournals.org/doi/pdf/10.1162/089976600300015015">Learning to forget: Continual prediction with LSTM</a></p>

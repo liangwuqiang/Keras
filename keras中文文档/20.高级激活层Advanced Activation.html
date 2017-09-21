@@ -1,75 +1,75 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="advanced-activation">¸ß¼¶¼¤»î²ãAdvanced Activation</h1>
-<h2 id="leakyrelu">LeakyReLU²ã</h2>
+<h1 id="advanced-activation">é«˜çº§æ¿€æ´»å±‚Advanced Activation</h1>
+<h2 id="leakyrelu">LeakyReLUå±‚</h2>
 <pre><code class="python">keras.layers.advanced_activations.LeakyReLU(alpha=0.3)
 </code></pre>
-<p>LeakyRelUÊÇĞŞÕıÏßĞÔµ¥Ôª£¨Rectified Linear Unit£¬ReLU£©µÄÌØÊâ°æ±¾£¬µ±²»¼¤»îÊ±£¬LeakyReLUÈÔÈ»»áÓĞ·ÇÁãÊä³öÖµ£¬´Ó¶ø»ñµÃÒ»¸öĞ¡Ìİ¶È£¬±ÜÃâReLU¿ÉÄÜ³öÏÖµÄÉñ¾­Ôª¡°ËÀÍö¡±ÏÖÏó¡£¼´£¬<code>f(x)=alpha * x for x &lt; 0</code>, <code>f(x) = x for x&gt;=0</code></p>
-<h3 id="_1">²ÎÊı</h3>
+<p>LeakyRelUæ˜¯ä¿®æ­£çº¿æ€§å•å…ƒï¼ˆRectified Linear Unitï¼ŒReLUï¼‰çš„ç‰¹æ®Šç‰ˆæœ¬ï¼Œå½“ä¸æ¿€æ´»æ—¶ï¼ŒLeakyReLUä»ç„¶ä¼šæœ‰éé›¶è¾“å‡ºå€¼ï¼Œä»è€Œè·å¾—ä¸€ä¸ªå°æ¢¯åº¦ï¼Œé¿å…ReLUå¯èƒ½å‡ºç°çš„ç¥ç»å…ƒâ€œæ­»äº¡â€ç°è±¡ã€‚å³ï¼Œ<code>f(x)=alpha * x for x &lt; 0</code>, <code>f(x) = x for x&gt;=0</code></p>
+<h3 id="_1">å‚æ•°</h3>
 <ul>
-<li>alpha£º´óÓÚ0µÄ¸¡µãÊı£¬´ú±í¼¤»îº¯ÊıÍ¼ÏñÖĞµÚÈıÏóÏŞÏß¶ÎµÄĞ±ÂÊ</li>
+<li>alphaï¼šå¤§äº0çš„æµ®ç‚¹æ•°ï¼Œä»£è¡¨æ¿€æ´»å‡½æ•°å›¾åƒä¸­ç¬¬ä¸‰è±¡é™çº¿æ®µçš„æ–œç‡</li>
 </ul>
-<h3 id="shape">ÊäÈëshape</h3>
-<p>ÈÎÒâ£¬µ±Ê¹ÓÃ¸Ã²ãÎªÄ£ĞÍÊ×²ãÊ±ĞèÖ¸¶¨<code>input_shape</code>²ÎÊı</p>
-<h3 id="shape_1">Êä³öshape</h3>
-<p>ÓëÊäÈëÏàÍ¬</p>
-<h3 id="_2">²Î¿¼ÎÄÏ×</h3>
+<h3 id="shape">è¾“å…¥shape</h3>
+<p>ä»»æ„ï¼Œå½“ä½¿ç”¨è¯¥å±‚ä¸ºæ¨¡å‹é¦–å±‚æ—¶éœ€æŒ‡å®š<code>input_shape</code>å‚æ•°</p>
+<h3 id="shape_1">è¾“å‡ºshape</h3>
+<p>ä¸è¾“å…¥ç›¸åŒ</p>
+<h3 id="_2">å‚è€ƒæ–‡çŒ®</h3>
 <p><a href="https://web.stanford.edu/~awni/papers/relu_hybrid_icml2013_final.pdf">Rectifier Nonlinearities Improve Neural Network Acoustic Models</a></p>
 <hr/>
-<h2 id="prelu">PReLU²ã</h2>
+<h2 id="prelu">PReLUå±‚</h2>
 <pre><code class="python">keras.layers.advanced_activations.PReLU(alpha_initializer='zeros', alpha_regularizer=None, alpha_constraint=None, shared_axes=None)
 </code></pre>
-<p>¸Ã²ãÎª²ÎÊı»¯µÄReLU£¨Parametric ReLU£©£¬±í´ïÊ½ÊÇ£º<code>f(x) = alpha * x for x &lt; 0</code>, <code>f(x) = x for x&gt;=0</code>£¬´Ë´¦µÄ<code>alpha</code>ÎªÒ»¸öÓëxshapeÏàÍ¬µÄ¿ÉÑ§Ï°µÄ²ÎÊıÏòÁ¿¡£</p>
-<h3 id="_3">²ÎÊı</h3>
+<p>è¯¥å±‚ä¸ºå‚æ•°åŒ–çš„ReLUï¼ˆParametric ReLUï¼‰ï¼Œè¡¨è¾¾å¼æ˜¯ï¼š<code>f(x) = alpha * x for x &lt; 0</code>, <code>f(x) = x for x&gt;=0</code>ï¼Œæ­¤å¤„çš„<code>alpha</code>ä¸ºä¸€ä¸ªä¸xshapeç›¸åŒçš„å¯å­¦ä¹ çš„å‚æ•°å‘é‡ã€‚</p>
+<h3 id="_3">å‚æ•°</h3>
 <ul>
-<li>alpha_initializer£ºalphaµÄ³õÊ¼»¯º¯Êı</li>
-<li>alpha_regularizer£ºalphaµÄÕıÔòÏî</li>
-<li>alpha_constraint£ºalphaµÄÔ¼ÊøÏî</li>
-<li>shared_axes£º¸Ã²ÎÊıÖ¸¶¨µÄÖá½«¹²ÏíÍ¬Ò»×é¿ÆÑ§Ïµ²ÎÊı£¬ÀıÈç¼ÙÈçÊäÈëÌØÕ÷Í¼ÊÇ´Ó2D¾í»ı¹ıÀ´µÄ£¬¾ßÓĞĞÎÈç<code>(batch, height, width, channels)</code>ÕâÑùµÄshape£¬Ôò»òĞíÄã»áÏ£ÍûÔÚ¿ÕÓò¹²Ïí²ÎÊı£¬ÕâÑùÃ¿¸öfilter¾ÍÖ»ÓĞÒ»×é²ÎÊı£¬Éè¶¨<code>shared_axes=[1,2]</code>¿ÉÍê³É¸ÃÄ¿±ê</li>
+<li>alpha_initializerï¼šalphaçš„åˆå§‹åŒ–å‡½æ•°</li>
+<li>alpha_regularizerï¼šalphaçš„æ­£åˆ™é¡¹</li>
+<li>alpha_constraintï¼šalphaçš„çº¦æŸé¡¹</li>
+<li>shared_axesï¼šè¯¥å‚æ•°æŒ‡å®šçš„è½´å°†å…±äº«åŒä¸€ç»„ç§‘å­¦ç³»å‚æ•°ï¼Œä¾‹å¦‚å‡å¦‚è¾“å…¥ç‰¹å¾å›¾æ˜¯ä»2Då·ç§¯è¿‡æ¥çš„ï¼Œå…·æœ‰å½¢å¦‚<code>(batch, height, width, channels)</code>è¿™æ ·çš„shapeï¼Œåˆ™æˆ–è®¸ä½ ä¼šå¸Œæœ›åœ¨ç©ºåŸŸå…±äº«å‚æ•°ï¼Œè¿™æ ·æ¯ä¸ªfilterå°±åªæœ‰ä¸€ç»„å‚æ•°ï¼Œè®¾å®š<code>shared_axes=[1,2]</code>å¯å®Œæˆè¯¥ç›®æ ‡</li>
 </ul>
-<h3 id="shape_2">ÊäÈëshape</h3>
-<p>ÈÎÒâ£¬µ±Ê¹ÓÃ¸Ã²ãÎªÄ£ĞÍÊ×²ãÊ±ĞèÖ¸¶¨<code>input_shape</code>²ÎÊı</p>
-<h3 id="shape_3">Êä³öshape</h3>
-<p>ÓëÊäÈëÏàÍ¬</p>
-<h3 id="_4">²Î¿¼ÎÄÏ×</h3>
+<h3 id="shape_2">è¾“å…¥shape</h3>
+<p>ä»»æ„ï¼Œå½“ä½¿ç”¨è¯¥å±‚ä¸ºæ¨¡å‹é¦–å±‚æ—¶éœ€æŒ‡å®š<code>input_shape</code>å‚æ•°</p>
+<h3 id="shape_3">è¾“å‡ºshape</h3>
+<p>ä¸è¾“å…¥ç›¸åŒ</p>
+<h3 id="_4">å‚è€ƒæ–‡çŒ®</h3>
 <ul>
 <li><a href="http://arxiv.org/pdf/1502.01852v1.pdf">Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification</a></li>
 </ul>
 <hr/>
-<h2 id="elu">ELU²ã</h2>
+<h2 id="elu">ELUå±‚</h2>
 <pre><code class="python">keras.layers.advanced_activations.ELU(alpha=1.0)
 </code></pre>
-<p>ELU²ãÊÇÖ¸ÊıÏßĞÔµ¥Ôª£¨Exponential Linera Unit£©£¬±í´ïÊ½Îª£º
-¸Ã²ãÎª²ÎÊı»¯µÄReLU£¨Parametric ReLU£©£¬±í´ïÊ½ÊÇ£º<code>f(x) = alpha * (exp(x) - 1.) for x &lt; 0</code>, <code>f(x) = x for x&gt;=0</code></p>
-<h3 id="_5">²ÎÊı</h3>
+<p>ELUå±‚æ˜¯æŒ‡æ•°çº¿æ€§å•å…ƒï¼ˆExponential Linera Unitï¼‰ï¼Œè¡¨è¾¾å¼ä¸ºï¼š
+è¯¥å±‚ä¸ºå‚æ•°åŒ–çš„ReLUï¼ˆParametric ReLUï¼‰ï¼Œè¡¨è¾¾å¼æ˜¯ï¼š<code>f(x) = alpha * (exp(x) - 1.) for x &lt; 0</code>, <code>f(x) = x for x&gt;=0</code></p>
+<h3 id="_5">å‚æ•°</h3>
 <ul>
-<li>alpha£º¿ØÖÆ¸ºÒò×ÓµÄ²ÎÊı</li>
+<li>alphaï¼šæ§åˆ¶è´Ÿå› å­çš„å‚æ•°</li>
 </ul>
-<h3 id="shape_4">ÊäÈëshape</h3>
-<p>ÈÎÒâ£¬µ±Ê¹ÓÃ¸Ã²ãÎªÄ£ĞÍÊ×²ãÊ±ĞèÖ¸¶¨<code>input_shape</code>²ÎÊı</p>
-<h3 id="shape_5">Êä³öshape</h3>
-<p>ÓëÊäÈëÏàÍ¬</p>
-<h3 id="_6">²Î¿¼ÎÄÏ×</h3>
+<h3 id="shape_4">è¾“å…¥shape</h3>
+<p>ä»»æ„ï¼Œå½“ä½¿ç”¨è¯¥å±‚ä¸ºæ¨¡å‹é¦–å±‚æ—¶éœ€æŒ‡å®š<code>input_shape</code>å‚æ•°</p>
+<h3 id="shape_5">è¾“å‡ºshape</h3>
+<p>ä¸è¾“å…¥ç›¸åŒ</p>
+<h3 id="_6">å‚è€ƒæ–‡çŒ®</h3>
 <ul>
 <li><a href="http://arxiv.org/pdf/1511.07289v1.pdf">&gt;Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)</a></li>
 </ul>
 <hr/>
-<h2 id="thresholdedrelu">ThresholdedReLU²ã</h2>
+<h2 id="thresholdedrelu">ThresholdedReLUå±‚</h2>
 <pre><code class="python">keras.layers.advanced_activations.ThresholdedReLU(theta=1.0)
 </code></pre>
-<p>¸Ã²ãÊÇ´øÓĞÃÅÏŞµÄReLU£¬±í´ïÊ½ÊÇ£º<code>f(x) = x for x &gt; theta</code>,<code>f(x) = 0 otherwise</code></p>
-<h3 id="_7">²ÎÊı</h3>
+<p>è¯¥å±‚æ˜¯å¸¦æœ‰é—¨é™çš„ReLUï¼Œè¡¨è¾¾å¼æ˜¯ï¼š<code>f(x) = x for x &gt; theta</code>,<code>f(x) = 0 otherwise</code></p>
+<h3 id="_7">å‚æ•°</h3>
 <ul>
-<li>theata£º´ó»òµÈÓÚ0µÄ¸¡µãÊı£¬¼¤»îÃÅÏŞÎ»ÖÃ</li>
+<li>theataï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°ï¼Œæ¿€æ´»é—¨é™ä½ç½®</li>
 </ul>
-<h3 id="shape_6">ÊäÈëshape</h3>
-<p>ÈÎÒâ£¬µ±Ê¹ÓÃ¸Ã²ãÎªÄ£ĞÍÊ×²ãÊ±ĞèÖ¸¶¨<code>input_shape</code>²ÎÊı</p>
-<h3 id="shape_7">Êä³öshape</h3>
-<p>ÓëÊäÈëÏàÍ¬</p>
-<h3 id="_8">²Î¿¼ÎÄÏ×</h3>
+<h3 id="shape_6">è¾“å…¥shape</h3>
+<p>ä»»æ„ï¼Œå½“ä½¿ç”¨è¯¥å±‚ä¸ºæ¨¡å‹é¦–å±‚æ—¶éœ€æŒ‡å®š<code>input_shape</code>å‚æ•°</p>
+<h3 id="shape_7">è¾“å‡ºshape</h3>
+<p>ä¸è¾“å…¥ç›¸åŒ</p>
+<h3 id="_8">å‚è€ƒæ–‡çŒ®</h3>
 <ul>
 <li><a href="http://arxiv.org/pdf/1402.3337.pdf">Zero-Bias Autoencoders and the Benefits of Co-Adapting Features</a></li>
 </ul>

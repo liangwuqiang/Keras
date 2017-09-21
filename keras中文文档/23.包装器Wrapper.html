@@ -1,20 +1,20 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="wrapper">°ü×°Æ÷Wrapper</h1>
-<h2 id="timedistributed">TimeDistributed°ü×°Æ÷</h2>
+<h1 id="wrapper">åŒ…è£…å™¨Wrapper</h1>
+<h2 id="timedistributed">TimeDistributedåŒ…è£…å™¨</h2>
 <pre><code class="python">keras.layers.wrappers.TimeDistributed(layer)
 </code></pre>
-<p>¸Ã°ü×°Æ÷¿ÉÒÔ°ÑÒ»¸ö²ãÓ¦ÓÃµ½ÊäÈëµÄÃ¿Ò»¸öÊ±¼ä²½ÉÏ</p>
-<h3 id="_1">²ÎÊı</h3>
+<p>è¯¥åŒ…è£…å™¨å¯ä»¥æŠŠä¸€ä¸ªå±‚åº”ç”¨åˆ°è¾“å…¥çš„æ¯ä¸€ä¸ªæ—¶é—´æ­¥ä¸Š</p>
+<h3 id="_1">å‚æ•°</h3>
 <ul>
-<li>layer£ºKeras²ã¶ÔÏó</li>
+<li>layerï¼šKeraså±‚å¯¹è±¡</li>
 </ul>
-<p>ÊäÈëÖÁÉÙÎª3DÕÅÁ¿£¬ÏÂ±êÎª1µÄÎ¬¶È½«±»ÈÏÎªÊÇÊ±¼äÎ¬</p>
-<p>ÀıÈç£¬¿¼ÂÇÒ»¸öº¬ÓĞ32¸öÑù±¾µÄbatch£¬Ã¿¸öÑù±¾¶¼ÊÇ10¸öÏòÁ¿×é³ÉµÄĞòÁĞ£¬Ã¿¸öÏòÁ¿³¤Îª16£¬ÔòÆäÊäÈëÎ¬¶ÈÎª<code>(32,10,16)</code>£¬Æä²»°üº¬batch´óĞ¡µÄ<code>input_shape</code>Îª<code>(10,16)</code></p>
-<p>ÎÒÃÇ¿ÉÒÔÊ¹ÓÃ°ü×°Æ÷<code>TimeDistributed</code>°ü×°<code>Dense</code>£¬ÒÔ²úÉúÕë¶Ô¸÷¸öÊ±¼ä²½ĞÅºÅµÄ¶ÀÁ¢È«Á¬½Ó£º</p>
+<p>è¾“å…¥è‡³å°‘ä¸º3Då¼ é‡ï¼Œä¸‹æ ‡ä¸º1çš„ç»´åº¦å°†è¢«è®¤ä¸ºæ˜¯æ—¶é—´ç»´</p>
+<p>ä¾‹å¦‚ï¼Œè€ƒè™‘ä¸€ä¸ªå«æœ‰32ä¸ªæ ·æœ¬çš„batchï¼Œæ¯ä¸ªæ ·æœ¬éƒ½æ˜¯10ä¸ªå‘é‡ç»„æˆçš„åºåˆ—ï¼Œæ¯ä¸ªå‘é‡é•¿ä¸º16ï¼Œåˆ™å…¶è¾“å…¥ç»´åº¦ä¸º<code>(32,10,16)</code>ï¼Œå…¶ä¸åŒ…å«batchå¤§å°çš„<code>input_shape</code>ä¸º<code>(10,16)</code></p>
+<p>æˆ‘ä»¬å¯ä»¥ä½¿ç”¨åŒ…è£…å™¨<code>TimeDistributed</code>åŒ…è£…<code>Dense</code>ï¼Œä»¥äº§ç”Ÿé’ˆå¯¹å„ä¸ªæ—¶é—´æ­¥ä¿¡å·çš„ç‹¬ç«‹å…¨è¿æ¥ï¼š</p>
 <pre><code class="python"># as the first layer in a model
 model = Sequential()
 model.add(TimeDistributed(Dense(8), input_shape=(10, 16)))
@@ -24,21 +24,21 @@ model.add(TimeDistributed(Dense(8), input_shape=(10, 16)))
 model.add(TimeDistributed(Dense(32)))
 # now model.output_shape == (None, 10, 32)
 </code></pre>
-<p>³ÌĞòµÄÊä³öÊı¾İshapeÎª<code>(32,10,8)</code></p>
-<p>Ê¹ÓÃ<code>TimeDistributed</code>°ü×°<code>Dense</code>ÑÏ¸ñµÈ¼ÛÓÚ<code>layers.TimeDistribuedDense</code>¡£²»Í¬µÄÊÇ°ü×°Æ÷<code>TimeDistribued</code>»¹¿ÉÒÔ¶Ô±ğµÄ²ã½øĞĞ°ü×°£¬ÈçÕâÀï¶Ô<code>Convolution2D</code>°ü×°£º</p>
+<p>ç¨‹åºçš„è¾“å‡ºæ•°æ®shapeä¸º<code>(32,10,8)</code></p>
+<p>ä½¿ç”¨<code>TimeDistributed</code>åŒ…è£…<code>Dense</code>ä¸¥æ ¼ç­‰ä»·äº<code>layers.TimeDistribuedDense</code>ã€‚ä¸åŒçš„æ˜¯åŒ…è£…å™¨<code>TimeDistribued</code>è¿˜å¯ä»¥å¯¹åˆ«çš„å±‚è¿›è¡ŒåŒ…è£…ï¼Œå¦‚è¿™é‡Œå¯¹<code>Convolution2D</code>åŒ…è£…ï¼š</p>
 <pre><code class="python">model = Sequential()
 model.add(TimeDistributed(Convolution2D(64, 3, 3), input_shape=(10, 3, 299, 299)))
 </code></pre>
-<h2 id="bidirectional">Bidirectional°ü×°Æ÷</h2>
+<h2 id="bidirectional">BidirectionalåŒ…è£…å™¨</h2>
 <pre><code class="python">keras.layers.wrappers.Bidirectional(layer, merge_mode='concat', weights=None)
 </code></pre>
-<p>Ë«ÏòRNN°ü×°Æ÷</p>
-<h3 id="_2">²ÎÊı</h3>
+<p>åŒå‘RNNåŒ…è£…å™¨</p>
+<h3 id="_2">å‚æ•°</h3>
 <ul>
-<li>layer£º<code>Recurrent</code>¶ÔÏó</li>
-<li>merge_mode£ºÇ°ÏòºÍºóÏòRNNÊä³öµÄ½áºÏ·½Ê½£¬Îª<code>sum</code>,<code>mul</code>,<code>concat</code>,<code>ave</code>ºÍ<code>None</code>Ö®Ò»£¬ÈôÉèÎªNone£¬Ôò·µ»ØÖµ²»½áºÏ£¬¶øÊÇÒÔÁĞ±íµÄĞÎÊ½·µ»Ø</li>
+<li>layerï¼š<code>Recurrent</code>å¯¹è±¡</li>
+<li>merge_modeï¼šå‰å‘å’Œåå‘RNNè¾“å‡ºçš„ç»“åˆæ–¹å¼ï¼Œä¸º<code>sum</code>,<code>mul</code>,<code>concat</code>,<code>ave</code>å’Œ<code>None</code>ä¹‹ä¸€ï¼Œè‹¥è®¾ä¸ºNoneï¼Œåˆ™è¿”å›å€¼ä¸ç»“åˆï¼Œè€Œæ˜¯ä»¥åˆ—è¡¨çš„å½¢å¼è¿”å›</li>
 </ul>
-<h3 id="_3">Àı×Ó</h3>
+<h3 id="_3">ä¾‹å­</h3>
 <pre><code class="python">model = Sequential()
 model.add(Bidirectional(LSTM(10, return_sequences=True), input_shape=(5, 10)))
 model.add(Bidirectional(LSTM(10)))

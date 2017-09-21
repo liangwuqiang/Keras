@@ -1,40 +1,40 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="objectives">Ä¿±êº¯Êıobjectives</h1>
-<p>Ä¿±êº¯Êı£¬»ò³ÆËğÊ§º¯Êı£¬ÊÇ±àÒëÒ»¸öÄ£ĞÍ±ØĞëµÄÁ½¸ö²ÎÊıÖ®Ò»£º</p>
+<h1 id="objectives">ç›®æ ‡å‡½æ•°objectives</h1>
+<p>ç›®æ ‡å‡½æ•°ï¼Œæˆ–ç§°æŸå¤±å‡½æ•°ï¼Œæ˜¯ç¼–è¯‘ä¸€ä¸ªæ¨¡å‹å¿…é¡»çš„ä¸¤ä¸ªå‚æ•°ä¹‹ä¸€ï¼š</p>
 <pre><code class="python">model.compile(loss='mean_squared_error', optimizer='sgd')
 </code></pre>
-<p>¿ÉÒÔÍ¨¹ı´«µİÔ¤¶¨ÒåÄ¿±êº¯ÊıÃû×ÖÖ¸¶¨Ä¿±êº¯Êı£¬Ò²¿ÉÒÔ´«µİÒ»¸öTheano/TensroFlowµÄ·ûºÅº¯Êı×÷ÎªÄ¿±êº¯Êı£¬¸Ãº¯Êı¶ÔÃ¿¸öÊı¾İµãÓ¦¸ÃÖ»·µ»ØÒ»¸ö±êÁ¿Öµ£¬²¢ÒÔÏÂÁĞÁ½¸ö²ÎÊıÎª²ÎÊı£º</p>
+<p>å¯ä»¥é€šè¿‡ä¼ é€’é¢„å®šä¹‰ç›®æ ‡å‡½æ•°åå­—æŒ‡å®šç›®æ ‡å‡½æ•°ï¼Œä¹Ÿå¯ä»¥ä¼ é€’ä¸€ä¸ªTheano/TensroFlowçš„ç¬¦å·å‡½æ•°ä½œä¸ºç›®æ ‡å‡½æ•°ï¼Œè¯¥å‡½æ•°å¯¹æ¯ä¸ªæ•°æ®ç‚¹åº”è¯¥åªè¿”å›ä¸€ä¸ªæ ‡é‡å€¼ï¼Œå¹¶ä»¥ä¸‹åˆ—ä¸¤ä¸ªå‚æ•°ä¸ºå‚æ•°ï¼š</p>
 <ul>
 <li>
-<p>y_true£ºÕæÊµµÄÊı¾İ±êÇ©£¬Theano/TensorFlowÕÅÁ¿</p>
+<p>y_trueï¼šçœŸå®çš„æ•°æ®æ ‡ç­¾ï¼ŒTheano/TensorFlowå¼ é‡</p>
 </li>
 <li>
-<p>y_pred£ºÔ¤²âÖµ£¬Óëy_trueÏàÍ¬shapeµÄTheano/TensorFlowÕÅÁ¿</p>
+<p>y_predï¼šé¢„æµ‹å€¼ï¼Œä¸y_trueç›¸åŒshapeçš„Theano/TensorFlowå¼ é‡</p>
 </li>
 </ul>
 <pre><code class="python">from keras import losses
 
 model.compile(loss=losses.mean_squared_error, optimizer='sgd')
 </code></pre>
-<p>ÕæÊµµÄÓÅ»¯Ä¿±êº¯ÊıÊÇÔÚ¸÷¸öÊı¾İµãµÃµ½µÄËğÊ§º¯ÊıÖµÖ®ºÍµÄ¾ùÖµ</p>
-<p>Çë²Î¿¼<a href="https://github.com/fchollet/keras/blob/master/keras/objectives.py">Ä¿±êÊµÏÖ´úÂë</a>»ñÈ¡¸ü¶àĞÅÏ¢</p>
-<h2 id="_1">¿ÉÓÃµÄÄ¿±êº¯Êı</h2>
+<p>çœŸå®çš„ä¼˜åŒ–ç›®æ ‡å‡½æ•°æ˜¯åœ¨å„ä¸ªæ•°æ®ç‚¹å¾—åˆ°çš„æŸå¤±å‡½æ•°å€¼ä¹‹å’Œçš„å‡å€¼</p>
+<p>è¯·å‚è€ƒ<a href="https://github.com/fchollet/keras/blob/master/keras/objectives.py">ç›®æ ‡å®ç°ä»£ç </a>è·å–æ›´å¤šä¿¡æ¯</p>
+<h2 id="_1">å¯ç”¨çš„ç›®æ ‡å‡½æ•°</h2>
 <ul>
 <li>
-<p>mean_squared_error»òmse</p>
+<p>mean_squared_erroræˆ–mse</p>
 </li>
 <li>
-<p>mean_absolute_error»òmae</p>
+<p>mean_absolute_erroræˆ–mae</p>
 </li>
 <li>
-<p>mean_absolute_percentage_error»òmape</p>
+<p>mean_absolute_percentage_erroræˆ–mape</p>
 </li>
 <li>
-<p>mean_squared_logarithmic_error»òmsle</p>
+<p>mean_squared_logarithmic_erroræˆ–msle</p>
 </li>
 <li>
 <p>squared_hinge</p>
@@ -46,28 +46,28 @@ model.compile(loss=losses.mean_squared_error, optimizer='sgd')
 <p>categorical_hinge</p>
 </li>
 <li>
-<p>binary_crossentropy£¨Òà³Æ×÷¶ÔÊıËğÊ§£¬logloss£©</p>
+<p>binary_crossentropyï¼ˆäº¦ç§°ä½œå¯¹æ•°æŸå¤±ï¼Œloglossï¼‰</p>
 </li>
 <li>
 <p>logcosh</p>
 </li>
 <li>
-<p>categorical_crossentropy£ºÒà³Æ×÷¶àÀàµÄ¶ÔÊıËğÊ§£¬×¢ÒâÊ¹ÓÃ¸ÃÄ¿±êº¯ÊıÊ±£¬ĞèÒª½«±êÇ©×ª»¯ÎªĞÎÈç<code>(nb_samples, nb_classes)</code>µÄ¶şÖµĞòÁĞ</p>
+<p>categorical_crossentropyï¼šäº¦ç§°ä½œå¤šç±»çš„å¯¹æ•°æŸå¤±ï¼Œæ³¨æ„ä½¿ç”¨è¯¥ç›®æ ‡å‡½æ•°æ—¶ï¼Œéœ€è¦å°†æ ‡ç­¾è½¬åŒ–ä¸ºå½¢å¦‚<code>(nb_samples, nb_classes)</code>çš„äºŒå€¼åºåˆ—</p>
 </li>
 <li>
-<p>sparse_categorical_crossentrop£ºÈçÉÏ£¬µ«½ÓÊÜÏ¡Êè±êÇ©¡£×¢Òâ£¬Ê¹ÓÃ¸Ãº¯ÊıÊ±ÈÔÈ»ĞèÒªÄãµÄ±êÇ©ÓëÊä³öÖµµÄÎ¬¶ÈÏàÍ¬£¬Äã¿ÉÄÜĞèÒªÔÚ±êÇ©Êı¾İÉÏÔö¼ÓÒ»¸öÎ¬¶È£º<code>np.expand_dims(y,-1)</code></p>
+<p>sparse_categorical_crossentropï¼šå¦‚ä¸Šï¼Œä½†æ¥å—ç¨€ç–æ ‡ç­¾ã€‚æ³¨æ„ï¼Œä½¿ç”¨è¯¥å‡½æ•°æ—¶ä»ç„¶éœ€è¦ä½ çš„æ ‡ç­¾ä¸è¾“å‡ºå€¼çš„ç»´åº¦ç›¸åŒï¼Œä½ å¯èƒ½éœ€è¦åœ¨æ ‡ç­¾æ•°æ®ä¸Šå¢åŠ ä¸€ä¸ªç»´åº¦ï¼š<code>np.expand_dims(y,-1)</code></p>
 </li>
 <li>
-<p>kullback_leibler_divergence:´ÓÔ¤²âÖµ¸ÅÂÊ·Ö²¼Qµ½ÕæÖµ¸ÅÂÊ·Ö²¼PµÄĞÅÏ¢ÔöÒæ,ÓÃÒÔ¶ÈÁ¿Á½¸ö·Ö²¼µÄ²îÒì.</p>
+<p>kullback_leibler_divergence:ä»é¢„æµ‹å€¼æ¦‚ç‡åˆ†å¸ƒQåˆ°çœŸå€¼æ¦‚ç‡åˆ†å¸ƒPçš„ä¿¡æ¯å¢ç›Š,ç”¨ä»¥åº¦é‡ä¸¤ä¸ªåˆ†å¸ƒçš„å·®å¼‚.</p>
 </li>
 <li>
-<p>poisson£º¼´<code>(predictions - targets * log(predictions))</code>µÄ¾ùÖµ</p>
+<p>poissonï¼šå³<code>(predictions - targets * log(predictions))</code>çš„å‡å€¼</p>
 </li>
 <li>
-<p>cosine_proximity£º¼´Ô¤²âÖµÓëÕæÊµ±êÇ©µÄÓàÏÒ¾àÀëÆ½¾ùÖµµÄÏà·´Êı</p>
+<p>cosine_proximityï¼šå³é¢„æµ‹å€¼ä¸çœŸå®æ ‡ç­¾çš„ä½™å¼¦è·ç¦»å¹³å‡å€¼çš„ç›¸åæ•°</p>
 </li>
 </ul>
-<p><strong>×¢Òâ</strong>: µ±Ê¹ÓÃ"categorical_crossentropy"×÷ÎªÄ¿±êº¯ÊıÊ±,±êÇ©Ó¦¸ÃÎª¶àÀàÄ£Ê½,¼´one-hot±àÂëµÄÏòÁ¿,¶ø²»ÊÇµ¥¸öÊıÖµ. ¿ÉÒÔÊ¹ÓÃ¹¤¾ßÖĞµÄ<code>to_categorical</code>º¯ÊıÍê³É¸Ã×ª»».Ê¾ÀıÈçÏÂ:</p>
+<p><strong>æ³¨æ„</strong>: å½“ä½¿ç”¨"categorical_crossentropy"ä½œä¸ºç›®æ ‡å‡½æ•°æ—¶,æ ‡ç­¾åº”è¯¥ä¸ºå¤šç±»æ¨¡å¼,å³one-hotç¼–ç çš„å‘é‡,è€Œä¸æ˜¯å•ä¸ªæ•°å€¼. å¯ä»¥ä½¿ç”¨å·¥å…·ä¸­çš„<code>to_categorical</code>å‡½æ•°å®Œæˆè¯¥è½¬æ¢.ç¤ºä¾‹å¦‚ä¸‹:</p>
 <pre><code class="python">from keras.utils.np_utils import to_categorical
 
 categorical_labels = to_categorical(int_labels, num_classes=None)

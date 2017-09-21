@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+</head><body>
+<p><a href="http://blog.csdn.net/roseki/article/details/70115369">原文链接</a></p>
+<p><center><h1>[置顶]
+        罗斯基白话：TensorFlow+实战系列（一）之详解Tensor与Flow</h1></center></p>
+    <div class="article_content tracking-ad" data-dsm="post" data-mod="popu_307" id="article_content">
+<h1>
+<h1 style="text-align:center"><span style="font-size:12px"> <br>
+</br></span>
+<h1 style="text-align:center"><span style="font-size:32px"><span style="line-height:150%; font-family:Baskerville,serif"> <span style="color:#ff6666">白话<span lang="EN-US">TensorFlow+</span>实战系列（一）<br>
+</br></span></span><span style="font-family:Baskerville,serif; color:#ff6666">详解Tensor与Flow</span></span></h1>
+</h1>
+</h1>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>这是本人第一次写这么正经的博客，一方面是想将自己所学的知识系统的记录下来，另一方面也算是一个记录自己学习过程吧，以后可留作一个念想。本人一直在学习深度学习的有关知识，主要研究自然语言处理方面。老实讲，这几天在用TensorFlow写BiLSTM时，发现自己代码写的太乱，之前实现简单任务时呢，由于代码量不多，所以马马虎虎能看，而一旦任务变复杂，深感自己对TensorFlow理解不够好，越写越乱，到后面自己都不知道在写什么了。所以决定从头学习TensorFlow，顺便记录下来写成一个系列，方便自己日后查看。之前学习TensorFlow都是看官方文档、极客学院的翻译文档，以及各个博客上的一些总结。自己感觉学习的太碎片化，无法成为一个系统。这个系列我尽量用自己理解的方式记录，如果小博文有幸被你看见，希望能对你有所帮助。当然本人水平也有限，如有不对的地方，欢迎各位指正。</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>正题：</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>TensorFlow作为目前最欢迎的深度学习框架（是的，GitHub上已超越Caffe），是由Google开源的一个计算框架，该框架已经很好的集成了深度学习的各种算法，所以说是非常方便，并且与Keras也兼容，再加上Google强大的资源，可以说选TensorFlow进行深度学习是非常明智的。TensorFlow这个名字是由Tensor（张量）与Flow（流）两部分组成，一看就知道这两部分格外重要，不然Google也不会随便拿来命名。所以接下来就挨个详细解剖这俩部分。</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span><span style="color:#ff0000">Tensor，翻译成张量</span>，是TensorFlow中管理数据的形式，其中<span style="color:#ff0000">Tensor并不保存真正的数据，他保存的是得到这些数字的计算过程</span>。刚开始接触TensorFlow的话，很不容易明白这是什么吧，你可以换个方式理解，从tensor的功能上可以把他看作成多维数组（只是用于理解，并不等同于数组！后面会解释道），比如，一个shape=[2,3]的张量可以理解成一个大LIST中有两个小list，例如，大LIST=[[1,2,3],[4,5,6]]。而每一个小list由三个数据构成，list1=[1,2,3]，list2=[4,5,6]，高维度的Tensor依此类推，大LIST套小list，环环套。再次说明一下，这个只是为了理解，<span style="color:#ff0000">张量并不等同于数组</span>！</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>张量是TensorFlow中基本的数据结构，我们可以用TensorFlow定义一个W（关于TensorFlow定义变量的方法以后会讲，现在直接运用）</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p style="text-align:center"><img alt="" src="images/53a0001ac7d607d91e8e9736808bbc40"><br>
+</br></img></p>
+<p> </p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>我们通过tf.constant把W定义成了一个shape=（2，3）的张量，当我们直接打印W时，会发现并没有像数组那样直接打印出来，而是一个关于Tensor的解释。如图：</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p></p>
+<p style="text-align:center"><img alt="" src="images/8a9c4bfcfa12ceeb2e887d03510cf0e0"><br>
+</br></img></p>
+<p> </p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>由图可以看见，关于Tensor的解释主要由三个属性组成：<span style="color:#ff0000">名字(name)、维度(shape)、类型(type)</span>。其中第一个属性名字给出了这个张量是怎么来的，"Const:0"表示的是这个张量由计算节点Const（关于节点的解释下面介绍Flow的时候给出）输出的第一个结果得来；第二个属性shape给出了这个张量的维度信息，shape=(2,3)说明了张量是个二维数组，也可理解为一个2
+ x 3的矩阵；第三个属性说明了张量的数据类型，TensorFlow支持14种不同的类型：<span style="color:#ff0000">浮点型float(tf.float32, tf.float64)， 整数型int(tf.int8,tf.int16, tf.int32, tf.int64, tf.int128)， 布尔型(tf.bool)，复数(tf.complex64,tf.complex128)</span>，值得注意的一点时，当两个张量进行运算时，数据类型要相同，不然TensorFlow会报错。由此可见我们定义的W并非简单的数组。</span></p>
+<p></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>这时候可能就会有个疑问，既然张量保存的计算过程，那如何得到张量里的数据呢？或者如何将张量print出来，而不是仅仅是打印关于Tensor的解释呢？</span></p>
+<p></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>这个就涉及到TensorFlow的第二个关键点，Flow（流）的解释了。<span style="color:#ff0000">Flow可以理解成各个张量计算相互转化的过程，而TensorFlow计算过程是基于一个叫计算图的的方式进行的</span>。一个简单的计算图结构如下：</span></p>
+<p></p>
+<p></p>
+<p><br>
+</br></p>
+<p style="text-align:center"><img alt="" src="images/2a9e7b620813fd37e2e0c217fad2caab"><br>
+</br></img></p>
+<p><span style="color:windowtext"> </span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>图中的圆圈a与b、以及矩形add是计算图中的一个节点，<span style="color:#ff0000">需要注意的是节点的含义指的是TensorFlow中的计算过程</span>！这个简单的计算图代码如下：</span></p>
+<p></p>
+<p align="center"><img alt="" src="images/040bbf9b4b434c97f9f2232c5196aff5"/></p>
+<p> </p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>看到这里可能会有疑问了，add节点很好理解，代表的是节点a与节点b相加的计算过程。<span style="color:#ff0000">但是a与b明明都是由tf.constant函数定义的张量，怎么会在计算图中表示节点呢？怎么会是计算过程呢？</span>这个恰恰就刚好解释了TensorFlow中张量与数组之间的区别。还记得之前我说张量保存的计算过程吧，再看上面打印张量W的图：</span></p>
+<p></p>
+<p style="text-align:center"><img alt="" src="images/8a9c4bfcfa12ceeb2e887d03510cf0e0"><br>
+</br></img></p>
+<p align="center"></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>当我们打印张量W的时候，得到的结果是一个Tensor的解释，<span style="color:#ff0000">其中第一个属性名字（name）表示的是该张量由节点Const的第一个输出而来</span>。正是这个原因，当我们用tf.Variable或者tf.constant定义变量或者常量的时候，<span style="color:#ff0000">我们其实定义的是一个特殊的计算过程</span>，而这个计算过程我们可以理解为恒定的输出某个数。所以这就可以很好的理解为什么a与b在计算图中是一个节点了，并且张量为什么是一个计算过程了。</span></p>
+<p></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>既然张量是一个计算过程，而我们明明想要的是张量里的数据，那我们到底要怎样才能得到我们想要的结果呢？</span></p>
+<p></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>这就回到了用TensorFlow进行编程时特有的形式了。编程时，我们首先要做的就是构建计算图，其目的是定义计算图中的所有计算，注意此时的计算图并没有执行的功能，要想将定义好的计算图执行运算，要用到TensorFlow中的会话来进行，创建会话用tf.Sess()，具体代码如图：</span></p>
+<p></p>
+<p style="text-align:center"><img alt="" src="images/42d31d0e6e9ecfc19d2df39ff54d916c"><br>
+</br></img></p>
+<p align="center"></p>
+<p> </p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>上面有几点需要注意下：<span style="color:#ff0000">1）</span>tf.global_variables_initializer()这个函数的作用是初始化所有变量，TensorFlow中要求将定义好的变量进行初始化，可以当成是固定模式，没什么好过多说的。<span style="color:#ff0000">2）</span>withtf.Session()
+ as sess: 这个是创建会话用到的，也可以理解为固定模式，<span style="color:#ff0000">3）</span>经过a+b后形成的y也是一个张量，而通过会话中sees.run(y)执行后，此时打印的张量为为：</span></p>
+<p></p>
+<p style="text-align:center"><img alt="" src="images/915885ffed2bbb9356c5380a6a2131f1"><br>
+</br></img></p>
+<p align="center"></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>也就是说，张量经过会话执行运算后，这时候就是计算结果了，而非一个Tensor。</span></p>
+<p></p>
+<p><span style="font-size:18px"> </span></p>
+<p><span style="font-size:18px">      </span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>经过上面的解释，相信已经可以很好的理解Tensor以及TensorFlow进行编程的形式了。</span></p>
+<p><span style="font-size:18px">      </span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>后面会抽时间进一步说明TensorFlow进行编程的时候如何构建图与计算，并且会附上一个全连接神经网络的具体编程过程。</span></p>
+</div>
+</body></html>

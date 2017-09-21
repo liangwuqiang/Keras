@@ -1,17 +1,17 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">ԭ������</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">原文链接</a></p>
         <div class="section">
-<h1 id="keras">����Kerasģ��</h1>
-<p>Keras���������͵�ģ�ͣ�<a href="../sequential/">���ģ�ͣ�Sequential��</a>��<a href="../model/">����ʽģ�ͣ�Model��</a>������ʽģ��Ӧ�ø�Ϊ�㷺�����ģ���Ǻ���ʽģ�͵�һ�����������</p>
-<p>����ģ����һЩ��������ͬ�ģ�</p>
+<h1 id="keras">关于Keras模型</h1>
+<p>Keras有两种类型的模型，<a href="../sequential/">序贯模型（Sequential）</a>和<a href="../model/">函数式模型（Model）</a>，函数式模型应用更为广泛，序贯模型是函数式模型的一种特殊情况。</p>
+<p>两类模型有一些方法是相同的：</p>
 <ul>
 <li>
-<p><code>model.summary()</code>����ӡ��ģ�͸ſ�</p>
+<p><code>model.summary()</code>：打印出模型概况</p>
 </li>
 <li>
-<p><code>model.get_config()</code>:���ذ���ģ��������Ϣ��Python�ֵ䡣ģ��Ҳ���Դ�����config��Ϣ���ع���ȥ</p>
+<p><code>model.get_config()</code>:返回包含模型配置信息的Python字典。模型也可以从它的config信息中重构回去</p>
 </li>
 </ul>
 <pre><code class="python">config = model.get_config()
@@ -21,16 +21,16 @@ model = Sequential.from_config(config)
 </code></pre>
 <ul>
 <li>
-<p><code>model.get_layer()</code>�����ݲ������±��ò����</p>
+<p><code>model.get_layer()</code>：依据层名或下标获得层对象</p>
 </li>
 <li>
-<p><code>model.get_weights()</code>������ģ��Ȩ���������б�������Ϊnumpy array</p>
+<p><code>model.get_weights()</code>：返回模型权重张量的列表，类型为numpy array</p>
 </li>
 <li>
-<p><code>model.set_weights()</code>����numpy array�ｫȨ�������ģ�ͣ�Ҫ�����������<code>model.get_weights()</code>��ͬ����״��</p>
+<p><code>model.set_weights()</code>：从numpy array里将权重载入给模型，要求数组具有与<code>model.get_weights()</code>相同的形状。</p>
 </li>
 <li>
-<p><code>model.to_json</code>�����ش���ģ�͵�JSON�ַ���������������ṹ��������Ȩֵ�����Դ�JSON�ַ������ع�ԭģ�ͣ�</p>
+<p><code>model.to_json</code>：返回代表模型的JSON字符串，仅包含网络结构，不包含权值。可以从JSON字符串中重构原模型：</p>
 </li>
 </ul>
 <pre><code class="python">from models import model_from_json
@@ -39,7 +39,7 @@ json_string = model.to_json()
 model = model_from_json(json_string)
 </code></pre>
 <ul>
-<li><code>model.to_yaml</code>����<code>model.to_json</code>���ƣ�ͬ�����ԴӲ�����YAML�ַ������ع�ģ��</li>
+<li><code>model.to_yaml</code>：与<code>model.to_json</code>类似，同样可以从产生的YAML字符串中重构模型</li>
 </ul>
 <pre><code class="python">from models import model_from_yaml
 
@@ -48,10 +48,10 @@ model = model_from_yaml(yaml_string)
 </code></pre>
 <ul>
 <li>
-<p><code>model.save_weights(filepath)</code>����ģ��Ȩ�ر��浽ָ��·�����ļ�������HDF5����׺��.h5��</p>
+<p><code>model.save_weights(filepath)</code>：将模型权重保存到指定路径，文件类型是HDF5（后缀是.h5）</p>
 </li>
 <li>
-<p><code>model.load_weights(filepath, by_name=False)</code>����HDF5�ļ��м���Ȩ�ص���ǰģ����, Ĭ�������ģ�͵Ľṹ�����ֲ��䡣����뽫Ȩ�����벻ͬ��ģ�ͣ���Щ����ͬ���У�������<code>by_name=True</code>��ֻ������ƥ��Ĳ�Ż�����Ȩ��</p>
+<p><code>model.load_weights(filepath, by_name=False)</code>：从HDF5文件中加载权重到当前模型中, 默认情况下模型的结构将保持不变。如果想将权重载入不同的模型（有些层相同）中，则设置<code>by_name=True</code>，只有名字匹配的层才会载入权重</p>
 </li>
 </ul>
 </div>

@@ -1,109 +1,109 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="_1">ĞòÁĞÔ¤´¦Àí</h1>
-<h2 id="pad_sequences">Ìî³äĞòÁĞpad_sequences</h2>
+<h1 id="_1">åºåˆ—é¢„å¤„ç†</h1>
+<h2 id="pad_sequences">å¡«å……åºåˆ—pad_sequences</h2>
 <pre><code class="python">keras.preprocessing.sequence.pad_sequences(sequences, maxlen=None, dtype='int32',
     padding='pre', truncating='pre', value=0.)
 </code></pre>
-<p>½«³¤Îª<code>nb_samples</code>µÄĞòÁĞ£¨±êÁ¿ĞòÁĞ£©×ª»¯ÎªĞÎÈç<code>(nb_samples,nb_timesteps)</code>2D numpy array¡£Èç¹ûÌá¹©ÁË²ÎÊı<code>maxlen</code>£¬<code>nb_timesteps=maxlen</code>£¬·ñÔòÆäÖµÎª×î³¤ĞòÁĞµÄ³¤¶È¡£ÆäËû¶ÌÓÚ¸Ã³¤¶ÈµÄĞòÁĞ¶¼»áÔÚºó²¿Ìî³ä0ÒÔ´ïµ½¸Ã³¤¶È¡£³¤ÓÚ<code>nb_timesteps</code>µÄĞòÁĞ½«»á±»½Ø¶Ï£¬ÒÔÊ¹ÆäÆ¥ÅäÄ¿±ê³¤¶È¡£paddingºÍ½Ø¶Ï·¢ÉúµÄÎ»ÖÃ·Ö±ğÈ¡¾öÓÚ<code>padding</code>ºÍ<code>truncating</code>.</p>
-<h3 id="_2">²ÎÊı</h3>
+<p>å°†é•¿ä¸º<code>nb_samples</code>çš„åºåˆ—ï¼ˆæ ‡é‡åºåˆ—ï¼‰è½¬åŒ–ä¸ºå½¢å¦‚<code>(nb_samples,nb_timesteps)</code>2D numpy arrayã€‚å¦‚æœæä¾›äº†å‚æ•°<code>maxlen</code>ï¼Œ<code>nb_timesteps=maxlen</code>ï¼Œå¦åˆ™å…¶å€¼ä¸ºæœ€é•¿åºåˆ—çš„é•¿åº¦ã€‚å…¶ä»–çŸ­äºè¯¥é•¿åº¦çš„åºåˆ—éƒ½ä¼šåœ¨åéƒ¨å¡«å……0ä»¥è¾¾åˆ°è¯¥é•¿åº¦ã€‚é•¿äº<code>nb_timesteps</code>çš„åºåˆ—å°†ä¼šè¢«æˆªæ–­ï¼Œä»¥ä½¿å…¶åŒ¹é…ç›®æ ‡é•¿åº¦ã€‚paddingå’Œæˆªæ–­å‘ç”Ÿçš„ä½ç½®åˆ†åˆ«å–å†³äº<code>padding</code>å’Œ<code>truncating</code>.</p>
+<h3 id="_2">å‚æ•°</h3>
 <ul>
 <li>
-<p>sequences£º¸¡µãÊı»òÕûÊı¹¹³ÉµÄÁ½²ãÇ¶Ì×ÁĞ±í</p>
+<p>sequencesï¼šæµ®ç‚¹æ•°æˆ–æ•´æ•°æ„æˆçš„ä¸¤å±‚åµŒå¥—åˆ—è¡¨</p>
 </li>
 <li>
-<p>maxlen£ºNone»òÕûÊı£¬ÎªĞòÁĞµÄ×î´ó³¤¶È¡£´óÓÚ´Ë³¤¶ÈµÄĞòÁĞ½«±»½Ø¶Ì£¬Ğ¡ÓÚ´Ë³¤¶ÈµÄĞòÁĞ½«ÔÚºó²¿Ìî0.</p>
+<p>maxlenï¼šNoneæˆ–æ•´æ•°ï¼Œä¸ºåºåˆ—çš„æœ€å¤§é•¿åº¦ã€‚å¤§äºæ­¤é•¿åº¦çš„åºåˆ—å°†è¢«æˆªçŸ­ï¼Œå°äºæ­¤é•¿åº¦çš„åºåˆ—å°†åœ¨åéƒ¨å¡«0.</p>
 </li>
 <li>
-<p>dtype£º·µ»ØµÄnumpy arrayµÄÊı¾İÀàĞÍ</p>
+<p>dtypeï¼šè¿”å›çš„numpy arrayçš„æ•°æ®ç±»å‹</p>
 </li>
 <li>
-<p>padding£º¡®pre¡¯»ò¡®post¡¯£¬È·¶¨µ±ĞèÒª²¹0Ê±£¬ÔÚĞòÁĞµÄÆğÊ¼»¹ÊÇ½áÎ²²¹</p>
+<p>paddingï¼šâ€˜preâ€™æˆ–â€˜postâ€™ï¼Œç¡®å®šå½“éœ€è¦è¡¥0æ—¶ï¼Œåœ¨åºåˆ—çš„èµ·å§‹è¿˜æ˜¯ç»“å°¾è¡¥</p>
 </li>
 <li>
-<p>truncating£º¡®pre¡¯»ò¡®post¡¯£¬È·¶¨µ±ĞèÒª½Ø¶ÏĞòÁĞÊ±£¬´ÓÆğÊ¼»¹ÊÇ½áÎ²½Ø¶Ï</p>
+<p>truncatingï¼šâ€˜preâ€™æˆ–â€˜postâ€™ï¼Œç¡®å®šå½“éœ€è¦æˆªæ–­åºåˆ—æ—¶ï¼Œä»èµ·å§‹è¿˜æ˜¯ç»“å°¾æˆªæ–­</p>
 </li>
 <li>
-<p>value£º¸¡µãÊı£¬´ËÖµ½«ÔÚÌî³äÊ±´úÌæÄ¬ÈÏµÄÌî³äÖµ0</p>
+<p>valueï¼šæµ®ç‚¹æ•°ï¼Œæ­¤å€¼å°†åœ¨å¡«å……æ—¶ä»£æ›¿é»˜è®¤çš„å¡«å……å€¼0</p>
 </li>
 </ul>
-<h3 id="_3">·µ»ØÖµ</h3>
-<p>·µ»ØĞÎÈç<code>(nb_samples,nb_timesteps)</code>µÄ2DÕÅÁ¿</p>
+<h3 id="_3">è¿”å›å€¼</h3>
+<p>è¿”å›å½¢å¦‚<code>(nb_samples,nb_timesteps)</code>çš„2Då¼ é‡</p>
 <hr/>
-<h2 id="skipgrams">Ìø×Öskipgrams</h2>
+<h2 id="skipgrams">è·³å­—skipgrams</h2>
 <pre><code class="python">keras.preprocessing.sequence.skipgrams(sequence, vocabulary_size,
     window_size=4, negative_samples=1., shuffle=True,
     categorical=False, sampling_table=None)
 </code></pre>
-<p>skipgrams½«Ò»¸ö´ÊÏòÁ¿ÏÂ±êµÄĞòÁĞ×ª»¯ÎªÏÂÃæµÄÒ»¶Ôtuple£º</p>
+<p>skipgramså°†ä¸€ä¸ªè¯å‘é‡ä¸‹æ ‡çš„åºåˆ—è½¬åŒ–ä¸ºä¸‹é¢çš„ä¸€å¯¹tupleï¼š</p>
 <ul>
 <li>
-<p>¶ÔÓÚÕıÑù±¾£¬×ª»¯Îª£¨word£¬word in the same window£©</p>
+<p>å¯¹äºæ­£æ ·æœ¬ï¼Œè½¬åŒ–ä¸ºï¼ˆwordï¼Œword in the same windowï¼‰</p>
 </li>
 <li>
-<p>¶ÔÓÚ¸ºÑù±¾£¬×ª»¯Îª£¨word£¬random word from the vocabulary£©</p>
+<p>å¯¹äºè´Ÿæ ·æœ¬ï¼Œè½¬åŒ–ä¸ºï¼ˆwordï¼Œrandom word from the vocabularyï¼‰</p>
 </li>
 </ul>
-<p>¡¾Tips¡¿¸ù¾İÎ¬»ù°Ù¿Æ£¬n-gram´ú±íÔÚ¸ø¶¨ĞòÁĞÖĞ²úÉúÁ¬ĞøµÄnÏî£¬µ±ĞòÁĞ¾ä×ÓÊ±£¬Ã¿Ïî¾ÍÊÇµ¥´Ê£¬´ËÊ±n-gramÒ²³ÆÎªshingles¡£¶øskip-gramµÄÍÆ¹ã£¬skip-gram²úÉúµÄnÏî×ÓĞòÁĞÖĞ£¬¸÷¸öÏîÔÚÔ­ĞòÁĞÖĞ²»Á¬Ğø£¬¶øÊÇÌøÁËk¸ö×Ö¡£ÀıÈç£¬¶ÔÓÚ¾ä×Ó£º</p>
-<p>¡°the rain in Spain falls mainly on the plain¡±</p>
-<p>Æä 2-gramsÎª×ÓĞòÁĞ¼¯ºÏ£º</p>
-<p>the rain£¬rain in£¬in Spain£¬Spain falls£¬falls mainly£¬mainly on£¬on the£¬the plain</p>
-<p>Æä 1-skip-2-gramsÎª×ÓĞòÁĞ¼¯ºÏ£º</p>
+<p>ã€Tipsã€‘æ ¹æ®ç»´åŸºç™¾ç§‘ï¼Œn-gramä»£è¡¨åœ¨ç»™å®šåºåˆ—ä¸­äº§ç”Ÿè¿ç»­çš„né¡¹ï¼Œå½“åºåˆ—å¥å­æ—¶ï¼Œæ¯é¡¹å°±æ˜¯å•è¯ï¼Œæ­¤æ—¶n-gramä¹Ÿç§°ä¸ºshinglesã€‚è€Œskip-gramçš„æ¨å¹¿ï¼Œskip-gramäº§ç”Ÿçš„né¡¹å­åºåˆ—ä¸­ï¼Œå„ä¸ªé¡¹åœ¨åŸåºåˆ—ä¸­ä¸è¿ç»­ï¼Œè€Œæ˜¯è·³äº†kä¸ªå­—ã€‚ä¾‹å¦‚ï¼Œå¯¹äºå¥å­ï¼š</p>
+<p>â€œthe rain in Spain falls mainly on the plainâ€</p>
+<p>å…¶ 2-gramsä¸ºå­åºåˆ—é›†åˆï¼š</p>
+<p>the rainï¼Œrain inï¼Œin Spainï¼ŒSpain fallsï¼Œfalls mainlyï¼Œmainly onï¼Œon theï¼Œthe plain</p>
+<p>å…¶ 1-skip-2-gramsä¸ºå­åºåˆ—é›†åˆï¼š</p>
 <p>the in, rain Spain, in falls, Spain mainly, falls on, mainly the, on plain.</p>
-<p>¸ü¶àÏêÇéÇë²Î¿¼<a href="http://arxiv.org/pdf/1301.3781v3.pdf">Efficient Estimation of Word Representations in Vector Space</a></p>
-<h3 id="_4">²ÎÊı</h3>
+<p>æ›´å¤šè¯¦æƒ…è¯·å‚è€ƒ<a href="http://arxiv.org/pdf/1301.3781v3.pdf">Efficient Estimation of Word Representations in Vector Space</a></p>
+<h3 id="_4">å‚æ•°</h3>
 <ul>
 <li>
-<p>sequence£ºÏÂ±êµÄÁĞ±í£¬Èç¹ûÊ¹ÓÃsampling_tabel£¬ÔòÄ³¸ö´ÊµÄÏÂ±êÓ¦¸ÃÎªËüÔÚÊı¾İ¿âÖĞµÄË³Ğò¡££¨´Ó1¿ªÊ¼£©</p>
+<p>sequenceï¼šä¸‹æ ‡çš„åˆ—è¡¨ï¼Œå¦‚æœä½¿ç”¨sampling_tabelï¼Œåˆ™æŸä¸ªè¯çš„ä¸‹æ ‡åº”è¯¥ä¸ºå®ƒåœ¨æ•°æ®åº“ä¸­çš„é¡ºåºã€‚ï¼ˆä»1å¼€å§‹ï¼‰</p>
 </li>
 <li>
-<p>vocabulary_size£ºÕûÊı£¬×Öµä´óĞ¡</p>
+<p>vocabulary_sizeï¼šæ•´æ•°ï¼Œå­—å…¸å¤§å°</p>
 </li>
 <li>
-<p>window_size£ºÕûÊı£¬ÕıÑù±¾¶ÔÖ®¼äµÄ×î´ó¾àÀë</p>
+<p>window_sizeï¼šæ•´æ•°ï¼Œæ­£æ ·æœ¬å¯¹ä¹‹é—´çš„æœ€å¤§è·ç¦»</p>
 </li>
 <li>
-<p>negative_samples£º´óÓÚ0µÄ¸¡µãÊı£¬µÈÓÚ0´ú±íÃ»ÓĞ¸ºÑù±¾£¬µÈÓÚ1´ú±í¸ºÑù±¾ÓëÕıÑù±¾ÊıÄ¿ÏàÍ¬£¬ÒÔ´ËÀàÍÆ£¨¼´¸ºÑù±¾µÄÊıÄ¿ÊÇÕıÑù±¾µÄ<code>negative_samples</code>±¶£©</p>
+<p>negative_samplesï¼šå¤§äº0çš„æµ®ç‚¹æ•°ï¼Œç­‰äº0ä»£è¡¨æ²¡æœ‰è´Ÿæ ·æœ¬ï¼Œç­‰äº1ä»£è¡¨è´Ÿæ ·æœ¬ä¸æ­£æ ·æœ¬æ•°ç›®ç›¸åŒï¼Œä»¥æ­¤ç±»æ¨ï¼ˆå³è´Ÿæ ·æœ¬çš„æ•°ç›®æ˜¯æ­£æ ·æœ¬çš„<code>negative_samples</code>å€ï¼‰</p>
 </li>
 <li>
-<p>shuffle£º²¼¶ûÖµ£¬È·¶¨ÊÇ·ñËæ»ú´òÂÒÑù±¾</p>
+<p>shuffleï¼šå¸ƒå°”å€¼ï¼Œç¡®å®šæ˜¯å¦éšæœºæ‰“ä¹±æ ·æœ¬</p>
 </li>
 <li>
-<p>categorical£º²¼¶ûÖµ£¬È·¶¨ÊÇ·ñÒªÊ¹µÃ·µ»ØµÄ±êÇ©¾ßÓĞÈ·¶¨Àà±ğ</p>
+<p>categoricalï¼šå¸ƒå°”å€¼ï¼Œç¡®å®šæ˜¯å¦è¦ä½¿å¾—è¿”å›çš„æ ‡ç­¾å…·æœ‰ç¡®å®šç±»åˆ«</p>
 </li>
 <li>
-<p>sampling_table£ºĞÎÈç<code>(vocabulary_size,)</code>µÄnumpy array£¬ÆäÖĞ<code>sampling_table[i]</code>´ú±íÃ»ÓĞ¸ºÑù±¾»òËæ»ú¸ºÑù±¾¡£µÈÓÚ1ÎªÓëÕıÑù±¾µÄÊıÄ¿ÏàÍ¬
-²ÉÑùµ½¸ÃÏÂ±êÎªiµÄµ¥´ÊµÄ¸ÅÂÊ£¨¼Ù¶¨¸Ãµ¥´ÊÊÇÊı¾İ¿âÖĞµÚi³£¼ûµÄµ¥´Ê£©</p>
+<p>sampling_tableï¼šå½¢å¦‚<code>(vocabulary_size,)</code>çš„numpy arrayï¼Œå…¶ä¸­<code>sampling_table[i]</code>ä»£è¡¨æ²¡æœ‰è´Ÿæ ·æœ¬æˆ–éšæœºè´Ÿæ ·æœ¬ã€‚ç­‰äº1ä¸ºä¸æ­£æ ·æœ¬çš„æ•°ç›®ç›¸åŒ
+é‡‡æ ·åˆ°è¯¥ä¸‹æ ‡ä¸ºiçš„å•è¯çš„æ¦‚ç‡ï¼ˆå‡å®šè¯¥å•è¯æ˜¯æ•°æ®åº“ä¸­ç¬¬iå¸¸è§çš„å•è¯ï¼‰</p>
 </li>
 </ul>
-<h3 id="_5">Êä³ö</h3>
-<p>º¯ÊıµÄÊä³öÊÇÒ»¸ö<code>(couples,labels)</code>µÄÔª×é£¬ÆäÖĞ£º</p>
+<h3 id="_5">è¾“å‡º</h3>
+<p>å‡½æ•°çš„è¾“å‡ºæ˜¯ä¸€ä¸ª<code>(couples,labels)</code>çš„å…ƒç»„ï¼Œå…¶ä¸­ï¼š</p>
 <ul>
 <li>
-<p><code>couples</code>ÊÇÒ»¸ö³¤Îª2µÄÕûÊıÁĞ±í£º<code>[word_index,other_word_index]</code></p>
+<p><code>couples</code>æ˜¯ä¸€ä¸ªé•¿ä¸º2çš„æ•´æ•°åˆ—è¡¨ï¼š<code>[word_index,other_word_index]</code></p>
 </li>
 <li>
-<p><code>labels</code>ÊÇÒ»¸ö½öÓÉ0ºÍ1¹¹³ÉµÄÁĞ±í£¬1´ú±í<code>other_word_index</code>ÔÚ<code>word_index</code>µÄ´°¿Ú£¬0´ú±í<code>other_word_index</code>ÊÇ´ÊµäÀïµÄËæ»úµ¥´Ê¡£</p>
+<p><code>labels</code>æ˜¯ä¸€ä¸ªä»…ç”±0å’Œ1æ„æˆçš„åˆ—è¡¨ï¼Œ1ä»£è¡¨<code>other_word_index</code>åœ¨<code>word_index</code>çš„çª—å£ï¼Œ0ä»£è¡¨<code>other_word_index</code>æ˜¯è¯å…¸é‡Œçš„éšæœºå•è¯ã€‚</p>
 </li>
 <li>
-<p>Èç¹ûÉèÖÃ<code>categorical</code>Îª<code>True</code>£¬Ôò±êÇ©½«ÒÔone-hotµÄ·½Ê½¸ø³ö£¬¼´1±äÎª[0,1]£¬0±äÎª[1,0]</p>
+<p>å¦‚æœè®¾ç½®<code>categorical</code>ä¸º<code>True</code>ï¼Œåˆ™æ ‡ç­¾å°†ä»¥one-hotçš„æ–¹å¼ç»™å‡ºï¼Œå³1å˜ä¸º[0,1]ï¼Œ0å˜ä¸º[1,0]</p>
 </li>
 </ul>
 <hr/>
-<h2 id="make_sampling_table">»ñÈ¡²ÉÑù±ímake_sampling_table</h2>
+<h2 id="make_sampling_table">è·å–é‡‡æ ·è¡¨make_sampling_table</h2>
 <pre><code class="python">keras.preprocessing.sequence.make_sampling_table(size, sampling_factor=1e-5)
 </code></pre>
-<p>¸Ãº¯ÊıÓÃÒÔ²úÉú<code>skipgrams</code>ÖĞËùĞèÒªµÄ²ÎÊı<code>sampling_table</code>¡£ÕâÊÇÒ»¸ö³¤Îª<code>size</code>µÄÏòÁ¿£¬<code>sampling_table[i]</code>´ú±í²ÉÑùµ½Êı¾İ¼¯ÖĞµÚi³£¼ûµÄ´ÊµÄ¸ÅÂÊ£¨ÎªÆ½ºâÆÚÆğ¼û£¬¶ÔÓÚÔ½¾­³£³öÏÖµÄ´Ê£¬ÒªÒÔÔ½µÍµÄ¸ÅÂÊ²Éµ½Ëü£©</p>
-<h3 id="_6">²ÎÊı</h3>
+<p>è¯¥å‡½æ•°ç”¨ä»¥äº§ç”Ÿ<code>skipgrams</code>ä¸­æ‰€éœ€è¦çš„å‚æ•°<code>sampling_table</code>ã€‚è¿™æ˜¯ä¸€ä¸ªé•¿ä¸º<code>size</code>çš„å‘é‡ï¼Œ<code>sampling_table[i]</code>ä»£è¡¨é‡‡æ ·åˆ°æ•°æ®é›†ä¸­ç¬¬iå¸¸è§çš„è¯çš„æ¦‚ç‡ï¼ˆä¸ºå¹³è¡¡æœŸèµ·è§ï¼Œå¯¹äºè¶Šç»å¸¸å‡ºç°çš„è¯ï¼Œè¦ä»¥è¶Šä½çš„æ¦‚ç‡é‡‡åˆ°å®ƒï¼‰</p>
+<h3 id="_6">å‚æ•°</h3>
 <ul>
 <li>
-<p>size£º´ÊµäµÄ´óĞ¡</p>
+<p>sizeï¼šè¯å…¸çš„å¤§å°</p>
 </li>
 <li>
-<p>sampling_factor£º´ËÖµÔ½µÍ£¬Ôò´ú±í²ÉÑùÊ±¸ü»ºÂıµÄ¸ÅÂÊË¥¼õ£¨¼´³£ÓÃµÄ´Ê»á±»ÒÔ¸üµÍµÄ¸ÅÂÊ±»²Éµ½£©£¬Èç¹ûÉèÖÃÎª1£¬Ôò´ú±í²»½øĞĞÏÂ²ÉÑù£¬¼´ËùÓĞÑù±¾±»²ÉÑùµ½µÄ¸ÅÂÊ¶¼ÊÇ1¡£</p>
+<p>sampling_factorï¼šæ­¤å€¼è¶Šä½ï¼Œåˆ™ä»£è¡¨é‡‡æ ·æ—¶æ›´ç¼“æ…¢çš„æ¦‚ç‡è¡°å‡ï¼ˆå³å¸¸ç”¨çš„è¯ä¼šè¢«ä»¥æ›´ä½çš„æ¦‚ç‡è¢«é‡‡åˆ°ï¼‰ï¼Œå¦‚æœè®¾ç½®ä¸º1ï¼Œåˆ™ä»£è¡¨ä¸è¿›è¡Œä¸‹é‡‡æ ·ï¼Œå³æ‰€æœ‰æ ·æœ¬è¢«é‡‡æ ·åˆ°çš„æ¦‚ç‡éƒ½æ˜¯1ã€‚</p>
 </li>
 </ul>
 </div>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+</head><body>
+<p><a href="http://blog.csdn.net/roseki/article/details/70832143">原文链接</a></p>
+<p><center><h1>罗斯基白话：TensorFlow+实战系列（四）变量管理</h1></center></p>
+    <div class="article_content tracking-ad" data-dsm="post" data-mod="popu_307" id="article_content">
+<p> </p>
+<h1 style="text-align:center"><span style="color:#ff6666">白话TensorFlow +实战系列（一）<br>
+</br></span><span style="color:#ff6666">变量管理</span></h1>
+<p><span style="color:#ff6666"> </span></p>
+<p>       <span style="font-size:18px">这篇文章主要记录常用的两种管理变量的方法。个人感觉变量管理是比较重要的，特别是当创建一个复杂的神经网络的时候，变量一旦增多，如果不好好管理这些变量，代码的可读性会变得比较差，到最后可能自己都不知道变量到底指的是啥。所以，这次总结了两种常用的管理变量方法。</span></p>
+<p><span style="font-size:18px">       </span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>1）<span style="color:#ff6666">基于字典的方法创建变量</span></span></p>
+<p><span style="font-size:18px">       这种方法其实就是用字典的方式，key就是你取的网络层名字，value就是神经网络各层的变量。如要创建有两个隐藏层的神经网络，各层的变量可由如下代码管理：</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p><img alt="" src="images/9cf77bfe18002a7ca0a59a65df5e1158"><br>
+</br></img></p>
+<p> </p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>其中layer1表示的是输入层到第一层隐藏层的变量</span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>layer2表示第一层隐藏层到第二层隐藏层的变量</span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>out表示第二层隐藏层到输出层的变量</span></p>
+<p><span style="font-size:18px"> </span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>这样我们就将各层的变量通过字典的形式封装起来，当构建神经网络的时候，我们可以直接调用，示例如下：</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p style="text-align:center"><img alt="" src="images/6225eee01624b70b6a8af9acbde4c6e8"><br>
+</br></img></p>
+<p></p>
+<p> </p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>如图通过直接调用w["layer1"]就可以获取layer1的权重，以此类推。</span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>这样就成功的创建了一个全连接神经网络</span></p>
+<p> </p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>2）<span style="color:#ff6666">变量共享</span></span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>TensorFlow提供了一种更简单的方法管理变量，即变量共享。<span style="color:#ff6666">该方法主要是通过tf.get_variable()与tf.variable_scope()函数来实现。</span>下面分别说说怎么用</span></p>
+<p><span style="font-size:18px"> </span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>1.<span style="color:#ff6666">tf.get_variable()</span></span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>该函数可以用于创建变量，也可以用于获取已经创建的变量。</span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>当用于创建变量的时候，他的作用与tf.Variable()可以理解成一样，只是参数的设置位置不同而已。</span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>如图，以下这两个变量创建的形式一样：</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p style="text-align:center"><img alt="" src="images/6e3164df1c49b5ce56f3e65c8caac6a4"><br>
+</br></img></p>
+<p></p>
+<p> </p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>这两个都是创建一个2*3的张量，不同的是，<span style="color:#ff6666">tf.Variable()张量名称这个参数是可选的，tf.get_variable()是必填的，并且tf.get_variable()是用initializer= ....来初始化张量的类型。</span></span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>其中tf.random_normal_initializer()初始化函数只是在tf.random_normal后面加个initializer()而已，其他的如tf.constant也是加个变成 tf.constant_initializer()，其他相似的函数类似，就不一一列举。</span></p>
+<p><span style="font-size:18px"> </span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>当需要用tf.get_variable()获取变量时，就需要通过tf.variable_scope()来创建一个上下文管理器，这个函数包含一个reuse参数，是一个布尔型参数，当<span style="color:#ff6666">reuse= True</span>时，指明在该管理器中，tf.get_variable()用于获取已经创建的变量；当<span style="color:#ff6666">reuse
+ = False</span>时，指明在该管理器中，tf.get_variable()用于创建变量。</span></p>
+<p><span style="font-size:18px"> </span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>如图，在命名空间foo中创建一个变量v1:</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p style="text-align:center"><img alt="" src="images/35bc39c49c26d8294993b595180382ba"><br>
+</br></img></p>
+<p></p>
+<p> </p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>接着在命名空间foo中获取变量v1:</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p style="text-align:center"><img alt="" src="images/3ab09ebc52488e8f490a56a18286c9c8"><br>
+</br></img></p>
+<p></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>打印结果为True，表明已经获取到之前创建的v1。</span></p>
+<p></p>
+<p><span style="font-size:18px"> </span></p>
+<p><span style="font-size:18px"><span style="white-space:pre"></span>接下来用变量共享的方法来创建之前的神经网络，代码如下：</span></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p><img alt="" src="images/c5964c9d8514954c970a765a5f82eade"><br>
+</br></img></p>
+<p></p>
+<p><span style="font-size:18px"><br>
+</br></span></p>
+<p><span style="font-size:18px">这样代码的可读性会比较强。</span></p>
+<p><span style="font-size:18px">当需要用训练好的网络时，直接调用<span style="color:#ff6666">network(x_input, reuse = True)</span>即可。</span></p>
+</div>
+</body></html>

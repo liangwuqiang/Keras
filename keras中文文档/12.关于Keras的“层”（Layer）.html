@@ -1,33 +1,33 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="keraslayer">¹ØÓÚKerasµÄ¡°²ã¡±£¨Layer£©</h1>
-<p>ËùÓĞµÄKeras²ã¶ÔÏó¶¼ÓĞÈçÏÂ·½·¨£º</p>
+<h1 id="keraslayer">å…³äºKerasçš„â€œå±‚â€ï¼ˆLayerï¼‰</h1>
+<p>æ‰€æœ‰çš„Keraså±‚å¯¹è±¡éƒ½æœ‰å¦‚ä¸‹æ–¹æ³•ï¼š</p>
 <ul>
 <li>
-<p><code>layer.get_weights()</code>£º·µ»Ø²ãµÄÈ¨ÖØ£¨numpy array£©</p>
+<p><code>layer.get_weights()</code>ï¼šè¿”å›å±‚çš„æƒé‡ï¼ˆnumpy arrayï¼‰</p>
 </li>
 <li>
-<p><code>layer.set_weights(weights)</code>£º´Ónumpy arrayÖĞ½«È¨ÖØ¼ÓÔØµ½¸Ã²ãÖĞ£¬ÒªÇónumpy arrayµÄĞÎ×´Óë* <code>layer.get_weights()</code>µÄĞÎ×´ÏàÍ¬</p>
+<p><code>layer.set_weights(weights)</code>ï¼šä»numpy arrayä¸­å°†æƒé‡åŠ è½½åˆ°è¯¥å±‚ä¸­ï¼Œè¦æ±‚numpy arrayçš„å½¢çŠ¶ä¸* <code>layer.get_weights()</code>çš„å½¢çŠ¶ç›¸åŒ</p>
 </li>
 <li>
-<p><code>layer.get_config()</code>£º·µ»Øµ±Ç°²ãÅäÖÃĞÅÏ¢µÄ×Öµä£¬²ãÒ²¿ÉÒÔ½èÓÉÅäÖÃĞÅÏ¢ÖØ¹¹:</p>
+<p><code>layer.get_config()</code>ï¼šè¿”å›å½“å‰å±‚é…ç½®ä¿¡æ¯çš„å­—å…¸ï¼Œå±‚ä¹Ÿå¯ä»¥å€Ÿç”±é…ç½®ä¿¡æ¯é‡æ„:</p>
 </li>
 </ul>
 <pre><code class="python">layer = Dense(32)
 config = layer.get_config()
 reconstructed_layer = Dense.from_config(config)
 </code></pre>
-<p>»òÕß£º</p>
+<p>æˆ–è€…ï¼š</p>
 <pre><code class="python">from keras import layers
 
 config = layer.get_config()
 layer = layers.deserialize({'class_name': layer.__class__.__name__,
                             'config': config})
 </code></pre>
-<p>Èç¹û²ã½öÓĞÒ»¸ö¼ÆËã½Úµã£¨¼´¸Ã²ã²»ÊÇ¹²Ïí²ã£©£¬Ôò¿ÉÒÔÍ¨¹ıÏÂÁĞ·½·¨»ñµÃÊäÈëÕÅÁ¿¡¢Êä³öÕÅÁ¿¡¢ÊäÈëÊı¾İµÄĞÎ×´ºÍÊä³öÊı¾İµÄĞÎ×´£º</p>
+<p>å¦‚æœå±‚ä»…æœ‰ä¸€ä¸ªè®¡ç®—èŠ‚ç‚¹ï¼ˆå³è¯¥å±‚ä¸æ˜¯å…±äº«å±‚ï¼‰ï¼Œåˆ™å¯ä»¥é€šè¿‡ä¸‹åˆ—æ–¹æ³•è·å¾—è¾“å…¥å¼ é‡ã€è¾“å‡ºå¼ é‡ã€è¾“å…¥æ•°æ®çš„å½¢çŠ¶å’Œè¾“å‡ºæ•°æ®çš„å½¢çŠ¶ï¼š</p>
 <ul>
 <li>
 <p><code>layer.input</code></p>
@@ -42,7 +42,7 @@ layer = layers.deserialize({'class_name': layer.__class__.__name__,
 <p><code>layer.output_shape</code></p>
 </li>
 </ul>
-<p>Èç¹û¸Ã²ãÓĞ¶à¸ö¼ÆËã½Úµã£¨²Î¿¼<a href="../../getting_started/functional_API/#node">²ã¼ÆËã½ÚµãºÍ¹²Ïí²ã</a>£©¡£¿ÉÒÔÊ¹ÓÃÏÂÃæµÄ·½·¨</p>
+<p>å¦‚æœè¯¥å±‚æœ‰å¤šä¸ªè®¡ç®—èŠ‚ç‚¹ï¼ˆå‚è€ƒ<a href="../../getting_started/functional_API/#node">å±‚è®¡ç®—èŠ‚ç‚¹å’Œå…±äº«å±‚</a>ï¼‰ã€‚å¯ä»¥ä½¿ç”¨ä¸‹é¢çš„æ–¹æ³•</p>
 <ul>
 <li>
 <p><code>layer.get_input_at(node_index)</code></p>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
@@ -256,3 +257,166 @@ Visual C++ 2015 redistributable update 3 64 bit</a>. </span></font>就能解决�
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/">原文链接</a></p>
+        <div class="tut-main-content-pad">
+<hr>
+<h1>Tensorflow 安装</h1>
+<p style="text-align: center;">
+        
+          作者: <strong>莫烦</strong>   
+        
+        编辑: <strong>莫烦</strong>   
+        
+          2016-11-30
+        
+      </p>
+<p>学习资料:</p>
+<ul>
+<li>官方关于 Tensorflow 安装的 <a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html">说明</a></li>
+</ul>
+<p>安装 Tensorflow 时需要注意的几点:</p>
+<ol>
+<li>MacOS, Linux, Windows 系统均已支持 Tensorflow</li>
+<li>确定你的 python 版本</li>
+<li>你的 GPU 是 NVIDIA, 就可以安装 GPU 版本的 Tensorflow; 你的 GPU 不是 NVIDIA 也没有关系, 安装 CPU 版本的就好了.</li>
+</ol>
+<h4 class="tut-h4-pad" id="多种安装途径">多种安装途径</h4>
+<p>Tensorflow 的安装方式很多. 比如官网提供的:</p>
+<ul>
+<li><a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#pip-installation">Pip 安装</a></li>
+<li><a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#virtualenv-installation">Virtualenv 安装</a></li>
+<li><a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#anaconda-installation">Anaconda 安装</a></li>
+<li><a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#docker-installation">Docker 安装</a></li>
+<li><a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#installing-from-sources">从安装源 安装</a></li>
+</ul>
+<p>这节内容使用 pip 在每个系统的安装方式:</p>
+<h4 class="tut-h4-pad" id="Linux 和 MacOS">Linux 和 MacOS</h4>
+<p>本文将提到第一种最简单的安装方式, pip 安装.
+使用 pip 安装的时候要确保你的 pip 已经存在于你的电脑中. 如果还没有安装 pip. 
+你可以在 Terminal 窗口中运行这个:</p>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># Ubuntu/Linux 64-位 系统的执行代码:</span>
+<span class="gp">$ </span>sudo apt-get install python-pip python-dev
+
+<span class="c"># Mac OS X 系统的执行代码:</span>
+<span class="gp">$ </span>sudo easy_install pip
+<span class="gp">$ </span>sudo easy_install --upgrade six
+</code></pre>
+</div>
+<h5 id="LM-CPU">CPU 版</h5>
+<p>激动人心的时刻到了, Tensorflow (0.12) 刚刚做了更新, 绕过了复杂的安装步骤, 如果你只需要安装
+CPU 版本的 Tensorflow, 运行下面这个就好了:</p>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># python 2+ 的用户:</span>
+<span class="gp">$ </span>pip install tensorflow
+
+<span class="c"># python 3+ 的用户:</span>
+<span class="gp">$ </span>pip3 install tensorflow
+</code></pre>
+</div>
+<p>注意: 你需要8.1或更高版的 <code class="highlighter-rouge">pip</code> 才能顺利安装.</p>
+<h5 id="LM-GPU">GPU 版</h5>
+<p>但是 如果你想安装 GPU 版的 Tensorflow, 你要在下面找一个适合你版本的安装文件, 并在 terminal 中执行:</p>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># Ubuntu/Linux 64-bit, CPU only, Python 2.7</span>
+<span class="gp">$ </span><span class="nb">export </span><span class="nv">TF_BINARY_URL</span><span class="o">=</span>https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.0rc0-cp27-none-linux_x86_64.whl
+
+<span class="c"># Ubuntu/Linux 64-bit, GPU enabled, Python 2.7</span>
+<span class="c"># Requires CUDA toolkit 8.0 and CuDNN v5. For other versions, see "Installing from sources" below.</span>
+<span class="gp">$ </span><span class="nb">export </span><span class="nv">TF_BINARY_URL</span><span class="o">=</span>https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.12.0rc0-cp27-none-linux_x86_64.whl
+
+<span class="c"># Mac OS X, CPU only, Python 2.7:</span>
+<span class="gp">$ </span><span class="nb">export </span><span class="nv">TF_BINARY_URL</span><span class="o">=</span>https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.0rc0-py2-none-any.whl
+
+<span class="c"># Mac OS X, GPU enabled, Python 2.7:</span>
+<span class="gp">$ </span><span class="nb">export </span><span class="nv">TF_BINARY_URL</span><span class="o">=</span>https://storage.googleapis.com/tensorflow/mac/gpu/tensorflow_gpu-0.12.0rc0-py2-none-any.whl
+
+<span class="c"># Ubuntu/Linux 64-bit, CPU only, Python 3.4</span>
+<span class="gp">$ </span><span class="nb">export </span><span class="nv">TF_BINARY_URL</span><span class="o">=</span>https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.0rc0-cp34-cp34m-linux_x86_64.whl
+
+<span class="c"># Ubuntu/Linux 64-bit, GPU enabled, Python 3.4</span>
+<span class="c"># Requires CUDA toolkit 8.0 and CuDNN v5. For other versions, see "Installing from sources" below.</span>
+<span class="gp">$ </span><span class="nb">export </span><span class="nv">TF_BINARY_URL</span><span class="o">=</span>https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.12.0rc0-cp34-cp34m-linux_x86_64.whl
+
+<span class="c"># Ubuntu/Linux 64-bit, CPU only, Python 3.5</span>
+<span class="gp">$ </span><span class="nb">export </span><span class="nv">TF_BINARY_URL</span><span class="o">=</span>https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.0rc0-cp35-cp35m-linux_x86_64.whl
+
+<span class="c"># Ubuntu/Linux 64-bit, GPU enabled, Python 3.5</span>
+<span class="c"># Requires CUDA toolkit 8.0 and CuDNN v5. For other versions, see "Installing from sources" below.</span>
+<span class="gp">$ </span><span class="nb">export </span><span class="nv">TF_BINARY_URL</span><span class="o">=</span>https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.12.0rc0-cp35-cp35m-linux_x86_64.whl
+
+<span class="c"># Mac OS X, CPU only, Python 3.4 or 3.5:</span>
+<span class="gp">$ </span><span class="nb">export </span><span class="nv">TF_BINARY_URL</span><span class="o">=</span>https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.0rc0-py3-none-any.whl
+
+<span class="c"># Mac OS X, GPU enabled, Python 3.4 or 3.5:</span>
+<span class="gp">$ </span><span class="nb">export </span><span class="nv">TF_BINARY_URL</span><span class="o">=</span>https://storage.googleapis.com/tensorflow/mac/gpu/tensorflow_gpu-0.12.0rc0-py3-none-any.whl
+</code></pre>
+</div>
+<p>最后, 根据自己的 python 版本, 在 terminal 中执行以下语句:</p>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># 如果你是 Python 2, 请复制下面</span>
+<span class="gp">$ </span>sudo pip install --upgrade <span class="nv">$TF_BINARY_URL</span>
+
+<span class="c"># 如果你是 Python 3, 请复制下面</span>
+<span class="gp">$ </span>sudo pip3 install --upgrade <span class="nv">$TF_BINARY_URL</span>
+</code></pre>
+</div>
+<h4 class="tut-h4-pad" id="Windows">Windows</h4>
+<p>tf 0.12 版的英文<a href="https://www.tensorflow.org/versions/r0.12/get_started/os_setup.html#pip-installation-on-windows">安装说明</a></p>
+<p>安装前的检查:</p>
+<ul>
+<li>目前只支持 <strong>Python 3.5 (64bit)</strong> 版本</li>
+<li>你有安装 numpy (没有的话,请看这里<a href="/tutorials/data-manipulation/np-pd/1-2-install/">numpy 安装教程</a>)</li>
+</ul>
+<p>接下来惊心动魄啦! 在 command 窗口中执行</p>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># CPU 版的</span>
+<span class="gp">C:\&gt; </span>pip install tensorflow
+
+<span class="c"># GPU 版的</span>
+<span class="gp">C:\&gt; </span>pip install tensorflow-gpu
+</code></pre>
+</div>
+<p><strong>注意</strong> Windows 运行 Tensorflow 如果遇到这个报错:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Error importing tensorflow.  Unless you are using bazel,
+you should not try to import tensorflow from its source directory;
+please exit the tensorflow source tree, and relaunch your python interpreter
+from there.
+</code></pre>
+</div>
+<p>不要惊慌, 尝试下载安装 <a href="https://www.visualstudio.com/downloads/">Windows 的 Microsoft Visual C++ 2015 redistributable update 3 64 bit</a>.
+就能解决这个问题.</p>
+<h4 class="tut-h4-pad" id="测试">测试</h4>
+<p>然后打开你的 python 编辑器, 输入</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span>
+</code></pre>
+</div>
+<p>运行脚本来检查一下是否有正确安装.</p>
+<h4 class="tut-h4-pad" id="更新 Tensorflow">更新 Tensorflow</h4>
+<p>最后, 如果你需要升级 Tensorflow 的版本, 推荐的方式是:</p>
+<p>根据你的 python 版本, 在 terminal 中删除原有的版本</p>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># 如果你是 Python 2, 请复制下面</span>
+pip uninstall tensorflow
+
+<span class="c"># 如果你是 Python 3, 请复制下面</span>
+pip3 uninstall tensorflow
+</code></pre>
+</div>
+<p>然后重复这个安装教程的步骤, 从头安装新版本.</p>
+<p style="font-size: 0.8em; padding:4em 1em 0.5em 1em; margin: 0 auto;">
+        如果你觉得这篇文章或视频对你的学习很有帮助, 请你也分享它, 让它能再次帮助到更多的需要学习的人.
+
+        莫烦没有正式的经济来源, 如果你也想支持 <strong>莫烦Python</strong> 并看到更好的教学内容, 赞助他一点点, 作为鼓励他继续开源的动力.
+      </p>
+<!-- donation -->
+<div id="bottom-donation-section">
+<h3 id="bottom-donation-title">支持 让教学变得更优秀</h3>
+<br>
+<div>
+<a href="/support/" id="bottom-donation-button"><strong>点我 赞助 莫烦</strong></a>
+</div>
+<br>
+</br></br></div>
+<hr>
+</hr></hr></div>
+    </body></html>
+>>>>>>> dbe96efc57d6db2998967ee467c1f1106a52b1ba

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="optimizers">ÓÅ»¯Æ÷optimizers</h1>
-<p>ÓÅ»¯Æ÷ÊÇ±àÒëKerasÄ£ĞÍ±ØÒªµÄÁ½¸ö²ÎÊıÖ®Ò»</p>
+<h1 id="optimizers">ä¼˜åŒ–å™¨optimizers</h1>
+<p>ä¼˜åŒ–å™¨æ˜¯ç¼–è¯‘Kerasæ¨¡å‹å¿…è¦çš„ä¸¤ä¸ªå‚æ•°ä¹‹ä¸€</p>
 <pre><code class="python">from keras import optimizers
 
 model = Sequential()
@@ -15,12 +15,12 @@ model.add(Activation('softmax'))
 sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='mean_squared_error', optimizer=sgd)
 </code></pre>
-<p>¿ÉÒÔÔÚµ÷ÓÃ<code>model.compile()</code>Ö®Ç°³õÊ¼»¯Ò»¸öÓÅ»¯Æ÷¶ÔÏó£¬È»ºó´«Èë¸Ãº¯Êı£¨ÈçÉÏËùÊ¾£©£¬Ò²¿ÉÒÔÔÚµ÷ÓÃ<code>model.compile()</code>Ê±´«µİÒ»¸öÔ¤¶¨ÒåÓÅ»¯Æ÷Ãû¡£ÔÚºóÕßÇéĞÎÏÂ£¬ÓÅ»¯Æ÷µÄ²ÎÊı½«Ê¹ÓÃÄ¬ÈÏÖµ¡£</p>
+<p>å¯ä»¥åœ¨è°ƒç”¨<code>model.compile()</code>ä¹‹å‰åˆå§‹åŒ–ä¸€ä¸ªä¼˜åŒ–å™¨å¯¹è±¡ï¼Œç„¶åä¼ å…¥è¯¥å‡½æ•°ï¼ˆå¦‚ä¸Šæ‰€ç¤ºï¼‰ï¼Œä¹Ÿå¯ä»¥åœ¨è°ƒç”¨<code>model.compile()</code>æ—¶ä¼ é€’ä¸€ä¸ªé¢„å®šä¹‰ä¼˜åŒ–å™¨åã€‚åœ¨åè€…æƒ…å½¢ä¸‹ï¼Œä¼˜åŒ–å™¨çš„å‚æ•°å°†ä½¿ç”¨é»˜è®¤å€¼ã€‚</p>
 <pre><code class="python"># pass optimizer by name: default parameters will be used
 model.compile(loss='mean_squared_error', optimizer='sgd')
 </code></pre>
-<h2 id="_1">ËùÓĞÓÅ»¯Æ÷¶¼¿ÉÓÃµÄ²ÎÊı</h2>
-<p>²ÎÊı<code>clipnorm</code>ºÍ<code>clipvalue</code>ÊÇËùÓĞÓÅ»¯Æ÷¶¼¿ÉÒÔÊ¹ÓÃµÄ²ÎÊı,ÓÃÓÚ¶ÔÌİ¶È½øĞĞ²Ã¼ô.Ê¾ÀıÈçÏÂ:</p>
+<h2 id="_1">æ‰€æœ‰ä¼˜åŒ–å™¨éƒ½å¯ç”¨çš„å‚æ•°</h2>
+<p>å‚æ•°<code>clipnorm</code>å’Œ<code>clipvalue</code>æ˜¯æ‰€æœ‰ä¼˜åŒ–å™¨éƒ½å¯ä»¥ä½¿ç”¨çš„å‚æ•°,ç”¨äºå¯¹æ¢¯åº¦è¿›è¡Œè£å‰ª.ç¤ºä¾‹å¦‚ä¸‹:</p>
 <pre><code class="python">from keras import optimizers
 
 # All parameter gradients will be clipped to
@@ -37,72 +37,72 @@ sgd = optimizers.SGD(lr=0.01, clipvalue=0.5)
 <h2 id="sgd">SGD</h2>
 <pre><code class="python">keras.optimizers.SGD(lr=0.01, momentum=0.0, decay=0.0, nesterov=False)
 </code></pre>
-<p>Ëæ»úÌİ¶ÈÏÂ½µ·¨£¬Ö§³Ö¶¯Á¿²ÎÊı£¬Ö§³ÖÑ§Ï°Ë¥¼õÂÊ£¬Ö§³ÖNesterov¶¯Á¿</p>
-<h3 id="_2">²ÎÊı</h3>
+<p>éšæœºæ¢¯åº¦ä¸‹é™æ³•ï¼Œæ”¯æŒåŠ¨é‡å‚æ•°ï¼Œæ”¯æŒå­¦ä¹ è¡°å‡ç‡ï¼Œæ”¯æŒNesterovåŠ¨é‡</p>
+<h3 id="_2">å‚æ•°</h3>
 <ul>
 <li>
-<p>lr£º´ó»òµÈÓÚ0µÄ¸¡µãÊı£¬Ñ§Ï°ÂÊ</p>
+<p>lrï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°ï¼Œå­¦ä¹ ç‡</p>
 </li>
 <li>
-<p>momentum£º´ó»òµÈÓÚ0µÄ¸¡µãÊı£¬¶¯Á¿²ÎÊı</p>
+<p>momentumï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°ï¼ŒåŠ¨é‡å‚æ•°</p>
 </li>
 <li>
-<p>decay£º´ó»òµÈÓÚ0µÄ¸¡µãÊı£¬Ã¿´Î¸üĞÂºóµÄÑ§Ï°ÂÊË¥¼õÖµ</p>
+<p>decayï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°ï¼Œæ¯æ¬¡æ›´æ–°åçš„å­¦ä¹ ç‡è¡°å‡å€¼</p>
 </li>
 <li>
-<p>nesterov£º²¼¶ûÖµ£¬È·¶¨ÊÇ·ñÊ¹ÓÃNesterov¶¯Á¿</p>
+<p>nesterovï¼šå¸ƒå°”å€¼ï¼Œç¡®å®šæ˜¯å¦ä½¿ç”¨NesterovåŠ¨é‡</p>
 </li>
 </ul>
 <hr/>
 <h2 id="rmsprop">RMSprop</h2>
 <pre><code class="python">keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-06)
 </code></pre>
-<p>³ıÑ§Ï°ÂÊ¿Éµ÷ÕûÍâ£¬½¨Òé±£³ÖÓÅ»¯Æ÷µÄÆäËûÄ¬ÈÏ²ÎÊı²»±ä</p>
-<p>¸ÃÓÅ»¯Æ÷Í¨³£ÊÇÃæ¶Ôµİ¹éÉñ¾­ÍøÂçÊ±µÄÒ»¸öÁ¼ºÃÑ¡Ôñ</p>
-<h3 id="_3">²ÎÊı</h3>
+<p>é™¤å­¦ä¹ ç‡å¯è°ƒæ•´å¤–ï¼Œå»ºè®®ä¿æŒä¼˜åŒ–å™¨çš„å…¶ä»–é»˜è®¤å‚æ•°ä¸å˜</p>
+<p>è¯¥ä¼˜åŒ–å™¨é€šå¸¸æ˜¯é¢å¯¹é€’å½’ç¥ç»ç½‘ç»œæ—¶çš„ä¸€ä¸ªè‰¯å¥½é€‰æ‹©</p>
+<h3 id="_3">å‚æ•°</h3>
 <ul>
 <li>
-<p>lr£º´ó»òµÈÓÚ0µÄ¸¡µãÊı£¬Ñ§Ï°ÂÊ</p>
+<p>lrï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°ï¼Œå­¦ä¹ ç‡</p>
 </li>
 <li>
-<p>rho£º´ó»òµÈÓÚ0µÄ¸¡µãÊı</p>
+<p>rhoï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°</p>
 </li>
 <li>
-<p>epsilon£º´ó»òµÈÓÚ0µÄĞ¡¸¡µãÊı£¬·ÀÖ¹³ı0´íÎó</p>
+<p>epsilonï¼šå¤§æˆ–ç­‰äº0çš„å°æµ®ç‚¹æ•°ï¼Œé˜²æ­¢é™¤0é”™è¯¯</p>
 </li>
 </ul>
 <hr/>
 <h2 id="adagrad">Adagrad</h2>
 <pre><code class="python">keras.optimizers.Adagrad(lr=0.01, epsilon=1e-06)
 </code></pre>
-<p>½¨Òé±£³ÖÓÅ»¯Æ÷µÄÄ¬ÈÏ²ÎÊı²»±ä</p>
+<p>å»ºè®®ä¿æŒä¼˜åŒ–å™¨çš„é»˜è®¤å‚æ•°ä¸å˜</p>
 <h3 id="adagrad_1">Adagrad</h3>
 <ul>
 <li>
-<p>lr£º´ó»òµÈÓÚ0µÄ¸¡µãÊı£¬Ñ§Ï°ÂÊ</p>
+<p>lrï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°ï¼Œå­¦ä¹ ç‡</p>
 </li>
 <li>
-<p>epsilon£º´ó»òµÈÓÚ0µÄĞ¡¸¡µãÊı£¬·ÀÖ¹³ı0´íÎó</p>
+<p>epsilonï¼šå¤§æˆ–ç­‰äº0çš„å°æµ®ç‚¹æ•°ï¼Œé˜²æ­¢é™¤0é”™è¯¯</p>
 </li>
 </ul>
 <hr/>
 <h2 id="adadelta">Adadelta</h2>
 <pre><code class="python">keras.optimizers.Adadelta(lr=1.0, rho=0.95, epsilon=1e-06)
 </code></pre>
-<p>½¨Òé±£³ÖÓÅ»¯Æ÷µÄÄ¬ÈÏ²ÎÊı²»±ä</p>
-<h3 id="_4">²ÎÊı</h3>
+<p>å»ºè®®ä¿æŒä¼˜åŒ–å™¨çš„é»˜è®¤å‚æ•°ä¸å˜</p>
+<h3 id="_4">å‚æ•°</h3>
 <ul>
 <li>
-<p>lr£º´ó»òµÈÓÚ0µÄ¸¡µãÊı£¬Ñ§Ï°ÂÊ</p>
+<p>lrï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°ï¼Œå­¦ä¹ ç‡</p>
 </li>
 <li>
-<p>rho£º´ó»òµÈÓÚ0µÄ¸¡µãÊı</p>
+<p>rhoï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°</p>
 </li>
 <li>
-<p>epsilon£º´ó»òµÈÓÚ0µÄĞ¡¸¡µãÊı£¬·ÀÖ¹³ı0´íÎó</p>
+<p>epsilonï¼šå¤§æˆ–ç­‰äº0çš„å°æµ®ç‚¹æ•°ï¼Œé˜²æ­¢é™¤0é”™è¯¯</p>
 </li>
 </ul>
-<h3 id="_5">²Î¿¼ÎÄÏ×</h3>
+<h3 id="_5">å‚è€ƒæ–‡çŒ®</h3>
 <hr/>
 <ul>
 <li><a href="http://arxiv.org/abs/1212.5701">Adadelta - an adaptive learning rate method</a></li>
@@ -110,20 +110,20 @@ sgd = optimizers.SGD(lr=0.01, clipvalue=0.5)
 <h2 id="adam">Adam</h2>
 <pre><code class="python">keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 </code></pre>
-<p>¸ÃÓÅ»¯Æ÷µÄÄ¬ÈÏÖµÀ´Ô´ÓÚ²Î¿¼ÎÄÏ×</p>
-<h3 id="_6">²ÎÊı</h3>
+<p>è¯¥ä¼˜åŒ–å™¨çš„é»˜è®¤å€¼æ¥æºäºå‚è€ƒæ–‡çŒ®</p>
+<h3 id="_6">å‚æ•°</h3>
 <ul>
 <li>
-<p>lr£º´ó»òµÈÓÚ0µÄ¸¡µãÊı£¬Ñ§Ï°ÂÊ</p>
+<p>lrï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°ï¼Œå­¦ä¹ ç‡</p>
 </li>
 <li>
-<p>beta_1/beta_2£º¸¡µãÊı£¬ 0&lt;beta&lt;1£¬Í¨³£ºÜ½Ó½ü1</p>
+<p>beta_1/beta_2ï¼šæµ®ç‚¹æ•°ï¼Œ 0&lt;beta&lt;1ï¼Œé€šå¸¸å¾ˆæ¥è¿‘1</p>
 </li>
 <li>
-<p>epsilon£º´ó»òµÈÓÚ0µÄĞ¡¸¡µãÊı£¬·ÀÖ¹³ı0´íÎó</p>
+<p>epsilonï¼šå¤§æˆ–ç­‰äº0çš„å°æµ®ç‚¹æ•°ï¼Œé˜²æ­¢é™¤0é”™è¯¯</p>
 </li>
 </ul>
-<h3 id="_7">²Î¿¼ÎÄÏ×</h3>
+<h3 id="_7">å‚è€ƒæ–‡çŒ®</h3>
 <ul>
 <li><a href="http://arxiv.org/abs/1412.6980v8">Adam - A Method for Stochastic Optimization</a></li>
 </ul>
@@ -131,21 +131,21 @@ sgd = optimizers.SGD(lr=0.01, clipvalue=0.5)
 <h2 id="adamax">Adamax</h2>
 <pre><code class="python">keras.optimizers.Adamax(lr=0.002, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 </code></pre>
-<p>AdamaxÓÅ»¯Æ÷À´×ÔÓÚAdamµÄÂÛÎÄµÄSection7£¬¸Ã·½·¨ÊÇ»ùÓÚÎŞÇî·¶ÊıµÄAdam·½·¨µÄ±äÌå¡£</p>
-<p>Ä¬ÈÏ²ÎÊıÓÉÂÛÎÄÌá¹©</p>
-<h3 id="_8">²ÎÊı</h3>
+<p>Adamaxä¼˜åŒ–å™¨æ¥è‡ªäºAdamçš„è®ºæ–‡çš„Section7ï¼Œè¯¥æ–¹æ³•æ˜¯åŸºäºæ— ç©·èŒƒæ•°çš„Adamæ–¹æ³•çš„å˜ä½“ã€‚</p>
+<p>é»˜è®¤å‚æ•°ç”±è®ºæ–‡æä¾›</p>
+<h3 id="_8">å‚æ•°</h3>
 <ul>
 <li>
-<p>lr£º´ó»òµÈÓÚ0µÄ¸¡µãÊı£¬Ñ§Ï°ÂÊ</p>
+<p>lrï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°ï¼Œå­¦ä¹ ç‡</p>
 </li>
 <li>
-<p>beta_1/beta_2£º¸¡µãÊı£¬ 0&lt;beta&lt;1£¬Í¨³£ºÜ½Ó½ü1</p>
+<p>beta_1/beta_2ï¼šæµ®ç‚¹æ•°ï¼Œ 0&lt;beta&lt;1ï¼Œé€šå¸¸å¾ˆæ¥è¿‘1</p>
 </li>
 <li>
-<p>epsilon£º´ó»òµÈÓÚ0µÄĞ¡¸¡µãÊı£¬·ÀÖ¹³ı0´íÎó</p>
+<p>epsilonï¼šå¤§æˆ–ç­‰äº0çš„å°æµ®ç‚¹æ•°ï¼Œé˜²æ­¢é™¤0é”™è¯¯</p>
 </li>
 </ul>
-<h3 id="_9">²Î¿¼ÎÄÏ×</h3>
+<h3 id="_9">å‚è€ƒæ–‡çŒ®</h3>
 <ul>
 <li><a href="http://arxiv.org/abs/1412.6980v8">Adam - A Method for Stochastic Optimization</a></li>
 </ul>
@@ -153,21 +153,21 @@ sgd = optimizers.SGD(lr=0.01, clipvalue=0.5)
 <h2 id="nadam">Nadam</h2>
 <pre><code class="python">keras.optimizers.Nadam(lr=0.002, beta_1=0.9, beta_2=0.999, epsilon=1e-08, schedule_decay=0.004)
 </code></pre>
-<p>Nesterov Adam optimizer: Adam±¾ÖÊÉÏÏñÊÇ´øÓĞ¶¯Á¿ÏîµÄRMSprop£¬Nadam¾ÍÊÇ´øÓĞNesterov ¶¯Á¿µÄAdam RMSprop</p>
-<p>Ä¬ÈÏ²ÎÊıÀ´×ÔÓÚÂÛÎÄ£¬ÍÆ¼ö²»Òª¶ÔÄ¬ÈÏ²ÎÊı½øĞĞ¸ü¸Ä¡£</p>
-<h3 id="_10">²ÎÊı</h3>
+<p>Nesterov Adam optimizer: Adamæœ¬è´¨ä¸Šåƒæ˜¯å¸¦æœ‰åŠ¨é‡é¡¹çš„RMSpropï¼ŒNadamå°±æ˜¯å¸¦æœ‰Nesterov åŠ¨é‡çš„Adam RMSprop</p>
+<p>é»˜è®¤å‚æ•°æ¥è‡ªäºè®ºæ–‡ï¼Œæ¨èä¸è¦å¯¹é»˜è®¤å‚æ•°è¿›è¡Œæ›´æ”¹ã€‚</p>
+<h3 id="_10">å‚æ•°</h3>
 <ul>
 <li>
-<p>lr£º´ó»òµÈÓÚ0µÄ¸¡µãÊı£¬Ñ§Ï°ÂÊ</p>
+<p>lrï¼šå¤§æˆ–ç­‰äº0çš„æµ®ç‚¹æ•°ï¼Œå­¦ä¹ ç‡</p>
 </li>
 <li>
-<p>beta_1/beta_2£º¸¡µãÊı£¬ 0&lt;beta&lt;1£¬Í¨³£ºÜ½Ó½ü1</p>
+<p>beta_1/beta_2ï¼šæµ®ç‚¹æ•°ï¼Œ 0&lt;beta&lt;1ï¼Œé€šå¸¸å¾ˆæ¥è¿‘1</p>
 </li>
 <li>
-<p>epsilon£º´ó»òµÈÓÚ0µÄĞ¡¸¡µãÊı£¬·ÀÖ¹³ı0´íÎó</p>
+<p>epsilonï¼šå¤§æˆ–ç­‰äº0çš„å°æµ®ç‚¹æ•°ï¼Œé˜²æ­¢é™¤0é”™è¯¯</p>
 </li>
 </ul>
-<h3 id="_11">²Î¿¼ÎÄÏ×</h3>
+<h3 id="_11">å‚è€ƒæ–‡çŒ®</h3>
 <ul>
 <li>
 <p><a href="http://cs229.stanford.edu/proj2015/054_report.pdf">Nadam report</a></p>
@@ -179,6 +179,6 @@ sgd = optimizers.SGD(lr=0.01, clipvalue=0.5)
 <h2 id="tfoptimizer">TFOptimizer</h2>
 <pre><code class="python">keras.optimizers.TFOptimizer(optimizer)
 </code></pre>
-<p>TFÓÅ»¯Æ÷µÄ°ü×°Æ÷</p>
+<p>TFä¼˜åŒ–å™¨çš„åŒ…è£…å™¨</p>
 </div>
     </body></html>

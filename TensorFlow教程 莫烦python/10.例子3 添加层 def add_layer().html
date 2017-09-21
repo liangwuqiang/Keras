@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
@@ -71,3 +72,79 @@
 <hr>
 </hr></hr></div>
     </body></html>
+=======
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-09-19T15:27:35.168357069"/>
+	<meta name="" content=""/>
+	<style type="text/css">
+		pre.ctl { font-family: "Liberation Mono", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+	</style>
+</head>
+<body lang="zh-CN" dir="ltr">
+<p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/"><span style="background: #ffff00">原文链接</span></a></p>
+<hr/>
+
+<h1><span style="background: #ffff00">例子<font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US">3
+</span></font></font>添加层 <font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US">def
+add_layer()</span></span></font></font></h1>
+<p align="center"><span style="background: #ffff00">作者<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">赵孔亚</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; 编辑<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">莫烦</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; <font face="Liberation Serif, serif"><span lang="en-US">2016-11-03
+</span></span></font>
+</p>
+<p><span style="background: #ffff00">学习资料<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00"><a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tensorflow10_def_add_layer.py">相关代码</a>
+	</span>
+	</p>
+	<li/>
+<p><span style="background: #ffff00">为 <font face="Liberation Serif, serif"><span lang="en-US">TF
+	2017 </span></font>打造的<a href="https://github.com/MorvanZhou/Tensorflow-Tutorial">新版可视化教学代码</a>
+	</span>
+	</p>
+</ul>
+<h4><a name="定义 add_layer()"></a><span style="background: #ffff00">定义
+<font face="Liberation Serif, serif"><span lang="en-US">add_layer()</span></span></font></h4>
+<p><span style="background: #ffff00">在 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow
+</span></font>里定义一个添加层的函数可以很容易的添加神经层<font face="Liberation Serif, serif"><span lang="en-US">,</span></font>为之后的添加省下不少时间<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<p><span style="background: #ffff00">神经层里常见的参数通常有</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">weights</span></code></span></font><span style="background: #ffff00">、</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">biases</span></code></span></font><span style="background: #ffff00">和激励函数。</span></p>
+<p><span style="background: #ffff00">首先，我们需要导入</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tensorflow</span></code></span></font><span style="background: #ffff00">模块。</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">import tensorflow as tf</span></code></span></font></pre><p>
+<span style="background: #ffff00">然后定义添加神经层的函数</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">def
+add_layer()</span></code><span style="background: #ffff00">,</span></span></font><span style="background: #ffff00">它有四个参数：输入值、输入的大小、输出的大小和激励函数，我们设定默认的激励函数是</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">None</span></code></span></font><span style="background: #ffff00">。</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">def add_layer(inputs, in_size, out_size, activation_function=None):    </span></code></span></font></pre><p>
+<span style="background: #ffff00">接下来，我们开始定义</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">weights</span></code></span></font><span style="background: #ffff00">和</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">biases</span></code></span></font><span style="background: #ffff00">。</span></p>
+<p><span style="background: #ffff00">因为在生成初始参数时，随机变量<font face="Liberation Serif, serif"><span lang="en-US">(normal
+distribution)</span></font>会比全部为<font face="Liberation Serif, serif"><span lang="en-US">0</span></font>要好很多，所以我们这里的</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">weights</span></code></span></font><span style="background: #ffff00">为一个</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">in_size</span></code></span></font><span style="background: #ffff00">行<font face="Liberation Serif, serif"><span lang="en-US">,
+</span><code class="western"><span style="background: #ffff00">out_size</span></code></span></font><span style="background: #ffff00">列的随机变量矩阵。</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">Weights = tf.Variable(tf.random_normal([in_size, out_size]))</span></code></span></font></pre><p>
+<span style="background: #ffff00">在机器学习中，</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">biases</span></code></span></font><span style="background: #ffff00">的推荐值不为<font face="Liberation Serif, serif"><span lang="en-US">0</span></font>，所以我们这里是在<font face="Liberation Serif, serif"><span lang="en-US">0</span></font>向量的基础上又加了</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">0.1</span></code></span></font><span style="background: #ffff00">。</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">biases = tf.Variable(tf.zeros([1, out_size]) + 0.1)</span></code></span></font></pre><p>
+<span style="background: #ffff00">下面，我们定义</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">Wx_plus_b</span></code><span style="background: #ffff00">,
+</span></span></font><span style="background: #ffff00">即神经网络未激活的值。其中，</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.matmul()</span></code></span></font><span style="background: #ffff00">是矩阵的乘法。</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">Wx_plus_b = tf.matmul(inputs, Weights) + biases</span></code></span></font></pre><p>
+<span style="background: #ffff00">当</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">activation_function</span></code><span style="background: #ffff00">——</span></span></font><span style="background: #ffff00">激励函数为</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">None</span></code></span></font><span style="background: #ffff00">时，输出就是当前的预测值——</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">Wx_plus_b</span></code></span></font><span style="background: #ffff00">，不为</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">None</span></code></span></font><span style="background: #ffff00">时，就把</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">Wx_plus_b</span></code></span></font><span style="background: #ffff00">传到</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">activation_function()</span></code></span></font><span style="background: #ffff00">函数中得到输出。</span></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">if activation_function is None:</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">        </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">outputs = Wx_plus_b</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">else:</span></code></span></font>
+<code class="cjk">        </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">outputs = activation_function(Wx_plus_b)</code></span></font></pre><p>
+<span style="background: #ffff00">最后，返回输出，添加一个神经层的函数——</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">def
+add_layer()</span></code></span></font><span style="background: #ffff00">就定义好了。</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">return outputs</span></code></span></font></pre><p>
+<br/>
+<br/>
+
+</p>
+</body>
+</html>
+>>>>>>> dbe96efc57d6db2998967ee467c1f1106a52b1ba

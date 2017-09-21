@@ -1,32 +1,79 @@
-<!DOCTYPE html>
-    <html><head><meta charset="UTF-8">
-    </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">ԭ������</a></p>
-        <div class="section">
-<h1 id="keras-faq">Keras FAQ����������</h1>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-09-17T15:30:21.683149245"/>
+	<meta name="" content=""/>
+</head>
+<body lang="zh-CN" dir="ltr">
+<p><a href="http://keras-cn.readthedocs.io/en/latest/"><span style="background: #ffff00">原文链接</span></a></p>
+<h1><a name="keras-faq"></a><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US"><span style="background: #ffff00">Keras
+FAQ</span></font></font>：常见问题</span></h1>
 <ul>
-<li><a href="#citation">�������Keras��</a></li>
-<li><a href="#GPU">���ʹKeras����GPU��</a></li>
-<li><a href="#batch">"batch", "epoch"��"sample"����ɶ��˼��</a></li>
-<li><a href="#save_model">��α���Kerasģ�ͣ�</a></li>
-<li><a href="#loss">Ϊʲôѵ�����(loss)�Ȳ������ߺܶࣿ</a></li>
-<li><a href="#intermediate_layer">��λ�ȡ�м��������</a></li>
-<li><a href="#dataset">�������Keras�������������ڴ�����ݼ���</a></li>
-<li><a href="#stop_train">����֤����loss�����½�ʱ������ж�ѵ����</a></li>
-<li><a href="#validation_spilt">��֤������δ�ѵ�����зָ�����ģ�</a></li>
-<li><a href="#shuffle">ѵ��������ѵ��ʱ�ᱻ���ϴ����</a></li>
-<li><a href="#history">�����ÿ��epoch���¼ѵ��/���Ե�loss����ȷ�ʣ�</a></li>
-<li><a href="#statful_RNN">���ʹ��״̬RNN��statful RNN����</a></li>
-<li><a href="#freeze">��Ρ����ᡱ����Ĳ㣿</a></li>
-<li><a href="#pop">��δ�Sequentialģ����ȥ��һ���㣿</a></li>
-<li><a href="#pretrain">�����Keras��ʹ��Ԥѵ����ģ��</a></li>
-<li><a href="#hdf5">�����Keras��ʹ��HDF5���룿</a></li>
-<li><a href="#where_config">Keras�������ļ��洢�����</a></li>
-<li><a href="#reproduce">��ʹ��Keras���������У�����λ�ÿɸ��ֵĽ����</a></li>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00"><a href="#citation">如何引用<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>？</a>
+	</span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00"><a href="#GPU">如何使<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>调用<font face="Liberation Serif, serif"><span lang="en-US">GPU</span></font>？</a>
+	</span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><a href="#batch">&quot;batch&quot;,
+	&quot;epoch&quot;</span></font>和<font face="Liberation Serif, serif"><span lang="en-US">&quot;sample&quot;</span></font>都是啥意思？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#save_model">如何保存<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>模型？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#loss">为什么训练误差<font face="Liberation Serif, serif"><span lang="en-US">(loss)</span></font>比测试误差高很多？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#intermediate_layer">如何获取中间层的输出？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#dataset">如何利用<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>处理超过机器内存的数据集？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#stop_train">当验证集的<font face="Liberation Serif, serif"><span lang="en-US">loss</span></font>不再下降时，如何中断训练？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#validation_spilt">验证集是如何从训练集中分割出来的？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#shuffle">训练数据在训练时会被随机洗乱吗？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#history">如何在每个<font face="Liberation Serif, serif"><span lang="en-US">epoch</span></font>后记录训练<font face="Liberation Serif, serif"><span lang="en-US">/</span></font>测试的<font face="Liberation Serif, serif"><span lang="en-US">loss</span></font>和正确率？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#statful_RNN">如何使用状态<font face="Liberation Serif, serif"><span lang="en-US">RNN</span></font>（<font face="Liberation Serif, serif"><span lang="en-US">statful
+	RNN</span></font>）？</a> 
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#freeze">如何“冻结”网络的层？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#pop">如何从<font face="Liberation Serif, serif"><span lang="en-US">Sequential</span></font>模型中去除一个层？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#pretrain">如何在<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>中使用预训练的模型</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><a href="#hdf5">如何在<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>中使用<font face="Liberation Serif, serif"><span lang="en-US">HDF5</span></font>输入？</a>
+		</p>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><a href="#where_config">Keras</span></font>的配置文件存储在哪里？</a>
+		</p>
+	<li/>
+<p><a href="#reproduce">在使用<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>开发过程中，我如何获得可复现的结果？</a>
+		</p>
 </ul>
 <hr/>
-<p><a name="citation">
-<font color="#404040"></font></a></p>
-<h2 id="keras">�������Keras��</h2>
-<p></p></div>
-    </body></html>
+
+<h2><a name="citation"></a><a name="keras"></a><span style="background: #ffff00">如何引用<font face="Liberation Serif, serif"><span lang="en-US">Keras</span></font>？</span></h2>
+</body>
+</html>

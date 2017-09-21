@@ -1,41 +1,41 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="batchnormalization">£¨Åú£©¹æ·¶»¯BatchNormalization</h1>
-<h2 id="batchnormalization_1">BatchNormalization²ã</h2>
+<h1 id="batchnormalization">ï¼ˆæ‰¹ï¼‰è§„èŒƒåŒ–BatchNormalization</h1>
+<h2 id="batchnormalization_1">BatchNormalizationå±‚</h2>
 <pre><code class="python">keras.layers.normalization.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True, beta_initializer='zeros', gamma_initializer='ones', moving_mean_initializer='zeros', moving_variance_initializer='ones', beta_regularizer=None, gamma_regularizer=None, beta_constraint=None, gamma_constraint=None)
 </code></pre>
-<p>¸Ã²ãÔÚÃ¿¸öbatchÉÏ½«Ç°Ò»²ãµÄ¼¤»îÖµÖØĞÂ¹æ·¶»¯£¬¼´Ê¹µÃÆäÊä³öÊı¾İµÄ¾ùÖµ½Ó½ü0£¬Æä±ê×¼²î½Ó½ü1</p>
-<h3 id="_1">²ÎÊı</h3>
+<p>è¯¥å±‚åœ¨æ¯ä¸ªbatchä¸Šå°†å‰ä¸€å±‚çš„æ¿€æ´»å€¼é‡æ–°è§„èŒƒåŒ–ï¼Œå³ä½¿å¾—å…¶è¾“å‡ºæ•°æ®çš„å‡å€¼æ¥è¿‘0ï¼Œå…¶æ ‡å‡†å·®æ¥è¿‘1</p>
+<h3 id="_1">å‚æ•°</h3>
 <ul>
-<li>axis: ÕûÊı£¬Ö¸¶¨Òª¹æ·¶»¯µÄÖá£¬Í¨³£ÎªÌØÕ÷Öá¡£ÀıÈçÔÚ½øĞĞ<code>data_format="channels_first</code>µÄ2D¾í»ıºó£¬Ò»°ã»áÉèaxis=1¡£</li>
-<li>momentum: ¶¯Ì¬¾ùÖµµÄ¶¯Á¿</li>
-<li>epsilon£º´óÓÚ0µÄĞ¡¸¡µãÊı£¬ÓÃÓÚ·ÀÖ¹³ı0´íÎó</li>
-<li>center: ÈôÉèÎªTrue£¬½«»á½«beta×÷ÎªÆ«ÖÃ¼ÓÉÏÈ¥£¬·ñÔòºöÂÔ²ÎÊıbeta</li>
-<li>scale: ÈôÉèÎªTrue£¬Ôò»á³ËÒÔgamma£¬·ñÔò²»Ê¹ÓÃgamma¡£µ±ÏÂÒ»²ãÊÇÏßĞÔµÄÊ±£¬¿ÉÒÔÉèFalse£¬ÒòÎªscalingµÄ²Ù×÷½«±»ÏÂÒ»²ãÖ´ĞĞ¡£</li>
-<li>beta_initializer£ºbetaÈ¨ÖØµÄ³õÊ¼·½·¨</li>
-<li>gamma_initializer: gammaµÄ³õÊ¼»¯·½·¨</li>
-<li>moving_mean_initializer: ¶¯Ì¬¾ùÖµµÄ³õÊ¼»¯·½·¨</li>
-<li>moving_variance_initializer: ¶¯Ì¬·½²îµÄ³õÊ¼»¯·½·¨</li>
-<li>beta_regularizer: ¿ÉÑ¡µÄbetaÕıÔò</li>
-<li>gamma_regularizer: ¿ÉÑ¡µÄgammaÕıÔò</li>
-<li>beta_constraint: ¿ÉÑ¡µÄbetaÔ¼Êø</li>
-<li>gamma_constraint: ¿ÉÑ¡µÄgammaÔ¼Êø</li>
+<li>axis: æ•´æ•°ï¼ŒæŒ‡å®šè¦è§„èŒƒåŒ–çš„è½´ï¼Œé€šå¸¸ä¸ºç‰¹å¾è½´ã€‚ä¾‹å¦‚åœ¨è¿›è¡Œ<code>data_format="channels_first</code>çš„2Då·ç§¯åï¼Œä¸€èˆ¬ä¼šè®¾axis=1ã€‚</li>
+<li>momentum: åŠ¨æ€å‡å€¼çš„åŠ¨é‡</li>
+<li>epsilonï¼šå¤§äº0çš„å°æµ®ç‚¹æ•°ï¼Œç”¨äºé˜²æ­¢é™¤0é”™è¯¯</li>
+<li>center: è‹¥è®¾ä¸ºTrueï¼Œå°†ä¼šå°†betaä½œä¸ºåç½®åŠ ä¸Šå»ï¼Œå¦åˆ™å¿½ç•¥å‚æ•°beta</li>
+<li>scale: è‹¥è®¾ä¸ºTrueï¼Œåˆ™ä¼šä¹˜ä»¥gammaï¼Œå¦åˆ™ä¸ä½¿ç”¨gammaã€‚å½“ä¸‹ä¸€å±‚æ˜¯çº¿æ€§çš„æ—¶ï¼Œå¯ä»¥è®¾Falseï¼Œå› ä¸ºscalingçš„æ“ä½œå°†è¢«ä¸‹ä¸€å±‚æ‰§è¡Œã€‚</li>
+<li>beta_initializerï¼šbetaæƒé‡çš„åˆå§‹æ–¹æ³•</li>
+<li>gamma_initializer: gammaçš„åˆå§‹åŒ–æ–¹æ³•</li>
+<li>moving_mean_initializer: åŠ¨æ€å‡å€¼çš„åˆå§‹åŒ–æ–¹æ³•</li>
+<li>moving_variance_initializer: åŠ¨æ€æ–¹å·®çš„åˆå§‹åŒ–æ–¹æ³•</li>
+<li>beta_regularizer: å¯é€‰çš„betaæ­£åˆ™</li>
+<li>gamma_regularizer: å¯é€‰çš„gammaæ­£åˆ™</li>
+<li>beta_constraint: å¯é€‰çš„betaçº¦æŸ</li>
+<li>gamma_constraint: å¯é€‰çš„gammaçº¦æŸ</li>
 </ul>
-<h3 id="shape">ÊäÈëshape</h3>
-<p>ÈÎÒâ£¬µ±Ê¹ÓÃ±¾²ãÎªÄ£ĞÍÊ×²ãÊ±£¬Ö¸¶¨<code>input_shape</code>²ÎÊıÊ±ÓĞÒâÒå¡£</p>
-<h3 id="shape_1">Êä³öshape</h3>
-<p>ÓëÊäÈëshapeÏàÍ¬</p>
-<h3 id="_2">²Î¿¼ÎÄÏ×</h3>
+<h3 id="shape">è¾“å…¥shape</h3>
+<p>ä»»æ„ï¼Œå½“ä½¿ç”¨æœ¬å±‚ä¸ºæ¨¡å‹é¦–å±‚æ—¶ï¼ŒæŒ‡å®š<code>input_shape</code>å‚æ•°æ—¶æœ‰æ„ä¹‰ã€‚</p>
+<h3 id="shape_1">è¾“å‡ºshape</h3>
+<p>ä¸è¾“å…¥shapeç›¸åŒ</p>
+<h3 id="_2">å‚è€ƒæ–‡çŒ®</h3>
 <ul>
 <li><a href="http://arxiv.org/pdf/1502.03167v3.pdf">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</a></li>
 </ul>
-<p>¡¾Tips¡¿BN²ãµÄ×÷ÓÃ</p>
-<p>£¨1£©¼ÓËÙÊÕÁ²
-£¨2£©¿ØÖÆ¹ıÄâºÏ£¬¿ÉÒÔÉÙÓÃ»ò²»ÓÃDropoutºÍÕıÔò
-£¨3£©½µµÍÍøÂç¶Ô³õÊ¼»¯È¨ÖØ²»Ãô¸Ğ
-£¨4£©ÔÊĞíÊ¹ÓÃ½Ï´óµÄÑ§Ï°ÂÊ</p>
+<p>ã€Tipsã€‘BNå±‚çš„ä½œç”¨</p>
+<p>ï¼ˆ1ï¼‰åŠ é€Ÿæ”¶æ•›
+ï¼ˆ2ï¼‰æ§åˆ¶è¿‡æ‹Ÿåˆï¼Œå¯ä»¥å°‘ç”¨æˆ–ä¸ç”¨Dropoutå’Œæ­£åˆ™
+ï¼ˆ3ï¼‰é™ä½ç½‘ç»œå¯¹åˆå§‹åŒ–æƒé‡ä¸æ•æ„Ÿ
+ï¼ˆ4ï¼‰å…è®¸ä½¿ç”¨è¾ƒå¤§çš„å­¦ä¹ ç‡</p>
 </div>
     </body></html>

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
     <html><head><meta charset="UTF-8">
     </head><body>
-    <p><a href="http://keras-cn.readthedocs.io/en/latest/">Ô­ÎÄÁ´½Ó</a></p>
+    <p><a href="http://keras-cn.readthedocs.io/en/latest/">åŸæ–‡é“¾æ¥</a></p>
         <div class="section">
-<h1 id="utils">utils ¹¤¾ß</h1>
-<p>±¾Ä£¿éÌá¹©ÁËÒ»ÏµÁĞÓĞÓÃ¹¤¾ß</p>
+<h1 id="utils">utils å·¥å…·</h1>
+<p>æœ¬æ¨¡å—æä¾›äº†ä¸€ç³»åˆ—æœ‰ç”¨å·¥å…·</p>
 <h2 id="customobjectscope">CustomObjectScope</h2>
 <pre><code class="python">keras.utils.generic_utils.CustomObjectScope()
 </code></pre>
-<p>Ìá¹©¶¨ÖÆÀàµÄ×÷ÓÃÓò£¬ÔÚ¸Ã×÷ÓÃÓòÄÚÈ«¾Ö¶¨ÖÆÀàÄÜ¹»±»¸ü¸Ä£¬µ«ÔÚ×÷ÓÃÓò½áÊøºó½«»Øµ½³õÊ¼×´Ì¬¡£
-ÒÔ<code>with</code>ÉùÃ÷¿ªÍ·µÄ´úÂë½«ÄÜ¹»Í¨¹ıÃû×Ö·ÃÎÊ¶¨ÖÆÀàµÄÊµÀı£¬ÔÚwithµÄ×÷ÓÃ·¶Î§£¬ÕâĞ©¶¨ÖÆÀàµÄ±ä¶¯½«Ò»Ö±³ÖĞø£¬ÔÚwith×÷ÓÃÓò½áÊøºó£¬È«¾Ö¶¨ÖÆÀàµÄÊµÀı½«»Ø¹éÆäÔÚwith×÷ÓÃÓòÇ°µÄ×´Ì¬¡£</p>
+<p>æä¾›å®šåˆ¶ç±»çš„ä½œç”¨åŸŸï¼Œåœ¨è¯¥ä½œç”¨åŸŸå†…å…¨å±€å®šåˆ¶ç±»èƒ½å¤Ÿè¢«æ›´æ”¹ï¼Œä½†åœ¨ä½œç”¨åŸŸç»“æŸåå°†å›åˆ°åˆå§‹çŠ¶æ€ã€‚
+ä»¥<code>with</code>å£°æ˜å¼€å¤´çš„ä»£ç å°†èƒ½å¤Ÿé€šè¿‡åå­—è®¿é—®å®šåˆ¶ç±»çš„å®ä¾‹ï¼Œåœ¨withçš„ä½œç”¨èŒƒå›´ï¼Œè¿™äº›å®šåˆ¶ç±»çš„å˜åŠ¨å°†ä¸€ç›´æŒç»­ï¼Œåœ¨withä½œç”¨åŸŸç»“æŸåï¼Œå…¨å±€å®šåˆ¶ç±»çš„å®ä¾‹å°†å›å½’å…¶åœ¨withä½œç”¨åŸŸå‰çš„çŠ¶æ€ã€‚</p>
 <pre><code class="python">with CustomObjectScope({"MyObject":MyObject}):
     layer = Dense(..., W_regularizer="MyObject")
     # save, load, etc. will recognize custom object by name
@@ -18,25 +18,25 @@
 <h2 id="hdf5matrix">HDF5Matrix</h2>
 <pre><code class="python">keras.utils.io_utils.HDF5Matrix(datapath, dataset, start=0, end=None, normalizer=None)
 </code></pre>
-<p>ÕâÊÇÒ»¸öÊ¹ÓÃHDF5Êı¾İ¼¯´úÌæNumpyÊı×éµÄ·½·¨</p>
-<p>Ìá¹©<code>start</code>ºÍ<code>end</code>²ÎÊı¿ÉÒÔ½øĞĞÇĞÆ¬£¬ÁíÍâ£¬»¹¿ÉÒÔÌá¹©Ò»¸öÕı¹æ»¯º¯Êı»òÄäÃûº¯Êı£¬¸Ãº¯Êı½«»áÔÚÃ¿Æ¬Êı¾İ¼ìË÷Ê±×Ô¶¯µ÷ÓÃ¡£</p>
+<p>è¿™æ˜¯ä¸€ä¸ªä½¿ç”¨HDF5æ•°æ®é›†ä»£æ›¿Numpyæ•°ç»„çš„æ–¹æ³•</p>
+<p>æä¾›<code>start</code>å’Œ<code>end</code>å‚æ•°å¯ä»¥è¿›è¡Œåˆ‡ç‰‡ï¼Œå¦å¤–ï¼Œè¿˜å¯ä»¥æä¾›ä¸€ä¸ªæ­£è§„åŒ–å‡½æ•°æˆ–åŒ¿åå‡½æ•°ï¼Œè¯¥å‡½æ•°å°†ä¼šåœ¨æ¯ç‰‡æ•°æ®æ£€ç´¢æ—¶è‡ªåŠ¨è°ƒç”¨ã€‚</p>
 <pre><code class="python">x_data = HDF5Matrix('input/file.hdf5', 'data')
 model.predict(x_data)
 </code></pre>
 <ul>
-<li>datapath: ×Ö·û´®£¬HDF5ÎÄ¼şµÄÂ·¾¶</li>
-<li>dataset: ×Ö·û´®£¬ÔÚdatapathÂ·¾¶ÏÂHDF5Êı¾İ¿âÃû×Ö</li>
-<li>start: ÕûÊı£¬ÏëÒªµÄÊı¾İÇĞÆ¬Æğµã</li>
-<li>end: ÕûÊı£¬ÏëÒªµÄÊı¾İÇĞÆ¬ÖÕµã</li>
-<li>normalizer: ÔÚÃ¿¸öÇĞÆ¬Êı¾İ¼ìË÷Ê±×Ô¶¯µ÷ÓÃµÄº¯Êı¶ÔÏó</li>
+<li>datapath: å­—ç¬¦ä¸²ï¼ŒHDF5æ–‡ä»¶çš„è·¯å¾„</li>
+<li>dataset: å­—ç¬¦ä¸²ï¼Œåœ¨datapathè·¯å¾„ä¸‹HDF5æ•°æ®åº“åå­—</li>
+<li>start: æ•´æ•°ï¼Œæƒ³è¦çš„æ•°æ®åˆ‡ç‰‡èµ·ç‚¹</li>
+<li>end: æ•´æ•°ï¼Œæƒ³è¦çš„æ•°æ®åˆ‡ç‰‡ç»ˆç‚¹</li>
+<li>normalizer: åœ¨æ¯ä¸ªåˆ‡ç‰‡æ•°æ®æ£€ç´¢æ—¶è‡ªåŠ¨è°ƒç”¨çš„å‡½æ•°å¯¹è±¡</li>
 </ul>
 <hr/>
 <h2 id="sequence">Sequence</h2>
 <pre><code>keras.utils.data_utils.Sequence()
 </code></pre>
-<p>ĞòÁĞÊı¾İµÄ»ùÀà£¬ÀıÈçÒ»¸öÊı¾İ¼¯¡£
-Ã¿¸öSequence±ØĞëÊµÏÖ<code>__getitem__</code>ºÍ<code>__len__</code>·½·¨</p>
-<p>ÏÂÃæÊÇÒ»¸öÀı×Ó£º</p>
+<p>åºåˆ—æ•°æ®çš„åŸºç±»ï¼Œä¾‹å¦‚ä¸€ä¸ªæ•°æ®é›†ã€‚
+æ¯ä¸ªSequenceå¿…é¡»å®ç°<code>__getitem__</code>å’Œ<code>__len__</code>æ–¹æ³•</p>
+<p>ä¸‹é¢æ˜¯ä¸€ä¸ªä¾‹å­ï¼š</p>
 <pre><code class="python">from skimage.io import imread
 from skimage.transform import resize
 import numpy as np
@@ -66,30 +66,30 @@ def __getitem__(self,idx):
 <h2 id="to_categorical">to_categorical</h2>
 <pre><code class="python">to_categorical(y, num_classes=None)
 </code></pre>
-<p>½«Àà±ğÏòÁ¿(´Ó0µ½nb_classesµÄÕûÊıÏòÁ¿)Ó³ÉäÎª¶şÖµÀà±ğ¾ØÕó, ÓÃÓÚÓ¦ÓÃµ½ÒÔ<code>categorical_crossentropy</code>ÎªÄ¿±êº¯ÊıµÄÄ£ĞÍÖĞ.</p>
-<h3 id="_1">²ÎÊı</h3>
+<p>å°†ç±»åˆ«å‘é‡(ä»0åˆ°nb_classesçš„æ•´æ•°å‘é‡)æ˜ å°„ä¸ºäºŒå€¼ç±»åˆ«çŸ©é˜µ, ç”¨äºåº”ç”¨åˆ°ä»¥<code>categorical_crossentropy</code>ä¸ºç›®æ ‡å‡½æ•°çš„æ¨¡å‹ä¸­.</p>
+<h3 id="_1">å‚æ•°</h3>
 <ul>
-<li>y: Àà±ğÏòÁ¿</li>
-<li>num_classes:×Ü¹²Àà±ğÊı</li>
+<li>y: ç±»åˆ«å‘é‡</li>
+<li>num_classes:æ€»å…±ç±»åˆ«æ•°</li>
 </ul>
 <hr/>
 <h2 id="normalize">normalize</h2>
 <pre><code class="python">normalize(x, axis=-1, order=2)
 </code></pre>
-<p>¶ÔnumpyÊı×é¹æ·¶»¯£¬·µ»Ø¹æ·¶»¯ºóµÄÊı×é</p>
-<h3 id="_2">²ÎÊı</h3>
+<p>å¯¹numpyæ•°ç»„è§„èŒƒåŒ–ï¼Œè¿”å›è§„èŒƒåŒ–åçš„æ•°ç»„</p>
+<h3 id="_2">å‚æ•°</h3>
 <ul>
-<li>x£º´ı¹æ·¶»¯µÄÊı¾İ</li>
-<li>axis: ¹æ·¶»¯µÄÖá</li>
-<li>order£º¹æ·¶»¯·½·¨£¬Èç2ÎªL2·¶Êı</li>
+<li>xï¼šå¾…è§„èŒƒåŒ–çš„æ•°æ®</li>
+<li>axis: è§„èŒƒåŒ–çš„è½´</li>
+<li>orderï¼šè§„èŒƒåŒ–æ–¹æ³•ï¼Œå¦‚2ä¸ºL2èŒƒæ•°</li>
 </ul>
 <hr/>
 <h3 id="custom_object_scope">custom_object_scope</h3>
 <pre><code class="python">custom_object_scope()
 </code></pre>
-<p>Ìá¹©¶¨ÖÆÀàµÄ×÷ÓÃÓò£¬ÔÚ¸Ã×÷ÓÃÓòÄÚÈ«¾Ö¶¨ÖÆÀàÄÜ¹»±»¸ü¸Ä£¬µ«ÔÚ×÷ÓÃÓò½áÊøºó½«»Øµ½³õÊ¼×´Ì¬¡£
-ÒÔ<code>with</code>ÉùÃ÷¿ªÍ·µÄ´úÂë½«ÄÜ¹»Í¨¹ıÃû×Ö·ÃÎÊ¶¨ÖÆÀàµÄÊµÀı£¬ÔÚwithµÄ×÷ÓÃ·¶Î§£¬ÕâĞ©¶¨ÖÆÀàµÄ±ä¶¯½«Ò»Ö±³ÖĞø£¬ÔÚwith×÷ÓÃÓò½áÊøºó£¬È«¾Ö¶¨ÖÆÀàµÄÊµÀı½«»Ø¹éÆäÔÚwith×÷ÓÃÓòÇ°µÄ×´Ì¬¡£</p>
-<p>±¾º¯Êı·µ»Ø<code>CustomObjectScope</code>¶ÔÏó</p>
+<p>æä¾›å®šåˆ¶ç±»çš„ä½œç”¨åŸŸï¼Œåœ¨è¯¥ä½œç”¨åŸŸå†…å…¨å±€å®šåˆ¶ç±»èƒ½å¤Ÿè¢«æ›´æ”¹ï¼Œä½†åœ¨ä½œç”¨åŸŸç»“æŸåå°†å›åˆ°åˆå§‹çŠ¶æ€ã€‚
+ä»¥<code>with</code>å£°æ˜å¼€å¤´çš„ä»£ç å°†èƒ½å¤Ÿé€šè¿‡åå­—è®¿é—®å®šåˆ¶ç±»çš„å®ä¾‹ï¼Œåœ¨withçš„ä½œç”¨èŒƒå›´ï¼Œè¿™äº›å®šåˆ¶ç±»çš„å˜åŠ¨å°†ä¸€ç›´æŒç»­ï¼Œåœ¨withä½œç”¨åŸŸç»“æŸåï¼Œå…¨å±€å®šåˆ¶ç±»çš„å®ä¾‹å°†å›å½’å…¶åœ¨withä½œç”¨åŸŸå‰çš„çŠ¶æ€ã€‚</p>
+<p>æœ¬å‡½æ•°è¿”å›<code>CustomObjectScope</code>å¯¹è±¡</p>
 <pre><code class="python">with custom_object_scope({"MyObject":MyObject}):
     layer = Dense(..., W_regularizer="MyObject")
     # save, load, etc. will recognize custom object by name
@@ -98,7 +98,7 @@ def __getitem__(self,idx):
 <h3 id="get_custom_objects">get_custom_objects</h3>
 <pre><code class="python">get_custom_objects()
 </code></pre>
-<p>¼ìË÷È«¾Ö¶¨ÖÆÀà£¬ÍÆ¼öÀûÓÃcustom_object_scope¸üĞÂºÍÇåÀí¶¨ÖÆ¶ÔÏó£¬µ«<code>get_custom_objects</code>¿É±»Ö±½ÓÓÃÓÚ·ÃÎÊ<code>_GLOBAL_CUSTOM_OBJECTS</code>¡£±¾º¯Êı·µ»Ø´ÓÃû³Æµ½Àà±ğÓ³ÉäµÄÈ«¾Ö×Öµä¡£</p>
+<p>æ£€ç´¢å…¨å±€å®šåˆ¶ç±»ï¼Œæ¨èåˆ©ç”¨custom_object_scopeæ›´æ–°å’Œæ¸…ç†å®šåˆ¶å¯¹è±¡ï¼Œä½†<code>get_custom_objects</code>å¯è¢«ç›´æ¥ç”¨äºè®¿é—®<code>_GLOBAL_CUSTOM_OBJECTS</code>ã€‚æœ¬å‡½æ•°è¿”å›ä»åç§°åˆ°ç±»åˆ«æ˜ å°„çš„å…¨å±€å­—å…¸ã€‚</p>
 <pre><code class="python">get_custom_objects().clear()
 get_custom_objects()["MyObject"] = MyObject
 </code></pre>
@@ -106,54 +106,54 @@ get_custom_objects()["MyObject"] = MyObject
 <h2 id="convert_all_kernels_in_model">convert_all_kernels_in_model</h2>
 <pre><code class="python">convert_all_kernels_in_model(model)
 </code></pre>
-<p>½«Ä£ĞÍÖĞÈ«²¿¾í»ıºËÔÚTheanoºÍTensorFlowÄ£Ê½ÖĞÇĞ»»</p>
+<p>å°†æ¨¡å‹ä¸­å…¨éƒ¨å·ç§¯æ ¸åœ¨Theanoå’ŒTensorFlowæ¨¡å¼ä¸­åˆ‡æ¢</p>
 <hr/>
 <h3 id="plot_model">plot_model</h3>
 <pre><code class="python">plot_model(model, to_file='model.png', show_shapes=False, show_layer_names=True)
 </code></pre>
-<p>»æÖÆÄ£ĞÍµÄ½á¹¹Í¼</p>
+<p>ç»˜åˆ¶æ¨¡å‹çš„ç»“æ„å›¾</p>
 <hr/>
 <h3 id="serialize_keras_object">serialize_keras_object</h3>
 <pre><code class="python">serialize_keras_object(instance)
 </code></pre>
-<p>½«keras¶ÔÏóĞòÁĞ»¯</p>
+<p>å°†keraså¯¹è±¡åºåˆ—åŒ–</p>
 <hr/>
 <h3 id="deserialize_keras_object">deserialize_keras_object</h3>
 <pre><code class="python">eserialize_keras_object(identifier, module_objects=None, custom_objects=None, printable_module_name='object')
 </code></pre>
-<p>´ÓĞòÁĞÖĞ»Ö¸´keras¶ÔÏó</p>
+<p>ä»åºåˆ—ä¸­æ¢å¤keraså¯¹è±¡</p>
 <hr/>
 <h3 id="get_file">get_file</h3>
 <pre><code class="python">get_file(fname, origin, untar=False, md5_hash=None, file_hash=None, cache_subdir='datasets', hash_algorithm='auto', extract=False, archive_format='auto', cache_dir=None)
 </code></pre>
-<p>´Ó¸ø¶¨µÄURLÖĞÏÂÔØÎÄ¼ş, ¿ÉÒÔ´«µİMD5ÖµÓÃÓÚÊı¾İĞ£Ñé(ÏÂÔØºó»òÒÑ¾­»º´æµÄÊı¾İ¾ù¿É)</p>
-<p>Ä¬ÈÏÇé¿öÏÂÎÄ¼ş»á±»ÏÂÔØµ½<code>~/.keras</code>ÖĞµÄ<code>cache_subdir</code>ÎÄ¼ş¼Ğ£¬²¢½«ÆäÎÄ¼şÃûÉèÎª<code>fname</code>£¬Òò´ËÀıÈçÒ»¸öÎÄ¼ş<code>example.txt</code>×îÖÕ½«»á±»´æ·ÅÔÚ`~/.keras/datasets/example.txt~</p>
-<p>tar,tar.gz.tar.bzºÍzip¸ñÊ½µÄÎÄ¼ş¿ÉÒÔ±»ÌáÈ¡£¬Ìá¹©¹şÏ£Âë¿ÉÒÔÔÚÏÂÔØºóĞ£ÑéÎÄ¼ş¡£ÃüÁîº°³ÌĞò<code>shasum</code>ºÍ<code>sha256sum</code>¿ÉÒÔ¼ÆËã¹şÏ£Öµ¡£</p>
-<h3 id="_3">²ÎÊı</h3>
+<p>ä»ç»™å®šçš„URLä¸­ä¸‹è½½æ–‡ä»¶, å¯ä»¥ä¼ é€’MD5å€¼ç”¨äºæ•°æ®æ ¡éªŒ(ä¸‹è½½åæˆ–å·²ç»ç¼“å­˜çš„æ•°æ®å‡å¯)</p>
+<p>é»˜è®¤æƒ…å†µä¸‹æ–‡ä»¶ä¼šè¢«ä¸‹è½½åˆ°<code>~/.keras</code>ä¸­çš„<code>cache_subdir</code>æ–‡ä»¶å¤¹ï¼Œå¹¶å°†å…¶æ–‡ä»¶åè®¾ä¸º<code>fname</code>ï¼Œå› æ­¤ä¾‹å¦‚ä¸€ä¸ªæ–‡ä»¶<code>example.txt</code>æœ€ç»ˆå°†ä¼šè¢«å­˜æ”¾åœ¨`~/.keras/datasets/example.txt~</p>
+<p>tar,tar.gz.tar.bzå’Œzipæ ¼å¼çš„æ–‡ä»¶å¯ä»¥è¢«æå–ï¼Œæä¾›å“ˆå¸Œç å¯ä»¥åœ¨ä¸‹è½½åæ ¡éªŒæ–‡ä»¶ã€‚å‘½ä»¤å–Šç¨‹åº<code>shasum</code>å’Œ<code>sha256sum</code>å¯ä»¥è®¡ç®—å“ˆå¸Œå€¼ã€‚</p>
+<h3 id="_3">å‚æ•°</h3>
 <ul>
 <li>
-<p>fname: ÎÄ¼şÃû£¬Èç¹ûÖ¸¶¨ÁË¾ø¶ÔÂ·¾¶<code>/path/to/file.txt</code>,ÔòÎÄ¼ş½«»á±£´æµ½¸ÃÎ»ÖÃ¡£</p>
+<p>fname: æ–‡ä»¶åï¼Œå¦‚æœæŒ‡å®šäº†ç»å¯¹è·¯å¾„<code>/path/to/file.txt</code>,åˆ™æ–‡ä»¶å°†ä¼šä¿å­˜åˆ°è¯¥ä½ç½®ã€‚</p>
 </li>
 <li>
-<p>origin: ÎÄ¼şµÄURLµØÖ·</p>
+<p>origin: æ–‡ä»¶çš„URLåœ°å€</p>
 </li>
 <li>
-<p>untar: ²¼¶ûÖµ,ÊÇ·ñÒª½øĞĞ½âÑ¹</p>
+<p>untar: å¸ƒå°”å€¼,æ˜¯å¦è¦è¿›è¡Œè§£å‹</p>
 </li>
 <li>
-<p>md5_hash: MD5¹şÏ£Öµ,ÓÃÓÚÊı¾İĞ£Ñé£¬Ö§³Ö<code>sha256</code>ºÍ<code>md5</code>¹şÏ£</p>
+<p>md5_hash: MD5å“ˆå¸Œå€¼,ç”¨äºæ•°æ®æ ¡éªŒï¼Œæ”¯æŒ<code>sha256</code>å’Œ<code>md5</code>å“ˆå¸Œ</p>
 </li>
 <li>
-<p>cache_subdir: ÓÃÓÚ»º´æÊı¾İµÄÎÄ¼ş¼Ğ£¬ÈôÖ¸¶¨¾ø¶ÔÂ·¾¶<code>/path/to/folder</code>Ôò½«´æ·ÅÔÚ¸ÃÂ·¾¶ÏÂ¡£</p>
+<p>cache_subdir: ç”¨äºç¼“å­˜æ•°æ®çš„æ–‡ä»¶å¤¹ï¼Œè‹¥æŒ‡å®šç»å¯¹è·¯å¾„<code>/path/to/folder</code>åˆ™å°†å­˜æ”¾åœ¨è¯¥è·¯å¾„ä¸‹ã€‚</p>
 </li>
 <li>
-<p>hash_algorithm: Ñ¡ÔñÎÄ¼şĞ£ÑéµÄ¹şÏ£Ëã·¨£¬¿ÉÑ¡ÏîÓĞ'md5', 'sha256', ºÍ'auto'. Ä¬ÈÏ'auto'×Ô¶¯¼ì²âÊ¹ÓÃµÄ¹şÏ£Ëã·¨</p>
+<p>hash_algorithm: é€‰æ‹©æ–‡ä»¶æ ¡éªŒçš„å“ˆå¸Œç®—æ³•ï¼Œå¯é€‰é¡¹æœ‰'md5', 'sha256', å’Œ'auto'. é»˜è®¤'auto'è‡ªåŠ¨æ£€æµ‹ä½¿ç”¨çš„å“ˆå¸Œç®—æ³•</p>
 </li>
-<li>extract: ÈôÎªTrueÔòÊÔÍ¼ÌáÈ¡ÎÄ¼ş£¬ÀıÈçtar»òzip tries extracting the file as an Archive, like tar or zip.</li>
-<li>archive_format: ÊÔÍ¼ÌáÈ¡µÄÎÄ¼ş¸ñÊ½£¬¿ÉÑ¡Îª'auto', 'tar', 'zip', ºÍNone. 'tar' °üÀ¨tar, tar.gz, tar.bzÎÄ¼ş. Ä¬ÈÏ'auto'ÊÇ['tar', 'zip']. None»ò¿ÕÁĞ±í½«·µ»ØÃ»ÓĞÆ¥Åä¡£ </li>
-<li>cache_dir: »º´æÎÄ¼ş´æ·ÅµØÔÚ£¬²Î¿¼<a href="../for_beginners/FAQ/#where_config">FAQ</a></li>
+<li>extract: è‹¥ä¸ºTrueåˆ™è¯•å›¾æå–æ–‡ä»¶ï¼Œä¾‹å¦‚taræˆ–zip tries extracting the file as an Archive, like tar or zip.</li>
+<li>archive_format: è¯•å›¾æå–çš„æ–‡ä»¶æ ¼å¼ï¼Œå¯é€‰ä¸º'auto', 'tar', 'zip', å’ŒNone. 'tar' åŒ…æ‹¬tar, tar.gz, tar.bzæ–‡ä»¶. é»˜è®¤'auto'æ˜¯['tar', 'zip']. Noneæˆ–ç©ºåˆ—è¡¨å°†è¿”å›æ²¡æœ‰åŒ¹é…ã€‚ </li>
+<li>cache_dir: ç¼“å­˜æ–‡ä»¶å­˜æ”¾åœ°åœ¨ï¼Œå‚è€ƒ<a href="../for_beginners/FAQ/#where_config">FAQ</a></li>
 </ul>
-<h3 id="_4">·µ»ØÖµ</h3>
-<p>ÏÂÔØºóµÄÎÄ¼şµØÖ·</p>
+<h3 id="_4">è¿”å›å€¼</h3>
+<p>ä¸‹è½½åçš„æ–‡ä»¶åœ°å€</p>
 </div>
     </body></html>
