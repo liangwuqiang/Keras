@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://www.tensorfly.cn/tfdoc/tutorials/overview.html">原文链接</a></p>
+        <section class="normal" id="section-">
+<h1 id="变量创建、初始化、保存和加载">变量:创建、初始化、保存和加载</h1>
+<p>当训练模型时，用<a href="../api_docs/python/state_ops.html">变量</a>来存储和更新参数。变量包含张量 (Tensor)存放于内存的缓存区。建模时它们需要被明确地初始化，模型训练后它们必须被存储到磁盘。这些变量的值可在之后模型训练和分析是被加载。</p>
+<p>本文档描述以下两个TensorFlow类。点击以下链接可查看完整的API文档：</p>
+<ul>
+<li><a href="../api_docs/python/state_ops.html#Variable"><code>tf.Variable</code></a> 类</li>
+<li><a href="../api_docs/python/state_ops.html#Saver"><code>tf.train.Saver</code></a> 类</li>
+</ul>
+<h2 id="创建">创建</h2>
+<p>当创建一个<a href="../api_docs/python/state_ops.html">变量</a>时，你将一个<code>张量</code>作为初始值传入构造函数<code>Variable()</code>。TensorFlow提供了一系列操作符来初始化张量，初始值是<a href="../api_docs/python/constant_op.html">常量或是随机值</a>。</p>
+<p>注意，所有这些操作符都需要你指定张量的shape。那个形状自动成为变量的shape。变量的shape通常是固定的，但TensorFlow提供了高级的机制来重新调整其行列数。</p>
+<pre><code class="lang-python"><span class="hljs-comment"># Create two variables.</span>
+weights = tf.Variable(tf.random_normal([<span class="hljs-number">784</span>, <span class="hljs-number">200</span>], stddev=<span class="hljs-number">0.35</span>),
+                      name=<span class="hljs-string">"weights"</span>)
+biases = tf.Variable(tf.zeros([<span class="hljs-number">200</span>]), name=<span class="hljs-string">"biases"</span>)
+</code></pre>
+<p>调用<code>tf.Variable()</code>添加一些操作(Op, operation)到graph：</p>
+<ul>
+<li>一个<code>Variable</code>操作存放变量的值。</li>
+<li>一个初始化op将变量设置为初始值。这事实上是一个<code>tf.assign</code>操作.</li>
+<li>初始值的操作，例如示例中对<code>biases</code>变量的<code>zeros</code>操作也被加入了graph。</li>
+</ul>
+<p><code>tf.Variable</code>的返回值是Python的<code>tf.Variable</code>类的一个实例。</p>
+<h2 id="初始化">初始化</h2>
+<p>变量的初始化必须在模型的其它操作运行之前先明确地完成。最简单的方法就是添加一个给所有变量初始化的操作，并在使用模型之前首先运行那个操作。</p>
+<p>你或者可以从检查点文件中重新获取变量值，详见下文。</p>
+<p>使用<code>tf.initialize_all_variables()</code>添加一个操作对变量做初始化。记得在完全构建好模型并加载之后再运行那个操作。</p>
+<pre><code class="lang-python"><span class="hljs-comment"># Create two variables.</span>
+weights = tf.Variable(tf.random_normal([<span class="hljs-number">784</span>, <span class="hljs-number">200</span>], stddev=<span class="hljs-number">0.35</span>),
+                      name=<span class="hljs-string">"weights"</span>)
+biases = tf.Variable(tf.zeros([<span class="hljs-number">200</span>]), name=<span class="hljs-string">"biases"</span>)
+...
+<span class="hljs-comment"># Add an op to initialize the variables.</span>
+init_op = tf.initialize_all_variables()
+
+<span class="hljs-comment"># Later, when launching the model</span>
+<span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:
+  <span class="hljs-comment"># Run the init operation.</span>
+  sess.run(init_op)
+  ...
+  <span class="hljs-comment"># Use the model</span>
+  ...
+</code></pre>
+<h3 id="由另一个变量初始化">由另一个变量初始化</h3>
+<p>你有时候会需要用另一个变量的初始化值给当前变量初始化。由于<code>tf.initialize_all_variables()</code>是并行地初始化所有变量，所以在有这种需求的情况下需要小心。</p>
+<p>用其它变量的值初始化一个新的变量时，使用其它变量的<code>initialized_value()</code>属性。你可以直接把已初始化的值作为新变量的初始值，或者把它当做tensor计算得到一个值赋予新变量。</p>
+<pre><code class="lang-python"><span class="hljs-comment"># Create a variable with a random value.</span>
+weights = tf.Variable(tf.random_normal([<span class="hljs-number">784</span>, <span class="hljs-number">200</span>], stddev=<span class="hljs-number">0.35</span>),
+                      name=<span class="hljs-string">"weights"</span>)
+<span class="hljs-comment"># Create another variable with the same value as &amp;apos;weights&amp;apos;.</span>
+w2 = tf.Variable(weights.initialized_value(), name=<span class="hljs-string">"w2"</span>)
+<span class="hljs-comment"># Create another variable with twice the value of &amp;apos;weights&amp;apos;</span>
+w_twice = tf.Variable(weights.initialized_value() * <span class="hljs-number">0.2</span>, name=<span class="hljs-string">"w_twice"</span>)
+</code></pre>
+<h3 id="自定义初始化">自定义初始化</h3>
+<p><code>tf.initialize_all_variables()</code>函数便捷地添加一个op来初始化模型的所有变量。你也可以给它传入一组变量进行初始化。详情请见<a href="../api_docs/python/state_ops.html">Variables Documentation</a>，包括检查变量是否被初始化。</p>
+<h2 id="保存和加载">保存和加载</h2>
+<p>最简单的保存和恢复模型的方法是使用<code>tf.train.Saver</code>对象。构造器给graph的所有变量，或是定义在列表里的变量，添加<code>save</code>和<code>restore</code>ops。saver对象提供了方法来运行这些ops，定义检查点文件的读写路径。</p>
+<h3 id="检查点文件">检查点文件</h3>
+<p>变量存储在二进制文件里，主要包含从变量名到tensor值的映射关系。</p>
+<p>当你创建一个<code>Saver</code>对象时，你可以选择性地为检查点文件中的变量挑选变量名。默认情况下，将每个变量<a href="../api_docs/python/state_ops.html#Variable.name"><code>Variable.name</code></a>属性的值。</p>
+<h3 id="保存变量">保存变量</h3>
+<p>用<code>tf.train.Saver()</code>创建一个<code>Saver</code>来管理模型中的所有变量。</p>
+<pre><code class="lang-python"><span class="hljs-comment"># Create some variables.</span>
+v1 = tf.Variable(..., name=<span class="hljs-string">"v1"</span>)
+v2 = tf.Variable(..., name=<span class="hljs-string">"v2"</span>)
+...
+<span class="hljs-comment"># Add an op to initialize the variables.</span>
+init_op = tf.initialize_all_variables()
+
+<span class="hljs-comment"># Add ops to save and restore all the variables.</span>
+saver = tf.train.Saver()
+
+<span class="hljs-comment"># Later, launch the model, initialize the variables, do some work, save the</span>
+<span class="hljs-comment"># variables to disk.</span>
+<span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:
+  sess.run(init_op)
+  <span class="hljs-comment"># Do some work with the model.</span>
+  ..
+  <span class="hljs-comment"># Save the variables to disk.</span>
+  save_path = saver.save(sess, <span class="hljs-string">"/tmp/model.ckpt"</span>)
+  <span class="hljs-keyword">print</span> <span class="hljs-string">"Model saved in file: "</span>, save_path
+</code></pre>
+<h3 id="恢复变量">恢复变量</h3>
+<p>用同一个<code>Saver</code>对象来恢复变量。注意，当你从文件中恢复变量时，不需要事先对它们做初始化。</p>
+<pre><code class="lang-python"><span class="hljs-comment"># Create some variables.</span>
+v1 = tf.Variable(..., name=<span class="hljs-string">"v1"</span>)
+v2 = tf.Variable(..., name=<span class="hljs-string">"v2"</span>)
+...
+<span class="hljs-comment"># Add ops to save and restore all the variables.</span>
+saver = tf.train.Saver()
+
+<span class="hljs-comment"># Later, launch the model, use the saver to restore variables from disk, and</span>
+<span class="hljs-comment"># do some work with the model.</span>
+<span class="hljs-keyword">with</span> tf.Session() <span class="hljs-keyword">as</span> sess:
+  <span class="hljs-comment"># Restore variables from disk.</span>
+  saver.restore(sess, <span class="hljs-string">"/tmp/model.ckpt"</span>)
+  <span class="hljs-keyword">print</span> <span class="hljs-string">"Model restored."</span>
+  <span class="hljs-comment"># Do some work with the model</span>
+  ...
+</code></pre>
+<h3 id="选择存储和恢复哪些变量">选择存储和恢复哪些变量</h3>
+<p>如果你不给<code>tf.train.Saver()</code>传入任何参数，那么saver将处理graph中的所有变量。其中每一个变量都以变量创建时传入的名称被保存。</p>
+<p>有时候在检查点文件中明确定义变量的名称很有用。举个例子，你也许已经训练得到了一个模型，其中有个变量命名为<code>"weights"</code>，你想把它的值恢复到一个新的变量<code>"params"</code>中。</p>
+<p>有时候仅保存和恢复模型的一部分变量很有用。再举个例子，你也许训练得到了一个5层神经网络，现在想训练一个6层的新模型，可以将之前5层模型的参数导入到新模型的前5层中。</p>
+<p>你可以通过给<code>tf.train.Saver()</code>构造函数传入Python字典，很容易地定义需要保持的变量及对应名称：键对应使用的名称，值对应被管理的变量。</p>
+<p>注意：</p>
+<ul>
+<li>如果需要保存和恢复模型变量的不同子集，可以创建任意多个saver对象。同一个变量可被列入多个saver对象中，只有当saver的<code>restore()</code>函数被运行时，它的值才会发生改变。</li>
+<li>如果你仅在session开始时恢复模型变量的一个子集，你需要对剩下的变量执行初始化op。详情请见<a href="../api_docs/python/state_ops.html#initialize_variables"><code>tf.initialize_variables()</code></a>。</li>
+</ul>
+<pre><code class="lang-python"><span class="hljs-comment"># Create some variables.</span>
+v1 = tf.Variable(..., name=<span class="hljs-string">"v1"</span>)
+v2 = tf.Variable(..., name=<span class="hljs-string">"v2"</span>)
+...
+<span class="hljs-comment"># Add ops to save and restore only &amp;apos;v2&amp;apos; using the name "my_v2"</span>
+saver = tf.train.Saver({<span class="hljs-string">"my_v2"</span>: v2})
+<span class="hljs-comment"># Use the saver object normally after that.</span>
+...
+</code></pre>
+<blockquote>
+<p>原文链接: <a href="http://tensorflow.org/how_tos/variables/index.html" target="_blank">http://tensorflow.org/how_tos/variables/index.html</a> 
+翻译：<a href="https://github.com/zhyhooo" target="_blank">赵屹华</a> 校对：<a href="https://github.com/jikexueyuanwiki" target="_blank">Wiki</a></p>
+</blockquote>
+</section>
+    </body></html>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-09-20T16:25:17.437950663"/>
+	<meta name="" content=""/>
+</head>
+<body lang="zh-CN" dir="ltr">
+<p style="line-height: 200%"><a href="https://www.zhihu.com/question/49909565"><span style="background: #ffff00">原文链接</span></a></p>
+<h1 align="center" style="line-height: 200%"><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US"><span style="background: #ffff00">TensorFlow
+</span></font></font>如何入门？</span></h1>
+<div id="null-toggle" dir="ltr">
+	<p style="line-height: 200%"><font face="Liberation Serif, serif"><span lang="en-US">Python</span></font></p>
+</div>
+<div id="区域1" dir="ltr">
+	<p style="line-height: 200%"><a name="null-toggle"></a>科技</p>
+</div>
+<div id="区域2" dir="ltr">
+	<p style="line-height: 200%"><a name="null-toggle1"></a>深度学习（<font face="Liberation Serif, serif"><span lang="en-US">Deep
+	Learning</span></font>）</p>
+</div>
+<div id="区域3" dir="ltr">
+	<p style="line-height: 200%"><a name="null-toggle2"></a><font face="Liberation Serif, serif"><span lang="en-US">TensorFlow</span></font></p>
+</div>
+<div id="区域4" dir="ltr">
+	<p style="line-height: 200%"><a name="null-toggle3"></a><font face="Liberation Serif, serif"><span lang="en-US">TensorLayer</span></font>（深度学习库）</p>
+</div>
+<h1 style="line-height: 200%"><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US"><span style="background: #ffff00">TensorFlow
+</span></font></font>如何入门？</span></h1>
+<p style="margin-bottom: 0cm; line-height: 200%"><span style="background: #ffff00">我本科不是学计算机的，现在在入门深度学习，因此我现在在对比
+<font face="Liberation Serif, serif"><span lang="en-US">TensorFlow
+</span></font>中英文文档在学（一个是英文官方，一个是极客学院的中文文档）：</span>
+<font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00"><a href="https://link.zhihu.com/?target=https%3A//www.tensorflow.org/versions/r0.10/tutorials/index.html" target="_blank">https://www.tensorflow.org/versions/master/tutorials/index.html</a>
+<a href="https://link.zhihu.com/?target=http%3A//wiki.jikexueyuan.com/project/tensorflow-zh/" target="_blank">TensorFlow</a></span></font><a href="https://link.zhihu.com/?target=http%3A//wiki.jikexueyuan.com/project/tensorflow-zh/" target="_blank">官方文档中文版<font face="Liberation Serif, serif"><span lang="en-US">_TensorFlow</span></font>中文教程<font face="Liberation Serif, serif"><span lang="en-US">_TensorFlow</span></font>开发中文手册<font face="Liberation Serif, serif"><span lang="en-US">[PDF]</span></font>下载</a>
+然后我发现看教程时，原理都看得懂，但看代码时，<font face="Liberation Serif, serif"><span lang="en-US">TensorFlow</span></font>每一个教程的代码的实现方式都不一样，没有标准（估计是不同的人写的），而…显示全部</span></p>
+<p style="margin-bottom: 0cm; line-height: 200%"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">======================
+</span></span></font>
+</p>
+<p style="line-height: 200%"><span style="background: #ffff00">李沐大神说过，深度学习框架就是丹炉<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<ol>
+	<li/>
+<p style="margin-bottom: 0cm; line-height: 200%"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">google</span></font>丹炉的使用说明书：确实是很完善，从最开始出来到现在一直在更新，有段时间不看文档，发现对了好多<font face="Liberation Serif, serif"><span lang="en-US">contrib</span></font>的文档内容（这个特别棒，建议持续关注），所以，所以一直要持续的关注<font face="Liberation Serif, serif"><span lang="en-US">/</span></font>学习；</span></p>
+	<li/>
+<p style="margin-bottom: 0cm; line-height: 200%"><span style="background: #ffff00">炼丹友的反馈：做实验用第三方框架
+	<font face="Liberation Serif, serif"><span lang="en-US">tflearn</span></font>，
+	<font face="Liberation Serif, serif"><span lang="en-US">tensorlayer</span></font>都很好，不过个人感觉还是要先猜猜原生<font face="Liberation Serif, serif"><span lang="en-US">tensorflow</span></font>源码的坑<font face="Liberation Serif, serif"><span lang="en-US">,</span></font>所以在<font face="Liberation Serif, serif"><span lang="en-US">github</span></font>上，<font face="Liberation Serif, serif"><span lang="en-US">watch
+	tensorflow</span></font>这个项目是必须的，尤其是没事看看别人提的<font face="Liberation Serif, serif"><span lang="en-US">issue</span></font>，很多时候会避免在之后你用到的问题；</span></p>
+	<li/>
+<p style="margin-bottom: 0cm; line-height: 200%"><span style="background: #ffff00">定位自己的方向：就是你做的这块的内容在<font face="Liberation Serif, serif"><span lang="en-US">tensorflow</span></font>的体现，比如本人做<font face="Liberation Serif, serif"><span lang="en-US">cv</span></font>的，会去关注<font face="Liberation Serif, serif"><span lang="en-US">tensorflow/model</span></font>下的各种<font face="Liberation Serif, serif"><span lang="en-US">cv</span></font>方向的<font face="Liberation Serif, serif"><span lang="en-US"><a href="https://link.zhihu.com/?target=https%3A//github.com/tensorflow/models" target="_blank">tensorflow/models</a></span></font>，会去读它的代码实现，<font face="Liberation Serif, serif"><span lang="en-US">google</span></font>的工程实现确实很厉害，代码很完善，看着很漂亮，是种享受，还有就是<font face="Liberation Serif, serif"><span lang="en-US">github</span></font>其他的基于<font face="Liberation Serif, serif"><span lang="en-US">tensorflow</span></font>的<font face="Liberation Serif, serif"><span lang="en-US">cv</span></font>下的内容，挑<font face="Liberation Serif, serif"><span lang="en-US">star</span></font>高的去看下，过不了多久，你就会慢慢模仿着用来写自己的<font face="Liberation Serif, serif"><span lang="en-US">model</span></font>，而且会显得很专业；</span></p>
+	<li/>
+<p style="margin-bottom: 0cm; line-height: 200%"><span style="background: #ffff00">关注丹方：
+	<font face="Liberation Serif, serif"><span lang="en-US">TensorFlow</span></font>就是一套工具，无论是<font face="Liberation Serif, serif"><span lang="en-US">mxnet</span></font>、<font face="Liberation Serif, serif"><span lang="en-US">torch</span></font>、<font face="Liberation Serif, serif"><span lang="en-US">paddle</span></font>，真正我们要做的是用某套工具把我们熟悉，了解的丹方炼出来，<font face="Liberation Serif, serif"><span lang="en-US">google
+	model</span></font>下<font face="Liberation Serif, serif"><span lang="en-US"><a href="https://link.zhihu.com/?target=https%3A//github.com/tensorflow/models/tree/master/slim/nets" target="_blank">tensorflow/models</a></span></font>里面很最新的<font face="Liberation Serif, serif"><span lang="en-US">image</span></font>下的丹方，建议多熟悉熟悉，如果发现其他框架比如<font face="Liberation Serif, serif"><span lang="en-US">tflearn</span></font>，<font face="Liberation Serif, serif"><span lang="en-US">tensorlayer</span></font>，<font face="Liberation Serif, serif"><span lang="en-US">mxnet</span></font>上没有的可以去尝试用别的丹炉炼出来，这个很有用的，本人用<font face="Liberation Serif, serif"><span lang="en-US">tflearn</span></font>写过<font face="Liberation Serif, serif"><span lang="en-US">googlenet</span></font>，<font face="Liberation Serif, serif"><span lang="en-US">inception-resnet-v2,</span></font>用<font face="Liberation Serif, serif"><span lang="en-US">mxnet</span></font>写过<font face="Liberation Serif, serif"><span lang="en-US">inception-resnet-v2</span></font>，难度不大但你会学到从头到尾去熟悉丹炉；</span></p>
+	<li/>
+<p style="margin-bottom: 0cm; line-height: 200%"><span style="background: #ffff00">第三方支持框架：
+	<font face="Liberation Serif, serif"><span lang="en-US">tensorflow</span></font>出来后有很多高级的第三方包，例如<font face="Liberation Serif, serif"><span lang="en-US">tflearn</span></font>，<font face="Liberation Serif, serif"><span lang="en-US">keras</span></font>，<font face="Liberation Serif, serif"><span lang="en-US">tensorlayer</span></font>，提供高级的<font face="Liberation Serif, serif"><span lang="en-US">api</span></font>用来快速实现某些功能，但是我觉得更大的好处其实不是快速写好某个模型，而是其内部专业的高级<font face="Liberation Serif, serif"><span lang="en-US">api</span></font>的代码实现，极其值得参考，本人比较熟悉<font face="Liberation Serif, serif"><span lang="en-US">tflearn</span></font>，<font face="Liberation Serif, serif"><span lang="en-US">tflearn</span></font>里面的各种<font face="Liberation Serif, serif"><span lang="en-US">layer</span></font>的写法简直是教科书级别的，童靴们在写<font face="Liberation Serif, serif"><span lang="en-US">tensorflow</span></font>源码的时候完全可以拿来参考</span></p>
+	<li/>
+<p style="margin-bottom: 0cm; line-height: 200%"><span style="background: #ffff00">金丹使用：
+	<font face="Liberation Serif, serif"><span lang="en-US">model</span></font>训练出来，如何使用？做<font face="Liberation Serif, serif"><span lang="en-US">inference</span></font>还是保存下来对新的<font face="Liberation Serif, serif"><span lang="en-US">task</span></font>做<font face="Liberation Serif, serif"><span lang="en-US">pretrained+fine-tuning</span></font>，这些都要关注，具体可以去看看例如<font face="Liberation Serif, serif"><span lang="en-US">neural
+	style</span></font>的<font face="Liberation Serif, serif"><span lang="en-US">model</span></font>还有一些图像分类比赛使用<font face="Liberation Serif, serif"><span lang="en-US">pretrained
+	model</span></font>的源码；</span></p>
+	<li/>
+<p style="line-height: 200%"><span style="background: #ffff00">框架底层的学习：
+	本人在这块不熟悉，但是个人觉得还是很有必要掌握这些，我之后会在一段时间好好关注下这部分，读读轻量级框架<font face="Liberation Serif, serif"><span lang="en-US"><a href="https://link.zhihu.com/?target=https%3A//github.com/pjreddie/darknet" target="_blank">pjreddie/darknet</a></span></font>，<font face="Liberation Serif, serif"><span lang="en-US"><a href="https://link.zhihu.com/?target=https%3A//github.com/tiny-dnn/tiny-dnn" target="_blank">tiny-dnn/tiny-dnn</a></span></font>的源码</span></p>
+</ol>
+<p style="line-height: 200%"><span style="background: #ffff00">最后不要脸地推荐下我博客的几篇相关文章：</span><font face="Liberation Serif, serif"><span lang="en-US"><br/>
+<a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1639" target="_blank"><span style="background: #ffff00">TensorFlow</a></span></span></font><a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1639" target="_blank"><span style="background: #ffff00">入门一<font face="Liberation Serif, serif"><span lang="en-US">-</span></font>小石头的码疯窝</span></a><font face="Liberation Serif, serif"><span lang="en-US"><br/>
+<a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1651" target="_blank"><span style="background: #ffff00">TensorFlow</a></span></span></font><a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1651" target="_blank"><span style="background: #ffff00">之深入理解<font face="Liberation Serif, serif"><span lang="en-US">Neural
+Style</span></a><br/>
+<a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1661" target="_blank"><span style="background: #ffff00">TensorFlow</a></span></span></font><a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1661" target="_blank"><span style="background: #ffff00">之深入理解<font face="Liberation Serif, serif"><span lang="en-US">AlexNet-</span></font>小石头的码疯窝</span></a><font face="Liberation Serif, serif"><span lang="en-US"><br/>
+<a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1678" target="_blank"><span style="background: #ffff00">TensoFlow</a></span></span></font><a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1678" target="_blank"><span style="background: #ffff00">之深入理解<font face="Liberation Serif, serif"><span lang="en-US">GoogLeNet-</span></font>小石头的码疯窝</span></a><font face="Liberation Serif, serif"><span lang="en-US"><br/>
+<a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1690" target="_blank"><span style="background: #ffff00">TensorFlow</a></span></span></font><a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1690" target="_blank"><span style="background: #ffff00">之深入理解<font face="Liberation Serif, serif"><span lang="en-US">VGG\Residual
+Network</span></a><br/>
+<a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1693" target="_blank"><span style="background: #ffff00">TensorFlow</a></span></span></font><a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1693" target="_blank"><span style="background: #ffff00">之深入理解<font face="Liberation Serif, serif"><span lang="en-US">Fast
+Neural Style</span></a><br/>
+</span></font><a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1726" target="_blank"><span style="background: #ffff00">风格画之最后一弹<font face="Liberation Serif, serif"><span lang="en-US">MRF-CNN-</span></font>小石头的码疯窝</span></a><font face="Liberation Serif, serif"><span lang="en-US"><br/>
+</span></font><a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1730" target="_blank"><span style="background: #ffff00">深度学习之<font face="Liberation Serif, serif"><span lang="en-US">Neural
+Image
+Caption</span></a><br/>
+<a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1733" target="_blank"><span style="background: #ffff00">MXnet</a></span></span></font><a href="https://link.zhihu.com/?target=http%3A//hacker.duanshishi.com/%3Fp%3D1733" target="_blank"><span style="background: #ffff00">初体验之<font face="Liberation Serif, serif"><span lang="en-US">inception-resnet-v2</span></font>从<font face="Liberation Serif, serif"><span lang="en-US">Model</span></font>到<font face="Liberation Serif, serif"><span lang="en-US">Predict-</span></font>小石头的码疯窝</span></a><font face="Liberation Serif, serif"><span lang="en-US"><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span></font><br/>
+<br/>
+
+</p>
+<p style="line-height: 200%"><font face="Liberation Serif, serif"><span lang="en-US">======================
+</span></font>
+</p>
+<p style="line-height: 200%"><span style="background: #ffff00">可以学一下斯坦福新开的课程，<font face="Liberation Serif, serif"><span lang="en-US">cs20si</span></font>，<font face="Liberation Serif, serif"><span lang="en-US"><a href="https://link.zhihu.com/?target=http%3A//web.stanford.edu/class/cs20si/index.html" target="_blank">http://web.stanford.edu/class/cs20si/index.html</a></span></font>，国内可以看<font face="Liberation Serif, serif"><span lang="en-US">b</span></font>站的视频，<font face="Liberation Serif, serif"><span lang="en-US"><a href="https://link.zhihu.com/?target=https%3A//www.bilibili.com/video/av9156347/%3Ffrom%3Dsearch%26seid%3D6905181275544516403" target="_blank">CS
+20SI: Tensorflow for Deep Learning
+Research</a></span></font>，通过这个课程，能够对<font face="Liberation Serif, serif"><span lang="en-US">tensorflow</span></font>有个全面的了解，从最基本的计算图开始，到如何结构化模型，了解最新的<font face="Liberation Serif, serif"><span lang="en-US">seq2seq</span></font>，<font face="Liberation Serif, serif"><span lang="en-US">neural
+style</span></font>等前沿算法的实现。</span></p>
+<p style="line-height: 200%"><br/>
+<br/>
+
+</p>
+<p style="line-height: 200%"><span style="background: #ffff00">我准备写一个课程笔记，这是第一篇<a href="https://zhuanlan.zhihu.com/p/28488510">笔记</a></span></p>
+<p style="line-height: 200%"><span style="background: #ffff00">以上</span></p>
+</body>
+</html>
