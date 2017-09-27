@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+</head><body>
+<p><a href="http://www.cnblogs.com/qw12/p/6294430.html">原文链接</a></p>
+<p><center><h1>神经网络回顾-Relu激活函数</h1></center></p>
+    <div id="cnblogs_post_body"><h2>1. 神经元模型</h2>
+<p>以下引用自<a href="http://home.cnblogs.com/u/maybe2030/">Poll的笔记</a>：<a class="postTitle2" href="http://www.cnblogs.com/maybe2030/p/5597716.html" id="cb_post_title_url">神经网络基础</a>。</p>
+<blockquote>
+<p>　　神经元是神经网络中最基本的结构，也可以说是神经网络的基本单元，它的设计灵感完全来源于生物学上神经元的信息传播机制。我们学过生物的同学都知道，神经元有两种状态：兴奋和抑制。一般情况下，大多数的神经元是处于抑制状态，但是一旦某个神经元收到刺激，导致它的电位超过一个阈值，那么这个神经元就会被激活，处于“兴奋”状态，进而向其他的神经元传播化学物质（其实就是信息）。</p>
+<p>　　下图为生物学上的神经元结构示意图：</p>
+<p><img alt="" data-bd-imgshare-binded="1" height="249" src="images/8eb7255c631366163a623480f93ceb57.png" width="475"/></p>
+<p>　　1943年，McCulloch和Pitts将上图的神经元结构用一种简单的模型进行了表示，构成了一种人工神经元模型，也就是我们现在经常用到的“M-P神经元模型”，如下图所示：</p>
+<p><img alt="" data-bd-imgshare-binded="1" src="images/044a9bd8f0e9521c02ff11c4d8d2a2c0.png"/></p>
+<p style="text-align: left">　　从上图M-P神经元模型可以看出，神经元的输出</p>
+<p style="text-align: center">$$y = f(\sum_{i=1}^{n}w_{i}x_{i} - \theta)$$</p>
+<p style="text-align: left">　　其中$\theta$为我们之前提到的神经元的激活阈值，函数$f(·)$也被称为是激活函数。如上图所示，函数$f(·)$可以用一个阶跃方程表示，大于阈值激活；否则则抑制。但是这样有点太粗暴，因为阶跃函数不光滑，不连续，不可导，因此我们更常用的方法是用sigmoid函数来表示函数函数$f(·)$。</p>
+<p style="text-align: left">　　sigmoid函数的表达式和分布图如下所示：</p>
+<p><img alt="" data-bd-imgshare-binded="1" height="226" src="images/c8b57fd3e3af0d4311253e205ae47605.png" width="288"/></p>
+<p>$$f(x) = \frac{1}{1+e^{-x}}$$<span class="MathJax" data-mathml='&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo stretchy="false"&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy="false"&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mrow&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mrow class="MJX-TeXAtom-ORD"&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;/math&gt;'><span class="MJX_Assistive_MathML"> </span></span></p>
+</blockquote>
+<p> </p>
+<p>上一篇随笔中用到的感知机，是Rosenblatt于1957年提出，作为神经网络与支持向量机的基础。</p>
+<p>1969年Minsky在《感知机》中指出感知机只能用于线性可分的模式分类问题和一阶谓词逻辑问题，不能用于线性不可分的模式分类问题和高阶谓词逻辑问题。</p>
+<p>多层感知机模型理论上有求解线性不可分的能力，但是当时并没有有效的训练方法。</p>
+<h2>2. ReLU激活函数</h2>
+<p>结合生物神经元，采用任一非线性激活函数，都能使单层感知机具有求解线性不可分的能力。</p>
+<p>以下摘自<a href="http://home.cnblogs.com/u/neopenx/">Physcal</a>的博文<a class="postTitle2" href="http://www.cnblogs.com/neopenx/p/4453161.html" id="cb_post_title_url">ReLu(Rectified Linear Units)激活函数</a>。</p>
+<blockquote>
+<p>传统神经网络中最常用的两个激活函数，Sigmoid系（Logistic-Sigmoid、Tanh-Sigmoid）被视为神经网络的核心所在。</p>
+<p>从数学上来看，非线性的Sigmoid函数对中央区的信号增益较大，对两侧区的信号增益小，在信号的特征空间映射上，有很好的效果。</p>
+<p>从神经科学上来看，中央区酷似神经元的兴奋态，两侧区酷似神经元的抑制态，因而在神经网络学习方面，可以将重点特征推向中央区，将非重点特征推向两侧区。</p>
+<p>2001年，神经科学家Dayan、Abott从生物学角度，模拟出了脑神经元接受信号更精确的激活模型，该模型如左图所示：</p>
+<p> <img alt="" src="images/1b2e237141b1dbd1c6a378032c7c47a8.png"><img alt="" src="images/67d52c4e18e74ada1184b140839d23d2.png"/></img></p>
+<p> </p>
+<p>这个模型对比Sigmoid系主要变化有三点：<strong>①单侧抑制 ②相对宽阔的兴奋边界 ③稀疏激活性</strong>（重点，可以看到红框里前端状态完全没有激活）</p>
+<p>同年，Charles Dugas等人在做<strong>正数</strong>回归预测<a href="http://95.173.210.46/url?q=http://papers.nips.cc/paper/1920-incorporating-second-order-functional-knowledge-for-better-option-pricing.pdf&amp;sa=U&amp;ei=4SM6VefqBIbaPL-HgPAN&amp;ved=0CAUQFjAA&amp;usg=AFQjCNHY_71xurXxTe9sgH1iHqjZHwg2rA" target="_blank">论文</a>中偶然使用了Softplus函数，Softplus函数是Logistic-Sigmoid函数原函数。</p>
+<p> <span class="MathJax_Preview"><span class="MathJax" data-mathml='&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mo stretchy="false"&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy="false"&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo stretchy="false"&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mrow class="MJX-TeXAtom-ORD"&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;mo stretchy="false"&gt;)&lt;/mo&gt;&lt;/math&gt;' id="MathJax-Element-1-Frame"><span class="MJX_Assistive_MathML">Softplus(x)=log(1+ex)</span></span></span></p>
+<p>按照论文的说法，一开始想要使用一个指数函数（天然正数）作为激活函数来回归，但是到后期梯度实在太大，难以训练，于是加了一个log来减缓上升趋势。</p>
+<p>加了1是为了保证非负性。同年，Charles Dugas等人在NIPS会议<a href="http://papers.nips.cc/paper/2062-estimating-car-insurance-premia-a-case-study-in-high-dimensional-data-inference" target="_blank">论文</a>中又调侃了一句，Softplus可以看作是强制非负校正函数<span class="MathJax_Preview"><span class="MathJax" data-mathml='&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mo movablelimits="true" form="prefix"&gt;max&lt;/mo&gt;&lt;mo stretchy="false"&gt;(&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy="false"&gt;)&lt;/mo&gt;&lt;/math&gt;' id="MathJax-Element-2-Frame"><span class="MJX_Assistive_MathML">max(0,x)平滑版本。</span></span></span></p>
+<p>偶然的是，同是2001年，ML领域的Softplus/Rectifier激活函数与神经科学领域的提出脑神经元激活频率函数有神似的地方，这促成了新的激活函数的研究。</p>
+<h3>生物神经的稀疏激活性</h3>
+<p>在神经科学方面，除了新的激活频率函数之外，神经科学家还发现了神经元的稀疏激活性。</p>
+<p>还是2001年，Attwell等人基于大脑能量消耗的观察学习上，推测神经元编码工作方式具有稀疏性和分布性。</p>
+<p>2003年Lennie等人估测大脑同时被激活的神经元只有1~4%，进一步表明神经元工作的稀疏性。</p>
+<p>从信号方面来看，即神经元同时只对输入信号的少部分选择性响应，大量信号被刻意的屏蔽了，这样可以提高学习的精度，更好更快地提取稀疏特征。</p>
+<p>从这个角度来看，在经验规则的初始化W之后，传统的Sigmoid系函数同时近乎有一半的神经元被激活，这不符合神经科学的研究，而且会给深度网络训练带来巨大问题。</p>
+<p>Softplus照顾到了新模型的前两点，却没有稀疏激活性。因而，校正函数<span class="MathJax_Preview"><span class="MathJax" data-mathml='&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mo movablelimits="true" form="prefix"&gt;max&lt;/mo&gt;&lt;mo stretchy="false"&gt;(&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy="false"&gt;)&lt;/mo&gt;&lt;/math&gt;' id="MathJax-Element-3-Frame"><span class="MJX_Assistive_MathML">max(0,x)成了近似符合该模型的最大赢家。</span></span></span></p>
+</blockquote>
+<p>人类中枢神经系统中约含1000亿个神经元；人眼有约1.2亿个视杆细胞，600万~700万的视锥细胞 。</p>
+<p>几乎所有的神经元都是相互联系在一起，组成一个复杂的网络。</p>
+<p>如果没有激活机制，信号的传递和网络训练将消耗巨大。ReLU激活函数使得神经元低于阈值时处于沉默状态。</p>
+<p>ReLU相对于Sigmoid一方面大大降低运算（生物运算也有成本）；另一方面在输入信号较强时，仍然能够保留信号之间的差别。</p>
+<h2>3. ReLu的反向传播</h2>
+<p>以下为《Notes on Convolutional Neural Networks》中的输出层反向传播公式。</p>
+<p><img alt="" src="images/ab40f5dad744bac92dfd170b1253c419.png"/></p>
+<p><img alt="" src="images/54d4668b792937eee49b2be8719fc40f.png"/></p>
+<p>下面函数是针对已经经过ReLU运算后求ReLU的导数。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff">def</span><span style="color: #000000"> relu_prime(self,z):
+    z[z</span>&gt;0]=1
+    <span style="color: #0000ff">return</span> z</pre>
+</div>
+<p> ReLU是在BP算法之后广泛使用的，假设没有BP算法，我们仍然可以根据生物神经网络推测权值的更新方式。</p>
+<p>假设有以下网络，由于输出层第一个值为0，相当于w的左侧并未激活。</p>
+<p>计算误差时用 f'(u<sup>L</sup>)*(y<sup>n</sup>-t<sup>n</sup>) 相当于不更新左侧权值。（ f'(u<sup>L</sup>) = [0,1] )</p>
+<p> <img alt="" src="images/06b9e8c6269365c083d885b72b504283.png"> </img></p>
+<p>如下可见，添加一个ReLu激活函数，就能使感知机对XOR类问题收敛。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008000">#</span><span style="color: #008000"> coding:utf-8</span>
+<span style="color: #0000ff">import</span><span style="color: #000000"> numpy as np
+
+
+</span><span style="color: #0000ff">def</span><span style="color: #000000"> relu(z):
+    </span><span style="color: #0000ff">return</span> np.maximum(z, 0.0<span style="color: #000000">)
+
+</span><span style="color: #0000ff">def</span> percepT(x, y, iter):  <span style="color: #008000">#</span><span style="color: #008000"> 感知机原始形式</span>
+    n = np.shape(x)[1<span style="color: #000000">]
+    m </span>=<span style="color: #000000"> len(x)
+    theta </span>=<span style="color: #000000"> np.ones(n)
+    alpha </span>= 0.02
+    <span style="color: #0000ff">for</span> it <span style="color: #0000ff">in</span><span style="color: #000000"> range(iter):
+        l </span>=<span style="color: #000000"> 0
+        </span><span style="color: #0000ff">print</span><span style="color: #000000"> it 
+        </span><span style="color: #0000ff">for</span> k <span style="color: #0000ff">in</span><span style="color: #000000"> range(m):
+            a</span>=<span style="color: #000000">relu(x[k].dot(theta.T))
+            </span><span style="color: #0000ff">if</span> (a) * y[k] &lt;<span style="color: #000000"> 0:
+                l </span>= 1<span style="color: #000000">
+                theta</span>+=alpha *(y[k]-a)*<span style="color: #000000">x[k]
+        </span><span style="color: #0000ff">if</span> l ==<span style="color: #000000"> 0:
+            </span><span style="color: #0000ff">break</span>
+    <span style="color: #0000ff">return</span><span style="color: #000000"> theta
+
+N</span>=3<span style="color: #000000">
+a</span>=range(2**<span style="color: #000000">N)
+x</span>=[bin(i)[2:].zfill(N) <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span><span style="color: #000000"> a]
+data</span>=np.array([[int(i) <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> j ]<span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span><span style="color: #000000"> x])
+y</span>=np.array([i[0]*i[2] <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span><span style="color: #000000"> data])
+y[y</span>==0]=-1<span style="color: #000000">
+theta </span>= percepT(data, np.array(y), 100<span style="color: #000000">)
+</span><span style="color: #0000ff">print</span> theta  <span style="color: #008000">#</span><span style="color: #008000"> [-0.01272316 -0.1729134  -0.01583692]</span>
+<span style="color: #0000ff">for</span> i,j <span style="color: #0000ff">in</span><span style="color: #000000"> zip(data,np.array(y)):
+    </span><span style="color: #0000ff">print</span> relu(i.dot(theta.T))* j&gt;=<span style="color: #000000">0
+    
+</span><span style="color: #800000">"""</span><span style="color: #800000">
+True
+True
+True
+True
+True
+True
+True
+True
+</span><span style="color: #800000">"""</span></pre>
+</div>
+<p> </p></div>
+</body></html>
