@@ -1,133 +1,215 @@
-<!DOCTYPE html>
-    <html><head><meta charset="UTF-8">
-    </head><body>
-    <p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/">原文链接</a></p>
-        <div class="tut-main-content-pad">
-<br>
-<h1>scope 命名方法</h1>
-<p style="text-align: center;">
-        
-          作者: <strong>莫烦</strong>   
-        
-        编辑: <strong>莫烦</strong>   
-        
-          2016-11-25
-        
-      </p>
-<p>学习资料:</p>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.6.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-09-29T17:01:54.944887863"/>
+	<meta name="" content=""/>
+	<style type="text/css">
+		pre.ctl { font-family: "Liberation Mono", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+	</style>
+</head>
+<body lang="zh-CN" dir="ltr">
+<p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/"><span style="background: #ffff00">原文链接</span></a></p>
+<h1><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US"><span style="background: #ffff00">scope
+</span></font></font>命名方法</span></h1>
+<p align="center"><span style="background: #ffff00">作者<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">莫烦</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; 编辑<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">莫烦</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; <font face="Liberation Serif, serif"><span lang="en-US">2016-11-25
+</span></span></font>
+</p>
+<p><span style="background: #ffff00">学习资料<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
 <ul>
-<li>不同 scope <a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tf22_scope/tf22_scope.py">对比代码</a></li>
-<li>为 TF 2017 打造的<a href="https://github.com/MorvanZhou/Tensorflow-Tutorial">新版可视化教学代码</a></li>
-<li>reuse variable <a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tf22_scope/tf22_RNN_scope.py">RNN 代码</a></li>
-<li>sharing variable <a href="https://www.tensorflow.org/versions/master/how_tos/variable_scope/index.html">tensorflow 官网介绍</a></li>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00">不同
+	<font face="Liberation Serif, serif"><span lang="en-US">scope </span></font><a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tf22_scope/tf22_scope.py">对比代码</a>
+	</span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00">为
+	<font face="Liberation Serif, serif"><span lang="en-US">TF 2017
+	</span></font>打造的<a href="https://github.com/MorvanZhou/Tensorflow-Tutorial">新版可视化教学代码</a>
+	</span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">reuse
+	variable <a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tf22_scope/tf22_RNN_scope.py">RNN
+	</a></span></font><a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tf22_scope/tf22_RNN_scope.py">代码</a>
+	</span>
+	</p>
+	<li/>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">sharing
+	variable <a href="https://www.tensorflow.org/versions/master/how_tos/variable_scope/index.html">tensorflow
+	</a></span></font><a href="https://www.tensorflow.org/versions/master/how_tos/variable_scope/index.html">官网介绍</a>
+	</span>
+	</p>
 </ul>
-<p>scope 能让你命名变量的时候轻松很多. 同时也会在 reusing variable 代码中常常见到. 所以今天我们会来讨论下 tensorflow 当中的两种定义 scope 的方式. 
-最后并附加一个 RNN 运用 reuse variable 的例子.</p>
-<h4 class="tut-h4-pad" id="tf.name_scope()">tf.name_scope()</h4>
-<p>在 Tensorflow 当中有两种途径生成变量 variable, 一种是 <code class="highlighter-rouge">tf.get_variable()</code>, 另一种是 <code class="highlighter-rouge">tf.Variable()</code>. 
-如果在 <code class="highlighter-rouge">tf.name_scope()</code> 的框架下使用这两种方式, 结果会如下.</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">scope
+</span></font>能让你命名变量的时候轻松很多<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>同时也会在 <font face="Liberation Serif, serif"><span lang="en-US">reusing
+variable </span></font>代码中常常见到<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>所以今天我们会来讨论下 <font face="Liberation Serif, serif"><span lang="en-US">tensorflow
+</span></font>当中的两种定义 <font face="Liberation Serif, serif"><span lang="en-US">scope
+</span></font>的方式<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>最后并附加一个 <font face="Liberation Serif, serif"><span lang="en-US">RNN
+</span></font>运用 <font face="Liberation Serif, serif"><span lang="en-US">reuse
+variable </span></font>的例子<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<h4><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">tf.name_scope()</span></span></font></h4>
+<p><span style="background: #ffff00">在 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow
+</span></font>当中有两种途径生成变量 <font face="Liberation Serif, serif"><span lang="en-US">variable,
+</span></font>一种是 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.get_variable()</span></code><span style="background: #ffff00">,
+</span></span></font><span style="background: #ffff00">另一种是</span>
+<font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.Variable()</span></code><span style="background: #ffff00">.
+</span></span></font><span style="background: #ffff00">如果在
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.name_scope()</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">的框架下使用这两种方式<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>结果会如下<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">import tensorflow as tf</code></span></font>
 
-<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s">"a_name_scope"</span><span class="p">):</span>
-    <span class="n">initializer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant_initializer</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">var1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'var1'</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">initializer</span><span class="o">=</span><span class="n">initializer</span><span class="p">)</span>
-    <span class="n">var2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'var2'</span><span class="p">,</span> <span class="n">initial_value</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-    <span class="n">var21</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'var2'</span><span class="p">,</span> <span class="n">initial_value</span><span class="o">=</span><span class="p">[</span><span class="mf">2.1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-    <span class="n">var22</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'var2'</span><span class="p">,</span> <span class="n">initial_value</span><span class="o">=</span><span class="p">[</span><span class="mf">2.2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">with tf.name_scope(&quot;a_name_scope&quot;):</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">initializer = tf.constant_initializer(value=1)</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">var1 = tf.get_variable(name='var1', shape=[1], dtype=tf.float32, initializer=initializer)</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">var2 = tf.Variable(name='var2', initial_value=[2], dtype=tf.float32)</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">var21 = tf.Variable(name='var2', initial_value=[2.1], dtype=tf.float32)</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">var22 = tf.Variable(name='var2', initial_value=[2.2], dtype=tf.float32)</code></span></font>
 
 
-<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
-    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">initialize_all_variables</span><span class="p">())</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">var1</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>        <span class="c"># var1:0</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">var1</span><span class="p">))</span>   <span class="c"># [ 1.]</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">var2</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>        <span class="c"># a_name_scope/var2:0</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">var2</span><span class="p">))</span>   <span class="c"># [ 2.]</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">var21</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>       <span class="c"># a_name_scope/var2_1:0</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">var21</span><span class="p">))</span>  <span class="c"># [ 2.0999999]</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">var22</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>       <span class="c"># a_name_scope/var2_2:0</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">var22</span><span class="p">))</span>  <span class="c"># [ 2.20000005]</span>
-</code></pre>
-</div>
-<p>可以看出使用 <code class="highlighter-rouge">tf.Variable()</code> 定义的时候, 虽然 <code class="highlighter-rouge">name</code> 都一样, 但是为了不重复变量名, Tensorflow 输出的变量名并不是一样的. 
-所以, 本质上 <code class="highlighter-rouge">var2</code>, <code class="highlighter-rouge">var21</code>, <code class="highlighter-rouge">var22</code> 并不是一样的变量. 而另一方面, 使用<code class="highlighter-rouge">tf.get_variable()</code>定义的变量不会被<code class="highlighter-rouge">tf.name_scope()</code>当中的名字所影响.</p>
-<h4 class="tut-h4-pad" id="tf.variable_scope()">tf.variable_scope()</h4>
-<p>如果想要达到重复利用变量的效果, 我们就要使用 <code class="highlighter-rouge">tf.variable_scope()</code>, 并搭配 <code class="highlighter-rouge">tf.get_variable()</code> 这种方式产生和提取变量.
-不像 <code class="highlighter-rouge">tf.Variable()</code> 每次都会产生新的变量, <code class="highlighter-rouge">tf.get_variable()</code> 如果遇到了同样名字的变量时, 它会单纯的提取这个同样名字的变量(避免产生新变量).
-而在重复使用的时候, 一定要在代码中强调 <code class="highlighter-rouge">scope.reuse_variables()</code>, 否则系统将会报错, 以为你只是单纯的不小心重复使用到了一个变量.</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">variable_scope</span><span class="p">(</span><span class="s">"a_variable_scope"</span><span class="p">)</span> <span class="k">as</span> <span class="n">scope</span><span class="p">:</span>
-    <span class="n">initializer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant_initializer</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">var3</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'var3'</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">initializer</span><span class="o">=</span><span class="n">initializer</span><span class="p">)</span>
-    <span class="n">scope</span><span class="o">.</span><span class="n">reuse_variables</span><span class="p">()</span>
-    <span class="n">var3_reuse</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'var3'</span><span class="p">,)</span>
-    <span class="n">var4</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'var4'</span><span class="p">,</span> <span class="n">initial_value</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-    <span class="n">var4_reuse</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'var4'</span><span class="p">,</span> <span class="n">initial_value</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-    
-<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
-    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">var3</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>            <span class="c"># a_variable_scope/var3:0</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">var3</span><span class="p">))</span>       <span class="c"># [ 3.]</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">var3_reuse</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>      <span class="c"># a_variable_scope/var3:0</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">var3_reuse</span><span class="p">))</span> <span class="c"># [ 3.]</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">var4</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>            <span class="c"># a_variable_scope/var4:0</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">var4</span><span class="p">))</span>       <span class="c"># [ 4.]</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">var4_reuse</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>      <span class="c"># a_variable_scope/var4_1:0</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">var4_reuse</span><span class="p">))</span> <span class="c"># [ 4.]</span>
-    
-</code></pre>
-</div>
-<div>
-<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle" data-ad-client="ca-pub-4601203457616636" data-ad-format="fluid" data-ad-layout="in-article" data-ad-slot="3397817325" style="display:block; text-align:center;"></ins>
-<script>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">with tf.Session() as sess:</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">sess.run(tf.initialize_all_variables())</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(var1.name)        # var1:0</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(sess.run(var1))   # [ 1.]</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(var2.name)        # a_name_scope/var2:0</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(sess.run(var2))   # [ 2.]</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(var21.name)       # a_name_scope/var2_1:0</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(sess.run(var21))  # [ 2.0999999]</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(var22.name)       # a_name_scope/var2_2:0</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(sess.run(var22))  # [ 2.20000005]</code></span></font></pre><p>
+<span style="background: #ffff00">可以看出使用 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.Variable()</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">定义的时候<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>虽然 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">name</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">都一样<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>但是为了不重复变量名<font face="Liberation Serif, serif"><span lang="en-US">,</span>
+<span style="background: #ffff00">Tensorflow </span></span></font><span style="background: #ffff00">输出的变量名并不是一样的<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>所以<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>本质上 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">var2</span></code><span style="background: #ffff00">,
+</span><code class="western"><span style="background: #ffff00">var21</span></code><span style="background: #ffff00">,
+</span><code class="western"><span style="background: #ffff00">var22</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">并不是一样的变量<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>而另一方面<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>使用</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.get_variable()</span></code></span></font><span style="background: #ffff00">定义的变量不会被</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.name_scope()</span></code></span></font><span style="background: #ffff00">当中的名字所影响<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<h4><a name="tf.variable_scope()"></a><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">tf.variable_scope()</span></span></font></h4>
+<p><span style="background: #ffff00">如果想要达到重复利用变量的效果<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>我们就要使用 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.variable_scope()</span></code><span style="background: #ffff00">,
+</span></span></font><span style="background: #ffff00">并搭配</span>
+<font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.get_variable()</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">这种方式产生和提取变量<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>不像 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.Variable()</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">每次都会产生新的变量<font face="Liberation Serif, serif"><span lang="en-US">,</span>
+<code class="western"><span style="background: #ffff00">tf.get_variable()</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">如果遇到了同样名字的变量时<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>它会单纯的提取这个同样名字的变量<font face="Liberation Serif, serif"><span lang="en-US">(</span></font>避免产生新变量<font face="Liberation Serif, serif"><span lang="en-US">).
+</span></font>而在重复使用的时候<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>一定要在代码中强调 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">scope.reuse_variables()</span></code><span style="background: #ffff00">,
+</span></span></font><span style="background: #ffff00">否则系统将会报错<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>以为你只是单纯的不小心重复使用到了一个变量<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">with tf.variable_scope(&quot;a_variable_scope&quot;) as scope:</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">initializer = tf.constant_initializer(value=3)</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">var3 = tf.get_variable(name='var3', shape=[1], dtype=tf.float32, initializer=initializer)</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">scope.reuse_variables()</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">var3_reuse = tf.get_variable(name='var3',)</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">var4 = tf.Variable(name='var4', initial_value=[4], dtype=tf.float32)</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">var4_reuse = tf.Variable(name='var4', initial_value=[4], dtype=tf.float32)</code></span></font>
+<code class="cjk">    </code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">with tf.Session() as sess:</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">sess.run(tf.global_variables_initializer())</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(var3.name)            # a_variable_scope/var3:0</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(sess.run(var3))       # [ 3.]</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(var3_reuse.name)      # a_variable_scope/var3:0</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(sess.run(var3_reuse)) # [ 3.]</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(var4.name)            # a_variable_scope/var4:0</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(sess.run(var4))       # [ 4.]</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(var4_reuse.name)      # a_variable_scope/var4_1:0</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(sess.run(var4_reuse)) # [ 4.]</code></span></font>
+<code class="cjk">    </code></pre><h4>
+<a name="RNN应用例子"></a><span style="background: #ffff00"><script src="smb://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>
        (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
-<h4 class="tut-h4-pad" id="RNN应用例子">RNN应用例子</h4>
-<p>RNN 例子的代码在<a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tf22_scope/tf22_RNN_scope.py">这里</a>, 整个 RNN 的结构已经在这里定义好了.
-在 training RNN 和 test RNN 的时候, RNN 的 <code class="highlighter-rouge">time_steps</code> 会有不同的取值, 这将会影响到整个 RNN 的结构, 所以导致在 test 的时候, 不能单纯地使用 training 时建立的那个 RNN. 
-但是 training RNN 和 test RNN 又必须是有同样的 weights biases 的参数. 所以, 这时, 就是使用 reuse variable 的好时机.</p>
-<p>首先定义training 和 test 的不同参数.</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TrainConfig</span><span class="p">:</span>
-    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">20</span>
-    <span class="n">time_steps</span> <span class="o">=</span> <span class="mi">20</span>
-    <span class="n">input_size</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="n">output_size</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="n">cell_size</span> <span class="o">=</span> <span class="mi">11</span>
-    <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+  
+
+</script><font face="Liberation Serif, serif"><span lang="en-US">RNN</span></font>应用例子</span></h4>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">RNN
+</span></font>例子的代码在<a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tf22_scope/tf22_RNN_scope.py">这里</a><font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>整个 <font face="Liberation Serif, serif"><span lang="en-US">RNN
+</span></font>的结构已经在这里定义好了<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>在 <font face="Liberation Serif, serif"><span lang="en-US">training
+RNN </span></font>和 <font face="Liberation Serif, serif"><span lang="en-US">test
+RNN </span></font>的时候<font face="Liberation Serif, serif"><span lang="en-US">,
+RNN </span></font>的 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">time_steps</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">会有不同的取值<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>这将会影响到整个 <font face="Liberation Serif, serif"><span lang="en-US">RNN
+</span></font>的结构<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>所以导致在 <font face="Liberation Serif, serif"><span lang="en-US">test
+</span></font>的时候<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>不能单纯地使用 <font face="Liberation Serif, serif"><span lang="en-US">training
+</span></font>时建立的那个 <font face="Liberation Serif, serif"><span lang="en-US">RNN.
+</span></font>但是 <font face="Liberation Serif, serif"><span lang="en-US">training
+RNN </span></font>和 <font face="Liberation Serif, serif"><span lang="en-US">test
+RNN </span></font>又必须是有同样的</span> <font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">weights
+biases </span></font>的参数<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>所以<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>这时<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>就是使用 <font face="Liberation Serif, serif"><span lang="en-US">reuse
+variable </span></font>的好时机<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<p><span style="background: #ffff00">首先定义<font face="Liberation Serif, serif"><span lang="en-US">training
+</span></font>和 <font face="Liberation Serif, serif"><span lang="en-US">test
+</span></font>的不同参数<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">class TrainConfig:</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">batch_size = 20</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">time_steps = 20</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">input_size = 10</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">output_size = 2</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">cell_size = 11</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">learning_rate = 0.01</code></span></font>
 
 
-<span class="k">class</span> <span class="nc">TestConfig</span><span class="p">(</span><span class="n">TrainConfig</span><span class="p">):</span>
-    <span class="n">time_steps</span> <span class="o">=</span> <span class="mi">1</span>
-    
-<span class="n">train_config</span> <span class="o">=</span> <span class="n">TrainConfig</span><span class="p">()</span>
-<span class="n">test_config</span> <span class="o">=</span> <span class="n">TestConfig</span><span class="p">()</span>
-</code></pre>
-</div>
-<p>然后让 <code class="highlighter-rouge">train_rnn</code> 和 <code class="highlighter-rouge">test_rnn</code> 在同一个 <code class="highlighter-rouge">tf.variable_scope('rnn')</code> 之下.
-并且定义 <code class="highlighter-rouge">scope.reuse_variables()</code>, 使我们能把 <code class="highlighter-rouge">train_rnn</code> 的所有 weights, biases 参数全部绑定到 <code class="highlighter-rouge">test_rnn</code> 中.
-这样, 不管两者的 <code class="highlighter-rouge">time_steps</code> 有多不同, 结构有多不同, <code class="highlighter-rouge">train_rnn</code> W, b 参数更新成什么样, <code class="highlighter-rouge">test_rnn</code> 的参数也更新成什么样.</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">variable_scope</span><span class="p">(</span><span class="s">'rnn'</span><span class="p">)</span> <span class="k">as</span> <span class="n">scope</span><span class="p">:</span>
-    <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
-    <span class="n">train_rnn</span> <span class="o">=</span> <span class="n">RNN</span><span class="p">(</span><span class="n">train_config</span><span class="p">)</span>
-    <span class="n">scope</span><span class="o">.</span><span class="n">reuse_variables</span><span class="p">()</span>
-    <span class="n">test_rnn</span> <span class="o">=</span> <span class="n">RNN</span><span class="p">(</span><span class="n">test_config</span><span class="p">)</span>
-    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
-</code></pre>
-</div>
-<p style="font-size: 0.8em; padding:4em 1em 0.5em 1em; margin: 0 auto;">
-        如果你觉得这篇文章或视频对你的学习很有帮助, 请你也分享它, 让它能再次帮助到更多的需要学习的人.
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">class TestConfig(TrainConfig):</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">time_steps = 1</code></span></font>
+<code class="cjk">    </code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">train_config = TrainConfig()</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">test_config = TestConfig()</code></span></font></pre><p>
+<span style="background: #ffff00">然后让 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">train_rnn</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">和 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">test_rnn</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">在同一个
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.variable_scope('rnn')</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">之下<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>并且定义</span> <font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">scope.reuse_variables()</span></code><span style="background: #ffff00">,
+</span></span></font><span style="background: #ffff00">使我们能把
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">train_rnn</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">的所有
+<font face="Liberation Serif, serif"><span lang="en-US">weights,
+biases </span></font>参数全部绑定到</span> <font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">test_rnn</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">中<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>这样<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>不管两者的 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">time_steps</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">有多不同<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>结构有多不同<font face="Liberation Serif, serif"><span lang="en-US">,
+</span><code class="western"><span style="background: #ffff00">train_rnn</span></code><span style="background: #ffff00">
+W, b </span></span></font><span style="background: #ffff00">参数更新成什么样<font face="Liberation Serif, serif"><span lang="en-US">,
+</span><code class="western"><span style="background: #ffff00">test_rnn</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">的参数也更新成什么样<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">with tf.variable_scope('rnn') as scope:</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">sess = tf.Session()</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">train_rnn = RNN(train_config)</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">scope.reuse_variables()</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">test_rnn = RNN(test_config)</code></span></font>
+<code class="cjk">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">sess.run(tf.global_variables_initializer())</code></span></font></pre><p>
+<br/>
+<br/>
 
-        莫烦没有正式的经济来源, 如果你也想支持 <strong>莫烦Python</strong> 并看到更好的教学内容, 赞助他一点点, 作为鼓励他继续开源的动力.
-      </p>
-<!-- donation -->
-<div id="bottom-donation-section">
-<h3 id="bottom-donation-title">支持 让教学变得更优秀</h3>
-<br>
-<div>
-<a href="/support/" id="bottom-donation-button"><strong>点我 赞助 莫烦</strong></a>
-</div>
-<br>
-</br></br></div>
-<hr>
-</hr></br></div>
-    </body></html>
+</p>
+</body>
+</html>

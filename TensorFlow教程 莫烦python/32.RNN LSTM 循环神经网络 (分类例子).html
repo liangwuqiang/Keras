@@ -1,189 +1,271 @@
-<!DOCTYPE html>
-    <html><head><meta charset="UTF-8">
-    </head><body>
-    <p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/">原文链接</a></p>
-        <div class="tut-main-content-pad">
-<br>
-<h1>RNN LSTM 循环神经网络 (分类例子)</h1>
-<p style="text-align: center;">
-        
-          作者: <strong>莫烦</strong>   
-        
-        编辑: <strong>莫烦</strong>   
-        
-      </p>
-<p>学习资料:</p>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.6.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-09-29T14:29:37.041968030"/>
+	<meta name="" content=""/>
+	<style type="text/css">
+		pre.ctl { font-family: "Liberation Mono", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+	</style>
+</head>
+<body lang="zh-CN" dir="ltr">
+<p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/"><span style="background: #ffff00">原文链接</span></a></p>
+<p><br/>
+<br/>
+
+</p>
+<h1><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US"><span style="background: #ffff00">RNN
+LSTM </span></font></font>循环神经网络 <font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US">(</span></font></font>分类例子<font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US">)</span></span></font></font></h1>
+<p align="center"><span style="background: #ffff00">作者<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">莫烦</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; 编辑<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">莫烦</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; </span>
+</p>
+<p><span style="background: #ffff00">学习资料<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
 <ul>
-<li><a href="https://github.com/MorvanZhou/tutorials/tree/master/tensorflowTUT/tf20_RNN2">相关代码</a></li>
-<li>为 TF 2017 打造的<a href="https://github.com/MorvanZhou/Tensorflow-Tutorial">新版可视化教学代码</a></li>
-<li>机器学习-简介系列 <a href="/tutorials/machine-learning/ML-intro/2-3-RNN/">什么是RNN</a></li>
-<li>机器学习-简介系列 <a href="/tutorials/machine-learning/ML-intro/2-4-LSTM/">什么是LSTM RNN</a></li>
-<li>本代码基于网上这一份代码 <a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/recurrent_network.py">code</a></li>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00"><a href="https://github.com/MorvanZhou/tutorials/tree/master/tensorflowTUT/tf20_RNN2">相关代码</a>
+	</span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00">为
+	<font face="Liberation Serif, serif"><span lang="en-US">TF 2017
+	</span></font>打造的<a href="https://github.com/MorvanZhou/Tensorflow-Tutorial">新版可视化教学代码</a>
+	</span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00">机器学习<font face="Liberation Serif, serif"><span lang="en-US">-</span></font>简介系列
+	<a href="/tutorials/machine-learning/ML-intro/2-3-RNN/">什么是<font face="Liberation Serif, serif"><span lang="en-US">RNN</a>
+	</span></span></font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00">机器学习<font face="Liberation Serif, serif"><span lang="en-US">-</span></font>简介系列
+	<a href="/tutorials/machine-learning/ML-intro/2-4-LSTM/">什么是<font face="Liberation Serif, serif"><span lang="en-US">LSTM
+	RNN</a> </span></span></font>
+	</p>
+	<li/>
+<p><span style="background: #ffff00">本代码基于网上这一份代码
+	<font face="Liberation Serif, serif"><span lang="en-US"><a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/recurrent_network.py">code</a>
+	</span></span></font>
+	</p>
 </ul>
-<h4 class="tut-h4-pad" id="设置 RNN 的参数">设置 RNN 的参数</h4>
-<p>这次我们会使用 RNN 来进行分类的训练 (Classification). 会继续使用到手写数字 MNIST 数据集. 让 RNN 从每张图片的第一行像素读到最后一行, 然后再进行分类判断.
-接下来我们导入 MNIST 数据并确定 RNN 的各种参数(hyper-parameters):</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="kn">import</span> <span class="n">input_data</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c"># set random seed</span>
+<h4><a name="设置 RNN 的参数"></a><span style="background: #ffff00">设置
+<font face="Liberation Serif, serif"><span lang="en-US">RNN </span></font>的参数</span></h4>
+<p><span style="background: #ffff00">这次我们会使用 <font face="Liberation Serif, serif"><span lang="en-US">RNN
+</span></font>来进行分类的训练 <font face="Liberation Serif, serif"><span lang="en-US">(Classification).
+</span></font>会继续使用到手写数字 <font face="Liberation Serif, serif"><span lang="en-US">MNIST
+</span></font>数据集<font face="Liberation Serif, serif"><span lang="en-US">.</span>
+</span></font><span style="background: #ffff00">让 <font face="Liberation Serif, serif"><span lang="en-US">RNN
+</span></font>从每张图片的第一行像素读到最后一行<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>然后再进行分类判断<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>接下来我们导入 <font face="Liberation Serif, serif"><span lang="en-US">MNIST
+</span></font>数据并确定 <font face="Liberation Serif, serif"><span lang="en-US">RNN
+</span></font>的各种参数<font face="Liberation Serif, serif"><span lang="en-US">(hyper-parameters):</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">import tensorflow as tf</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">from tensorflow.examples.tutorials.mnist import input_data</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.set_random_seed(1)   # set random seed</span></code></span></font>
 
-<span class="c"># 导入数据</span>
-<span class="n">mnist</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">read_data_sets</span><span class="p">(</span><span class="s">'MNIST_data'</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># </code></span></font><code class="cjk">导入数据</span></code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">mnist = input_data.read_data_sets('MNIST_data', one_hot=True)</span></code></span></font>
 
-<span class="c"># hyperparameters</span>
-<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.001</span>                  <span class="c"># learning rate</span>
-<span class="n">training_iters</span> <span class="o">=</span> <span class="mi">100000</span>     <span class="c"># train step 上限</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>            
-<span class="n">n_inputs</span> <span class="o">=</span> <span class="mi">28</span>               <span class="c"># MNIST data input (img shape: 28*28)</span>
-<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">28</span>                <span class="c"># time steps</span>
-<span class="n">n_hidden_units</span> <span class="o">=</span> <span class="mi">128</span>        <span class="c"># neurons in hidden layer</span>
-<span class="n">n_classes</span> <span class="o">=</span> <span class="mi">10</span>              <span class="c"># MNIST classes (0-9 digits)</span>
-</code></pre>
-</div>
-<p>接着定义 <code class="highlighter-rouge">x</code>, <code class="highlighter-rouge">y</code> 的 <code class="highlighter-rouge">placeholder</code> 和 <code class="highlighter-rouge">weights</code>, <code class="highlighter-rouge">biases</code> 的初始状况.</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># x y placeholder</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">])</span>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># hyperparameters</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">lr = 0.001                  # learning rate</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">training_iters = 100000     # train step </code></span></font><code class="cjk">上限</span></code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">batch_size = 128            </span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">n_inputs = 28               # MNIST data input (img shape: 28*28)</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">n_steps = 28                # time steps</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">n_hidden_units = 128        # neurons in hidden layer</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">n_classes = 10              # MNIST classes (0-9 digits)</span></code></span></font></pre><p>
+<span style="background: #ffff00">接着定义 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">x</span></code><span style="background: #ffff00">,
+</span><code class="western"><span style="background: #ffff00">y</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">的
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">placeholder</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">和 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">weights</span></code><span style="background: #ffff00">,
+</span><code class="western"><span style="background: #ffff00">biases</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">的初始状况<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># x y placeholder</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">x = tf.placeholder(tf.float32, [None, n_steps, n_inputs])</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">y = tf.placeholder(tf.float32, [None, n_classes])</span></code></span></font>
 
-<span class="c"># 对 weights biases 初始值的定义</span>
-<span class="n">weights</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c"># shape (28, 128)</span>
-    <span class="s">'in'</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="n">n_inputs</span><span class="p">,</span> <span class="n">n_hidden_units</span><span class="p">])),</span>
-    <span class="c"># shape (128, 10)</span>
-    <span class="s">'out'</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="n">n_hidden_units</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">]))</span>
-<span class="p">}</span>
-<span class="n">biases</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c"># shape (128, )</span>
-    <span class="s">'in'</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">n_hidden_units</span><span class="p">,</span> <span class="p">])),</span>
-    <span class="c"># shape (10, )</span>
-    <span class="s">'out'</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">n_classes</span><span class="p">,</span> <span class="p">]))</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-<h4 class="tut-h4-pad" id="定义 RNN 的主体结构">定义 RNN 的主体结构</h4>
-<p>接着开始定义 RNN 主体结构, 这个 RNN 总共有 3 个组成部分 ( <code class="highlighter-rouge">input_layer</code>, <code class="highlighter-rouge">cell</code>, <code class="highlighter-rouge">output_layer</code>). 首先我们先定义 <code class="highlighter-rouge">input_layer</code>:</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">RNN</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">biases</span><span class="p">):</span>
-    <span class="c"># 原始的 X 是 3 维数据, 我们需要把它变成 2 维数据才能使用 weights 的矩阵乘法</span>
-    <span class="c"># X ==&gt; (128 batches * 28 steps, 28 inputs)</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">])</span>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># </code></span></font><code class="cjk">对 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">weights biases </code></span></font><code class="cjk">初始值的定义</span></code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">weights = {</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># shape (28, 128)</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">'in': tf.Variable(tf.random_normal([n_inputs, n_hidden_units])),</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># shape (128, 10)</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">'out': tf.Variable(tf.random_normal([n_hidden_units, n_classes]))</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">}</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">biases = {</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># shape (128, )</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">'in': tf.Variable(tf.constant(0.1, shape=[n_hidden_units, ])),</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># shape (10, )</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">'out': tf.Variable(tf.constant(0.1, shape=[n_classes, ]))</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">}</span></code></span></font></pre><h4>
+<a name="定义 RNN 的主体结构"></a><span style="background: #ffff00">定义
+<font face="Liberation Serif, serif"><span lang="en-US">RNN </span></font>的主体结构</span></h4>
+<p><span style="background: #ffff00">接着开始定义 <font face="Liberation Serif, serif"><span lang="en-US">RNN
+</span></font>主体结构<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>这个 <font face="Liberation Serif, serif"><span lang="en-US">RNN
+</span></font>总共有 <font face="Liberation Serif, serif"><span lang="en-US">3
+</span></font>个组成部分 <font face="Liberation Serif, serif"><span lang="en-US">(
+</span><code class="western"><span style="background: #ffff00">input_layer</span></code><span style="background: #ffff00">,
+</span><code class="western"><span style="background: #ffff00">cell</span></code><span style="background: #ffff00">,</span>
+<code class="western"><span style="background: #ffff00">output_layer</span></code><span style="background: #ffff00">).
+</span></span></font><span style="background: #ffff00">首先我们先定义
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">input_layer</span></code><span style="background: #ffff00">:</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">def RNN(X, weights, biases):</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># </code></span></font><code class="cjk">原始的 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">X </code></span></font><code class="cjk">是 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">3 </code></span></font><code class="cjk">维数据</code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">, </code></span></font><code class="cjk">我们需要把它变成 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">2 </code></span></font><code class="cjk">维数据才能使用 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">weights </code></span></font><code class="cjk">的矩阵乘法</span></code>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># X ==&gt; (128 batches * 28 steps, 28 inputs)</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">X = tf.reshape(X, [-1, n_inputs])</span></code></span></font>
 
-    <span class="c"># X_in = W*X + b</span>
-    <span class="n">X_in</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="p">[</span><span class="s">'in'</span><span class="p">])</span> <span class="o">+</span> <span class="n">biases</span><span class="p">[</span><span class="s">'in'</span><span class="p">]</span>
-    <span class="c"># X_in ==&gt; (128 batches, 28 steps, 128 hidden) 换回3维</span>
-    <span class="n">X_in</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_in</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_hidden_units</span><span class="p">])</span>
-</code></pre>
-</div>
-<p>接着是 <code class="highlighter-rouge">cell</code> 中的计算, 有两种途径:</p>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># X_in = W*X + b</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">X_in = tf.matmul(X, weights['in']) + biases['in']</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># X_in ==&gt; (128 batches, 28 steps, 128 hidden) </code></span></font><code class="cjk">换回</code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">3</code></span></font><code class="cjk">维</span></code>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">X_in = tf.reshape(X_in, [-1, n_steps, n_hidden_units])</span></code></span></font></pre><p>
+<span style="background: #ffff00">接着是 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">cell</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">中的计算<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>有两种途径<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
 <ol>
-<li>使用 <code class="highlighter-rouge">tf.nn.rnn(cell, inputs)</code> (不推荐<a href="http://www.wildml.com/2016/08/rnns-in-tensorflow-a-practical-guide-and-undocumented-features/">原因</a>). 但是如果使用这种方法, 可以参考<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/recurrent_network.py">这个代码</a>;</li>
-<li>使用 <code class="highlighter-rouge">tf.nn.dynamic_rnn(cell, inputs)</code> (推荐). 这次的练习将使用这种方式.</li>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00">使用
+	</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.nn.rnn(cell,
+	inputs)</span></code><span style="background: #ffff00"> (</span></span></font><span style="background: #ffff00">不推荐<a href="http://www.wildml.com/2016/08/rnns-in-tensorflow-a-practical-guide-and-undocumented-features/">原因</a><font face="Liberation Serif, serif"><span lang="en-US">).
+	</span></font>但是如果使用这种方法<font face="Liberation Serif, serif"><span lang="en-US">,
+	</span></font>可以参考<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/recurrent_network.py">这个代码</a><font face="Liberation Serif, serif"><span lang="en-US">;
+	</span></span></font>
+	</p>
+	<li/>
+<p><span style="background: #ffff00">使用
+	</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.nn.dynamic_rnn(cell,
+	inputs)</span></code><span style="background: #ffff00"> (</span></span></font><span style="background: #ffff00">推荐<font face="Liberation Serif, serif"><span lang="en-US">).
+	</span></font>这次的练习将使用这种方式<font face="Liberation Serif, serif"><span lang="en-US">.
+	</span></span></font>
+	</p>
 </ol>
-<p>因 Tensorflow 版本升级原因, <code class="highlighter-rouge">state_is_tuple=True</code> 将在之后的版本中变为默认. 对于 <code class="highlighter-rouge">lstm</code> 来说, <code class="highlighter-rouge">state</code>可被分为<code class="highlighter-rouge">(c_state, h_state)</code>.</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="c"># 使用 basic LSTM Cell.</span>
-    <span class="n">lstm_cell</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">rnn</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">n_hidden_units</span><span class="p">,</span> <span class="n">forget_bias</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">state_is_tuple</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">init_state</span> <span class="o">=</span> <span class="n">lstm_cell</span><span class="o">.</span><span class="n">zero_state</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="c"># 初始化全零 state</span>
-</code></pre>
-</div>
-<p>如果使用<code class="highlighter-rouge">tf.nn.dynamic_rnn(cell, inputs)</code>, 我们要确定 <code class="highlighter-rouge">inputs</code> 的格式. <code class="highlighter-rouge">tf.nn.dynamic_rnn</code> 中的 <code class="highlighter-rouge">time_major</code> 参数会针对不同 <code class="highlighter-rouge">inputs</code> 格式有不同的值.</p>
+<p><span style="background: #ffff00">因 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow
+</span></font>版本升级原因<font face="Liberation Serif, serif"><span lang="en-US">,
+</span><code class="western"><span style="background: #ffff00">state_is_tuple=True</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">将在之后的版本中变为默认<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>对于 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">lstm</span></code>
+</span></font><span style="background: #ffff00">来说<font face="Liberation Serif, serif"><span lang="en-US">,
+</span><code class="western"><span style="background: #ffff00">state</span></code></span></font><span style="background: #ffff00">可被分为</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">(c_state,
+h_state)</span></code><span style="background: #ffff00">.</span></span></font></p>
+<pre class="cjk"><code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># </code></span></font><code class="cjk">使用 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">basic LSTM Cell.</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">lstm_cell = tf.contrib.rnn.BasicLSTMCell(n_hidden_units, forget_bias=1.0,</span></code><code class="western"> </code><code class="western"><span style="background: #ffff00">state_is_tuple=True)</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">init_state = lstm_cell.zero_state(batch_size, dtype=tf.float32) # </code></span></font><code class="cjk">初始化全零 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">state</span></code></span></font></pre><p>
+<span style="background: #ffff00">如果使用</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.nn.dynamic_rnn(cell,
+inputs)</span></code><span style="background: #ffff00">, </span></span></font><span style="background: #ffff00">我们要确定
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">inputs</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">的格式<font face="Liberation Serif, serif"><span lang="en-US">.</span>
+<code class="western"><span style="background: #ffff00">tf.nn.dynamic_rnn</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">中的
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">time_major</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">参数会针对不同
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">inputs</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">格式有不同的值<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
 <ol>
-<li>如果 <code class="highlighter-rouge">inputs</code> 为 (batches, steps, inputs) ==&gt; <code class="highlighter-rouge">time_major=False</code>;</li>
-<li>如果 <code class="highlighter-rouge">inputs</code> 为 (steps, batches, inputs) ==&gt; <code class="highlighter-rouge">time_major=True</code>;</li>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00">如果
+	</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">inputs</span></code><span style="background: #ffff00">
+	</span></span></font><span style="background: #ffff00">为 <font face="Liberation Serif, serif"><span lang="en-US">(batches,
+	steps, inputs) ==&gt; </span><code class="western"><span style="background: #ffff00">time_major=False</span></code><span style="background: #ffff00">;
+	</span></span></font>
+	</p>
+	<li/>
+<p><span style="background: #ffff00">如果 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">inputs</span></code><span style="background: #ffff00">
+	</span></span></font><span style="background: #ffff00">为 <font face="Liberation Serif, serif"><span lang="en-US">(steps,
+	batches, inputs) ==&gt; </span><code class="western"><span style="background: #ffff00">time_major=True</span></code><span style="background: #ffff00">;
+	</span></span></font>
+	</p>
 </ol>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="n">outputs</span><span class="p">,</span> <span class="n">final_state</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">dynamic_rnn</span><span class="p">(</span><span class="n">lstm_cell</span><span class="p">,</span> <span class="n">X_in</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">init_state</span><span class="p">,</span> <span class="n">time_major</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</code></pre>
-</div>
-<p>最后是 <code class="highlighter-rouge">output_layer</code> 和 <code class="highlighter-rouge">return</code> 的值. 因为这个例子的特殊性, 有两种方法可以求得 <code class="highlighter-rouge">results</code>.</p>
-<div>
-<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle" data-ad-client="ca-pub-4601203457616636" data-ad-format="fluid" data-ad-layout="in-article" data-ad-slot="3397817325" style="display:block; text-align:center;"></ins>
-<script>
+<pre class="cjk" style="margin-bottom: 0.5cm"><code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">outputs, final_state = tf.nn.dynamic_rnn(lstm_cell, X_in,</span></code><code class="western"> </code><code class="western"><span style="background: #ffff00">initial_state=init_state, time_major=False)</span></code></span></font></pre><p>
+<span style="background: #ffff00">最后是 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">output_layer</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">和 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">return</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">的值<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>因为这个例子的特殊性<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>有两种方法可以求得 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">results</span></code><span style="background: #ffff00">.</span></span></font></p>
+<p><strong><span style="background: #ffff00"><script src="smb://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>
        (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
-<p><strong>方式一:</strong>
-直接调用<code class="highlighter-rouge">final_state</code> 中的 <code class="highlighter-rouge">h_state</code> (<code class="highlighter-rouge">final_state[1]</code>) 来进行运算:</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="n">results</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">final_state</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">weights</span><span class="p">[</span><span class="s">'out'</span><span class="p">])</span> <span class="o">+</span> <span class="n">biases</span><span class="p">[</span><span class="s">'out'</span><span class="p">]</span>
-</code></pre>
-</div>
-<p><strong>方式二:</strong>
-调用最后一个 <code class="highlighter-rouge">outputs</code> (在这个例子中,和上面的<code class="highlighter-rouge">final_state[1]</code>是一样的):</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="c"># 把 outputs 变成 列表 [(batch, outputs)..] * steps</span>
-    <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]))</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">weights</span><span class="p">[</span><span class="s">'out'</span><span class="p">])</span> <span class="o">+</span> <span class="n">biases</span><span class="p">[</span><span class="s">'out'</span><span class="p">]</span>    <span class="c">#选取最后一个 output</span>
-</code></pre>
-</div>
-<p>在 <code class="highlighter-rouge">def RNN()</code> 的最后输出 <code class="highlighter-rouge">result</code></p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code>    <span class="k">return</span> <span class="n">results</span>
-</code></pre>
-</div>
-<p>定义好了 RNN 主体结构后, 我们就可以来计算 <code class="highlighter-rouge">cost</code> 和 <code class="highlighter-rouge">train_op</code>:</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">pred</span> <span class="o">=</span> <span class="n">RNN</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">biases</span><span class="p">)</span>
-<span class="n">cost</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-<span class="n">train_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="n">lr</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
-</code></pre>
-</div>
-<h4 class="tut-h4-pad" id="训练 RNN">训练 RNN</h4>
-<p>训练时, 不断输出 <code class="highlighter-rouge">accuracy</code>, 观看结果:</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">correct_pred</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_pred</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+  
 
-<span class="c"># init= tf.initialize_all_variables() # tf 马上就要废弃这种写法</span>
-<span class="c"># 替换成下面的写法:</span>
-<span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
+</script>方式一<font face="Liberation Serif, serif"><span lang="en-US">:</span></strong><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">直接调用</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">final_state</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">中的 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_state</span></code><span style="background: #ffff00">
+(</span><code class="western"><span style="background: #ffff00">final_state[1]</span></code><span style="background: #ffff00">)
+</span></span></font><span style="background: #ffff00">来进行运算<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">results = tf.matmul(final_state[1], weights['out']) + biases['out']</span></code></span></font></pre><p>
+<strong><span style="background: #ffff00">方式二<font face="Liberation Serif, serif"><span lang="en-US">:</span></strong><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">调用最后一个
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">outputs</span></code><span style="background: #ffff00">
+(</span></span></font><span style="background: #ffff00">在这个例子中<font face="Liberation Serif, serif"><span lang="en-US">,</span></font>和上面的</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">final_state[1]</span></code></span></font><span style="background: #ffff00">是一样的<font face="Liberation Serif, serif"><span lang="en-US">):</span></span></font></p>
+<pre class="cjk"><code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># </code></span></font><code class="cjk">把 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">outputs </code></span></font><code class="cjk">变成 列表 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">[(batch, outputs)..] * steps</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">outputs = tf.unstack(tf.transpose(outputs, [1,0,2]))</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">results = tf.matmul(outputs[-1], weights['out']) + biases['out']    #</code></span></font><code class="cjk">选取最后一个</span></code><code class="cjk"> </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">output</span></code></span></font></pre><p>
+<span style="background: #ffff00">在 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">def
+RNN()</span></code><span style="background: #ffff00"> </span></span></font><span style="background: #ffff00">的最后输出
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">result</span></code></span></font></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">return results</span></code></span></font></pre><p>
+<span style="background: #ffff00">定义好了 <font face="Liberation Serif, serif"><span lang="en-US">RNN
+</span></font>主体结构后<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>我们就可以来计算 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">cost</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">和 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">train_op</span></code><span style="background: #ffff00">:</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">pred = RNN(x, weights, biases)</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(pred, y))</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">train_op = tf.train.AdamOptimizer(lr).minimize(cost)</span></code></span></font></pre><h4>
+<a name="训练 RNN"></a><span style="background: #ffff00">训练 <font face="Liberation Serif, serif"><span lang="en-US">RNN</span></span></font></h4>
+<p><span style="background: #ffff00">训练时<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>不断输出 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">accuracy</span></code><span style="background: #ffff00">,
+</span></span></font><span style="background: #ffff00">观看结果<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">correct_pred = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))</span></code></span></font>
 
-<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
-    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">init</span><span class="p">)</span>
-    <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="n">step</span> <span class="o">*</span> <span class="n">batch_size</span> <span class="o">&lt;</span> <span class="n">training_iters</span><span class="p">:</span>
-        <span class="n">batch_xs</span><span class="p">,</span> <span class="n">batch_ys</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
-        <span class="n">batch_xs</span> <span class="o">=</span> <span class="n">batch_xs</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">])</span>
-        <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">train_op</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span>
-            <span class="n">x</span><span class="p">:</span> <span class="n">batch_xs</span><span class="p">,</span>
-            <span class="n">y</span><span class="p">:</span> <span class="n">batch_ys</span><span class="p">,</span>
-        <span class="p">})</span>
-        <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span>
-            <span class="n">x</span><span class="p">:</span> <span class="n">batch_xs</span><span class="p">,</span>
-            <span class="n">y</span><span class="p">:</span> <span class="n">batch_ys</span><span class="p">,</span>
-        <span class="p">}))</span>
-        <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre>
-</div>
-<p>最终 <code class="highlighter-rouge">accuracy</code> 的结果如下:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>0.1875
-0.65625
-0.726562
-0.757812
-0.820312
-0.796875
-0.859375
-0.921875
-0.921875
-0.898438
-0.828125
-0.890625
-0.9375
-0.921875
-0.9375
-0.929688
-0.953125
-....
-</code></pre>
-</div>
-<p style="font-size: 0.8em; padding:4em 1em 0.5em 1em; margin: 0 auto;">
-        如果你觉得这篇文章或视频对你的学习很有帮助, 请你也分享它, 让它能再次帮助到更多的需要学习的人.
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># init= tf.initialize_all_variables() # tf </code></span></font><code class="cjk">马上就要废弃这种写法</span></code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># </code></span></font><code class="cjk">替换成下面的写法</code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">:</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">init = tf.global_variables_initializer()</span></code></span></font>
 
-        莫烦没有正式的经济来源, 如果你也想支持 <strong>莫烦Python</strong> 并看到更好的教学内容, 赞助他一点点, 作为鼓励他继续开源的动力.
-      </p>
-<!-- donation -->
-<div id="bottom-donation-section">
-<h3 id="bottom-donation-title">支持 让教学变得更优秀</h3>
-<br>
-<div>
-<a href="/support/" id="bottom-donation-button"><strong>点我 赞助 莫烦</strong></a>
-</div>
-<br>
-</br></br></div>
-<hr>
-</hr></br></div>
-    </body></html>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">with tf.Session() as sess:</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">sess.run(init)</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">step = 0</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">while step * batch_size &lt; training_iters:</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">        </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">batch_xs, batch_ys = mnist.train.next_batch(batch_size)</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">        </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">batch_xs = batch_xs.reshape([batch_size, n_steps, n_inputs])</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">        </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">sess.run([train_op], feed_dict={</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">            </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">x: batch_xs,</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">            </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">y: batch_ys,</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">        </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">})</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">        </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">if step % 20 == 0:</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">            </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(sess.run(accuracy, feed_dict={</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">            </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">x: batch_xs,</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">            </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">y: batch_ys,</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">        </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">}))</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">        </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">step += 1</span></code></span></font></pre><p>
+<span style="background: #ffff00">最终 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">accuracy</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">的结果如下<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.1875</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.65625</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.726562</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.757812</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.820312</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.796875</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.859375</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.921875</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.921875</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.898438</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.828125</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.890625</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.9375</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.921875</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.9375</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.929688</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">0.953125</code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">....</code></span></font></pre><p>
+<br/>
+<br/>
+
+</p>
+</body>
+</html>

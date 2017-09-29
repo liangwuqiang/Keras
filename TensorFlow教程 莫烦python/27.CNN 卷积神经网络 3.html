@@ -1,151 +1,145 @@
-<!DOCTYPE html>
-    <html><head><meta charset="UTF-8">
-    </head><body>
-    <p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/">原文链接</a></p>
-        <div class="tut-main-content-pad">
-<br>
-<h1>CNN 卷积神经网络 3</h1>
-<p style="text-align: center;">
-        
-          作者: <strong>年拾柒</strong>   
-        
-        编辑: <strong>莫烦</strong>   
-        
-      </p>
-<p>学习资料:</p>
-<ul>
-<li><a href="https://github.com/MorvanZhou/tutorials/tree/master/tensorflowTUT/tf18_CNN3">相关代码</a></li>
-<li>为 TF 2017 打造的<a href="https://github.com/MorvanZhou/Tensorflow-Tutorial">新版可视化教学代码</a></li>
-<li>机器学习-简介系列 <a href="/tutorials/machine-learning/ML-intro/2-2-CNN/">什么是 CNN</a></li>
-</ul>
-<p>这一次我们一层层的加上了不同的 layer. 分别是:</p>
-<ol>
-<li>convolutional layer1 + max pooling;</li>
-<li>convolutional layer2 + max pooling;</li>
-<li>fully connected layer1 + dropout;</li>
-<li>fully connected layer2 to prediction.</li>
-</ol>
-<p>我们利用上节课定义好的函数来构建我们的网络</p>
-<h4 class="tut-h4-pad" id="图片处理">图片处理</h4>
-<p>首先呢，我们定义一下输入的<code class="highlighter-rouge">placeholder</code></p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">xs</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,[</span><span class="bp">None</span><span class="p">,</span><span class="mi">784</span><span class="p">])</span>
-<span class="n">ys</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,[</span><span class="bp">None</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
-</code></pre>
-</div>
-<p>我们还定义了<code class="highlighter-rouge">dropout</code>的<code class="highlighter-rouge">placeholder</code>，它是解决过拟合的有效手段</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">keep_prob</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-</code></pre>
-</div>
-<p>接着呢，我们需要处理我们的<code class="highlighter-rouge">xs</code>，把<code class="highlighter-rouge">xs</code>的形状变成<code class="highlighter-rouge">[-1,28,28,1]</code>，-1代表先不考虑输入的图片例子多少这个维度，后面的1是channel的数量，因为我们输入的图片是黑白的，因此channel是1，例如如果是RGB图像，那么channel就是3。</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">x_image</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xs</span><span class="p">,[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-</code></pre>
-</div>
-<h4 class="tut-h4-pad" id="建立卷积层">建立卷积层</h4>
-<p>接着我们定义第一层卷积,先定义本层的<code class="highlighter-rouge">Weight</code>,本层我们的卷积核patch的大小是5x5，因为黑白图片channel是1所以输入是1，输出是32个featuremap</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">W_conv1</span><span class="o">=</span><span class="n">weight_variable</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">32</span><span class="p">])</span>
-</code></pre>
-</div>
-<p>接着定义<code class="highlighter-rouge">bias</code>，它的大小是32个长度，因此我们传入它的<code class="highlighter-rouge">shape</code>为<code class="highlighter-rouge">[32]</code></p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">b_conv1</span><span class="o">=</span><span class="n">bias_variable</span><span class="p">([</span><span class="mi">32</span><span class="p">])</span>
-</code></pre>
-</div>
-<p>定义好了<code class="highlighter-rouge">Weight</code>和<code class="highlighter-rouge">bias</code>，我们就可以定义卷积神经网络的第一个卷积层<code class="highlighter-rouge">h_conv1=conv2d(x_image,W_conv1)+b_conv1</code>,同时我们对<code class="highlighter-rouge">h_conv1</code>进行非线性处理，也就是激活函数来处理喽，这里我们用的是<code class="highlighter-rouge">tf.nn.relu</code>（修正线性单元）来处理，要注意的是，因为采用了<code class="highlighter-rouge">SAME</code>的padding方式，输出图片的大小没有变化依然是28x28，只是厚度变厚了，因此现在的输出大小就变成了28x28x32</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">h_conv1</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">conv2d</span><span class="p">(</span><span class="n">x_image</span><span class="p">,</span><span class="n">W_conv1</span><span class="p">)</span><span class="o">+</span><span class="n">b_conv1</span><span class="p">)</span>
-</code></pre>
-</div>
-<p>最后我们再进行<code class="highlighter-rouge">pooling</code>的处理就ok啦，经过<code class="highlighter-rouge">pooling</code>的处理，输出大小就变为了14x14x32</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">h_pool</span><span class="o">=</span><span class="n">max_pool_2x2</span><span class="p">(</span><span class="n">h_conv1</span><span class="p">)</span>
-</code></pre>
-</div>
-<p>接着呢，同样的形式我们定义第二层卷积，本层我们的输入就是上一层的输出，本层我们的卷积核patch的大小是5x5，有32个featuremap所以输入就是32，输出呢我们定为64</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">W_conv2</span><span class="o">=</span><span class="n">weight_variable</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">])</span>
-<span class="n">b_conv2</span><span class="o">=</span><span class="n">bias_variable</span><span class="p">([</span><span class="mi">64</span><span class="p">])</span>
-</code></pre>
-</div>
-<p>接着我们就可以定义卷积神经网络的第二个卷积层，这时的输出的大小就是14x14x64</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">h_conv2</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">conv2d</span><span class="p">(</span><span class="n">h_pool1</span><span class="p">,</span><span class="n">W_conv2</span><span class="p">)</span><span class="o">+</span><span class="n">b_conv2</span><span class="p">)</span>
-</code></pre>
-</div>
-<p>最后也是一个pooling处理，输出大小为7x7x64</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">h_pool2</span><span class="o">=</span><span class="n">max_pool_2x2</span><span class="p">(</span><span class="n">h_conv2</span><span class="p">)</span>
-</code></pre>
-</div>
-<div>
-<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle" data-ad-client="ca-pub-4601203457616636" data-ad-format="fluid" data-ad-layout="in-article" data-ad-slot="3397817325" style="display:block; text-align:center;"></ins>
-<script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
-<h4 class="tut-h4-pad" id="建立全连接层">建立全连接层</h4>
-<p>好的，接下来我们定义我们的 fully connected layer,</p>
-<p>进入全连接层时, 我们通过<code class="highlighter-rouge">tf.reshape()</code>将<code class="highlighter-rouge">h_pool2</code>的输出值从一个三维的变为一维的数据,
--1表示先不考虑输入图片例子维度, 将上一个输出结果展平.</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c">#[n_samples,7,7,64]-&gt;&gt;[n_samples,7*7*64]</span>
-<span class="n">h_pool2_flat</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">h_pool2</span><span class="p">,[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="o">*</span><span class="mi">64</span><span class="p">])</span> 
-</code></pre>
-</div>
-<p>此时<code class="highlighter-rouge">weight_variable</code>的<code class="highlighter-rouge">shape</code>输入就是第二个卷积层展平了的输出大小: 7x7x64，
-后面的输出size我们继续扩大，定为1024</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">W_fc1</span><span class="o">=</span><span class="n">weight_variable</span><span class="p">([</span><span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="o">*</span><span class="mi">64</span><span class="p">,</span><span class="mi">1024</span><span class="p">])</span> 
-<span class="n">b_fc1</span><span class="o">=</span><span class="n">bias_variable</span><span class="p">([</span><span class="mi">1024</span><span class="p">])</span>
-</code></pre>
-</div>
-<p>然后将展平后的<code class="highlighter-rouge">h_pool2_flat</code>与本层的<code class="highlighter-rouge">W_fc1</code>相乘（注意这个时候不是卷积了）</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">h_fc1</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">h_pool2_flat</span><span class="p">,</span><span class="n">W_fc1</span><span class="p">)</span><span class="o">+</span><span class="n">b_fc1</span><span class="p">)</span>
-</code></pre>
-</div>
-<p>如果我们考虑过拟合问题，可以加一个dropout的处理</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">h_fc1_drop</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">h_fc1</span><span class="p">,</span><span class="n">keep_drop</span><span class="p">)</span>
-</code></pre>
-</div>
-<p>接下来我们就可以进行最后一层的构建了，好激动啊, 输入是1024，最后的输出是10个
-(因为mnist数据集就是[0-9]十个类)，prediction就是我们最后的预测值</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">W_fc2</span><span class="o">=</span><span class="n">weight_variable</span><span class="p">([</span><span class="mi">1024</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span> <span class="n">b_fc2</span><span class="o">=</span><span class="n">bias_variable</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
-</code></pre>
-</div>
-<p>然后呢我们用softmax分类器（多分类，输出是各个类的概率）,对我们的输出进行分类</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">prediction</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">h_fc1_dropt</span><span class="p">,</span><span class="n">W_fc2</span><span class="p">),</span><span class="n">b_fc2</span><span class="p">)</span>
-</code></pre>
-</div>
-<h4 class="tut-h4-pad" id="选优化方法">选优化方法</h4>
-<p>接着呢我们利用交叉熵损失函数来定义我们的cost function</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">cross_entropy</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span>
-    <span class="o">-</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">ys</span><span class="o">*</span><span class="n">tf</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">prediction</span><span class="p">),</span>
-    <span class="n">reduction_indices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-</code></pre>
-</div>
-<p>我们用<code class="highlighter-rouge">tf.train.AdamOptimizer()</code>作为我们的优化器进行优化，使我们的<code class="highlighter-rouge">cross_entropy</code>最小</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">train_step</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="mf">1e-4</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">)</span>
-</code></pre>
-</div>
-<p>接着呢就是和之前视频讲的一样喽 定义<code class="highlighter-rouge">Session</code></p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">sess</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
-</code></pre>
-</div>
-<p>初始化变量</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># tf.initialize_all_variables() 这种写法马上就要被废弃</span>
-<span class="c"># 替换成下面的写法:</span>
-<span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
-</code></pre>
-</div>
-<p>好啦接着就是训练数据啦，我们假定训练<code class="highlighter-rouge">1000</code>步，每<code class="highlighter-rouge">50</code>步输出一下准确率，
-注意<code class="highlighter-rouge">sess.run()</code>时记得要用<code class="highlighter-rouge">feed_dict</code>给我们的众多 <code class="highlighter-rouge">placeholder</code> 喂数据哦.</p>
-<p>以上呢就是一个简单的卷积神经网络的例子代码</p>
-<p style="font-size: 0.8em; padding:4em 1em 0.5em 1em; margin: 0 auto;">
-        如果你觉得这篇文章或视频对你的学习很有帮助, 请你也分享它, 让它能再次帮助到更多的需要学习的人.
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.6.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-09-29T11:51:47.389200549"/>
+	<meta name="" content=""/>
+	<style type="text/css">
+		pre.ctl { font-family: "Liberation Mono", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+	</style>
+</head>
+<body lang="zh-CN" dir="ltr">
+<p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/"><span style="background: #ffff00">原文链接</span></a></p>
+<p><br/>
+<br/>
 
-        莫烦没有正式的经济来源, 如果你也想支持 <strong>莫烦Python</strong> 并看到更好的教学内容, 赞助他一点点, 作为鼓励他继续开源的动力.
-      </p>
-<!-- donation -->
-<div id="bottom-donation-section">
-<h3 id="bottom-donation-title">支持 让教学变得更优秀</h3>
-<br>
-<div>
-<a href="/support/" id="bottom-donation-button"><strong>点我 赞助 莫烦</strong></a>
-</div>
-<br>
-</br></br></div>
-<hr>
-</hr></br></div>
-    </body></html>
+</p>
+<h1><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US"><span style="background: #ffff00">CNN
+</span></font></font>卷积神经网络 <font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US">3</span></span></font></font></h1>
+<p align="center"><span style="background: #ffff00">作者<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">年拾柒</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; 编辑<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">莫烦</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; </span>
+</p>
+<p><span style="background: #ffff00">学习资料<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00"><a href="https://github.com/MorvanZhou/tutorials/tree/master/tensorflowTUT/tf18_CNN3">相关代码</a>
+	</span>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00">为
+	<font face="Liberation Serif, serif"><span lang="en-US">TF 2017
+	</span></font>打造的<a href="https://github.com/MorvanZhou/Tensorflow-Tutorial">新版可视化教学代码</a>
+	</span>
+	</p>
+	<li/>
+<p><span style="background: #ffff00">机器学习<font face="Liberation Serif, serif"><span lang="en-US">-</span></font>简介系列
+	<a href="/tutorials/machine-learning/ML-intro/2-2-CNN/">什么是
+	<font face="Liberation Serif, serif"><span lang="en-US">CNN</a> </span></span></font>
+	</p>
+</ul>
+<p><span style="background: #ffff00">这一次我们一层层的加上了不同的
+<font face="Liberation Serif, serif"><span lang="en-US">layer. </span></font>分别是<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
+<ol>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">convolutional
+	layer1 + max pooling; </span></span></font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">convolutional
+	layer2 + max pooling; </span></span></font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">fully
+	connected layer1 + dropout; </span></span></font>
+	</p>
+	<li/>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><span style="background: #ffff00">fully
+	connected layer2 to prediction. </span></span></font>
+	</p>
+</ol>
+<p><span style="background: #ffff00">我们利用上节课定义好的函数来构建我们的网络</span></p>
+<h4><a name="图片处理"></a><span style="background: #ffff00">图片处理</span></h4>
+<p><span style="background: #ffff00">首先呢，我们定义一下输入的</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">placeholder</span></code></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">xs=tf.placeholder(tf.float32,[None,784])</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">ys=tf.placeholder(tf.float32,[None,10])</span></code></span></font></pre><p>
+<span style="background: #ffff00">我们还定义了</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">dropout</span></code></span></font><span style="background: #ffff00">的</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">placeholder</span></code></span></font><span style="background: #ffff00">，它是解决过拟合的有效手段</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">keep_prob=tf.placeholder(tf.float32)</span></code></span></font></pre><p>
+接着呢，我们需要处理我们的<font face="Liberation Serif, serif"><span lang="en-US"><code class="western">xs</code></span></font>，把<font face="Liberation Serif, serif"><span lang="en-US"><code class="western">xs</code></span></font>的形状变成<font face="Liberation Serif, serif"><span lang="en-US"><code class="western">[-1,28,28,1]</code></span></font>，<font face="Liberation Serif, serif"><span lang="en-US">-1</span></font>代表先不考虑输入的图<span style="background: #ffff00">片例子多少这个维度，后面的<font face="Liberation Serif, serif"><span lang="en-US">1</span></font>是<font face="Liberation Serif, serif"><span lang="en-US">channel</span></font>的数量，因为我们输入的图片是黑白的，因此<font face="Liberation Serif, serif"><span lang="en-US">channel</span></font>是<font face="Liberation Serif, serif"><span lang="en-US">1</span></font>，例如如果是<font face="Liberation Serif, serif"><span lang="en-US">RGB</span></font>图像，那么<font face="Liberation Serif, serif"><span lang="en-US">channel</span></font>就是<font face="Liberation Serif, serif"><span lang="en-US">3</span></font>。</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">x_image=tf.reshape(xs,[-1,28,28,1])</span></code></span></font></pre><h4>
+<a name="建立卷积层"></a><span style="background: #ffff00">建立卷积层</span></h4>
+<p><span style="background: #ffff00">接着我们定义第一层卷积<font face="Liberation Serif, serif"><span lang="en-US">,</span></font>先定义本层的</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">Weight</span></code><span style="background: #ffff00">,</span></span></font><span style="background: #ffff00">本层我们的卷积核<font face="Liberation Serif, serif"><span lang="en-US">patch</span></font>的大小是<font face="Liberation Serif, serif"><span lang="en-US">5x5</span></font>，因为黑白图片<font face="Liberation Serif, serif"><span lang="en-US">channel</span></font>是<font face="Liberation Serif, serif"><span lang="en-US">1</span></font>所以输入是<font face="Liberation Serif, serif"><span lang="en-US">1</span></font>，输出是<font face="Liberation Serif, serif"><span lang="en-US">32</span></font>个<font face="Liberation Serif, serif"><span lang="en-US">featuremap</span></span></font></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">W_conv1=weight_variable([5,5,1,32])</code></span></font></pre><p>
+<span style="background: #ffff00">接着定义</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">bias</span></code></span></font><span style="background: #ffff00">，它的大小是<font face="Liberation Serif, serif"><span lang="en-US">32</span></font>个长度，因此我们传入它的</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">shape</span></code></span></font><span style="background: #ffff00">为</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">[32]</span></code></span></font></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">b_conv1=bias_variable([32])</span></code></span></font></pre><p>
+<span style="background: #ffff00">定义好了</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">Weight</span></code></span></font><span style="background: #ffff00">和</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">bias</span></code></span></font><span style="background: #ffff00">，我们就可以定义卷积神经网络的第一个卷积层</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_conv1=conv2d(x_image,W_conv1)+b_conv1</span></code><span style="background: #ffff00">,</span></span></font><span style="background: #ffff00">同时我们对</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_conv1</span></code></span></font><span style="background: #ffff00">进行非线性处理，也就是激活函数来处理喽，这里我们用的是</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.nn.relu</span></code></span></font><span style="background: #ffff00">（修正线性单元）来处理，要注意的是，因为采用了</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">SAME</span></code></span></font><span style="background: #ffff00">的<font face="Liberation Serif, serif"><span lang="en-US">padding</span></font>方式，输出图片的大小没有变化依然是<font face="Liberation Serif, serif"><span lang="en-US">28x28</span></font>，只是厚度变厚了，因此现在的输出大小就变成了<font face="Liberation Serif, serif"><span lang="en-US">28x28x32</span></span></font></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_conv1=tf.nn.relu(conv2d(x_image,W_conv1)+b_conv1)</span></code></span></font></pre><p>
+<span style="background: #ffff00">最后我们再进行</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">pooling</span></code></span></font><span style="background: #ffff00">的处理就<font face="Liberation Serif, serif"><span lang="en-US">ok</span></font>啦，经过</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">pooling</span></code></span></font><span style="background: #ffff00">的处理，输出大小就变为了<font face="Liberation Serif, serif"><span lang="en-US">14x14x32</span></span></font></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_pool=max_pool_2x2(h_conv1)</span></code></span></font></pre><p>
+<span style="background: #ffff00">接着呢，同样的形式我们定义第二层卷积，本层我们的输入就是上一层的输出，本层我们的卷积核<font face="Liberation Serif, serif"><span lang="en-US">patch</span></font>的大小是<font face="Liberation Serif, serif"><span lang="en-US">5x5</span></font>，有<font face="Liberation Serif, serif"><span lang="en-US">32</span></font>个<font face="Liberation Serif, serif"><span lang="en-US">featuremap</span></font>所以输入就是<font face="Liberation Serif, serif"><span lang="en-US">32</span></font>，输出呢我们定为<font face="Liberation Serif, serif"><span lang="en-US">64</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">W_conv2=weight_variable([5,5,32,64])</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">b_conv2=bias_variable([64])</span></code></span></font></pre><p>
+<span style="background: #ffff00">接着我们就可以定义卷积神经网络的第二个卷积层，这时的输出的大小就是<font face="Liberation Serif, serif"><span lang="en-US">14x14x64</span></span></font></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_conv2=tf.nn.relu(conv2d(h_pool1,W_conv2)+b_conv2)</span></code></span></font></pre><p>
+<span style="background: #ffff00">最后也是一个<font face="Liberation Serif, serif"><span lang="en-US">pooling</span></font>处理，输出大小为<font face="Liberation Serif, serif"><span lang="en-US">7x7x64</span></span></font></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_pool2=max_pool_2x2(h_conv2)</span></code></span></font></pre><h4>
+<a name="建立全连接层"></a><span style="background: #ffff00"><script src="smb://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  
+
+</script>建立全连接层</span></h4>
+<p><span style="background: #ffff00">好的，接下来我们定义我们的
+<font face="Liberation Serif, serif"><span lang="en-US">fully
+connected layer,</span></span></font></p>
+<p><span style="background: #ffff00">进入全连接层时<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>我们通过</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.reshape()</span></code></span></font><span style="background: #ffff00">将</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_pool2</span></code></span></font><span style="background: #ffff00">的输出值从一个三维的变为一维的数据<font face="Liberation Serif, serif"><span lang="en-US">,</span>
+<span style="background: #ffff00">-1</span></span></font><span style="background: #ffff00">表示先不考虑输入图片例子维度<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>将上一个输出结果展平<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">#[n_samples,7,7,64]-&gt;&gt;[n_samples,7*7*64]</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_pool2_flat=tf.reshape(h_pool2,[-1,7*7*64]) </span></code></span></font></pre><p>
+<span style="background: #ffff00">此时</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">weight_variable</span></code></span></font><span style="background: #ffff00">的</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">shape</span></code></span></font><span style="background: #ffff00">输入就是第二个卷积层展平了的输出大小<font face="Liberation Serif, serif"><span lang="en-US">:
+7x7x64</span></font>， 后面的输出<font face="Liberation Serif, serif"><span lang="en-US">size</span></font>我们继续扩大，定为<font face="Liberation Serif, serif"><span lang="en-US">1024</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">W_fc1=weight_variable([7*7*64,1024]) </span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">b_fc1=bias_variable([1024])</span></code></span></font></pre><p>
+<span style="background: #ffff00">然后将展平后的</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_pool2_flat</span></code></span></font><span style="background: #ffff00">与本层的</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">W_fc1</span></code></span></font><span style="background: #ffff00">相乘（注意这个时候不是卷积了）</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_fc1=tf.nn.relu(tf.matmul(h_pool2_flat,W_fc1)+b_fc1)</span></code></span></font></pre><p>
+<span style="background: #ffff00">如果我们考虑过拟合问题，可以加一个<font face="Liberation Serif, serif"><span lang="en-US">dropout</span></font>的处理</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">h_fc1_drop=tf.nn.dropout(h_fc1,keep_drop)</span></code></span></font></pre><p>
+<span style="background: #ffff00">接下来我们就可以进行最后一层的构建了，好激动啊<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>输入是<font face="Liberation Serif, serif"><span lang="en-US">1024</span></font>，最后的输出是<font face="Liberation Serif, serif"><span lang="en-US">10</span></font>个
+<font face="Liberation Serif, serif"><span lang="en-US">(</span></font>因为<font face="Liberation Serif, serif"><span lang="en-US">mnist</span></font>数据集就是<font face="Liberation Serif, serif"><span lang="en-US">[0-9]</span></font>十个类<font face="Liberation Serif, serif"><span lang="en-US">)</span></font>，<font face="Liberation Serif, serif"><span lang="en-US">prediction</span></font>就是我们最后的预测值</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">W_fc2=weight_variable([1024,10]) b_fc2=bias_variable([10])</span></code></span></font></pre><p>
+<span style="background: #ffff00">然后呢我们用<font face="Liberation Serif, serif"><span lang="en-US">softmax</span></font>分类器（多分类，输出是各个类的概率）<font face="Liberation Serif, serif"><span lang="en-US">,</span></font>对我们的输出进行分类</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">prediction=tf.nn.softmax(tf.matmul(h_fc1_dropt,W_fc2),b_fc2)</span></code></span></font></pre><h4>
+<a name="选优化方法"></a><span style="background: #ffff00">选优化方法</span></h4>
+<p><span style="background: #ffff00">接着呢我们利用交叉熵损失函数来定义我们的<font face="Liberation Serif, serif"><span lang="en-US">cost
+function</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">cross_entropy=tf.reduce_mean(</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">-tf.reduce_sum(ys*tf.log(prediction),</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">reduction_indices=[1]))</span></code></span></font></pre><p>
+<span style="background: #ffff00">我们用</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.train.AdamOptimizer()</span></code></span></font><span style="background: #ffff00">作为我们的优化器进行优化，使我们的</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">cross_entropy</span></code></span></font><span style="background: #ffff00">最小</span></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">train_step=tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)</span></code></span></font></pre><p>
+<span style="background: #ffff00">接着呢就是和之前视频讲的一样喽
+定义</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">Session</span></code></span></font></p>
+<pre class="cjk" style="margin-bottom: 0.5cm"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">sess=tf.Session()</span></code></span></font></pre><p>
+<span style="background: #ffff00">初始化变量</span></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># tf.initialize_all_variables() </code></span></font><code class="cjk">这种写法马上就要被废弃</span></code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># </code></span></font><code class="cjk">替换成下面的写法</code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">:</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">sess.run(tf.global_variables_initializer())</span></code></span></font></pre><p>
+<span style="background: #ffff00">好啦接着就是训练数据啦，我们假定训练</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">1000</span></code></span></font><span style="background: #ffff00">步，每</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">50</span></code></span></font><span style="background: #ffff00">步输出一下准确率，
+注意</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">sess.run()</span></code></span></font><span style="background: #ffff00">时记得要用</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">feed_dict</span></code></span></font><span style="background: #ffff00">给我们的众多
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">placeholder</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">喂数据哦<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<p><span style="background: #ffff00">以上呢就是一个简单的卷积神经网络的例子代码</span></p>
+<p><br/>
+<br/>
+
+</p>
+</body>
+</html>

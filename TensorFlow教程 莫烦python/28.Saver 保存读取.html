@@ -1,88 +1,111 @@
-<!DOCTYPE html>
-    <html><head><meta charset="UTF-8">
-    </head><body>
-    <p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/">原文链接</a></p>
-        <div class="tut-main-content-pad">
-<br>
-<h1>Saver 保存读取</h1>
-<p style="text-align: center;">
-        
-          作者: <strong>莫烦</strong>   
-        
-        编辑: <strong>莫烦</strong>   
-        
-      </p>
-<p>学习资料:</p>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.1.6.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-09-29T11:58:09.615693620"/>
+	<meta name="" content=""/>
+	<style type="text/css">
+		pre.ctl { font-family: "Liberation Mono", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+	</style>
+</head>
+<body lang="zh-CN" dir="ltr">
+<p><a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/"><span style="background: #ffff00">原文链接</span></a></p>
+<p><br/>
+<br/>
+
+</p>
+<h1><font face="Thorndale, serif"><font size="6" style="font-size: 24pt"><span lang="en-US"><span style="background: #ffff00">Saver
+</span></font></font>保存读取</span></h1>
+<p align="center"><span style="background: #ffff00">作者<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">莫烦</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; 编辑<font face="Liberation Serif, serif"><span lang="en-US">:
+</span></span></font><strong><span style="background: #ffff00">莫烦</span></strong><span style="background: #ffff00">
+&nbsp;&nbsp; </span>
+</p>
+<p><span style="background: #ffff00">学习资料<font face="Liberation Serif, serif"><span lang="en-US">:</span></span></font></p>
 <ul>
-<li><a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tf19_saver.py">相关代码</a></li>
-<li>为 TF 2017 打造的<a href="https://github.com/MorvanZhou/Tensorflow-Tutorial">新版可视化教学代码</a></li>
+	<li/>
+<p style="margin-bottom: 0cm"><span style="background: #ffff00"><a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tf19_saver.py">相关代码</a>
+	</span>
+	</p>
+	<li/>
+<p><span style="background: #ffff00">为 <font face="Liberation Serif, serif"><span lang="en-US">TF
+	2017 </span></font>打造的<a href="https://github.com/MorvanZhou/Tensorflow-Tutorial">新版可视化教学代码</a>
+	</span>
+	</p>
 </ul>
-<p>我们搭建好了一个神经网络, 训练好了, 肯定也想保存起来, 用于再次加载. 
-那今天我们就来说说怎样用 Tensorflow 中的 saver 保存和加载吧.</p>
-<h4 class="tut-h4-pad" id="保存">保存</h4>
-<p><code class="highlighter-rouge">import</code>所需的模块, 然后建立神经网络当中的 <code class="highlighter-rouge">W</code> 和 <code class="highlighter-rouge">b</code>, 并初始化变量.</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<p><span style="background: #ffff00">我们搭建好了一个神经网络<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>训练好了<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>肯定也想保存起来<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>用于再次加载<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>那今天我们就来说说怎样用 <font face="Liberation Serif, serif"><span lang="en-US">Tensorflow
+</span></font>中的 <font face="Liberation Serif, serif"><span lang="en-US">saver
+</span></font>保存和加载吧<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<h4><a name="保存"></a><span style="background: #ffff00">保存</span></h4>
+<p><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">import</span></code></span></font><span style="background: #ffff00">所需的模块<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>然后建立神经网络当中的 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">W</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">和 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">b</span></code><span style="background: #ffff00">,
+</span></span></font><span style="background: #ffff00">并初始化变量<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">import tensorflow as tf</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">import numpy as np</span></code></span></font>
 
-<span class="c">## Save to file</span>
-<span class="c"># remember to define the same dtype and shape when restore</span>
-<span class="n">W</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'weights'</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'biases'</span><span class="p">)</span>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">## Save to file</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># remember to define the same dtype and shape when restore</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">W = tf.Variable([[1,2,3],[3,4,5]], dtype=tf.float32, name='weights')</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">b = tf.Variable([[1,2,3]], dtype=tf.float32, name='biases')</span></code></span></font>
 
-<span class="c"># init= tf.initialize_all_variables() # tf 马上就要废弃这种写法</span>
-<span class="c"># 替换成下面的写法:</span>
-<span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
-</code></pre>
-</div>
-<p>保存时, 首先要建立一个 <code class="highlighter-rouge">tf.train.Saver()</code> 用来保存, 提取变量. 再创建一个名为<code class="highlighter-rouge">my_net</code>的文件夹, 用这个 <code class="highlighter-rouge">saver</code> 来保存变量到这个目录 <code class="highlighter-rouge">"my_net/save_net.ckpt"</code>.</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">saver</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Saver</span><span class="p">()</span>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># init= tf.initialize_all_variables() # tf </code></span></font><code class="cjk">马上就要废弃这种写法</span></code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># </code></span></font><code class="cjk">替换成下面的写法</code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">:</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">init = tf.global_variables_initializer()</span></code></span></font></pre><p>
+<span style="background: #ffff00">保存时<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>首先要建立一个 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">tf.train.Saver()</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">用来保存<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>提取变量<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>再创建一个名为</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">my_net</span></code></span></font><span style="background: #ffff00">的文件夹<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>用这个 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">saver</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">来保存变量到这个目录
+</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">&quot;my_net/save_net.ckpt&quot;</span></code><span style="background: #ffff00">.</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">saver = tf.train.Saver()</span></code></span></font>
 
-<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
-    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">init</span><span class="p">)</span>
-    <span class="n">save_path</span> <span class="o">=</span> <span class="n">saver</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="s">"my_net/save_net.ckpt"</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Save to path: "</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">with tf.Session() as sess:</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">sess.run(init)</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">save_path = saver.save(sess, &quot;my_net/save_net.ckpt&quot;)</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(&quot;Save to path: &quot;, save_path)</span></code></span></font>
 
-<span class="s">"""    
-Save to path:  my_net/save_net.ckpt
-"""</span>
-</code></pre>
-</div>
-<h4 class="tut-h4-pad" id="提取">提取</h4>
-<p>提取时, 先建立零时的<code class="highlighter-rouge">W</code> 和 <code class="highlighter-rouge">b</code>容器. 找到文件目录, 并用<code class="highlighter-rouge">saver.restore()</code>我们放在这个目录的变量.</p>
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 先建立 W, b 的容器</span>
-<span class="n">W</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">"weights"</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">"biases"</span><span class="p">)</span>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">&quot;&quot;&quot;    </span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">Save to path:  my_net/save_net.ckpt</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">&quot;&quot;&quot;</span></code></span></font></pre><h4>
+<a name="提取"></a><span style="background: #ffff00">提取</span></h4>
+<p><span style="background: #ffff00">提取时<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>先建立零时的</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">W</span></code><span style="background: #ffff00">
+</span></span></font><span style="background: #ffff00">和 </span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">b</span></code></span></font><span style="background: #ffff00">容器<font face="Liberation Serif, serif"><span lang="en-US">.
+</span></font>找到文件目录<font face="Liberation Serif, serif"><span lang="en-US">,
+</span></font>并用</span><font face="Liberation Serif, serif"><span lang="en-US"><code class="western"><span style="background: #ffff00">saver.restore()</span></code></span></font><span style="background: #ffff00">我们放在这个目录的变量<font face="Liberation Serif, serif"><span lang="en-US">.</span></span></font></p>
+<pre class="cjk"><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># </code></span></font><code class="cjk">先建立 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">W, b </code></span></font><code class="cjk">的容器</span></code>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">W = tf.Variable(np.arange(6).reshape((2, 3)), dtype=tf.float32, name=&quot;weights&quot;)</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">b = tf.Variable(np.arange(3).reshape((1, 3)), dtype=tf.float32, name=&quot;biases&quot;)</span></code></span></font>
 
-<span class="c"># 这里不需要初始化步骤 init= tf.initialize_all_variables()</span>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00"># </code></span></font><code class="cjk">这里不需要初始化步骤 </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">init= tf.initialize_all_variables()</span></code></span></font>
 
-<span class="n">saver</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Saver</span><span class="p">()</span>
-<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
-    <span class="c"># 提取变量</span>
-    <span class="n">saver</span><span class="o">.</span><span class="n">restore</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="s">"my_net/save_net.ckpt"</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"weights:"</span><span class="p">,</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">W</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"biases:"</span><span class="p">,</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">saver = tf.train.Saver()</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">with tf.Session() as sess:</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"># </code></span></font><code class="cjk">提取变量</span></code>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">saver.restore(sess, &quot;my_net/save_net.ckpt&quot;)</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(&quot;weights:&quot;, sess.run(W))</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">    </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">print(&quot;biases:&quot;, sess.run(b))</span></code></span></font>
 
-<span class="s">"""
-weights: [[ 1.  2.  3.]
-          [ 3.  4.  5.]]
-biases: [[ 1.  2.  3.]]
-"""</span>
-</code></pre>
-</div>
-<p style="font-size: 0.8em; padding:4em 1em 0.5em 1em; margin: 0 auto;">
-        如果你觉得这篇文章或视频对你的学习很有帮助, 请你也分享它, 让它能再次帮助到更多的需要学习的人.
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">&quot;&quot;&quot;</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">weights: [[ 1.  2.  3.]</span></code></span></font>
+<code class="cjk"><span style="background: #ffff00">          </code><font face="Liberation Mono, monospace"><span lang="en-US"><code class="western">[ 3.  4.  5.]]</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">biases: [[ 1.  2.  3.]]</span></code></span></font>
+<font face="Liberation Mono, monospace"><span lang="en-US"><code class="western"><span style="background: #ffff00">&quot;&quot;&quot;</span></code></span></font></pre><p>
+<br/>
+<br/>
 
-        莫烦没有正式的经济来源, 如果你也想支持 <strong>莫烦Python</strong> 并看到更好的教学内容, 赞助他一点点, 作为鼓励他继续开源的动力.
-      </p>
-<!-- donation -->
-<div id="bottom-donation-section">
-<h3 id="bottom-donation-title">支持 让教学变得更优秀</h3>
-<br>
-<div>
-<a href="/support/" id="bottom-donation-button"><strong>点我 赞助 莫烦</strong></a>
-</div>
-<br>
-</br></br></div>
-<hr>
-</hr></br></div>
-    </body></html>
+</p>
+</body>
+</html>
