@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://wiki.jikexueyuan.com/project/tensorflow-zh/">原文链接</a></p>
+        <div class="markdown-body">
+<!-- 欢迎成为极客学院WIKI作者 -->
+<!-- 极客学院团队出品 -->
+<p class="author">极客学院团队出品 · 更新于 2017-10-13 11:00:26</p>
+<!-- 内容 -->
+<h1>常见问题汇总</h1>
+<h2 id="f411d0f1f925d9b48d8c1d451bd809b1">说明</h2>
+<p>本章非官方文档翻译，是由众多TensorFlow爱好者将安装和使用TF过程中的问题总结而成的。</p>
+<h2 id="461f60c5e985ad2ddeba033b961bde20">常见问题及解答</h2>
+<h3>(示例)官网地址是哪里？</h3>
+<p><a "="" href="http://www.tensorflow.org/" rel="nofollow"><a "="" href="http://www.tensorflow.org/" rel="nofollow">http://www.tensorflow.org/</a></a></p>
+<h3>如何安装 pip ？</h3>
+<ul>
+<li>
+<p>Ubuntu (14.04)</p>
+<pre><code>  sudo apt-get update &amp;&amp; sudo apt-get install -y python python-dev python-pip</code></pre>
+</li>
+<li>
+<p>CentOS 7</p>
+<pre><code>  yum update -y &amp;&amp; yum install -y python python-devel epel-release.noarch python-pip</code></pre>
+</li>
+<li>
+<p>MACOS</p>
+<pre><code>  sudo easy_install pip</code></pre>
+</li>
+</ul>
+<h3>docker run -it b.gcr.io/tensorflow/tensorflow 失败</h3>
+<p>该镜像所在仓库被墙，需要梯子。</p>
+<p><a "="" href="http://pan.baidu.com/s/1bnyVrMR" rel="nofollow">这里</a>（密码：v9ts）有镜像的导出包。
+使用方法</p>
+<pre><code>docker load &lt; sensorflow.tar.gz</code></pre>
+<h3>SSLError: SSL_VERIFY_FAILED</h3>
+<p>在用url通过pip的方式安装的时候，可能会遇到的错误如下：</p>
+<pre><code>    SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:590)</code></pre>
+<p>解决办法:先下载wheel到本地，之后本地pip install</p>
+</div>
+    </body></html>

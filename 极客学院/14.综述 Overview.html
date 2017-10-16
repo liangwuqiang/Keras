@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+    <html><head><meta charset="UTF-8">
+    </head><body>
+    <p><a href="http://wiki.jikexueyuan.com/project/tensorflow-zh/">原文链接</a></p>
+        <div class="markdown-body">
+<!-- 欢迎成为极客学院WIKI作者 -->
+<!-- 极客学院团队出品 -->
+<p class="author">极客学院团队出品 · 更新于 2017-10-13 11:00:26</p>
+<!-- 内容 -->
+<h1>综述 Overview</h1>
+<h2 id="7305a841731213d255b67da8284613d5">Variables: 创建，初始化，保存，和恢复</h2>
+<p>TensorFlow Variables 是内存中的容纳 tensor 的缓存。这一小节介绍了用它们在模型训练时(during training)创建、保存和更新模型参数(model parameters) 的方法。</p>
+<p><a href="../how_tos/variables.html">参看教程</a></p>
+<h2 id="ea2da7541dc0abd182cfeee8ee3bbc3d">TensorFlow 机制 101</h2>
+<p>用 MNIST 手写数字识别作为一个小例子，一步一步的将使用 TensorFlow 基础架构(infrastructure)训练大规模模型的细节做详细介绍。</p>
+<p><a href="../tutorials/mnist_tf.html">参看教程</a></p>
+<h2 id="6b02d440d7db8d771ea05ee333a3c55c">TensorBoard: 学习过程的可视化</h2>
+<p>对模型进行训练和评估时，TensorBoard 是一个很有用的可视化工具。此教程解释了创建和运行 TensorBoard 的方法，和使用摘要操作(Summary ops)的方法，通过添加摘要操作(Summary ops)，可以自动把数据传输到 TensorBoard 所使用的事件文件。</p>
+<p><a href="../how_tos/summaries_and_tensorboard.html">参看教程</a></p>
+<h2 id="6d72a0b0ee7d798e5ed674208ed8f6f8">TensorBoard: 图的可视化</h2>
+<p>此教程介绍了在 TensorBoard 中使用可视化工具的方法，它可以帮助你理解张量流图的过程并 debug。</p>
+<p><a href="../how_tos/graph_viz.html">参看教程</a></p>
+<h2 id="a6f7b8b155f3f9cf4170dc162a17d7dc">数据读入</h2>
+<p>此教程介绍了把数据传入 TensorSlow 程序的三种主要的方法： Feeding, Reading 和 Preloading.</p>
+<p><a href="../how_tos/reading_data.html">参看教程</a></p>
+<h2 id="316edf7951a20a583626f0beddb8ad2c">线程和队列</h2>
+<p>此教程介绍 TensorFlow 中为了更容易进行异步和并发训练的各种不同结构(constructs)。</p>
+<p><a href="../how_tos/threading_and_queues.html">参看教程</a></p>
+<h2 id="a5fc77480a000d40b49c09176f9f1166">添加新的 Op</h2>
+<p>TensorFlow 已经提供一整套节点操作(）operation)，你可以在你的 graph 中随意使用它们，不过这里有关于添加自定义操作(custom op)的细节。</p>
+<p><a href="../how_tos/adding_an_op.html">参看教程</a>。</p>
+<h2 id="0d9c8e44ae0273d458d605fd063f3338">自定义数据的 Readers</h2>
+<p>如果你有相当大量的自定义数据集合，可能你想要对 TensorFlow 的 Data Readers 进行扩展，使它能直接以数据自身的格式将其读入。</p>
+<p><a href="../how_tos/new_data_formats.html">参看教程</a>。</p>
+<h2 id="9e0209accfc946a94a9830b3a7fe4c7c">使用 GPUs</h2>
+<p>此教程描述了用多个 GPU 构建和运行模型的方法。</p>
+<p><a href="../how_tos/using_gpu.html">参看教程</a></p>
+<h2 id="3a225c11258a239865da154cc1fbcc6b">共享变量 Sharing Variables</h2>
+<p>当在多 GPU 上部署大型的模型，或展开复杂的 LSTMs 或 RNNs 时，在模型构建代码的不同位置对许多相同的变量（Variable）进行读写常常是必须的。设计变量作用域（Variable Scope）机制的目的就是为了帮助上述任务的实现。</p>
+<p><a href="../how_tos/variable_scope/index.html">参看教程</a>。</p>
+<p>原文： <a "="" href="http://tensorflow.org/how_tos/index.html" rel="nofollow">How-to</a> </p>
+<p>翻译：<a "="" href="https://github.com/TerenceCooper" rel="nofollow">Terence Cooper</a> </p>
+<p>校对：<a "="" href="https://github.com/lonlonago" rel="nofollow">lonlonago</a></p>
+<div class="sections-order" style="display: none;">
+<!-- variables/index.md -->
+<!-- ../tutorials/mnist/tf/index.md -->
+<!-- summaries_and_tensorboard/index.md -->
+<!-- graph_viz/index.md -->
+<!-- reading_data/index.md -->
+<!-- threading_and_queues/index.md -->
+<!-- adding_an_op/index.md -->
+<!-- new_data_formats/index.md -->
+<!-- using_gpu/index.md -->
+<!-- variable_scope/index.md -->
+</div>
+</div>
+    </body></html>
